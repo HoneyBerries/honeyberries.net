@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* Design tokens */
+:root {
+  --bg: 255 255 255; /* white */
+  --fg: 17 24 39; /* gray-900 */
+  --muted: 107 114 128; /* gray-500 */
+  --accent-green: 16 185 129; /* emerald-500 */
+  --accent-blue: 59 130 246; /* blue-500 */
+  --accent-purple: 139 92 246; /* violet-500 */
+  --accent-pink: 236 72 153; /* pink-500 */
+  --accent-red: 239 68 68; /* red-500 */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827; /* gray-900 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Fancy gradients for accents */
+.accent-text {
+  background: linear-gradient(90deg, rgb(var(--accent-green)) 0%, rgb(var(--accent-blue)) 40%, rgb(var(--accent-purple)) 70%, rgb(var(--accent-pink)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow:hover {
+  box-shadow: 0 10px 30px rgba(59,130,246,0.2), 0 6px 12px rgba(16,185,129,0.15);
+}
+
+/* Keyframes for entrance animations */
+@keyframes floatIn {
+  0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+  60% { opacity: 1; transform: translateY(-4px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-floatIn {
+  animation: floatIn 700ms cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes bounceX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.animate-bounceX {
+  animation: bounceX 1.2s ease-in-out infinite;
+}
+
+/* Decorative colorful blobs used for subtle background accents */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(36px);
+  transform: translateZ(0);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-left {
+  left: -4rem;
+  top: -4rem;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle at 30% 30%, rgba(var(--accent-green),0.65) 0%, rgba(var(--accent-blue),0.45) 45%, rgba(255,255,255,0) 75%);
+}
+.blob-right {
+  right: -4rem;
+  bottom: -4rem;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 70% 70%, rgba(var(--accent-purple),0.55) 0%, rgba(var(--accent-pink),0.38) 45%, rgba(255,255,255,0) 75%);
+}
+
+/* Accent for cards to make them feel layered over blobs */
+.card-accent {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.92));
+  border: 1px solid rgba(var(--accent-blue),0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  overflow: hidden; /* ensure children don't visually overflow the rounded card */
+}
+
+/* Styled Discord iframe */
+.discord-iframe {
+  width: 100%;
+  min-width: 300px;
+  max-width: 100%;
+  height: 380px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--accent-blue),0.12);
+  box-shadow: 0 12px 36px rgba(59,130,246,0.08);
+}
+
+/* Contact grid: left column flexible, right column fixed to keep widget from shrinking */
+.contact-grid {
+  display: grid;
+  /* left column flexible, right column auto-sized but clamped so it won't overflow */
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  width: 100%;
+}
+
+/* Clamp the right column content and align it to the end to prevent overlap */
+.contact-grid > div:last-child {
+  justify-self: end;
+  width: 320px;
+  max-width: 100%;
+}
+
+/* Flex-based fallback to avoid overlap issues */
+.contact-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.contact-row .left-col {
+  flex: 1 1 auto;
+  min-width: 0; /* allow content to truncate/wrap instead of forcing overflow */
+}
+.contact-row .right-col {
+  flex: 0 0 320px; /* fixed width for the discord card */
+  max-width: 100%;
+}
+
+@media (max-width: 820px) {
+  .contact-row { flex-direction: column; }
+  .contact-row .right-col { flex: none; width: 100%; }
+}
+
+@media (max-width: 820px) {
+  /* collapse to single column earlier to avoid cramped layout */
+  .contact-grid { grid-template-columns: 1fr; }
+  .discord-iframe { height: 300px; min-width: 0; }
+  .blob-left, .blob-right { display: none; }
+}
+
+/* Ensure content sits above decorations */
+.content-over-blob { position: relative; z-index: 12; }
