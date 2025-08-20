@@ -18,7 +18,7 @@ return (
                     }, {
                         title: 'Shipped the Gem SMP', time: '2025 Spring', desc: 'Designed and deployed a scalable community server.'
                     }, {
-                        title: 'Created Plugin Suite', time: '2024 Fall', desc: (
+                        title: 'Created Plugin Suite', time: '2024 Fa`l`l', desc: (
                             <>
                                 Developed multiple high-quality plugins for PaperMC/Spigot,{' '}
                                 <a

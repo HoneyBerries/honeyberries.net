@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
-import discordIcon from '../assets/discord-icon.svg'
-import emailIcon from '../assets/email-icon.svg'
+import discordIcon from '../assets/icons/discord-icon.svg'
+import emailIcon from '../assets/icons/email-icon.svg'
 
 export default function Contact() {
     const [copied, setCopied] = useState(false)

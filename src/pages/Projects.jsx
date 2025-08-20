@@ -1,18 +1,21 @@
 import ProjectCard from '../components/ProjectCard'
 import Footer from '../components/Footer'
+import minecraftBg from '../assets/backgrounds/minecraft-background.webp'
 
 const projects = [
   {
     id: 'minecraft-plugins',
     title: 'Minecraft Plugins',
-    description: 'A suite of quality-of-life and admin tools for Paper/Spigot.',
-    href: '#'
+    description: 'A suite of quality-of-life, admin tools, and a few wild experiments for Paper/Spigot.',
+    href: '#',
+    imageUrl: minecraftBg
   },
   {
     id: 'minecraft-server',
     title: 'Minecraft Server',
-    description: 'Custom gameplay loops, economies, and anti-cheat systems.',
-    href: '#'
+    description: 'Custom gameplay, new PvP mechanics, and a thriving community.',
+  href: '#',
+  
   },
   {
     id: 'discord-ai-agent',
