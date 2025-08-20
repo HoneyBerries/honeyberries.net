@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+const skills = ['Python', 'Java', 'PaperMC Plugins', 'Discord Bots', 'LLMs', "AI Agents"];
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -37,7 +39,7 @@ export default function Hero() {
                   Full-stack development, game servers, plugin ecosystems, and AI agents.
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-2 text-xs text-gray-700">
-                  {['Python', 'Java', 'PaperMC Plugins', 'Discord Bots', 'LLMs', "AI Agents"].map(t => (
+                  {skills.map(t => (
                     <li key={t} className="rounded-full border border-gray-200 px-3 py-1 bg-white">{t}</li>
                   ))}
                 </ul>

@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import { navLinks, projects } from '../data'
 
 const navLinkClass = ({ isActive }) =>
   `px-3 py-2 text-sm font-medium rounded-md transition-colors ${
@@ -20,26 +21,27 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            <NavLink to="/" className={navLinkClass}>Home</NavLink>
-            <NavLink to="/about" className={navLinkClass}>About</NavLink>
-
-            {/* Projects dropdown */}
-            <div className="relative group">
-              <NavLink to="/projects" className={navLinkClass}>Projects</NavLink>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 mt-2 w-56 bg-white shadow-xl border border-gray-200 rounded-lg p-2">
-                <Link to="/projects#minecraft-plugins" className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50">
-                  Minecraft Plugins
-                </Link>
-                <Link to="/projects#minecraft-server" className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50">
-                  Minecraft Server
-                </Link>
-                <Link to="/projects#discord-ai-agent" className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50">
-                  Discord AI Agent
-                </Link>
-              </div>
-            </div>
-
-            <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+            {navLinks.map((link) => {
+              if (link.name === 'Projects') {
+                return (
+                  <div key={link.name} className="relative group">
+                    <NavLink to={link.path} className={navLinkClass}>{link.name}</NavLink>
+                    <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 mt-2 w-56 bg-white shadow-xl border border-gray-200 rounded-lg p-2">
+                      {projects.map((project) => (
+                        <Link key={project.id} to={`/projects#${project.id}`} className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50">
+                          {project.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+              return (
+                <NavLink key={link.name} to={link.path} className={navLinkClass}>
+                  {link.name}
+                </NavLink>
+              )
+            })}
           </nav>
 
           {/* Mobile menu button */}
@@ -59,15 +61,22 @@ export default function Navbar() {
         {open && (
           <div className="md:hidden pb-3 animate-floatIn">
             <nav className="flex flex-col gap-1 border-t border-gray-200 pt-2">
-              <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>Home</NavLink>
-              <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>About</NavLink>
-              <NavLink onClick={() => setOpen(false)} to="/projects" className={navLinkClass}>Projects</NavLink>
-              <div className="pl-3">
-                <Link onClick={() => setOpen(false)} to="/projects#minecraft-plugins" className="block px-3 py-1.5 text-sm text-gray-600">• Minecraft Plugins</Link>
-                <Link onClick={() => setOpen(false)} to="/projects#minecraft-server" className="block px-3 py-1.5 text-sm text-gray-600">• Minecraft Server</Link>
-                <Link onClick={() => setOpen(false)} to="/projects#discord-ai-agent" className="block px-3 py-1.5 text-sm text-gray-600">• Discord AI Agent</Link>
-              </div>
-              <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>Contact</NavLink>
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <NavLink onClick={() => setOpen(false)} to={link.path} className={navLinkClass}>
+                    {link.name}
+                  </NavLink>
+                  {link.name === 'Projects' && (
+                    <div className="pl-3">
+                      {projects.map((project) => (
+                        <Link key={project.id} onClick={() => setOpen(false)} to={`/projects#${project.id}`} className="block px-3 py-1.5 text-sm text-gray-600">
+                          • {project.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </nav>
           </div>
         )}
