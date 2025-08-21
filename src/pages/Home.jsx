@@ -23,7 +23,7 @@ return (
         <section className="max-w-6xl mx-auto px-4 pb-16">
             <div className="grid sm:grid-cols-3 gap-4">
                 {features.map((f) => (
-                    <div key={f.title} className="rounded-xl border border-gray-200 p-6 bg-white shadow-sm hover:shadow-md transition">
+                    <div key={f.title} className="rounded-xl border border-gray-200 p-6 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition">
                         <h3 className="font-semibold">{f.title}</h3>
                         <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
                     </div>

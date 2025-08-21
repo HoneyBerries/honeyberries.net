@@ -67,7 +67,7 @@ return (
                 <h2 className="text-xl font-semibold">What I’m working on now</h2>
                 <div className="mt-3 grid sm:grid-cols-2 gap-4">
                     {currentProjects.map(i => (
-                        <div key={i} className="rounded-xl border border-gray-200 p-4 bg-white">
+                        <div key={i} className="rounded-xl border border-gray-200 p-4 bg-white/80 backdrop-blur-sm">
                             <p className="text-sm text-gray-700">{i}</p>
                         </div>
                     ))}

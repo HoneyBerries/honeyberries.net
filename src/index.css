@@ -17,7 +17,6 @@ html, body, #root {
 }
 
 body {
-  background-color: #ffffff;
   color: #111827; /* gray-900 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

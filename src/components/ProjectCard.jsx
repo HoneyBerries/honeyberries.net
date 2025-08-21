@@ -1,6 +1,6 @@
 export default function ProjectCard({ id, title, description, imageUrl = '', href }) {
   return (
-    <a id={id} href={href} target="_blank" rel="noreferrer" className="group block rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+    <a id={id} href={href} target="_blank" rel="noreferrer" className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
       <div className="relative">
         <div className="aspect-[16/9] w-full bg-gray-100 overflow-hidden">
           {imageUrl ? (
