@@ -11,7 +11,7 @@ const contactDetails = {
 
 export default function Contact() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
             {/* Main Content (site-level Navbar is rendered by App) */}
             <main className="max-w-2xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
