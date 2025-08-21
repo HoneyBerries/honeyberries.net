@@ -1,5 +1,5 @@
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 /**
  * Main layout component that wraps all pages
@@ -24,7 +24,6 @@ export function MainLayout({ children }) {
         <main className="pt-16" role="main">
           {children}
         </main>
-        <Footer />
       </div>
     </div>
   );

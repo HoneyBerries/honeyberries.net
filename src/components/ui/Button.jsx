@@ -15,11 +15,12 @@ export default function Button({
   variant = 'primary', 
   size = 'md', 
   disabled = false,
-  as: Component = 'button',
+  as = 'button',
   className = '',
   children,
   ...restProps 
 }) {
+  const ButtonComponent = as;
   const baseClasses = 'inline-flex items-center gap-2 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantClasses = {
@@ -35,7 +36,7 @@ export default function Button({
   };
   
   return (
-    <Component
+    <ButtonComponent
       className={cn(
         baseClasses,
         variantClasses[variant],
@@ -47,6 +48,6 @@ export default function Button({
       {...restProps}
     >
       {children}
-    </Component>
+    </ButtonComponent>
   );
 }
