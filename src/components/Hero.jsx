@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import homeBanner from '../assets/backgrounds/home-banner.webp'
 
 const skills = ['Python', 'Java', 'PaperMC Plugins', 'Discord Bots', 'LLMs', "AI Agents"];
 
@@ -28,7 +29,9 @@ export default function Hero() {
           </div>
           <div className="relative md:justify-self-end">
             <div className="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm p-6 shadow-sm max-w-md">
-              <div className="aspect-video w-full rounded-xl bg-gradient-to-br from-emerald-200 via-blue-200 to-purple-200" />
+              <div className="aspect-video w-full rounded-xl overflow-hidden">
+                <img src={homeBanner} alt="Home banner" className="w-full h-full object-cover" />
+              </div>
               <div className="mt-4">
                 <h3 className="font-semibold">What I do</h3>
                 <p className="mt-1 text-sm text-gray-600">
