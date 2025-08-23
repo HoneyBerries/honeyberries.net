@@ -6,6 +6,7 @@ import { MainLayout } from './layouts/MainLayout';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
+const MinecraftServer = lazy(() => import('./pages/projects/MinecraftServer'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 /**
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>

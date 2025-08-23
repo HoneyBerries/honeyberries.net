@@ -1,4 +1,6 @@
-import minecraftBg from '../assets/backgrounds/minecraft-background.webp';
+import minecraftPluginBg from '../assets/backgrounds/minecraft-plugin-background.webp';
+import minecraftServerBg from '../assets/backgrounds/minecraft-server-background.webp';
+
 
 /**
  * Projects data configuration
@@ -9,19 +11,19 @@ export const PROJECTS = [
     title: 'Minecraft Plugins',
     description: 'A suite of quality-of-life, admin tools, and a few wild experiments for Paper/Spigot.',
     href: '#',
-    imageUrl: minecraftBg
+    imageUrl: minecraftPluginBg
   },
   {
     id: 'minecraft-server',
-    title: 'Minecraft Server',
-    description: 'Custom gameplay, new PvP mechanics, and a thriving community.',
-    href: '#',
-    imageUrl: ''
+    title: 'Gem SMP Minecraft Server',
+    description: 'Custom gems, new PvP mechanics, and a refined gameplay experience.',
+  href: '/projects/minecraft-server',
+    imageUrl: minecraftServerBg
   },
   {
     id: 'discord-ai-agent',
-    title: 'Discord AI Agent',
-    description: 'Moderation, Q&A, and automation powered by LLMs.',
+    title: 'Discord AI Moderator Agent',
+    description: 'Autonomous chat moderation and action powered by LLMs, allowing for seamless community management on Discord.',
     href: '#',
     imageUrl: ''
   }

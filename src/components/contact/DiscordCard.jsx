@@ -50,7 +50,7 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
                             className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transform hover:-translate-y-0.5 transition-all shadow-sm hover:shadow-md"
                         >
                             <img src={discordIcon} alt="Discord icon" className="w-4 h-4 mr-2" />
-                            Join Discord
+                            Join My Discord Server
                         </a>
                     </div>
                 </div>

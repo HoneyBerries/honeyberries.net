@@ -24,8 +24,7 @@ function ProjectsHeader() {
   return (
     <div className="flex items-end justify-between gap-4">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold">Projects</h1>
-        <p className="mt-2 text-gray-600">Selected work with hover effects and links.</p>
+        <h1 className="text-3xl sm:text-4xl font-bold">My Projects</h1>
       </div>
     </div>
   );

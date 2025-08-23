@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Project card component displaying project information
@@ -10,15 +11,26 @@ import { memo } from 'react';
  * @param {string} props.href - Project link URL
  */
 const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl = '', href }) {
+  const isInternal = typeof href === 'string' && (href.startsWith('/') || href.startsWith('#'));
+
+  const Wrapper = ({ children }) => {
+    if (isInternal) {
+      return (
+        <Link id={id} to={href} className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden" aria-label={`View ${title} project`}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a id={id} href={href} target="_blank" rel="noopener noreferrer" className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden" aria-label={`View ${title} project`}>
+        {children}
+      </a>
+    );
+  };
+
   return (
-    <a 
-      id={id} 
-      href={href} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
-      aria-label={`View ${title} project`}
-    >
+    <Wrapper>
       <div className="relative">
         <div className="aspect-[16/9] w-full bg-gray-100 overflow-hidden">
           {imageUrl ? (
@@ -45,7 +57,7 @@ const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl
           Visit <span className="ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
         </div>
       </div>
-    </a>
+  </Wrapper>
   );
 });
 

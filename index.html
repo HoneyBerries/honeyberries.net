@@ -2,11 +2,61 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="src/assets/icons/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HoneyBerries Portfolio</title>
-  <meta name="description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
+    <title>HoneyBerries Portfolio</title>
+    <meta name="description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
     <meta name="theme-color" content="#ffffff" />
+
+    <!-- SEO / Social -->
+    <link rel="canonical" href="https://honeyberries.net/" />
+    <meta name="robots" content="index, follow" />
+    <link rel="alternate" href="https://honeyberries.net/" hreflang="en" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="HoneyBerries Portfolio" />
+    <meta property="og:title" content="HoneyBerries Portfolio" />
+    <meta property="og:description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://honeyberries.net/" />
+    <meta property="og:image" content="https://honeyberries.net/src/assets/backgrounds/home-banner.webp" />
+    <meta property="og:image:alt" content="HoneyBerries — portfolio banner" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HoneyBerries Portfolio" />
+    <meta name="twitter:description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
+    <meta name="twitter:image" content="https://honeyberries.net/src/assets/backgrounds/home-banner.webp" />
+
+    <!-- Preload hero/banner for faster LCP -->
+    <link rel="preload" as="image" href="/src/assets/backgrounds/home-banner.webp" imagesrcset="" />
+
+    <!-- JSON-LD structured data (Website + Person) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://honeyberries.net/#website",
+          "url": "https://honeyberries.net/",
+          "name": "HoneyBerries Portfolio",
+          "description": "HoneyBerries' portfolio — projects, experience, and contact info."
+        },
+        {
+          "@type": "Person",
+          "@id": "https://honeyberries.net/#person",
+          "name": "HoneyBerries",
+          "url": "https://honeyberries.net/",
+          "sameAs": [
+            "https://twitter.com/yourhandle",
+            "https://github.com/yourhandle"
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,4 +1,5 @@
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 
@@ -56,14 +57,11 @@ function TimelineItem({ item }) {
   const description = item.hasLink ? (
     <>
       {item.desc.split(item.linkText)[0]}
-      <a
-        href={item.linkUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-emerald-600 hover:underline"
-      >
-        {item.linkText}
-      </a>
+      {item.linkUrl && item.linkUrl.startsWith('/') ? (
+        <Link to={item.linkUrl} className="text-emerald-600 hover:underline">{item.linkText}</Link>
+      ) : (
+        <a href={item.linkUrl} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">{item.linkText}</a>
+      )}
       {item.desc.split(item.linkText)[1]}
     </>
   ) : item.desc;
