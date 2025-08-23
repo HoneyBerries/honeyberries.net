@@ -68,10 +68,6 @@ export default function MinecraftServer() {
         <article className="max-w-6xl mx-auto px-4 py-12">
           {/* Hero Section */}
           <header className="text-center mb-16 max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-sm font-medium text-emerald-700">Live Minecraft Server</span>
-            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
               Gem SMP <span className="accent-text">Minecraft Server</span>
             </h1>

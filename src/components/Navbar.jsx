@@ -86,7 +86,7 @@ function ProjectsDropdown({ link }) {
         {PROJECTS.map((project) => (
           <Link 
             key={project.id} 
-            to={`/projects#${project.id}`} 
+            to={project.href || `/projects#${project.id}`} 
             className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50 transition-colors"
           >
             {project.title}
@@ -119,7 +119,7 @@ function MobileMenu({ onClose }) {
                   <Link 
                     key={project.id} 
                     onClick={onClose} 
-                    to={`/projects#${project.id}`} 
+                    to={project.href || `/projects#${project.id}`} 
                     className="block px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     • {project.title}

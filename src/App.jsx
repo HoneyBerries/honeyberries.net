@@ -8,6 +8,7 @@ const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const MinecraftServer = lazy(() => import('./pages/projects/MinecraftServer'));
 const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 /**
  * Loading fallback component
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </MainLayout>

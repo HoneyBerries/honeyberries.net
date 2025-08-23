@@ -57,10 +57,10 @@ export const TIMELINE = [
  * Current projects for about page
  */
 export const CURRENT_PROJECTS = [
-  'Optimizing a Minecraft server economy and anti-cheat',
+  'Optimizing a Minecraft server economy and player experience',
   'Shipping new features for the Discord AI Agent',
-  'Exploring React Server Components and Tailwind 4',
-  'Automating deployments with CI/CD'
+  'Exploring React Server Components and Tailwind to build modern UIs that you will love',
+  'Being terrible at everything else :)'
 ];
 
 /**
