@@ -56,7 +56,7 @@ export default function Hero() {
 function HeroCard() {
   return (
     <div className="relative md:justify-self-end">
-      <div className="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm p-6 shadow-sm max-w-md">
+      <div className="card-glass p-6 max-w-md">
         <div className="aspect-video w-full rounded-xl overflow-hidden">
           <img 
             src={homeBanner} 
