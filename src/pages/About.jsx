@@ -69,7 +69,7 @@ function AboutStats() {
         {stats.map((stat, index) => (
           <div 
             key={stat.label}
-            className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+            className="card-lift p-6 text-center animate-floatIn"
             style={{ animationDelay: `${0.2 + index * 0.1}s` }}
           >
             <div className={`text-2xl mb-2 ${stat.color}`} aria-hidden="true">
@@ -117,7 +117,7 @@ function SkillsSection() {
         {skillCategories.map((category, index) => (
           <div 
             key={category.title}
-            className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            className="card-lift p-6 animate-floatIn"
             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
           >
             <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
@@ -182,7 +182,7 @@ function TimelineItem({ item, index }) {
 
   return (
     <div 
-      className="relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 ml-16 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+      className="relative card-lift p-6 ml-16 animate-floatIn"
       style={{ animationDelay: `${0.4 + index * 0.1}s` }}
     >
       {/* Timeline dot */}
@@ -210,7 +210,7 @@ function CurrentProjects() {
         {CURRENT_PROJECTS.map((project, index) => (
           <Card 
             key={project} 
-            className="bg-white/80 backdrop-blur-sm border border-gray-200 p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+            className="card-lift p-6 group animate-floatIn"
             style={{ animationDelay: `${0.5 + index * 0.1}s` }}
           >
             <div className="flex items-start gap-3">
@@ -230,7 +230,7 @@ function CurrentProjects() {
         </p>
         <Link 
           to="/contact"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="btn-primary"
         >
           <span>Get In Touch</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,6 +1,15 @@
 import minecraftPluginBg from '../assets/backgrounds/minecraft-plugin-background.webp';
 import minecraftServerBg from '../assets/backgrounds/minecraft-server-background.webp';
 
+// Import gem icons
+import airGem from '../assets/icons/gem-icons/air_gem.png';
+import fireGem from '../assets/icons/gem-icons/fire_gem.png';
+import waterGem from '../assets/icons/gem-icons/water_gem.png';
+import earthGem from '../assets/icons/gem-icons/earth_gem.png';
+import iceGem from '../assets/icons/gem-icons/ice_gem.png';
+import darknessGem from '../assets/icons/gem-icons/darkness_gem.png';
+import lightGem from '../assets/icons/gem-icons/light_gem.png';
+
 
 /**
  * Projects data configuration
@@ -78,5 +87,74 @@ export const HOME_FEATURES = [
   {
     title: 'Community Tools & Support',
     desc: 'Integrations, dashboards, and ongoing support to help communities grow and stay healthy.'
+  }
+];
+
+/**
+ * Minecraft server elemental gems data
+ */
+export const MINECRAFT_GEMS = [
+  { 
+    id: 'air', 
+    name: 'Aero Gem', 
+    element: 'Air', 
+    passive: 'Negate fall damage & improved aerial mobility.', 
+    active: 'Directional air dash; safe collision handling.',
+    image: airGem,
+    color: 'air'
+  },
+  { 
+    id: 'fire', 
+    name: 'Pyro Gem', 
+    element: 'Fire', 
+    passive: 'Fire & lava immunity.', 
+    active: 'Launch explosive fireballs.',
+    image: fireGem,
+    color: 'fire'
+  },
+  { 
+    id: 'water', 
+    name: 'Hydro Gem', 
+    element: 'Water', 
+    passive: 'Aquatic affinity & control (expanding set).', 
+    active: 'Incoming — reserved ability slot.',
+    image: waterGem,
+    color: 'water'
+  },
+  { 
+    id: 'earth', 
+    name: 'Dendro Gem', 
+    element: 'Earth', 
+    passive: 'Haste II, Speed II, Strength II.', 
+    active: 'Short invulnerability window.',
+    image: earthGem,
+    color: 'earth'
+  },
+  { 
+    id: 'ice', 
+    name: 'Cryo Gem', 
+    element: 'Ice', 
+    passive: 'Icy terrain manipulation potential.', 
+    active: 'Freeze targets / create paths (coming).',
+    image: iceGem,
+    color: 'ice'
+  },
+  { 
+    id: 'dark', 
+    name: 'Shadow Gem', 
+    element: 'Darkness', 
+    passive: 'Stealth advantages.', 
+    active: 'Temporary invisibility + blindness AoE.',
+    image: darknessGem,
+    color: 'darkness'
+  },
+  { 
+    id: 'light', 
+    name: 'Photo Gem', 
+    element: 'Light', 
+    passive: 'Enhanced vision & tracking.', 
+    active: 'Call down precision lightning.',
+    image: lightGem,
+    color: 'light'
   }
 ];

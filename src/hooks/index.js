@@ -74,3 +74,34 @@ export function useIsMobile() {
 
   return isMobile;
 }
+
+/**
+ * Custom hook for copy-to-clipboard functionality with fallback
+ * @param {number} resetDelay - Time in milliseconds before resetting copied state
+ * @returns {[boolean, function]} Copied state and copy function
+ */
+export function useCopyToClipboard(resetDelay = 2000) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), resetDelay);
+    } catch {
+      // Fallback for browsers that don't support clipboard API
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), resetDelay);
+    }
+  };
+
+  return [copied, copy];
+}
