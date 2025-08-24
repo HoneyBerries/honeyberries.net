@@ -1,11 +1,11 @@
-import ProjectCard from '../components/ProjectCard';
-import Footer from '../components/Footer';
-import { projects } from '../data';
+import ProjectCard from '../components/ProjectCard'
+import Footer from '../components/Footer'
+import { projects } from '../data'
 
 export default function Projects() {
   return (
     <>
-      <section className="section-container">
+      <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold">Projects</h1>
@@ -14,12 +14,12 @@ export default function Projects() {
         </div>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
+          {projects.map(p => (
+            <ProjectCard key={p.id} {...p} />
           ))}
         </div>
       </section>
       <Footer />
     </>
-  );
+  )
 }
