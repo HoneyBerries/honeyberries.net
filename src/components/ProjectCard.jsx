@@ -16,14 +16,14 @@ const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl
   const Wrapper = ({ children }) => {
     if (isInternal) {
       return (
-        <Link id={id} to={href} className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden" aria-label={`View ${title} project`}>
+        <Link id={id} to={href} className="group block card-hover overflow-hidden" aria-label={`View ${title} project`}>
           {children}
         </Link>
       );
     }
 
     return (
-      <a id={id} href={href} target="_blank" rel="noopener noreferrer" className="group block rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-lg transition-shadow overflow-hidden" aria-label={`View ${title} project`}>
+      <a id={id} href={href} target="_blank" rel="noopener noreferrer" className="group block card-hover overflow-hidden" aria-label={`View ${title} project`}>
         {children}
       </a>
     );

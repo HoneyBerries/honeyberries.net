@@ -34,3 +34,9 @@ export const SITE_INFO = {
   author: 'HoneyBerries',
   currentYear: new Date().getFullYear()
 };
+
+// Minecraft Server configuration
+export const MINECRAFT_SERVER = {
+  ip: 'gemsmp.honeyberries.net',
+  version: 'Java 1.21.4+ and Bedrock on port 19132'
+};

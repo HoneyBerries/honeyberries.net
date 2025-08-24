@@ -24,7 +24,7 @@ function FeaturesSection() {
     <section className="max-w-6xl mx-auto px-4 pb-16">
       <div className="grid sm:grid-cols-3 gap-4">
         {HOME_FEATURES.map((feature) => (
-          <Card key={feature.title} variant="default" className="bg-white/80 backdrop-blur-sm">
+          <Card key={feature.title} variant="default" className="card-glass">
             <h3 className="font-semibold">{feature.title}</h3>
             <p className="mt-1 text-sm text-gray-600">{feature.desc}</p>
           </Card>
