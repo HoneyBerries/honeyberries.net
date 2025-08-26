@@ -1,0 +1,24 @@
+[33m3c9f073[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m✨style✨[m[33m, [m[1;31morigin/✨style✨[m[33m)[m Merge pull request #6 from HoneyBerries/copilot/fix-11d469f5-35b3-46a1-8e62-2a11a171b867
+[33mb1683a2[m Fix ESLint errors and consolidate copy-to-clipboard functionality
+[33mc8b34e2[m Initial plan
+[33me036987[m feat: Add Modrinth plugin integration with project fetching and display
+[33mccb4b03[m Merge pull request #5 from HoneyBerries/copilot/fix-e124ac75-ef7f-444b-bb3b-88eb3a4b3313
+[33mc497e64[m Final refactoring: apply utility classes consistently and add Prettier config
+[33m0082b59[m Refactor React components: extract data, create custom hooks, and add utility classes
+[33m792ea0a[m Initial plan
+[33m8ffafea[m Enhance contact and about pages with improved design and functionality
+[33m422102d[m Add GemCard component and Minecraft Server page with gem details
+[33m024f984[m Merge pull request #3 from HoneyBerries/copilot/fix-62f3b2c5-dd67-4b35-8f3e-9d20915e8470
+[33m0e220ec[m Complete refactoring: Add performance optimizations, lazy loading, and comprehensive documentation
+[33m08bf242[m Phase 1 Complete: Reorganize project structure and create reusable components
+[33m31ccbd0[m Initial plan
+[33mcfc4474[m Merge branch '✨style✨' of https://github.com/HoneyBerries/honeyberries.net into ✨style✨
+[33m4dd5ed5[m Implement code changes to enhance functionality and improve performance
+[33mf18e7be[m hjg
+[33m1c5720b[m chore(style): add global gradient background and polish visuals
+[33m6f11689[m Merge pull request #2 from HoneyBerries/code-cleanup-and-refactor
+[33me2ba0fc[m Add README.md and LICENSE
+[33mf4b8848[m Merge pull request #1 from HoneyBerries/code-cleanup-and-refactor
+[33me61c428[m Refactor codebase for improved maintainability and cleanliness.
+[33m2319df9[m Add SVG icons for Discord and Email
+[33m95bf4dc[m - Implemented Navbar, Hero, Footer, and ProjectCard components. - Created pages: Home, About, Projects, and Contact. - Added SVG asset for React logo. - Integrated Tailwind CSS for styling and layout. - Established responsive design for mobile and desktop views. - Included functionality for clipboard copying in Contact page. - Configured Vite and Tailwind CSS for project setup.
