@@ -19,7 +19,7 @@ export const PROJECTS = [
     id: 'minecraft-plugins',
     title: 'Minecraft Plugins',
     description: 'A suite of quality-of-life, admin tools, and a few wild experiments for Paper/Spigot.',
-    href: '#',
+  href: '/projects/minecraft-plugins',
     imageUrl: minecraftPluginBg
   },
   {
@@ -33,25 +33,15 @@ export const PROJECTS = [
     id: 'discord-ai-agent',
     title: 'Discord AI Moderator Agent',
     description: 'Autonomous chat moderation and action powered by LLMs, allowing for seamless community management on Discord.',
-    href: '#',
+    href: '/projects/discord-ai-agent',
     imageUrl: ''
   }
 ];
 
 /**
- * Timeline data for about page
+ * Timeline data for about page, in chronological order
  */
 export const TIMELINE = [
-  {
-    title: 'Launched Discord AI Agent',
-    time: '2025 Summer',
-    desc: 'Built an agent for moderation and automation.'
-  },
-  {
-    title: 'Shipped the Gem SMP',
-    time: '2025 Spring',
-    desc: 'Designed and deployed a scalable community server.'
-  },
   {
     title: 'Created Plugin Suite',
     time: '2024 Fall',
@@ -59,6 +49,16 @@ export const TIMELINE = [
     hasLink: true,
     linkUrl: 'https://modrinth.com/user/HoneyBerries',
     linkText: 'posted them on Modrinth'
+  },
+  {
+    title: 'Shipped the Gem SMP',
+    time: '2025 Spring',
+    desc: 'Designed and deployed a scalable community server.'
+  },
+  {
+    title: 'Launched Discord AI Agent',
+    time: '2025 Summer',
+    desc: 'Built an agent for moderation and automation.'
   }
 ];
 

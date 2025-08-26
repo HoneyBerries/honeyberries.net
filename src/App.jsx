@@ -7,6 +7,7 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const MinecraftServer = lazy(() => import('./pages/projects/MinecraftServer'));
+const MinecraftPlugins = lazy(() => import('./pages/projects/MinecraftPlugins'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
             <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

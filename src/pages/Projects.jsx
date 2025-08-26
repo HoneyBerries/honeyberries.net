@@ -39,6 +39,8 @@ function ProjectsGrid() {
       {PROJECTS.map(project => (
         <ProjectCard key={project.id} {...project} />
       ))}
+
+  {/* Plugins are now shown on their own page (/projects/minecraft-plugins) */}
     </div>
   );
 }

@@ -1,0 +1,50 @@
+import React from 'react';
+import PluginCard from '../../components/PluginCard';
+import useModrinth from '../../hooks/useModrinth';
+import Footer from '../../components/Footer';
+
+/**
+ * Page showing Modrinth-hosted plugins for HoneyBerries (excludes certain plugins)
+ */
+export default function MinecraftPlugins() {
+  const exclude = [
+    'homes',
+    'back',
+    'player nicknames',
+    'playernick',
+    'world rtp',
+    'playertpa',
+    'carpet 2 wool',
+    'potion effect overlay',
+    'player tpa',
+  ];
+
+  const { projects, loading, error } = useModrinth({ username: 'HoneyBerries', excludeKeywords: exclude });
+
+  return (
+    <>
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold">Minecraft Plugins</h1>
+            <p className="mt-2 text-sm text-gray-600">A collection of public plugins I published on Modrinth.</p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {loading && <div className="col-span-full text-center text-sm text-gray-500">Loading plugins...</div>}
+          {error && <div className="col-span-full text-center text-sm text-red-500">Failed to load plugins.</div>}
+
+          {!loading && projects.length === 0 && (
+            <div className="col-span-full text-center text-sm text-gray-500">No plugins found.</div>
+          )}
+
+          {projects.map(p => (
+            <PluginCard key={p.slug} project={p} />
+          ))}
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
