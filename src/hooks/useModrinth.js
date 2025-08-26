@@ -49,7 +49,7 @@ export default function useModrinth({ username = 'HoneyBerries', excludeKeywords
 
     fetchProjects();
     return () => controller.abort();
-  }, [username, JSON.stringify(excludeKeywords)]);
+  }, [username, excludeKeywords]);
 
   return { projects, loading, error };
 }

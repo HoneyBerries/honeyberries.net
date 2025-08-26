@@ -1,20 +1,14 @@
-import { useState } from 'react';
 import discordIcon from '../../assets/icons/discord-icon.svg';
+import { useCopyToClipboard } from '../../hooks';
 
 /**
  * Enhanced Discord contact card with copy functionality and improved design
  */
 export default function DiscordCard({ discordUsername, discordInviteUrl }) {
-  const [copied, setCopied] = useState(false);
+  const [copied, copy] = useCopyToClipboard();
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(discordUsername);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy username:', err);
-    }
+  const handleCopy = () => {
+    copy(discordUsername);
   };
 
   return (

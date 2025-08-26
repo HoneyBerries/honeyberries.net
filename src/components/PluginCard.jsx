@@ -95,7 +95,7 @@ export default function PluginCard({ project }) {
 
 function DownloadButton({ project }) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [_error, setError] = useState(null);
 
   async function handleDownload(e) {
     e.preventDefault();

@@ -1,20 +1,14 @@
-import { useState } from 'react';
 import emailIcon from '../../assets/icons/email-icon.svg';
+import { useCopyToClipboard } from '../../hooks';
 
 /**
  * Enhanced email contact card with copy functionality
  */
 export default function EmailCard({ email }) {
-  const [copied, setCopied] = useState(false);
+  const [copied, copy] = useCopyToClipboard();
 
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy email:', err);
-    }
+  const handleCopyEmail = () => {
+    copy(email);
   };
 
   return (
