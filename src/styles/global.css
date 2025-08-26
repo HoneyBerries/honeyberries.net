@@ -46,6 +46,10 @@ body {
   animation: floatIn 700ms cubic-bezier(.22,1,.36,1) both;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-floatIn { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
 @keyframes bounceX {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(4px); }

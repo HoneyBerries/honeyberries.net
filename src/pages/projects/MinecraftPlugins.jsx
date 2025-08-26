@@ -39,8 +39,14 @@ export default function MinecraftPlugins() {
             <div className="col-span-full text-center text-sm text-gray-500">No plugins found.</div>
           )}
 
-          {projects.map(p => (
-            <PluginCard key={p.slug} project={p} />
+          {projects.map((p, idx) => (
+            <div
+              key={p.slug}
+              className="opacity-0 animate-floatIn"
+              style={{ animationDelay: `${Math.min(idx * 90, 800)}ms` }}
+            >
+              <PluginCard project={p} />
+            </div>
           ))}
         </div>
       </section>
