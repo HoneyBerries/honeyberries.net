@@ -95,7 +95,7 @@ export default function PluginCard({ project }) {
 
 function DownloadButton({ project }) {
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   async function handleDownload(e) {
     e.preventDefault();
@@ -113,12 +113,19 @@ function DownloadButton({ project }) {
   }
 
   return (
-    <button
-      onClick={handleDownload}
-      className="text-sm text-blue-700 font-medium cursor-pointer whitespace-nowrap"
-      disabled={loading}
-    >
-      {loading ? 'Downloading...' : 'Download'}
-    </button>
+    <div className="flex flex-col items-end">
+      <button
+        onClick={handleDownload}
+        className="text-sm text-blue-700 font-medium cursor-pointer whitespace-nowrap"
+        disabled={loading}
+      >
+        {loading ? 'Downloading...' : 'Download'}
+      </button>
+      {error && (
+        <span className="text-xs text-red-600 mt-1" title={error}>
+          Error downloading
+        </span>
+      )}
+    </div>
   );
 }

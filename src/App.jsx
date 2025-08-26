@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { MainLayout } from './layouts/MainLayout';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load page components for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -27,20 +28,22 @@ function LoadingFallback() {
  */
 export default function App() {
   return (
-    <BrowserRouter>
-      <MainLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
-            <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </MainLayout>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <MainLayout>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
+              <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </MainLayout>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }

@@ -49,7 +49,9 @@ export default function useModrinth({ username = 'HoneyBerries', excludeKeywords
 
     fetchProjects();
     return () => controller.abort();
-  }, [username, excludeKeywords]);
+    // Using JSON.stringify to create a stable dependency for the array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username, JSON.stringify(excludeKeywords)]);
 
   return { projects, loading, error };
 }
