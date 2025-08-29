@@ -279,7 +279,7 @@ function CallToAction({ onCopyIP, copied }) {
           {copied ? '✓ IP Copied!' : '📋 Copy Server IP'}
         </button>
         <a 
-          href="https://discord.com/invite/jGAubfCd"
+          href="https://discord.gg/c354AX236r"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary bg-blue-600 hover:bg-blue-700"

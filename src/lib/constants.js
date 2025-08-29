@@ -24,7 +24,7 @@ export const SKILLS = [
 export const CONTACT_INFO = {
   email: 'henry.rainbowfish@gmail.com',
   discordUsername: 'honey_berries',
-  discordInviteUrl: 'https://discord.com/invite/jGAubfCd'
+  discordInviteUrl: 'https://discord.gg/c354AX236r'
 };
 
 // Site metadata

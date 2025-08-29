@@ -98,8 +98,8 @@ export const MINECRAFT_GEMS = [
     id: 'air', 
     name: 'Aero Gem', 
     element: 'Air', 
-    passive: 'Negate fall damage & improved aerial mobility.', 
-    active: 'Directional air dash; safe collision handling.',
+  passive: 'Negates fall damage.', 
+  active: 'Lets you dash very far.',
     image: airGem,
     color: 'air'
   },
@@ -107,8 +107,8 @@ export const MINECRAFT_GEMS = [
     id: 'fire', 
     name: 'Pyro Gem', 
     element: 'Fire', 
-    passive: 'Fire & lava immunity.', 
-    active: 'Launch explosive fireballs.',
+  passive: 'Grants Fire resistance and lets you swim in lava.', 
+  active: 'Launch fireballs at players or structures that explode with more explosive power than 10 charged creepers.',
     image: fireGem,
     color: 'fire'
   },
@@ -116,8 +116,8 @@ export const MINECRAFT_GEMS = [
     id: 'water', 
     name: 'Hydro Gem', 
     element: 'Water', 
-    passive: 'Aquatic affinity & control (expanding set).', 
-    active: 'Incoming — reserved ability slot.',
+  passive: 'Grants Dolphin\'s Grace and Water Breathing.', 
+  active: 'Freezes players for a few seconds.',
     image: waterGem,
     color: 'water'
   },
@@ -125,8 +125,8 @@ export const MINECRAFT_GEMS = [
     id: 'earth', 
     name: 'Dendro Gem', 
     element: 'Earth', 
-    passive: 'Haste II, Speed II, Strength II.', 
-    active: 'Short invulnerability window.',
+  passive: 'Grants Haste II, Speed II, and Strength II.', 
+  active: 'You can become invulnerable for a couple seconds.',
     image: earthGem,
     color: 'earth'
   },
@@ -134,8 +134,8 @@ export const MINECRAFT_GEMS = [
     id: 'ice', 
     name: 'Cryo Gem', 
     element: 'Ice', 
-    passive: 'Icy terrain manipulation potential.', 
-    active: 'Freeze targets / create paths (coming).',
+  passive: 'Enables icy terrain manipulation.', 
+  active: 'Freezes targets or creates paths (coming).',
     image: iceGem,
     color: 'ice'
   },
@@ -143,8 +143,8 @@ export const MINECRAFT_GEMS = [
     id: 'dark', 
     name: 'Shadow Gem', 
     element: 'Darkness', 
-    passive: 'Stealth advantages.', 
-    active: 'Temporary invisibility + blindness AoE.',
+  passive: 'Attacking players gives them blindness and spawns particles which obscure vision.', 
+  active: 'Temporarily grants true invisibility, which hides armor, arrows, and effects, rendering you undetectable.',
     image: darknessGem,
     color: 'darkness'
   },
@@ -152,8 +152,8 @@ export const MINECRAFT_GEMS = [
     id: 'light', 
     name: 'Photo Gem', 
     element: 'Light', 
-    passive: 'Enhanced vision & tracking.', 
-    active: 'Call down precision lightning.',
+  passive: 'Enhances vision and tracking.', 
+  active: 'Calls down precision lightning.',
     image: lightGem,
     color: 'light'
   }
