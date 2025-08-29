@@ -45,10 +45,7 @@ export default function PluginCard({ project }) {
   const updated = project.date_modified ?? project.updated ?? project.date_published ?? null;
 
   return (
-    <a
-      href={projectUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
       className="block card-hover group overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow"
       style={{ backgroundImage: cardGradient }}
     >
@@ -81,15 +78,24 @@ export default function PluginCard({ project }) {
 
               <p className="mt-2 text-sm text-gray-600">{project.description || project.short_description || ''}</p>
 
-              <div className="mt-4 flex items-baseline justify-between text-sm">
-                <div className="text-blue-700 font-medium whitespace-nowrap">View on Modrinth <span className="ml-1">→</span></div>
+              <div className="mt-4 flex items-center justify-between gap-3 text-sm">
+                <a
+                  href={projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-white border border-gray-200 text-blue-700 hover:shadow-sm transition-all"
+                >
+                  View on Modrinth
+                  <span className="ml-1">→</span>
+                </a>
+
                 <DownloadButton project={project} />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -116,7 +122,7 @@ function DownloadButton({ project }) {
     <div className="flex flex-col items-end">
       <button
         onClick={handleDownload}
-        className="text-sm text-blue-700 font-medium cursor-pointer whitespace-nowrap"
+        className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-white border border-gray-200 text-blue-700 hover:shadow-sm transition-all disabled:opacity-60"
         disabled={loading}
       >
         {loading ? 'Downloading...' : 'Download'}

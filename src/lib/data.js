@@ -66,9 +66,9 @@ export const TIMELINE = [
  * Current projects for about page
  */
 export const CURRENT_PROJECTS = [
-  'Optimizing a Minecraft server economy and player experience',
+  'Building AI Agents to automate various tasks',
   'Shipping new features for the Discord AI Agent',
-  'Exploring React Server Components and Tailwind to build modern UIs that you will love',
+  'Making a social media platform that doesn\'t share data with anyone and is highly secure.',
   'Being terrible at everything else :)'
 ];
 
@@ -152,8 +152,8 @@ export const MINECRAFT_GEMS = [
     id: 'light', 
     name: 'Photo Gem', 
     element: 'Light', 
-  passive: 'Enhances vision and tracking.', 
-  active: 'Calls down precision lightning.',
+  passive: 'Makes other players glow.', 
+  active: 'Lets you strike players with lightning, dealing 20 hearts of damage.',
     image: lightGem,
     color: 'light'
   }

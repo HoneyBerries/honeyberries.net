@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 /**
  * GemCard — small presentational component used on the Minecraft Server page
@@ -7,6 +7,7 @@ import { memo } from 'react';
  */
 const GemCard = memo(function GemCard({ gem }) {
 	const { name, element, passive, active, image, color } = gem;
+	const [open, setOpen] = useState(false);
 
 	// Color schemes for different gem types
 	const colorSchemes = {
@@ -83,22 +84,40 @@ const GemCard = memo(function GemCard({ gem }) {
 						)}
 					</div>
 				</div>
-
+				
 				<div className="min-w-0 flex-1 flex flex-col">
 					<div className="flex items-start justify-between gap-2 mb-2">
-						<h3 className="text-base font-bold text-gray-900 leading-tight">{name}</h3>
-						<span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${scheme.elementBg} ${scheme.elementText} border border-white/50 shadow-sm flex-shrink-0`}>
-							{element}
-						</span>
-					</div>
-					<p className="text-sm text-gray-700 leading-relaxed mb-3 flex-1">{passive}</p>
-					{active && (
-						<div className="mt-auto p-2.5 rounded-lg bg-white/60 border border-white/80">
-							<p className="text-xs text-gray-800">
-								<span className="font-semibold text-gray-900">Active:</span> {active}
-							</p>
+						<h3 className="text-base font-bold text-gray-900 leading-tight flex items-center gap-3">
+							<span>{name}</span>
+						</h3>
+						<div className="flex items-center gap-2">
+							<span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${scheme.elementBg} ${scheme.elementText} border border-white/50 shadow-sm flex-shrink-0`}>
+								{element}
+							</span>
+							<button
+								onClick={() => setOpen(o => !o)}
+								aria-expanded={open}
+								className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/90 border border-gray-200 shadow-sm text-gray-700 hover:shadow-md transition-all"
+								aria-label={open ? 'Collapse gem details' : 'Expand gem details'}
+							>
+								<svg className={`w-4 h-4 transform transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+									<path d="M6 8L10 12L14 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+								</svg>
+							</button>
 						</div>
-					)}
+					</div>
+					{/* passive: show truncated when closed, full when open */}
+					<p className={`text-sm text-gray-700 leading-relaxed mb-3 ${open ? '' : 'line-clamp-1'}`}>{passive}</p>
+					{/* details area (active or extra info) */}
+					<div className={`overflow-hidden transition-[max-height,opacity] duration-300 ${open ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'}`}>
+						{active && (
+							<div className="mt-2 p-2.5 rounded-lg bg-white/60 border border-white/80">
+								<p className="text-xs text-gray-800">
+									<span className="font-semibold text-gray-900">Active:</span> {active}
+								</p>
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		</article>

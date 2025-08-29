@@ -26,24 +26,27 @@ function ProjectsHeader() {
   return (
     <div className="flex items-end justify-between gap-4">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold">My Projects</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold">My <span className="accent-text">Projects</span></h1>
       </div>
       <div>
-        <Button 
+        <Button
           as="a"
           href="https://github.com/HoneyBerries"
           target="_blank"
           rel="noopener noreferrer"
-          variant="outline"
-          size="md"
-          className="whitespace-nowrap border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50 hover:shadow-md transition-all duration-200 group"
+          aria-label="View HoneyBerries on GitHub"
+          variant="secondary"
+          size="sm"
+          className="whitespace-nowrap rounded-full px-3 py-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200 group"
         >
-          <img 
-            src={githubIcon} 
-            alt="GitHub" 
-            className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity duration-200" 
-          />
-          View My GitHub
+          <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+            <img
+              src={githubIcon}
+              alt="GitHub"
+              className="w-3 h-3 opacity-80 group-hover:opacity-100 transition-opacity duration-150"
+            />
+          </span>
+          <span className="ml-1">View GitHub</span>
         </Button>
       </div>
     </div>
