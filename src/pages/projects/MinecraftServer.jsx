@@ -154,7 +154,6 @@ function ServerDetails({ onCopyIP, copied }) {
   return (
     <div className="prose prose-slate prose-lg prose-headings:font-bold max-w-none">
       <GemCraftingInfo />
-      <GameplayLoop />
       <ServerRulesAndTech />
       <CallToAction onCopyIP={onCopyIP} copied={copied} />
     </div>
@@ -196,13 +195,6 @@ function GemCraftingInfo() {
       </section>
     </div>
   );
-}
-
-/**
- * Gameplay loop section
- */
-function GameplayLoop() {
-  return null; // This is now part of GemCraftingInfo
 }
 
 /**
