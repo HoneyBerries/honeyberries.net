@@ -1,8 +1,14 @@
 import React from 'react';
 import Footer from '../../../components/Footer';
 import SEO from '../../../components/SEO';
+import { Link } from 'react-router-dom';
 
-const TODAY = new Date().toLocaleDateString();
+// Use an internationally readable date format e.g., September 18, 2025
+const TODAY = new Date().toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 
 export default function TermsOfService() {
   return (
@@ -26,9 +32,13 @@ export default function TermsOfService() {
           <div className="card-glass p-8 mb-8 bg-gradient-to-br from-purple-50/50 to-pink-50/50">
             <div className="prose prose-slate prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Service Agreement</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                By using Modcord in your Discord server, you agree to these terms of service. These terms help ensure fair and responsible use of our AI moderation platform.
+              <p className="text-gray-700 leading-relaxed mb-4">
+                These Terms of Service ("Terms") govern your use of Modcord. Please read them carefully.
               </p>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 text-green-800">
+                <p className="font-medium">✅ Consent</p>
+                <p className="text-green-700 text-sm">By adding or using Modcord in your Discord server, you confirm that you have the authority to do so and you consent to these Terms.</p>
+              </div>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">What Modcord Provides</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -68,18 +78,16 @@ export default function TermsOfService() {
               </ul>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Service Availability & Limitations</h3>
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-                <p className="text-amber-800 font-medium mb-2">
-                  ⚠️ <strong>Important Disclaimer:</strong>
-                </p>
-                <p className="text-amber-700">
-                  Modcord is provided "as-is" without warranties. While we strive for accuracy, AI moderation may occasionally produce false positives or miss violations. Server administrators remain responsible for final moderation decisions.
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                <p className="text-amber-800 font-medium mb-2">⚠️ <strong>Important Disclaimer</strong></p>
+                <p className="text-amber-700 text-sm leading-relaxed">
+                  Modcord is provided on an "as-is" and "as-available" basis without warranties of any kind. AI systems may generate false positives or miss violations. Human oversight remains essential.
                 </p>
               </div>
-              <ul className="list-disc pl-6 text-gray-700 mb-6">
-                <li>We are not responsible for moderation errors, missed violations, or their consequences.</li>
-                <li>Service availability may vary due to maintenance, updates, or technical issues.</li>
-                <li>We reserve the right to modify features or discontinue service with reasonable notice.</li>
+              <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-1">
+                <li><strong>No Guarantee of Accuracy:</strong> We are not liable for missed or incorrect moderation actions.</li>
+                <li><strong>Downtime:</strong> Service may be interrupted for maintenance, updates, rate limits or technical issues.</li>
+                <li><strong>Feature Changes:</strong> Features may evolve; deprecated functionality may be removed with reasonable notice.</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Termination</h3>
@@ -88,8 +96,21 @@ export default function TermsOfService() {
               </p>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Changes to Terms</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                We may update these terms periodically. Continued use of Modcord after changes constitutes acceptance of the new terms. Significant changes will be communicated through appropriate channels.
+              <p className="text-gray-700 leading-relaxed mb-4">
+                We may update these Terms periodically to reflect improvements, legal requirements, or operational changes. The updated date at the top indicates the latest revision.
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-1">
+                <li>Minor updates take effect immediately upon posting.</li>
+                <li>Significant changes will be communicated to server administrators via the bot, dashboard (if applicable), or email where available.</li>
+                <li>Continued use after the effective date constitutes acceptance of the changes.</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Related</h3>
+              <p className="text-gray-700 leading-relaxed mb-6 text-sm">
+                Looking for how we handle data? Read our{' '}
+                <Link to="/projects/modcord/privacy-policy" className="text-blue-600 hover:text-blue-800 font-medium underline-offset-2 hover:underline">
+                  Privacy Policy
+                </Link>.
               </p>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Contact & Support</h3>

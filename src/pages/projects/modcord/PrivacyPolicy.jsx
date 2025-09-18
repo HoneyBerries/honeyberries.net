@@ -1,6 +1,12 @@
 import Footer from '../../../components/Footer';
+import { Link } from 'react-router-dom';
 
-const TODAY = new Date().toLocaleDateString();
+// Use an internationally readable date format e.g., September 18, 2025
+const TODAY = new Date().toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
 
 export default function Privacy() {
   return (
@@ -21,7 +27,7 @@ export default function Privacy() {
             <div className="prose prose-slate prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment to Privacy</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Modcord is designed with privacy-first principles. We process your data only for the purpose of providing intelligent moderation services and do not retain, share, or monetize your information in any way.
+                Modcord is designed with privacy-first principles. We process limited Discord data only for providing intelligent moderation services. We do <strong>not</strong> retain message content, sell data, profile users, or monetize your information in any way.
               </p>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Data We Process</h3>
@@ -47,21 +53,29 @@ export default function Privacy() {
               </p>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Security & Access</h3>
-              <ul className="list-disc pl-6 text-gray-700 mb-6">
-                <li>All data processing occurs on secure, encrypted infrastructure.</li>
-                <li>Only authorized bot operators can access system logs (which do not contain message content).</li>
-                <li>No human review of message content unless explicitly requested by server administrators.</li>
+              <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-1">
+                <li>All real-time processing occurs on secure, encrypted infrastructure.</li>
+                <li>Operational logs exclude message content and exist only for reliability and abuse prevention.</li>
+                <li><strong>Limited Internal Access:</strong> Only authorized bot operators can access infrastructure metrics and non-content logs for maintenance and security.</li>
+                <li>No human review of message content unless explicitly requested by server administrators for debugging (and only if technically possible without stored content).</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Rights</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Since we don't retain personal data, there's typically nothing to delete or modify. However, you have the right to:
+                Because we do not retain message content or build user profiles, there is typically no persistent personal data to access, export, or delete. Still, you may request clarification about processing or moderation actions at any time. You may also opt out by removing the bot.
               </p>
-              <ul className="list-disc pl-6 text-gray-700 mb-6">
-                <li>Request information about how your data is processed.</li>
-                <li>Opt out at any time by removing Modcord from your server.</li>
-                <li>Contact us with any privacy concerns or questions.</li>
+              <ul className="list-disc pl-6 text-gray-700 mb-6 space-y-1">
+                <li>Request a description of what limited data categories are processed.</li>
+                <li>Ask about moderation actions affecting your server (if logs are enabled).</li>
+                <li>Opt out instantly by removing Modcord from your Discord server.</li>
+                <li>Raise any privacy concern via email and receive a timely response.</li>
               </ul>
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Related</h3>
+              <p className="text-gray-700 leading-relaxed mb-6 text-sm">
+                Need usage guidelines instead? Read our{' '}
+                <Link to="/projects/modcord/terms-of-service" className="text-blue-600 hover:text-blue-800 font-medium underline-offset-2 hover:underline">Terms of Service</Link>.
+              </p>
 
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Contact Us</h3>
               <p className="text-gray-700 leading-relaxed">
