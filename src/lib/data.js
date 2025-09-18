@@ -33,7 +33,7 @@ export const PROJECTS = [
     id: 'discord-ai-agent',
     title: 'Discord AI Moderator Agent',
     description: 'Autonomous chat moderation and action powered by LLMs, allowing for seamless community management on Discord.',
-    href: '/projects/discord-ai-agent',
+    href: '/projects/modcord',
     imageUrl: ''
   }
 ];

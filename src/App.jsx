@@ -9,6 +9,9 @@ const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const MinecraftServer = lazy(() => import('./pages/projects/MinecraftServer'));
 const MinecraftPlugins = lazy(() => import('./pages/projects/MinecraftPlugins'));
+const Modcord = lazy(() => import('./pages/projects/Modcord'));
+const ModcordPrivacy = lazy(() => import('./pages/projects/modcord/PrivacyPolicy'));
+const ModcordTerms = lazy(() => import('./pages/projects/modcord/TermsOfService'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -38,6 +41,9 @@ export default function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
               <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
+              <Route path="/projects/modcord" element={<Modcord />} />
+              <Route path="/projects/modcord/privacy-policy" element={<ModcordPrivacy />} />
+              <Route path="/projects/modcord/terms-of-service" element={<ModcordTerms />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

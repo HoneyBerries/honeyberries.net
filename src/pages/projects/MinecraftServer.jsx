@@ -1,4 +1,6 @@
 import Footer from '../../components/Footer';
+import SEO from '../../components/SEO';
+import serverImg from '../../assets/backgrounds/minecraft-server-background.webp';
 import GemCard from '../../components/GemCard';
 import { Link } from 'react-router-dom';
 import { MINECRAFT_GEMS } from '../../lib/data';
@@ -18,6 +20,11 @@ export default function MinecraftServer() {
 
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title="Gem SMP — Minecraft Server by HoneyBerries"
+        description="Gem SMP is a custom Minecraft server featuring elemental gems, unique abilities, and cross-play support. Learn more about the server and how to join."
+        ogImage={serverImg}
+      />
       <BackgroundDecorations />
       
       <div className="relative z-10">

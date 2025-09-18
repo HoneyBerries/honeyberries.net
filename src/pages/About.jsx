@@ -2,6 +2,8 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
+import SEO from '../components/SEO';
+import aboutImg from '../assets/backgrounds/home-banner.webp';
 
 /**
  * Enhanced About page component with modern design
@@ -9,6 +11,11 @@ import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 export default function About() {
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title="About HoneyBerries — Developer & Creator"
+        description="Learn more about HoneyBerries, a developer passionate about building sleek, performant web apps, Minecraft plugins, and AI bots."
+        ogImage={aboutImg}
+      />
       {/* Enhanced background elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-emerald-200/20 to-teal-200/15 blur-3xl animate-pulse"></div>

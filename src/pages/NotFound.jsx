@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import SEO from '../components/SEO';
 
 /**
  * 404 Not Found page component
@@ -7,6 +8,10 @@ import Button from '../components/ui/Button';
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-16">
+      <SEO
+        title="404 — Page Not Found | HoneyBerries"
+        description="Oops! The page you requested could not be found. Return home or explore HoneyBerries' projects."
+      />
       <div className="text-center max-w-2xl mx-auto">
         {/* Animated 404 */}
         <div className="relative mb-8">

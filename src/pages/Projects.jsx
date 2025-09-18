@@ -3,6 +3,8 @@ import Footer from '../components/Footer';
 import Button from '../components/ui/Button';
 import githubIcon from '../assets/icons/github-icon.svg';
 import { PROJECTS } from '../lib/data';
+import projectsImg from '../assets/backgrounds/minecraft-server-background.webp';
+import SEO from '../components/SEO';
 
 /**
  * Projects page component
@@ -10,6 +12,11 @@ import { PROJECTS } from '../lib/data';
 export default function Projects() {
   return (
     <>
+      <SEO
+          title="Projects — HoneyBerries"
+          description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
+          ogImage={projectsImg}
+      />
       <section className="max-w-6xl mx-auto px-4 py-12">
         <ProjectsHeader />
         <ProjectsGrid />

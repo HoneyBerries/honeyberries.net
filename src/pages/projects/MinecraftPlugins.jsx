@@ -2,6 +2,8 @@ import React from 'react';
 import PluginCard from '../../components/PluginCard';
 import useModrinth from '../../hooks/useModrinth';
 import Footer from '../../components/Footer';
+import SEO from '../../components/SEO';
+import pluginsImg from '../../assets/backgrounds/minecraft-plugin-background.webp';
 
 /**
  * Page showing Modrinth-hosted plugins for HoneyBerries (excludes certain plugins)
@@ -23,6 +25,11 @@ export default function MinecraftPlugins() {
 
   return (
     <>
+      <SEO
+        title="Minecraft Plugins — HoneyBerries"
+        description="A collection of Minecraft plugins published by HoneyBerries on Modrinth. Browse plugin details, downloads, and features."
+        ogImage={pluginsImg}
+      />
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex items-end justify-between gap-4">
           <div>

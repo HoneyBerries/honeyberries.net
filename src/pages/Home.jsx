@@ -2,6 +2,8 @@ import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import Card from '../components/ui/Card';
 import { HOME_FEATURES } from '../lib/data';
+import SEO from '../components/SEO';
+import heroImg from '../assets/backgrounds/home-banner.webp';
 
 /**
  * Home page component
@@ -9,6 +11,11 @@ import { HOME_FEATURES } from '../lib/data';
 export default function Home() {
   return (
     <>
+      <SEO
+        title="HoneyBerries Portfolio — Modern Web & AI Projects"
+        description="Explore HoneyBerries' portfolio of modern web apps, AI bots, and open-source projects. Sleek, performant, and built for real communities."
+        ogImage={heroImg}
+      />
       <Hero />
       <FeaturesSection />
       <Footer />

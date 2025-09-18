@@ -3,7 +3,7 @@
 export const PROJECTS = [
   { id: 'minecraft-plugins', href: '/projects/minecraft-plugins' },
   { id: 'minecraft-server', href: '/projects/minecraft-server' },
-  { id: 'discord-ai-agent', href: '/projects/discord-ai-agent' }
+  { id: 'modcord', href: '/projects/modcord' }
 ];
 
 export const MINECRAFT_GEMS = [

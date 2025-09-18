@@ -3,6 +3,8 @@ import EmailCard from '../components/contact/EmailCard';
 import DiscordCard from '../components/contact/DiscordCard';
 import CallToAction from '../components/contact/CallToAction';
 import { CONTACT_INFO } from '../lib/constants';
+import SEO from '../components/SEO';
+import contactImg from '../assets/backgrounds/minecraft-plugin-background.webp';
 
 /**
  * Contact page component
@@ -10,6 +12,11 @@ import { CONTACT_INFO } from '../lib/constants';
 export default function Contact() {
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title="Contact HoneyBerries — Let's Connect"
+        description="Contact HoneyBerries for collaboration, support, or questions about web development, Minecraft plugins, or AI bots."
+        ogImage={contactImg}
+      />
       {/* Enhanced background elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/15 blur-3xl animate-pulse"></div>
