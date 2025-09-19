@@ -49,7 +49,7 @@ function ModcordHeader() {
   return (
     <header className="text-center mb-16 max-w-4xl mx-auto">
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Modcord — <span className="accent-text">Smart AI Moderation</span> for Your Discord
+        Modcord — <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
       <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
         Keep your community safe, friendly, and well-organized with Modcord, an AI-powered moderation bot that
@@ -70,9 +70,7 @@ function ModcordHeader() {
           Add to Discord
         </a>
         <a
-          href="https://discord.com/oauth2/authorize?client_id=1387903423592005663"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/projects/modcord/docs"
           className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
         >
           📖 Documentation
