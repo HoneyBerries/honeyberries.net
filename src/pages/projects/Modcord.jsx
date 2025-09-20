@@ -93,13 +93,13 @@ function FeaturesSection() {
     },
     {
       title: "Adaptive Rules",
-      description: "Customize rules to match your community. Modcord learns patterns and can handle nuanced situations to keep moderation fair and effective.",
+      description: "Customize rules to match your community. Modcord learns patterns and can handle nuanced situations to keep moderation fair and effective according to your server rules.",
       icon: "⚙️",
       gradient: "from-purple-500/10 to-pink-500/10"
     },
     {
       title: "Seamless Experience",
-      description: "Runs quietly in the background so members can chat naturally while Modcord enforces rules behind the scenes.",
+      description: "Runs quietly in the background so moderators don't have to worry about missing messages while Modcord enforces rules behind the scenes.",
       icon: "✨",
       gradient: "from-green-500/10 to-blue-500/10"
     },
