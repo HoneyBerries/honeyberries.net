@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+
+# Do not add non-standard directives; keep file valid for crawlers
 Sitemap: https://honeyberries.net/sitemap.xml

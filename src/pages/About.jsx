@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 import SEO from '../components/SEO';
-import aboutImg from '../assets/backgrounds/home-banner.webp';
 
 /**
  * Enhanced About page component with modern design
@@ -14,7 +13,8 @@ export default function About() {
       <SEO
         title="About HoneyBerries — Developer & Creator"
         description="Learn more about HoneyBerries, a developer passionate about building sleek, performant web apps, Minecraft plugins, and AI bots."
-        ogImage={aboutImg}
+        ogImage="/assets/backgrounds/home-banner.webp"
+        pathname="/about"
       />
       {/* Enhanced background elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">

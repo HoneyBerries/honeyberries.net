@@ -32,11 +32,29 @@ export default function useModrinth({ username = 'HoneyBerries', excludeKeywords
           return !excludeKeywords.some(k => text.includes(k.toLowerCase()));
         });
 
-        // Sort by reverse chronological order (most recent first)
+        // Sort primarily by total downloads (descending). If download counts are equal or missing,
+        // fall back to reverse chronological order (most recent first).
+        function getDownloads(p) {
+          // Modrinth payloads may use different fields: 'downloads', 'total_downloads', or nested counts.
+          // Coerce to number and treat non-numeric/missing as 0 so projects without data appear lower.
+          const candidates = [p.downloads, p.total_downloads, p.download_count, p.totalDownloads];
+          for (const c of candidates) {
+            if (c != null && !Number.isNaN(Number(c))) return Number(c);
+          }
+          // Some projects may include downloads on versions rather than project root; treat as 0 here.
+          return 0;
+        }
+
+        function getDate(p) {
+          return new Date(p.date_modified || p.updated || p.date_published || 0).getTime();
+        }
+
         filtered.sort((a, b) => {
-          const dateA = new Date(a.date_modified || a.updated || a.date_published || 0);
-          const dateB = new Date(b.date_modified || b.updated || b.date_published || 0);
-          return dateB - dateA;
+          const da = getDownloads(a);
+          const db = getDownloads(b);
+          if (db !== da) return db - da; // more downloads first
+          // tie-breaker: newer first
+          return getDate(b) - getDate(a);
         });
 
         setProjects(filtered);

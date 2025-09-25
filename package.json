@@ -1,12 +1,13 @@
 {
   "name": "honeyberries.net",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "node ./scripts/generate-sitemap.js",
+  "postbuild": "node ./scripts/generate-sitemap.js",
+  "seo-check": "node ./scripts/seo-check.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

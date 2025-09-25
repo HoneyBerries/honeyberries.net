@@ -35,6 +35,10 @@ export const SITE_INFO = {
   currentYear: new Date().getFullYear()
 };
 
+// Base site URL used for canonical links and Open Graph URLs
+// Prefer explicit base to avoid relying on runtime window.location for crawlers
+export const BASE_URL = 'https://honeyberries.net';
+
 // Minecraft Server configuration
 export const MINECRAFT_SERVER = {
   ip: 'gemsmp.honeyberries.net',

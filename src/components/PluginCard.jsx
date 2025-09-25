@@ -78,15 +78,14 @@ export default function PluginCard({ project }) {
 
               <p className="mt-2 text-sm text-gray-600">{project.description || project.short_description || ''}</p>
 
-              <div className="mt-4 flex items-center justify-between gap-3 text-sm">
+              <div className="mt-4 flex items-center gap-3 text-sm">
                 <a
                   href={projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-white border border-gray-200 text-blue-700 hover:shadow-sm transition-all"
+                  className="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200"
                 >
-                  View on Modrinth
-                  <span className="ml-1">→</span>
+                  View
                 </a>
 
                 <DownloadButton project={project} />
@@ -119,16 +118,16 @@ function DownloadButton({ project }) {
   }
 
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col flex-1">
       <button
         onClick={handleDownload}
-        className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-white border border-gray-200 text-blue-700 hover:shadow-sm transition-all disabled:opacity-60"
+        className="w-full inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-green-600 text-white shadow-sm hover:bg-green-700 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
         disabled={loading}
       >
         {loading ? 'Downloading...' : 'Download'}
       </button>
       {error && (
-        <span className="text-xs text-red-600 mt-1" title={error}>
+        <span className="text-xs text-red-600 mt-1 text-center" title={error}>
           Error downloading
         </span>
       )}

@@ -4,7 +4,6 @@ import DiscordCard from '../components/contact/DiscordCard';
 import CallToAction from '../components/contact/CallToAction';
 import { CONTACT_INFO } from '../lib/constants';
 import SEO from '../components/SEO';
-import contactImg from '../assets/backgrounds/minecraft-plugin-background.webp';
 
 /**
  * Contact page component
@@ -15,7 +14,8 @@ export default function Contact() {
       <SEO
         title="Contact HoneyBerries — Let's Connect"
         description="Contact HoneyBerries for collaboration, support, or questions about web development, Minecraft plugins, or AI bots."
-        ogImage={contactImg}
+        ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
+        pathname="/contact"
       />
       {/* Enhanced background elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">

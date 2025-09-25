@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import homeBanner from '../assets/backgrounds/home-banner.webp';
+const homeBanner = '/assets/backgrounds/home-banner.webp';
 import { SKILLS } from '../lib/constants';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
@@ -28,14 +28,14 @@ export default function Hero() {
                 as={Link} 
                 to="/projects" 
                 className="glow"
-                aria-label="View my projects"
+                variant="primary"
               >
                 Explore Projects
-                <span className="inline-block animate-bounceX" aria-hidden="true">→</span>
               </Button>
               <Button 
                 as={Link} 
                 to="/contact" 
+                className="glow"
                 variant="secondary"
               >
                 Get in touch

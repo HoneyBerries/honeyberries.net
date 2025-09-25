@@ -12,7 +12,6 @@ const __dirname = path.dirname(__filename);
 import { PROJECTS } from '../src/lib/data.sitemap.js';
 
 const BASE = 'https://honeyberries.net';
-const outPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
 const outPathDist = path.join(__dirname, '..', 'dist', 'sitemap.xml');
 
 async function build() {
@@ -48,21 +47,18 @@ async function build() {
 
     try {
         const sitemapOutput = await streamToPromise(smStream);
-        fs.mkdirSync(path.dirname(outPath), { recursive: true });
-        fs.writeFileSync(outPath, sitemapOutput.toString());
-        // Also write to dist so the built artifact contains the sitemap when run as postbuild
+        // Write only to dist
         try {
-        fs.mkdirSync(path.dirname(outPathDist), { recursive: true });
-        fs.writeFileSync(outPathDist, sitemapOutput.toString());
-        console.log('sitemap.xml written to', outPath, 'and', outPathDist);
+            fs.mkdirSync(path.dirname(outPathDist), { recursive: true });
+            fs.writeFileSync(outPathDist, sitemapOutput.toString());
+            console.log('sitemap.xml written to', outPathDist);
         } catch (e) {
-        // If dist doesn't exist yet (e.g., if this runs before build), ignore
-        console.log('sitemap.xml written to', outPath, "(couldn't write to dist:", e.message, ")");
+            console.error('Failed to write sitemap to dist:', e.message);
         }
     } catch (err) {
         console.error('Failed to generate sitemap:', err);
         if (typeof globalThis.process !== 'undefined' && typeof globalThis.process.exit === 'function') {
-        globalThis.process.exit(1);
+            globalThis.process.exit(1);
         }
     }
 }

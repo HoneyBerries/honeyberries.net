@@ -1,9 +1,8 @@
 import ProjectCard from '../components/ProjectCard';
 import Footer from '../components/Footer';
 import Button from '../components/ui/Button';
-import githubIcon from '../assets/icons/github-icon.svg';
+const githubIcon = '/assets/icons/github-icon.svg';
 import { PROJECTS } from '../lib/data';
-import projectsImg from '../assets/backgrounds/minecraft-server-background.webp';
 import SEO from '../components/SEO';
 
 /**
@@ -15,7 +14,16 @@ export default function Projects() {
       <SEO
           title="Projects — HoneyBerries"
           description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
-          ogImage={projectsImg}
+            ogImage="/assets/backgrounds/minecraft-server-background.webp"
+            pathname="/projects"
+            jsonLd={{
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://honeyberries.net/" },
+                { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://honeyberries.net/projects" }
+              ]
+            }}
       />
       <section className="max-w-6xl mx-auto px-4 py-12">
         <ProjectsHeader />

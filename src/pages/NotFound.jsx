@@ -11,6 +11,8 @@ export default function NotFound() {
       <SEO
         title="404 — Page Not Found | HoneyBerries"
         description="Oops! The page you requested could not be found. Return home or explore HoneyBerries' projects."
+        pathname="/404"
+        noindex
       />
       <div className="text-center max-w-2xl mx-auto">
         {/* Animated 404 */}

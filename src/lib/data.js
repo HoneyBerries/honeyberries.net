@@ -1,14 +1,15 @@
-import minecraftPluginBg from '../assets/backgrounds/minecraft-plugin-background.webp';
-import minecraftServerBg from '../assets/backgrounds/minecraft-server-background.webp';
+// Use public /assets paths for images so they remain stable across builds (no hashing)
+const minecraftPluginBg = '/assets/backgrounds/minecraft-plugin-background.webp';
+const minecraftServerBg = '/assets/backgrounds/minecraft-server-background.webp';
 
-// Import gem icons
-import airGem from '../assets/icons/gem-icons/air_gem.png';
-import fireGem from '../assets/icons/gem-icons/fire_gem.png';
-import waterGem from '../assets/icons/gem-icons/water_gem.png';
-import earthGem from '../assets/icons/gem-icons/earth_gem.png';
-import iceGem from '../assets/icons/gem-icons/ice_gem.png';
-import darknessGem from '../assets/icons/gem-icons/darkness_gem.png';
-import lightGem from '../assets/icons/gem-icons/light_gem.png';
+// Gem icons (served from public)
+const airGem = '/assets/icons/gem-icons/air_gem.png';
+const fireGem = '/assets/icons/gem-icons/fire_gem.png';
+const waterGem = '/assets/icons/gem-icons/water_gem.png';
+const earthGem = '/assets/icons/gem-icons/earth_gem.png';
+const iceGem = '/assets/icons/gem-icons/ice_gem.png';
+const darknessGem = '/assets/icons/gem-icons/darkness_gem.png';
+const lightGem = '/assets/icons/gem-icons/light_gem.png';
 
 
 /**
