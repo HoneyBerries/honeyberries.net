@@ -1,17 +1,14 @@
-import React from 'react';
 import PluginCard from '../../components/PluginCard';
 import useModrinth from '../../hooks/useModrinth';
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
+
+const EXCLUDED_KEYWORDS = [];
 
 /**
  * Page showing Modrinth-hosted plugins for HoneyBerries (excludes certain plugins)
  */
 export default function MinecraftPlugins() {
-  const exclude = [
-  ];
-
-  const { projects, loading, error } = useModrinth({ username: 'HoneyBerries', excludeKeywords: exclude });
+  const { projects, loading, error } = useModrinth({ username: 'HoneyBerries', excludeKeywords: EXCLUDED_KEYWORDS });
 
   return (
     <>
@@ -48,7 +45,6 @@ export default function MinecraftPlugins() {
           ))}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

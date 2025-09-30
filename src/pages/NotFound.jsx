@@ -55,6 +55,7 @@ export default function NotFound() {
             as={Link} 
             to="/projects" 
             variant="secondary"
+            className="glow"
           >
             🚀 View My Projects
           </Button>

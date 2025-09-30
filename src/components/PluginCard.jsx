@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { fetchLatestFileUrl } from '../lib/modrinth';
 
 // Simple string hash -> number for deterministic gradients

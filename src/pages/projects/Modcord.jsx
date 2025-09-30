@@ -1,8 +1,12 @@
-import React from 'react';
-import Card from '../../components/ui/Card';
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
+import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
 import { Link } from 'react-router-dom';
+
+const MODCORD_BACKGROUND_LAYERS = [
+  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/25 to-blue-200/20 blur-3xl',
+  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-pink-200/25 to-purple-200/20 blur-3xl',
+  'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/20 to-indigo-200/15 blur-3xl',
+];
 
 /**
  * Modcord page — describes the AI moderation bot for Discord
@@ -24,7 +28,7 @@ export default function Modcord() {
           ]
         }}
       />
-      <BackgroundDecorations />
+  <GradientBackdrop layers={MODCORD_BACKGROUND_LAYERS} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
@@ -34,20 +38,6 @@ export default function Modcord() {
         </article>
       </div>
       
-      <Footer />
-    </div>
-  );
-}
-
-/**
- * Background decorative elements
- */
-function BackgroundDecorations() {
-  return (
-    <div className="fixed inset-0 pointer-events-none">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/25 to-blue-200/20 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-pink-200/25 to-purple-200/20 blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/20 to-indigo-200/15 blur-3xl"></div>
     </div>
   );
 }

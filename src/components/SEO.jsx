@@ -1,5 +1,4 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { BASE_URL, SITE_INFO } from '../lib/constants';
 
 // Default OG image (absolute URL) - prefer a stable image available on the live site.

@@ -1,10 +1,15 @@
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
 import GemCard from '../../components/GemCard';
+import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
 import { Link } from 'react-router-dom';
 import { MINECRAFT_GEMS } from '../../lib/data';
 import { MINECRAFT_SERVER } from '../../lib/constants';
 import { useCopyToClipboard } from '../../hooks';
+
+const MINECRAFT_SERVER_BACKGROUND_LAYERS = [
+  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl',
+  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl',
+];
 
 /**
  * Minecraft Server (Gem SMP) detailed project page.
@@ -34,7 +39,7 @@ export default function MinecraftServer() {
           ]
         }}
       />
-      <BackgroundDecorations />
+  <GradientBackdrop layers={MINECRAFT_SERVER_BACKGROUND_LAYERS} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
@@ -51,7 +56,6 @@ export default function MinecraftServer() {
         </article>
       </div>
       
-      <Footer />
     </div>
   );
 }
@@ -59,15 +63,6 @@ export default function MinecraftServer() {
 /**
  * Background decorative elements
  */
-function BackgroundDecorations() {
-  return (
-    <div className="fixed inset-0 pointer-events-none">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl"></div>
-    </div>
-  );
-}
-
 /**
  * Server header section with title and quick connect info
  */

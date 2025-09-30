@@ -1,5 +1,3 @@
-import React from 'react';
-import Footer from '../../../components/Footer';
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 
@@ -125,8 +123,6 @@ export default function TermsOfService() {
           </div>
         </article>
       </div>
-
-      <Footer />
     </div>
   );
 }

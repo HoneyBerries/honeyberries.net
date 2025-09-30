@@ -6,15 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-  "postbuild": "node ./scripts/generate-sitemap.js",
-  "seo-check": "node ./scripts/seo-check.js",
+    "postbuild": "node ./scripts/generate-sitemap.js",
+    "docs:build:copy": "node ./scripts/copy-docs-build.cjs",
+    "seo-check": "node ./scripts/seo-check.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-helmet": "^6.1.0",
+  "react-helmet-async": "^2.0.4",
     "react-router-dom": "^6.14.1"
   },
   "devDependencies": {

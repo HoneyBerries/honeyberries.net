@@ -1,4 +1,3 @@
-import Footer from '../../../components/Footer';
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 
@@ -95,8 +94,6 @@ export default function Privacy() {
           </div>
         </article>
       </div>
-
-      <Footer />
     </div>
   );
 }

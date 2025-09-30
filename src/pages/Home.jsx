@@ -1,5 +1,4 @@
 import Hero from '../components/Hero';
-import Footer from '../components/Footer';
 import Card from '../components/ui/Card';
 import { HOME_FEATURES } from '../lib/data';
 import SEO from '../components/SEO';
@@ -18,7 +17,6 @@ export default function Home() {
       />
       <Hero />
       <FeaturesSection />
-      <Footer />
     </>
   );
 }
