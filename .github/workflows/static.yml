@@ -1,4 +1,4 @@
-name: Deploy React app to GitHub Pages
+name: Deploy React (Vite) app to GitHub Pages
 
 on:
   push:
@@ -32,13 +32,13 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build React app
+      - name: Build Vite app
         run: npm run build
 
-      - name: Upload build artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
