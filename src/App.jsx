@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { MainLayout } from './layouts/MainLayout';
@@ -34,7 +34,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
-  <HashRouter>
+        <BrowserRouter>
           <MainLayout>
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
@@ -51,7 +51,7 @@ export default function App() {
               </Routes>
             </Suspense>
           </MainLayout>
-  </HashRouter>
+        </BrowserRouter>
       </HelmetProvider>
     </ErrorBoundary>
   );

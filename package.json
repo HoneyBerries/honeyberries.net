@@ -7,7 +7,7 @@
   "scripts": {
   "dev": "vite",
   "build": "vite build",
-  "postbuild": "node ./scripts/generate-sitemap.js",
+  "postbuild": "node ./scripts/generate-sitemap.js && node ./scripts/make-404-page.js",
   "seo-check": "node ./scripts/seo-check.js",
   "lint": "eslint .",
   "preview": "vite preview",
