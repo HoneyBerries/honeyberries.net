@@ -59,9 +59,8 @@ const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl
 
           <div className="mt-6">
             {/* Non-interactive pill to avoid nested links (card is already clickable) */}
-            <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-white/95 border border-gray-200 text-blue-700">
-              <span>Visit</span>
-              <span className="ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+            <span className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm group-hover:bg-blue-800 group-hover:shadow-md transition-all duration-200">
+              Visit Project
             </span>
           </div>
         </div>

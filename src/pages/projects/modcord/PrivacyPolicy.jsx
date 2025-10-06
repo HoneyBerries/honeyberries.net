@@ -1,4 +1,4 @@
-import Footer from '../../../components/Footer';
+import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 
 // Use an internationally readable date format e.g., September 18, 2025
@@ -11,6 +11,12 @@ const TODAY = new Date().toLocaleDateString(undefined, {
 export default function Privacy() {
   return (
     <div className="min-h-screen relative">
+      <SEO
+        title="Modcord Privacy Policy"
+        description="Privacy-first principles for Modcord, our AI moderation bot. Learn what data is processed and how it's protected."
+        ogImage="/assets/icons/favicon.webp"
+        pathname="/projects/modcord/privacy-policy"
+      />
       <BackgroundDecorations />
       
       <div className="relative z-10">
@@ -88,8 +94,6 @@ export default function Privacy() {
           </div>
         </article>
       </div>
-
-      <Footer />
     </div>
   );
 }

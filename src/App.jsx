@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { MainLayout } from './layouts/MainLayout';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -32,24 +33,26 @@ function LoadingFallback() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <MainLayout>
-          <Suspense fallback={<LoadingFallback />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
-              <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
-              <Route path="/projects/modcord" element={<Modcord />} />
-              <Route path="/projects/modcord/privacy-policy" element={<ModcordPrivacy />} />
-              <Route path="/projects/modcord/terms-of-service" element={<ModcordTerms />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </MainLayout>
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <MainLayout>
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
+                <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
+                <Route path="/projects/modcord" element={<Modcord />} />
+                <Route path="/projects/modcord/privacy-policy" element={<ModcordPrivacy />} />
+                <Route path="/projects/modcord/terms-of-service" element={<ModcordTerms />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </MainLayout>
+        </BrowserRouter>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 }

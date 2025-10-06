@@ -1,10 +1,14 @@
-import Footer from '../components/Footer';
 import EmailCard from '../components/contact/EmailCard';
 import DiscordCard from '../components/contact/DiscordCard';
 import CallToAction from '../components/contact/CallToAction';
+import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
 import { CONTACT_INFO } from '../lib/constants';
 import SEO from '../components/SEO';
-import contactImg from '../assets/backgrounds/minecraft-plugin-background.webp';
+
+const CONTACT_BACKGROUND_LAYERS = [
+  'absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/15 blur-3xl animate-pulse',
+  'absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl animate-pulse delay-1000',
+];
 
 /**
  * Contact page component
@@ -15,13 +19,10 @@ export default function Contact() {
       <SEO
         title="Contact HoneyBerries — Let's Connect"
         description="Contact HoneyBerries for collaboration, support, or questions about web development, Minecraft plugins, or AI bots."
-        ogImage={contactImg}
+        ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
+        pathname="/contact"
       />
-      {/* Enhanced background elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/15 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      <GradientBackdrop layers={CONTACT_BACKGROUND_LAYERS} />
 
       <main className="relative z-10 max-w-4xl mx-auto px-4 py-16" role="main">
         <ContactHeader />
@@ -32,7 +33,6 @@ export default function Contact() {
           discordInviteUrl={CONTACT_INFO.discordInviteUrl}
         />
       </main>
-      <Footer />
     </div>
   );
 }

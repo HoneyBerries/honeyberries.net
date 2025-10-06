@@ -1,10 +1,9 @@
 import ProjectCard from '../components/ProjectCard';
-import Footer from '../components/Footer';
 import Button from '../components/ui/Button';
-import githubIcon from '../assets/icons/github-icon.svg';
 import { PROJECTS } from '../lib/data';
-import projectsImg from '../assets/backgrounds/minecraft-server-background.webp';
 import SEO from '../components/SEO';
+
+const GITHUB_ICON = '/assets/icons/github-icon.svg';
 
 /**
  * Projects page component
@@ -13,15 +12,23 @@ export default function Projects() {
   return (
     <>
       <SEO
-          title="Projects — HoneyBerries"
-          description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
-          ogImage={projectsImg}
+        title="Projects — HoneyBerries"
+        description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
+        ogImage="/assets/backgrounds/minecraft-server-background.webp"
+        pathname="/projects"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://honeyberries.net/" },
+            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://honeyberries.net/projects" }
+          ]
+        }}
       />
       <section className="max-w-6xl mx-auto px-4 py-12">
         <ProjectsHeader />
         <ProjectsGrid />
       </section>
-      <Footer />
     </>
   );
 }
@@ -48,7 +55,7 @@ function ProjectsHeader() {
         >
           <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
             <img
-              src={githubIcon}
+              src={GITHUB_ICON}
               alt="GitHub"
               className="w-3 h-3 opacity-80 group-hover:opacity-100 transition-opacity duration-150"
             />
@@ -70,7 +77,7 @@ function ProjectsGrid() {
         <ProjectCard key={project.id} {...project} />
       ))}
 
-  {/* Plugins are now shown on their own page (/projects/minecraft-plugins) */}
+      {/* Plugins are now shown on their own page (/projects/minecraft-plugins) */}
     </div>
   );
 }

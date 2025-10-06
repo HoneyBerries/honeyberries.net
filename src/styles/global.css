@@ -201,3 +201,22 @@ body {
     @apply inline-flex items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-800 border border-gray-300 font-semibold rounded-xl hover:shadow hover:bg-white transition-all duration-300;
   }
 }
+
+/* Ensure clickable controls show pointer cursor on hover; disabled controls show not-allowed */
+button:hover,
+[role="button"]:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.inline-flex[role="button"]:hover,
+.inline-flex[tabindex]:hover,
+.card-hover a:hover,
+.group a:hover {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"],
+.disabled,
+.btn[disabled] {
+  cursor: not-allowed;
+}

@@ -1,34 +1,22 @@
-import React from 'react';
 import PluginCard from '../../components/PluginCard';
 import useModrinth from '../../hooks/useModrinth';
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
-import pluginsImg from '../../assets/backgrounds/minecraft-plugin-background.webp';
+
+const EXCLUDED_KEYWORDS = [];
 
 /**
  * Page showing Modrinth-hosted plugins for HoneyBerries (excludes certain plugins)
  */
 export default function MinecraftPlugins() {
-  const exclude = [
-    'homes',
-    'back',
-    'player nicknames',
-    'playernick',
-    'world rtp',
-    'playertpa',
-    'carpet 2 wool',
-    'potion effect overlay',
-    'player tpa',
-  ];
-
-  const { projects, loading, error } = useModrinth({ username: 'HoneyBerries', excludeKeywords: exclude });
+  const { projects, loading, error } = useModrinth({ username: 'HoneyBerries', excludeKeywords: EXCLUDED_KEYWORDS });
 
   return (
     <>
       <SEO
         title="Minecraft Plugins — HoneyBerries"
         description="A collection of Minecraft plugins published by HoneyBerries on Modrinth. Browse plugin details, downloads, and features."
-        ogImage={pluginsImg}
+        ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
+        pathname="/projects/minecraft-plugins"
       />
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex items-end justify-between gap-4">
@@ -57,7 +45,6 @@ export default function MinecraftPlugins() {
           ))}
         </div>
       </section>
-      <Footer />
     </>
   );
 }

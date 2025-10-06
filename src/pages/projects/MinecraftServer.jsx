@@ -1,11 +1,15 @@
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
-import serverImg from '../../assets/backgrounds/minecraft-server-background.webp';
 import GemCard from '../../components/GemCard';
+import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
 import { Link } from 'react-router-dom';
 import { MINECRAFT_GEMS } from '../../lib/data';
 import { MINECRAFT_SERVER } from '../../lib/constants';
 import { useCopyToClipboard } from '../../hooks';
+
+const MINECRAFT_SERVER_BACKGROUND_LAYERS = [
+  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl',
+  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl',
+];
 
 /**
  * Minecraft Server (Gem SMP) detailed project page.
@@ -23,9 +27,19 @@ export default function MinecraftServer() {
       <SEO
         title="Gem SMP — Minecraft Server by HoneyBerries"
         description="Gem SMP is a custom Minecraft server featuring elemental gems, unique abilities, and cross-play support. Learn more about the server and how to join."
-        ogImage={serverImg}
+        ogImage="/assets/backgrounds/minecraft-server-background.webp"
+        pathname="/projects/minecraft-server"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://honeyberries.net/" },
+            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://honeyberries.net/projects" },
+            { "@type": "ListItem", "position": 3, "name": "Gem SMP", "item": "https://honeyberries.net/projects/minecraft-server" }
+          ]
+        }}
       />
-      <BackgroundDecorations />
+  <GradientBackdrop layers={MINECRAFT_SERVER_BACKGROUND_LAYERS} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
@@ -42,7 +56,6 @@ export default function MinecraftServer() {
         </article>
       </div>
       
-      <Footer />
     </div>
   );
 }
@@ -50,15 +63,6 @@ export default function MinecraftServer() {
 /**
  * Background decorative elements
  */
-function BackgroundDecorations() {
-  return (
-    <div className="fixed inset-0 pointer-events-none">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl"></div>
-    </div>
-  );
-}
-
 /**
  * Server header section with title and quick connect info
  */
@@ -76,7 +80,7 @@ function ServerHeader({ onCopyIP, copied }) {
           <span className="font-bold text-gray-900">Server IP:</span> 
           <button
             onClick={onCopyIP}
-            className="ml-3 px-3 py-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded-lg font-semibold transition-colors cursor-pointer border border-emerald-300 hover:border-emerald-400"
+            className="ml-3 px-3 py-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded-lg font-semibold transition-colors  border border-emerald-300 hover:border-emerald-400"
             title="Click to copy"
           >
             {copied ? '✓ Copied!' : MINECRAFT_SERVER.ip}
@@ -257,13 +261,13 @@ function CallToAction({ onCopyIP, copied }) {
   const handleInlineCopyIP = () => copyToClipboardInline(MINECRAFT_SERVER.ip);
 
   return (
-    <section className="text-center card-glass border-emerald-200 p-12 shadow-lg bg-gradient-to-r from-emerald-50 to-blue-50">
+    <section className="text-center card-glass border-emerald-200 p-12 shadow-lg bg-gradient-to-r from-emerald-50 to-blue-50 rounded-3xl">
       <h2 className="text-3xl font-bold text-gray-900 mb-4 !mt-0">Join & Community</h2>
-      <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-        Jump in at{' '}
+      <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto rounded-xl">
+        Join at{' '}
         <button
           onClick={handleInlineCopyIP}
-          className="px-2 py-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded font-mono transition-colors cursor-pointer border border-emerald-300 hover:border-emerald-400"
+          className="px-2 py-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 rounded-lg font-mono transition-colors border border-emerald-300 hover:border-emerald-400"
           title="Click to copy"
         >
           {inlineCopied ? '✓ Copied!' : MINECRAFT_SERVER.ip}
@@ -273,15 +277,15 @@ function CallToAction({ onCopyIP, copied }) {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button 
           onClick={onCopyIP}
-          className="btn-primary bg-emerald-600 hover:bg-emerald-700"
+          className="btn-primary bg-emerald-600 hover:bg-emerald-700 rounded-xl"
         >
-          {copied ? '✓ IP Copied!' : '📋 Copy Server IP'}
+          {copied ? 'IP Copied!' : '📋 Copy Server IP'}
         </button>
         <a 
           href="https://discord.gg/c354AX236r"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary bg-blue-600 hover:bg-blue-700"
+          className="btn-primary bg-blue-600 hover:bg-blue-700 rounded-xl"
         >
           💬 Join Discord
         </a>

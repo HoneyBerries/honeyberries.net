@@ -1,5 +1,5 @@
-import emailIcon from '../../assets/icons/email-icon.svg';
-import discordIcon from '../../assets/icons/discord-icon.svg';
+const emailIcon = '/assets/icons/email-icon.svg';
+const discordIcon = '/assets/icons/discord-icon.svg';
 
 /**
  * Enhanced call-to-action section for contact page

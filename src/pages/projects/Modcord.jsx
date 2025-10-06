@@ -1,8 +1,12 @@
-import React from 'react';
-import Card from '../../components/ui/Card';
-import Footer from '../../components/Footer';
 import SEO from '../../components/SEO';
+import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
 import { Link } from 'react-router-dom';
+
+const MODCORD_BACKGROUND_LAYERS = [
+  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/25 to-blue-200/20 blur-3xl',
+  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-pink-200/25 to-purple-200/20 blur-3xl',
+  'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/20 to-indigo-200/15 blur-3xl',
+];
 
 /**
  * Modcord page — describes the AI moderation bot for Discord
@@ -13,8 +17,18 @@ export default function Modcord() {
       <SEO
         title="Modcord — AI Moderation Bot for Discord"
         description="Modcord uses AI to provide intelligent, context-aware moderation for Discord servers. Designed for privacy and scalability."
+        pathname="/projects/modcord"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://honeyberries.net/" },
+            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://honeyberries.net/projects" },
+            { "@type": "ListItem", "position": 3, "name": "Modcord", "item": "https://honeyberries.net/projects/modcord" }
+          ]
+        }}
       />
-      <BackgroundDecorations />
+  <GradientBackdrop layers={MODCORD_BACKGROUND_LAYERS} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
@@ -24,20 +38,6 @@ export default function Modcord() {
         </article>
       </div>
       
-      <Footer />
-    </div>
-  );
-}
-
-/**
- * Background decorative elements
- */
-function BackgroundDecorations() {
-  return (
-    <div className="fixed inset-0 pointer-events-none">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/25 to-blue-200/20 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-pink-200/25 to-purple-200/20 blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/20 to-indigo-200/15 blur-3xl"></div>
     </div>
   );
 }
@@ -86,26 +86,26 @@ function ModcordHeader() {
 function FeaturesSection() {
   const features = [
     {
-      title: "Intelligent Moderation",
-      description: "Modcord understands conversation context to detect spam, abuse, and rule violations with AI-driven accuracy — so your moderators don't have to be everywhere at once.",
+      title: "Intelligent Message Analysis",
+      description: "Modcord understands conversation context to detect spam, abuse, and rule violations, powered by the same technology as ChatGPT, allowing your moderators to take a break knowing that nothing bad will happen.",
       icon: "🧠",
       gradient: "from-blue-500/10 to-purple-500/10"
     },
     {
       title: "Adaptive Rules",
-      description: "Customize rules to match your community. Modcord learns patterns and can handle nuanced situations to keep moderation fair and effective according to your server rules.",
+      description: "Modcord automatically scans for rule channels, allowing it to automatically follow your server's unique rules and guidelines without manual configuration.",
       icon: "⚙️",
       gradient: "from-purple-500/10 to-pink-500/10"
     },
     {
       title: "Seamless Experience",
-      description: "Runs quietly in the background so moderators don't have to worry about missing messages while Modcord enforces rules behind the scenes.",
+      description: "We continuously analyze every conversation automatically to provide real-time moderation without disrupting your chats. It runs in the background as if you never knew it was there.",
       icon: "✨",
       gradient: "from-green-500/10 to-blue-500/10"
     },
     {
       title: "Reliable & Scalable",
-      description: "Built to scale from small communities to very large servers, Modcord delivers consistent, intelligent moderation at every size.",
+      description: "Modcord is designed to handle servers of all sizes, from small communities to large-scale servers with thousands of members, ensuring a consistent lag-free performance.",
       icon: "🚀",
       gradient: "from-orange-500/10 to-red-500/10"
     }
@@ -116,7 +116,7 @@ function FeaturesSection() {
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Modcord?</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Advanced AI technology meets practical Discord moderation needs
+          Advanced AI technology meets Discord server admins' needs
         </p>
       </div>
       

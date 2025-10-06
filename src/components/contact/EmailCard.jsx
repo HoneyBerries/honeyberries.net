@@ -1,4 +1,4 @@
-import emailIcon from '../../assets/icons/email-icon.svg';
+const emailIcon = '/assets/icons/email-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
 
 /**

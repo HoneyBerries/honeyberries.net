@@ -36,3 +36,8 @@ To run this project locally, follow these steps:
 *   `npm run build`: Builds the application for production.
 *   `npm run lint`: Lints the code using ESLint.
 *   `npm run preview`: Serves the production build locally for preview.
+*   `npm run seo-check`: Runs a script to check SEO elements across the site.
+*   `npm run postbuild`: Generates a sitemap after building the project.
+
+### To run everything:
+*   `npm run lint && npm run seo-check && npm run build`

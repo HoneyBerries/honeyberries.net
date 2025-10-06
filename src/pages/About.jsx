@@ -1,9 +1,13 @@
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
+import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 import SEO from '../components/SEO';
-import aboutImg from '../assets/backgrounds/home-banner.webp';
+
+const ABOUT_BACKGROUND_LAYERS = [
+  'absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-emerald-200/20 to-teal-200/15 blur-3xl animate-pulse',
+  'absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-blue-200/20 to-indigo-200/15 blur-3xl animate-pulse delay-1000',
+];
 
 /**
  * Enhanced About page component with modern design
@@ -14,13 +18,10 @@ export default function About() {
       <SEO
         title="About HoneyBerries — Developer & Creator"
         description="Learn more about HoneyBerries, a developer passionate about building sleek, performant web apps, Minecraft plugins, and AI bots."
-        ogImage={aboutImg}
+        ogImage="/assets/backgrounds/home-banner.webp"
+        pathname="/about"
       />
-      {/* Enhanced background elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-emerald-200/20 to-teal-200/15 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-blue-200/20 to-indigo-200/15 blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      <GradientBackdrop layers={ABOUT_BACKGROUND_LAYERS} />
 
       <main className="relative z-10 max-w-4xl mx-auto px-4 py-16" role="main">
         <AboutHeader />
@@ -29,7 +30,6 @@ export default function About() {
         <Timeline />
         <CurrentProjects />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="src/assets/icons/favicon.webp" />
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HoneyBerries Portfolio</title>
     <meta name="description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
@@ -18,18 +18,14 @@
     <meta property="og:title" content="HoneyBerries Portfolio" />
     <meta property="og:description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://honeyberries.net/" />
-    <meta property="og:image" content="https://honeyberries.net/src/assets/backgrounds/home-banner.webp" />
-    <meta property="og:image:alt" content="HoneyBerries — portfolio banner" />
+    <meta property="og:url" content="https://honeyberries.net/" />    
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="HoneyBerries Portfolio" />
-    <meta name="twitter:description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
-    <meta name="twitter:image" content="https://honeyberries.net/src/assets/backgrounds/home-banner.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HoneyBerries Portfolio" />
+  <meta name="twitter:description" content="HoneyBerries' portfolio — projects, experience, and contact info." />
 
-    <!-- Preload hero/banner for faster LCP -->
-    <link rel="preload" as="image" href="/src/assets/backgrounds/home-banner.webp" imagesrcset="" />
+  <!-- Note: hero image is bundled; avoid preloading src-based paths in HTML -->
 
     <!-- JSON-LD structured data (Website + Person) -->
     <script type="application/ld+json">
@@ -49,9 +45,11 @@
           "name": "HoneyBerries",
           "url": "https://honeyberries.net/",
           "sameAs": [
-            "https://twitter.com/yourhandle",
-            "https://github.com/yourhandle"
-          ]
+            "https://github.com/HoneyBerries",
+            "https://modrinth.com/user/HoneyBerries",
+            "https://discord.gg/c354AX236r"
+          ],
+          "email": "henry.rainbowfish@gmail.com"
         }
       ]
     }

@@ -1,5 +1,3 @@
-import React from 'react';
-import Footer from '../../../components/Footer';
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +14,7 @@ export default function TermsOfService() {
       <SEO
         title="Modcord Terms of Service — HoneyBerries"
         description="Terms of service for Modcord, an AI moderation bot. Learn about responsibilities, permissions, and limitations."
+        pathname="/projects/modcord/terms-of-service"
       />
       <BackgroundDecorations />
       
@@ -124,8 +123,6 @@ export default function TermsOfService() {
           </div>
         </article>
       </div>
-
-      <Footer />
     </div>
   );
 }

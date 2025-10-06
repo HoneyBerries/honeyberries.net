@@ -1,4 +1,4 @@
-import discordIcon from '../../assets/icons/discord-icon.svg';
+const discordIcon = '/assets/icons/discord-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
 
 /**
