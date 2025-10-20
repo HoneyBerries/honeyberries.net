@@ -1,7 +1,8 @@
 // Use public /assets paths for images so they remain stable across builds (no hashing)
 const BACKGROUNDS = {
   minecraftPlugin: '/assets/backgrounds/minecraft-plugin-background.webp',
-  minecraftServer: '/assets/backgrounds/minecraft-server-background.webp'
+  minecraftServer: '/assets/backgrounds/minecraft-server-background.webp',
+  discordAIAagent: '/assets/backgrounds/discord-ai-agent-background.webp'
 };
 
 // Gem icons (served from public)
@@ -38,7 +39,7 @@ export const PROJECTS = [
     title: 'Discord AI Moderator Agent',
     description: 'Autonomous chat moderation and action powered by LLMs, allowing for seamless community management on Discord.',
     href: '/projects/modcord',
-    imageUrl: ''
+    imageUrl: '/assets/backgrounds/discord-ai-agent-background.webp'
   }
 ];
 
