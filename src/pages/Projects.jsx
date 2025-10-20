@@ -14,7 +14,7 @@ export default function Projects() {
       <SEO
         title="Projects — HoneyBerries"
         description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
-        ogImage="/assets/backgrounds/minecraft-server-background.webp"
+        ogImage="/assets/backgrounds/discord-ai-agent-background.webp"
         pathname="/projects"
         jsonLd={{
           "@context": "https://schema.org",

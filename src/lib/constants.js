@@ -14,10 +14,10 @@ export const NAV_LINKS = [
 export const SKILLS = [
   'Python', 
   'Java', 
-  'PaperMC Plugins', 
+  'Minecraft Plugins', 
   'Discord Bots', 
   'LLMs', 
-  'AI Agents'
+  'Machine Learning',
 ];
 
 // Contact information
