@@ -1,15 +1,11 @@
 import SEO from '../../components/SEO';
-import GemCard from '../../components/GemCard';
-import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
+import { GemCard } from '../../components/cards';
+import { GradientBackdrop } from '../../components/backgrounds';
 import { Link } from 'react-router-dom';
+import { Button } from '../../components/ui';
 import { MINECRAFT_GEMS } from '../../lib/data';
-import { MINECRAFT_SERVER } from '../../lib/constants';
+import { MINECRAFT_SERVER, BACKGROUND_LAYERS } from '../../lib/constants';
 import { useCopyToClipboard } from '../../hooks';
-
-const MINECRAFT_SERVER_BACKGROUND_LAYERS = [
-  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl',
-  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl',
-];
 
 /**
  * Minecraft Server (Gem SMP) detailed project page.
@@ -39,7 +35,7 @@ export default function MinecraftServer() {
           ]
         }}
       />
-  <GradientBackdrop layers={MINECRAFT_SERVER_BACKGROUND_LAYERS} />
+      <GradientBackdrop layers={BACKGROUND_LAYERS.minecraftServer} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
@@ -277,18 +273,22 @@ function CallToAction({ onCopyIP, copied }) {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button 
           onClick={onCopyIP}
-          className="btn-primary bg-emerald-600 hover:bg-emerald-700 rounded-xl"
+          className="btn-primary"
+          style={{background: 'linear-gradient(135deg, #059669 0%, #0284c7 100%)'}}
         >
           {copied ? 'IP Copied!' : '📋 Copy Server IP'}
         </button>
-        <a 
+        <Button
+          as="a"
           href="https://discord.gg/c354AX236r"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary bg-blue-600 hover:bg-blue-700 rounded-xl"
+          variant="primary"
+          className="rounded-lg whitespace-nowrap gap-2"
+          style={{background: 'linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%)'}}
         >
           💬 Join Discord
-        </a>
+        </Button>
       </div>
     </section>
   );

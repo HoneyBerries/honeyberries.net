@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom';
-import Card from '../components/ui/Card';
-import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
+import { Card } from '../components/ui';
+import { GradientBackdrop } from '../components/backgrounds';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
+import { BACKGROUND_LAYERS } from '../lib/constants';
 import SEO from '../components/SEO';
-
-const ABOUT_BACKGROUND_LAYERS = [
-  'absolute top-1/3 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-emerald-200/20 to-teal-200/15 blur-3xl animate-pulse',
-  'absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-blue-200/20 to-indigo-200/15 blur-3xl animate-pulse delay-1000',
-];
 
 /**
  * Enhanced About page component with modern design
@@ -21,7 +17,7 @@ export default function About() {
         ogImage="/assets/backgrounds/home-banner.webp"
         pathname="/about"
       />
-      <GradientBackdrop layers={ABOUT_BACKGROUND_LAYERS} />
+      <GradientBackdrop layers={BACKGROUND_LAYERS.about} />
 
       <main className="relative z-10 max-w-4xl mx-auto px-4 py-16" role="main">
         <AboutHeader />
@@ -238,6 +234,7 @@ function CurrentProjects() {
         <Link 
           to="/contact"
           className="btn-primary"
+          style={{background: 'linear-gradient(135deg, #dc2626 0%, #9333ea 100%)'}}
         >
           <span>Get In Touch</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

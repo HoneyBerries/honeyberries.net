@@ -1,44 +1,21 @@
-import { useState } from 'react';
-import { fetchLatestFileUrl } from '../lib/modrinth';
-
-// Simple string hash -> number for deterministic gradients
-function hashStringToNumber(str) {
-  let h = 2166136261 >>> 0;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return Math.abs(h);
-}
-
-function seededHues(seed) {
-  const n = hashStringToNumber(seed || '') % 360;
-  const n2 = (n + 60 + (hashStringToNumber(seed + 'b') % 60)) % 360;
-  return [n, n2];
-}
-
-function gradientFromSeed(seed) {
-  const [h1, h2] = seededHues(seed);
-  const color1 = `hsl(${h1} 80% 60%)`;
-  const color2 = `hsl(${h2} 75% 50%)`;
-  return `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
-}
-
-function fmtNumber(n) {
-  if (n == null) return '';
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
-  if (n >= 1_000) return (n / 1_000).toFixed(1) + 'k';
-  return String(n);
-}
+import { useState, useMemo } from 'react';
+import { fetchLatestFileUrl } from '../../lib/modrinth';
+import { formatNumber, gradientFromSeed } from '../../lib/utils';
+import { Button } from '../ui';
 
 export default function PluginCard({ project }) {
+  // Use useMemo to ensure stable seed value across re-renders
+  const seed = useMemo(() => 
+    project?.slug || project?.title || String(project?.id) || 'fallback',
+    [project]
+  );
+  
+  const iconGradient = useMemo(() => gradientFromSeed(seed), [seed]);
+  const cardGradient = useMemo(() => gradientFromSeed(seed + 'card'), [seed]);
+
   if (!project) return null;
 
   const projectUrl = `https://modrinth.com/project/${project.slug}`;
-  const seed = project.slug || project.title || String(project.id) || Math.random().toString();
-  const iconGradient = gradientFromSeed(seed);
-  const cardGradient = gradientFromSeed(seed + 'card');
-
   const icon = project.icon_url || project.icon || '';
   const downloads = project.downloads ?? project.total_downloads ?? null;
   const followers = project.followers ?? null;
@@ -69,8 +46,8 @@ export default function PluginCard({ project }) {
                 <h4 className="text-lg font-semibold text-gray-900">{project.title}</h4>
                 <div className="text-right text-sm text-gray-500 flex-shrink-0">
                   <div className="flex flex-col items-end space-y-1">
-                    {downloads != null && <span className="text-gray-700 font-medium">{fmtNumber(downloads)} downloads</span>}
-                    {followers != null && <span className="text-xs text-gray-400">{fmtNumber(followers)} followers</span>}
+                    {downloads != null && <span className="text-gray-700 font-medium">{formatNumber(downloads)} downloads</span>}
+                    {followers != null && <span className="text-xs text-gray-400">{formatNumber(followers)} followers</span>}
                     {updated && <span className="text-xs text-gray-400">Updated {new Date(updated).toLocaleDateString()}</span>}
                   </div>
                 </div>
@@ -79,14 +56,17 @@ export default function PluginCard({ project }) {
               <p className="mt-2 text-sm text-gray-600">{project.description || project.short_description || ''}</p>
 
               <div className="mt-4 flex items-center gap-3 text-sm">
-                <a
+                <Button
+                  as="a"
                   href={projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200"
+                  variant="success"
+                  size="sm"
+                  className="whitespace-nowrap justify-center"
                 >
                   View
-                </a>
+                </Button>
 
                 <DownloadButton project={project} />
               </div>
@@ -118,16 +98,19 @@ function DownloadButton({ project }) {
   }
 
   return (
-    <div className="flex flex-col flex-1">
-      <button
+    <div className="flex flex-col flex-1 gap-2">
+      <Button
+        as="button"
         onClick={handleDownload}
-        className="w-full inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-green-600 text-white shadow-sm hover:bg-green-700 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+        variant="success"
+        size="sm"
         disabled={loading}
+        className="w-full whitespace-nowrap justify-center"
       >
         {loading ? 'Downloading...' : 'Download'}
-      </button>
+      </Button>
       {error && (
-        <span className="text-xs text-red-600 mt-1 text-center" title={error}>
+        <span className="text-xs text-red-600 text-center" title={error}>
           Error downloading
         </span>
       )}

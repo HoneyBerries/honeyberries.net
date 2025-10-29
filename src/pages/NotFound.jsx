@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from '../components/ui/Button';
+import { Button } from '../components/ui';
 import SEO from '../components/SEO';
 
 /**
@@ -47,7 +47,6 @@ export default function NotFound() {
             as={Link} 
             to="/" 
             variant="primary"
-            className="glow"
           >
             🏠 Go Home
           </Button>
@@ -55,7 +54,6 @@ export default function NotFound() {
             as={Link} 
             to="/projects" 
             variant="secondary"
-            className="glow"
           >
             🚀 View My Projects
           </Button>
