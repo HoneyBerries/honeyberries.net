@@ -1,4 +1,4 @@
-import PluginCard from '../../components/PluginCard';
+import { PluginCard } from '../../components/cards';
 import useModrinth from '../../hooks/useModrinth';
 import SEO from '../../components/SEO';
 

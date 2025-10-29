@@ -2,6 +2,28 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
+ * Wrapper component for project cards that handles both internal and external links
+ */
+function ProjectCardWrapper({ isInternal, href, id, title, children }) {
+  const commonClassName = "group block card-hover overflow-hidden h-full";
+  const ariaLabel = `View ${title} project`;
+
+  if (isInternal) {
+    return (
+      <Link id={id} to={href} className={commonClassName} aria-label={ariaLabel}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a id={id} href={href} target="_blank" rel="noopener noreferrer" className={commonClassName} aria-label={ariaLabel}>
+      {children}
+    </a>
+  );
+}
+
+/**
  * Project card component displaying project information
  * @param {Object} props - Project card properties
  * @param {string} props.id - Project ID for anchoring
@@ -13,24 +35,8 @@ import { Link } from 'react-router-dom';
 const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl = '', href }) {
   const isInternal = typeof href === 'string' && (href.startsWith('/') || href.startsWith('#'));
 
-  const Wrapper = ({ children }) => {
-    if (isInternal) {
-      return (
-        <Link id={id} to={href} className="group block card-hover overflow-hidden h-full" aria-label={`View ${title} project`}>
-          {children}
-        </Link>
-      );
-    }
-
-    return (
-      <a id={id} href={href} target="_blank" rel="noopener noreferrer" className="group block card-hover overflow-hidden h-full" aria-label={`View ${title} project`}>
-        {children}
-      </a>
-    );
-  };
-
   return (
-    <Wrapper>
+    <ProjectCardWrapper isInternal={isInternal} href={href} id={id} title={title}>
       <div className="flex flex-col h-full">
         <div className="relative">
           <div className="aspect-[16/9] w-full bg-gray-100 overflow-hidden">
@@ -65,7 +71,7 @@ const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl
           </div>
         </div>
       </div>
-    </Wrapper>
+    </ProjectCardWrapper>
   );
 });
 

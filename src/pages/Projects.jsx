@@ -1,5 +1,5 @@
-import ProjectCard from '../components/ProjectCard';
-import Button from '../components/ui/Button';
+import { ProjectCard } from '../components/cards';
+import { Button } from '../components/ui';
 import { PROJECTS } from '../lib/data';
 import SEO from '../components/SEO';
 
