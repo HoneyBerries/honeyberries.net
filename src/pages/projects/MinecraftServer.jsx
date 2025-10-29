@@ -2,6 +2,7 @@ import SEO from '../../components/SEO';
 import { GemCard } from '../../components/cards';
 import { GradientBackdrop } from '../../components/backgrounds';
 import { Link } from 'react-router-dom';
+import { Button } from '../../components/ui';
 import { MINECRAFT_GEMS } from '../../lib/data';
 import { MINECRAFT_SERVER, BACKGROUND_LAYERS } from '../../lib/constants';
 import { useCopyToClipboard } from '../../hooks';
@@ -272,18 +273,22 @@ function CallToAction({ onCopyIP, copied }) {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button 
           onClick={onCopyIP}
-          className="btn-primary bg-emerald-600 hover:bg-emerald-700 rounded-xl"
+          className="btn-primary"
+          style={{background: 'linear-gradient(135deg, #059669 0%, #0284c7 100%)'}}
         >
           {copied ? 'IP Copied!' : '📋 Copy Server IP'}
         </button>
-        <a 
+        <Button
+          as="a"
           href="https://discord.gg/c354AX236r"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary bg-blue-600 hover:bg-blue-700 rounded-xl"
+          variant="primary"
+          className="rounded-lg whitespace-nowrap gap-2"
+          style={{background: 'linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%)'}}
         >
           💬 Join Discord
-        </a>
+        </Button>
       </div>
     </section>
   );

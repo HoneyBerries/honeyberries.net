@@ -48,10 +48,10 @@ export default function CopyButton({
   return (
     <button
       onClick={handleClick}
-      className={`px-6 py-3 border-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+      className={`btn-secondary ${
         copied
-          ? 'border-green-500 text-green-600 bg-green-50'
-          : 'border-blue-500 text-blue-600 hover:bg-blue-50'
+          ? '!border-green-500 !text-green-600 !bg-green-50'
+          : ''
       } ${className}`}
       aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
     >

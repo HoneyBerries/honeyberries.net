@@ -43,10 +43,11 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
           href={discordInviteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold rounded-xl hover:from-indigo-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="btn-primary inline-flex items-center justify-center gap-2 w-full"
+          style={{background: 'linear-gradient(135deg, #10b981 0%, #0891b2 100%)'}}
           aria-label="Join Discord server"
         >
-          <img src={discordIcon} alt="Discord" className="w-5 h-5 filter brightness-0 invert" />
+          <img src={discordIcon} alt="Discord" className="w-5 h-5" />
           <span>Join Discord Server</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

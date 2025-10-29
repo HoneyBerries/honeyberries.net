@@ -234,6 +234,7 @@ function CurrentProjects() {
         <Link 
           to="/contact"
           className="btn-primary"
+          style={{background: 'linear-gradient(135deg, #dc2626 0%, #9333ea 100%)'}}
         >
           <span>Get In Touch</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

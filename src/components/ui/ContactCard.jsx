@@ -36,7 +36,7 @@ export default function ContactCard({
             <img
               src={iconSrc}
               alt={iconAlt}
-              className="w-7 h-7 filter brightness-0 invert"
+              className="w-7 h-7"
             />
           </div>
           <div>

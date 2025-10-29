@@ -51,7 +51,7 @@ function ProjectsHeader() {
           aria-label="View HoneyBerries on GitHub"
           variant="secondary"
           size="sm"
-          className="whitespace-nowrap rounded-full px-3 py-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200 group"
+          className="whitespace-nowrap rounded-full px-3 py-2 group"
         >
           <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
             <img

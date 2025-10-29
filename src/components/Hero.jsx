@@ -17,7 +17,7 @@ export default function Hero() {
               Hello, I'm HoneyBerries
             </p>
             <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-              Building <span className="accent-text">useful</span> things for the web, games, and communities.
+              <span className="accent-text">Creating AI's</span> and other useful things for <span className="accent-text">games, communities, and the internet.</span>
             </h1>
             <p className="mt-5 text-gray-600 max-w-xl">
               Developer focused on performant, clean, and delightful experiences.
@@ -27,7 +27,6 @@ export default function Hero() {
               <Button 
                 as={Link} 
                 to="/projects" 
-                className="glow"
                 variant="primary"
               >
                 Explore Projects
@@ -35,7 +34,6 @@ export default function Hero() {
               <Button 
                 as={Link} 
                 to="/contact" 
-                className="glow"
                 variant="secondary"
               >
                 Get in touch

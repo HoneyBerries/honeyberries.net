@@ -31,10 +31,11 @@ export default function CallToAction({ email, discordInviteUrl }) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto">
           <a
             href={`mailto:${email}`}
-            className="group flex-1 w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-cyan-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            className="group flex-1 w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-3"
+            style={{background: 'linear-gradient(135deg, #059669 0%, #0284c7 100%)'}}
             aria-label={`Send email to ${email}`}
           >
-            <img src={emailIcon} alt="Email" className="w-5 h-5 filter brightness-0 invert group-hover:scale-110 transition-transform duration-300" />
+            <img src={emailIcon} alt="Email" className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
             <span>Send Email</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -47,10 +48,11 @@ export default function CallToAction({ email, discordInviteUrl }) {
             href={discordInviteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex-1 w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-2xl hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            className="group flex-1 w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-3"
+            style={{background: 'linear-gradient(135deg, #f97316 0%, #9333ea 100%)'}}
             aria-label="Join Discord server"
           >
-            <img src={discordIcon} alt="Discord" className="w-5 h-5 filter brightness-0 invert group-hover:scale-110 transition-transform duration-300" />
+            <img src={discordIcon} alt="Discord" className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
             <span>Join Discord</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

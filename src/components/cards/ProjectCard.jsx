@@ -2,6 +2,42 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
+ * Generate gradient colors based on project id for consistent visuals
+ * Uses green-blue, red-purple-orange, and aqua-blue-purple themes
+ */
+function getProjectGradient(projectId) {
+  const gradients = [
+    // Green-Blue theme
+    { from: '#10b981', to: '#06b6d4' },      // emerald to cyan
+    { from: '#22c55e', to: '#0891b2' },      // green to cyan-dark
+    { from: '#16a34a', to: '#0284c7' },      // green-dark to blue
+    { from: '#059669', to: '#3b82f6' },      // teal to blue
+    
+    // Red-Purple-Orange theme
+    { from: '#dc2626', to: '#9333ea' },      // red to purple
+    { from: '#ef4444', to: '#a855f7' },      // red-light to purple-light
+    { from: '#f97316', to: '#c084fc' },      // orange to purple-lighter
+    { from: '#ea580c', to: '#7c3aed' },      // orange-dark to violet
+    
+    // Aqua-Blue-Purple theme
+    { from: '#06b6d4', to: '#3b82f6' },      // aqua to blue
+    { from: '#0891b2', to: '#6366f1' },      // cyan-dark to indigo
+    { from: '#0284c7', to: '#8b5cf6' },      // blue to purple
+    { from: '#00d9ff', to: '#a855f7' },      // bright aqua to purple
+  ];
+  
+  let hash = 0;
+  for (let i = 0; i < projectId.length; i++) {
+    const char = projectId.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  
+  const index = Math.abs(hash) % gradients.length;
+  return gradients[index];
+}
+
+/**
  * Wrapper component for project cards that handles both internal and external links
  */
 function ProjectCardWrapper({ isInternal, href, id, title, children }) {
@@ -34,6 +70,7 @@ function ProjectCardWrapper({ isInternal, href, id, title, children }) {
  */
 const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl = '', href }) {
   const isInternal = typeof href === 'string' && (href.startsWith('/') || href.startsWith('#'));
+  const gradient = getProjectGradient(id);
 
   return (
     <ProjectCardWrapper isInternal={isInternal} href={href} id={id} title={title}>
@@ -65,7 +102,12 @@ const ProjectCard = memo(function ProjectCard({ id, title, description, imageUrl
 
           <div className="mt-6">
             {/* Non-interactive pill to avoid nested links (card is already clickable) */}
-            <span className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm group-hover:bg-blue-800 group-hover:shadow-md transition-all duration-200">
+            <span 
+              className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-sm group-hover:shadow-md transition-all duration-200 group-hover:scale-105"
+              style={{
+                background: `linear-gradient(135deg, ${gradient.from} 0%, ${gradient.to} 100%)`
+              }}
+            >
               Visit Project
             </span>
           </div>

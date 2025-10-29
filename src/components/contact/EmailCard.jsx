@@ -30,7 +30,8 @@ export default function EmailCard({ email }) {
       <div className="flex flex-col sm:flex-row gap-3">
         <a
           href={`mailto:${email}`}
-          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="flex-1 btn-primary inline-flex items-center justify-center gap-2"
+          style={{background: 'linear-gradient(135deg, #22c55e 0%, #06b6d4 100%)'}}
           aria-label={`Send email to ${email}`}
         >
           <span>Send Email</span>

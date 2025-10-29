@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { fetchLatestFileUrl } from '../../lib/modrinth';
 import { formatNumber, gradientFromSeed } from '../../lib/utils';
+import { Button } from '../ui';
 
 export default function PluginCard({ project }) {
   // Use useMemo to ensure stable seed value across re-renders
@@ -55,14 +56,17 @@ export default function PluginCard({ project }) {
               <p className="mt-2 text-sm text-gray-600">{project.description || project.short_description || ''}</p>
 
               <div className="mt-4 flex items-center gap-3 text-sm">
-                <a
+                <Button
+                  as="a"
                   href={projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200"
+                  variant="success"
+                  size="sm"
+                  className="whitespace-nowrap justify-center"
                 >
                   View
-                </a>
+                </Button>
 
                 <DownloadButton project={project} />
               </div>
@@ -94,16 +98,19 @@ function DownloadButton({ project }) {
   }
 
   return (
-    <div className="flex flex-col flex-1">
-      <button
+    <div className="flex flex-col flex-1 gap-2">
+      <Button
+        as="button"
         onClick={handleDownload}
-        className="w-full inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-green-600 text-white shadow-sm hover:bg-green-700 hover:shadow-md transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+        variant="success"
+        size="sm"
         disabled={loading}
+        className="w-full whitespace-nowrap justify-center"
       >
         {loading ? 'Downloading...' : 'Download'}
-      </button>
+      </Button>
       {error && (
-        <span className="text-xs text-red-600 mt-1 text-center" title={error}>
+        <span className="text-xs text-red-600 text-center" title={error}>
           Error downloading
         </span>
       )}
