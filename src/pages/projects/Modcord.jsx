@@ -1,12 +1,7 @@
 import SEO from '../../components/SEO';
 import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
+import { BACKGROUND_LAYERS } from '../../lib/constants';
 import { Link } from 'react-router-dom';
-
-const MODCORD_BACKGROUND_LAYERS = [
-  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/25 to-blue-200/20 blur-3xl',
-  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-pink-200/25 to-purple-200/20 blur-3xl',
-  'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/20 to-indigo-200/15 blur-3xl',
-];
 
 /**
  * Modcord page — describes the AI moderation bot for Discord
@@ -27,9 +22,9 @@ export default function Modcord() {
             { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://honeyberries.net/projects" },
             { "@type": "ListItem", "position": 3, "name": "Modcord", "item": "https://honeyberries.net/projects/modcord" }
           ]
-        }}
+                }}
       />
-  <GradientBackdrop layers={MODCORD_BACKGROUND_LAYERS} />
+      <GradientBackdrop layers={BACKGROUND_LAYERS.modcord} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">

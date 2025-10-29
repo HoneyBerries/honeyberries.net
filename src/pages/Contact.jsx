@@ -2,13 +2,8 @@ import EmailCard from '../components/contact/EmailCard';
 import DiscordCard from '../components/contact/DiscordCard';
 import CallToAction from '../components/contact/CallToAction';
 import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
-import { CONTACT_INFO } from '../lib/constants';
+import { CONTACT_INFO, BACKGROUND_LAYERS } from '../lib/constants';
 import SEO from '../components/SEO';
-
-const CONTACT_BACKGROUND_LAYERS = [
-  'absolute top-1/4 -left-32 w-80 h-80 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/15 blur-3xl animate-pulse',
-  'absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl animate-pulse delay-1000',
-];
 
 /**
  * Contact page component
@@ -22,7 +17,7 @@ export default function Contact() {
         ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
         pathname="/contact"
       />
-      <GradientBackdrop layers={CONTACT_BACKGROUND_LAYERS} />
+      <GradientBackdrop layers={BACKGROUND_LAYERS.contact} />
 
       <main className="relative z-10 max-w-4xl mx-auto px-4 py-16" role="main">
         <ContactHeader />

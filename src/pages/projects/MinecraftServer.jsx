@@ -3,13 +3,8 @@ import GemCard from '../../components/GemCard';
 import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
 import { Link } from 'react-router-dom';
 import { MINECRAFT_GEMS } from '../../lib/data';
-import { MINECRAFT_SERVER } from '../../lib/constants';
+import { MINECRAFT_SERVER, BACKGROUND_LAYERS } from '../../lib/constants';
 import { useCopyToClipboard } from '../../hooks';
-
-const MINECRAFT_SERVER_BACKGROUND_LAYERS = [
-  'absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-200/20 to-blue-200/15 blur-3xl',
-  'absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-purple-200/20 to-pink-200/15 blur-3xl',
-];
 
 /**
  * Minecraft Server (Gem SMP) detailed project page.
@@ -39,7 +34,7 @@ export default function MinecraftServer() {
           ]
         }}
       />
-  <GradientBackdrop layers={MINECRAFT_SERVER_BACKGROUND_LAYERS} />
+      <GradientBackdrop layers={BACKGROUND_LAYERS.minecraftServer} />
       
       <div className="relative z-10">
         <article className="max-w-6xl mx-auto px-4 py-12">
