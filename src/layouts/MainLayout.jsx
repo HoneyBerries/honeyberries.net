@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
+import { GradientBackdrop } from '../components/backgrounds';
 import { BACKGROUND_LAYERS } from '../lib/constants';
 
 /**

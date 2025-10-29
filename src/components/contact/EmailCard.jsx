@@ -1,7 +1,6 @@
 const emailIcon = '/assets/icons/email-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
-import ContactCard from '../ui/ContactCard';
-import CopyButton from '../ui/CopyButton';
+import { ContactCard, CopyButton } from '../ui';
 
 /**
  * Enhanced email contact card with copy functionality

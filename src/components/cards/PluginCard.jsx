@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import { fetchLatestFileUrl } from '../lib/modrinth';
-import { formatNumber, gradientFromSeed } from '../lib/utils';
+import { fetchLatestFileUrl } from '../../lib/modrinth';
+import { formatNumber, gradientFromSeed } from '../../lib/utils';
 
 export default function PluginCard({ project }) {
   // Use useMemo to ensure stable seed value across re-renders

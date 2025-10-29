@@ -1,6 +1,6 @@
 import SEO from '../../components/SEO';
-import GemCard from '../../components/GemCard';
-import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
+import { GemCard } from '../../components/cards';
+import { GradientBackdrop } from '../../components/backgrounds';
 import { Link } from 'react-router-dom';
 import { MINECRAFT_GEMS } from '../../lib/data';
 import { MINECRAFT_SERVER, BACKGROUND_LAYERS } from '../../lib/constants';

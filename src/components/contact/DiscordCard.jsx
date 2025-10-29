@@ -1,7 +1,6 @@
 const discordIcon = '/assets/icons/discord-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
-import ContactCard from '../ui/ContactCard';
-import CopyButton from '../ui/CopyButton';
+import { ContactCard, CopyButton } from '../ui';
 
 /**
  * Enhanced Discord contact card with copy functionality and improved design

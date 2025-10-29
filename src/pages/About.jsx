@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Card from '../components/ui/Card';
-import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
+import { Card } from '../components/ui';
+import { GradientBackdrop } from '../components/backgrounds';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 import { BACKGROUND_LAYERS } from '../lib/constants';
 import SEO from '../components/SEO';

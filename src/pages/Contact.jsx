@@ -1,7 +1,5 @@
-import EmailCard from '../components/contact/EmailCard';
-import DiscordCard from '../components/contact/DiscordCard';
-import CallToAction from '../components/contact/CallToAction';
-import GradientBackdrop from '../components/backgrounds/GradientBackdrop';
+import { EmailCard, DiscordCard, CallToAction } from '../components/contact';
+import { GradientBackdrop } from '../components/backgrounds';
 import { CONTACT_INFO, BACKGROUND_LAYERS } from '../lib/constants';
 import SEO from '../components/SEO';
 

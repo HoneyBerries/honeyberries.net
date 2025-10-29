@@ -1,5 +1,5 @@
 import SEO from '../../components/SEO';
-import GradientBackdrop from '../../components/backgrounds/GradientBackdrop';
+import { GradientBackdrop } from '../../components/backgrounds';
 import { BACKGROUND_LAYERS } from '../../lib/constants';
 import { Link } from 'react-router-dom';
 
