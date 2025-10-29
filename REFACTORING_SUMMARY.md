@@ -117,7 +117,7 @@ import { GradientBackdrop } from '../components/backgrounds';
 
 ### ESLint Configuration Fixed
 Updated `eslint.config.js` to use proper flat config format:
-- Converted from invalid `defineConfig` API to standard flat config
+- Converted from non-standard `defineConfig` API to standard flat config
 - Fixed plugin configuration structure
 - All linting now passes with no warnings
 
@@ -152,7 +152,7 @@ Comprehensive 150-line documentation covering:
 - Code splitting improved with better organization
 - ProjectCard now in separate chunk (5.90 kB)
 - Total bundle size: ~212 kB (minimal increase due to better structure)
-- Better tree-shaking potential with barrel exports
+- Barrel exports improve developer experience (note: may slightly impact tree-shaking)
 
 ### Build Performance
 - Build time: ~2 seconds (unchanged)

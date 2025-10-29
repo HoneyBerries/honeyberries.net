@@ -178,5 +178,7 @@ If you need to add new components:
 
 1. **Code Splitting**: Page components are lazy-loaded in App.jsx
 2. **Memoization**: Expensive components use React.memo
-3. **Barrel Exports**: Allow better tree-shaking by bundler
-4. **Centralized Constants**: Background layers and repeated data extracted to reduce bundle size
+3. **Barrel Exports**: Improve developer experience with cleaner imports
+   - Note: Barrel exports trade bundle size optimization for better DX
+   - Modern bundlers (Vite) handle this well, but be aware of the tradeoff
+4. **Centralized Constants**: Background layers and repeated data extracted to reduce duplication
