@@ -98,17 +98,17 @@ function SkillsSection() {
   const skillCategories = [
     {
       title: 'Languages',
-      skills: ['Python', 'Java', 'C++', 'C#', 'JavaScript'],
+      skills: ['Python', 'Java'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Frameworks & Tools',
-      skills: ['React', 'Node.js', 'Spring Boot', 'Docker', 'Git', 'Gradle', 'Maven'],
+      skills: ['PyTorch', 'TensorFlow', 'Hugging Face', 'React', 'Node.js', 'GitHub', 'Gradle', 'Maven'],
       color: 'from-emerald-500 to-teal-500'
     },
     {
       title: 'Specialties',
-      skills: ['Minecraft Development', 'Discord Bots', 'AI Integration', 'Web Applications', 'Backend Systems', 'Community Tools', 'General Programming'],
+      skills: ["AI Development", "General Programming", "Minecraft Plugins", "Discord Bots", "Math"],
       color: 'from-purple-500 to-indigo-500'
     }
   ];
@@ -229,7 +229,7 @@ function CurrentProjects() {
       {/* Call to action */}
       <div className="mt-12 text-center">
         <p className="text-gray-600 mb-6">
-          Interested in collaborating or learning more about my work?
+          Want to know more about my work or discuss about one of my projects?
         </p>
         <Link 
           to="/contact"

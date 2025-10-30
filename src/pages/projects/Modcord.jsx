@@ -49,9 +49,7 @@ function ModcordHeader() {
         Modcord — <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
       <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-        Keep your community safe, friendly, and well-organized with Modcord, an AI-powered moderation bot that
-        understands context and enforces rules intelligently. Modcord adapts to your server, helping maintain a
-        positive environment automatically.
+        ModCord uses LLM's to provide intelligent, context-aware moderation for Discord servers of all sizes, from a few members to millions. Designed with privacy and scalability in mind, Modcord helps keep your community safe and welcoming. We care about fair moderation that adapts to your server automatically so you don't have to run a single command.
       </p>
       
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

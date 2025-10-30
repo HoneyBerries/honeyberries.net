@@ -11,7 +11,7 @@ export default function EmailCard({ email }) {
   return (
     <ContactCard
       title="Email Me"
-      subtitle="Quick and reliable contact"
+      subtitle="Slower but more formal communication (best for detailed inquiries)"
       iconSrc={emailIcon}
       iconAlt="Email"
       gradientFrom="from-blue-50/50"

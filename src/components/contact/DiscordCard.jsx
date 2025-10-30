@@ -10,8 +10,8 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
 
   return (
     <ContactCard
-      title="Discord Chat"
-      subtitle="Real-time communication"
+      title="Discord"
+      subtitle="Perfered communication method for quick chats"
       iconSrc={discordIcon}
       iconAlt="Discord"
       gradientFrom="from-indigo-50/50"

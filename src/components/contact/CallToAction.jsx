@@ -20,10 +20,10 @@ export default function CallToAction({ email, discordInviteUrl }) {
         {/* Header */}
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Ready to <span className="accent-text">Collaborate</span>?
+            Have a <span className="accent-text">question</span> about my stuff?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Let's turn your ideas into reality. Choose your preferred way to get in touch and let's start building something amazing together.
+            If you have any questions about my projects or work, feel free to ask — I'm happy to answer questions about features, usage, or anything else. This is for asking questions rather than seeking collaborations.
           </p>
         </div>
 
