@@ -2,7 +2,7 @@
 const BACKGROUNDS = {
   minecraftPlugin: '/assets/backgrounds/minecraft-plugin-background.webp',
   minecraftServer: '/assets/backgrounds/minecraft-server-background.webp',
-  discordAIAagent: '/assets/backgrounds/discord-ai-agent-background.webp'
+  modcord: '/assets/backgrounds/modcord-background.webp'
 };
 
 // Gem icons (served from public)
@@ -35,11 +35,11 @@ export const PROJECTS = [
     imageUrl: BACKGROUNDS.minecraftServer
   },
   {
-    id: 'discord-ai-agent',
-    title: 'Discord AI Moderator Agent',
+    id: 'modcord',
+    title: 'ModCord',
     description: 'Autonomous chat and image moderation powered by LLMs, allowing for seamless community management on Discord.',
     href: '/projects/modcord',
-    imageUrl: '/assets/backgrounds/discord-ai-agent-background.webp'
+    imageUrl: '/assets/backgrounds/modcord-background.webp'
   }
 ];
 
@@ -66,6 +66,7 @@ export const TIMELINE = [
     desc: 'Some random gangsters from my school decided to troll on my server by sending pictures of my face randomly (I still don\'t know how they got them) and I couldn\'t delete them as fast as they could send, so I needed an AI which was fast enough to do it.'
   }
 ];
+
 
 /**
  * Current projects for about page

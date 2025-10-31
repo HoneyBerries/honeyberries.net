@@ -11,9 +11,9 @@ export default function Modcord() {
   return (
     <div className="min-h-screen relative">
       <SEO
-        title="Modcord — AI Moderation Bot for Discord"
+        title="Modcord, AI Moderation Bot for Discord"
         description="Modcord uses AI to provide intelligent, context-aware moderation for Discord servers. Designed for privacy and scalability."
-        ogImage="/assets/backgrounds/discord-ai-agent-background.webp"
+        ogImage="/assets/backgrounds/modcord-background.webp"
         pathname="/projects/modcord"
         jsonLd={{
           "@context": "https://schema.org",
@@ -46,7 +46,7 @@ function ModcordHeader() {
   return (
     <header className="text-center mb-16 max-w-4xl mx-auto">
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Modcord — <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
+        Modcord, <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
       <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
         ModCord uses LLM's to provide intelligent, context-aware moderation for Discord servers of all sizes, from a few members to millions. Designed with privacy and scalability in mind, Modcord helps keep your community safe and welcoming. We care about fair moderation that adapts to your server automatically so you don't have to run a single command.
