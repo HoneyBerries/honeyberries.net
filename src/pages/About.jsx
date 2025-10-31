@@ -61,9 +61,9 @@ function AboutHeader() {
 function AboutStats() {
   const stats = [
     { label: 'Years Coding', value: '5+', icon: '💻', color: 'text-blue-600' },
-    { label: 'Projects Built', value: '20+', icon: '🚀', color: 'text-emerald-600' },
-    { label: 'Languages Used', value: '8+', icon: '⚡', color: 'text-purple-600' },
-    { label: 'Communities Helped', value: '50+', icon: '🌟', color: 'text-orange-600' }
+    { label: 'Projects Built', value: '8+', icon: '🚀', color: 'text-emerald-600' },
+    { label: 'Languages Used', value: 'Only 2', icon: '⚡', color: 'text-purple-600' },
+    { label: 'Communities Helped', value: 'idk I didn\'t track', icon: '🌟', color: 'text-orange-600' }
   ];
 
   return (
