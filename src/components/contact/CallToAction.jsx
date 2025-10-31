@@ -23,7 +23,7 @@ export default function CallToAction({ email, discordInviteUrl }) {
             Have a <span className="accent-text">question</span> about my stuff?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            If you have any questions about my projects or work, feel free to ask — I'm happy to answer questions about features, usage, or anything else. This is for asking questions rather than seeking collaborations.
+            If you have any questions about my projects or work, feel free to ask. I'm happy to answer questions about features, pricing, or anything else. For like general information about a project, you can join my Discord server and ask me.
           </p>
         </div>
 
@@ -69,11 +69,11 @@ export default function CallToAction({ email, discordInviteUrl }) {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-              <span>Open to project discussions</span>
+              <span>Has some time to answer questions</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-              <span>Open to collaborations</span>
+              <span>Open to suggestions and feedback</span>
             </div>
           </div>
         </div>

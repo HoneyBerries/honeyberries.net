@@ -1,12 +1,6 @@
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 
-// Use an internationally readable date format e.g., September 18, 2025
-const TODAY = new Date().toLocaleDateString(undefined, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
 
 export default function Privacy() {
   return (
@@ -23,10 +17,10 @@ export default function Privacy() {
         <article className="max-w-4xl mx-auto px-4 py-12">
           <header className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-              Modcord <span className="accent-text">Privacy Policy</span>
+              <span className="accent-text">ModCord</span> Privacy Policy
             </h1>
 
-            <p className="text-sm text-gray-500">Last updated: {TODAY}</p>
+            <p className="text-sm text-gray-500">Last updated: October 29, 2025</p>
           </header>
 
           <div className="card-glass p-8 mb-8 bg-gradient-to-br from-blue-50/50 to-purple-50/50">

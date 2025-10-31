@@ -17,8 +17,9 @@ export default function Hero() {
               Hello, I'm HoneyBerries
             </p>
             <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="accent-text">Creating AI</span> because neural networks can understand things humans can't see.
+              <span className="accent-text">Building LLMs</span> that <span className="accent-text">automate</span> tasks and <span className="accent-text">improve</span> productivity.
             </h1>
+
             <p className="mt-5 text-gray-600 max-w-xl">
               Random person who likes building AI systems and tools that exponentially speed up <span className="accent-text">human productivity</span>.
             </p>
