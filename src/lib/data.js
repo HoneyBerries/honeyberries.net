@@ -23,21 +23,21 @@ export const PROJECTS = [
   {
     id: 'minecraft-plugins',
     title: 'Minecraft Plugins',
-    description: 'A suite of quality-of-life, admin tools, and a few wild experiments for Paper/Spigot.',
+    description: 'Some high quality plugins for Paper/Spigot, including quality-of-life improvements, admin tools, and a few wild experiments.',
     href: '/projects/minecraft-plugins',
     imageUrl: BACKGROUNDS.minecraftPlugin
   },
   {
     id: 'minecraft-server',
     title: 'Gem SMP Minecraft Server',
-    description: 'Custom gems, new PvP mechanics, and a refined gameplay experience.',
+    description: 'Custom gems, new PvP mechanics, and an improved gameplay experience.',
     href: '/projects/minecraft-server',
     imageUrl: BACKGROUNDS.minecraftServer
   },
   {
     id: 'discord-ai-agent',
     title: 'Discord AI Moderator Agent',
-    description: 'Autonomous chat moderation and action powered by LLMs, allowing for seamless community management on Discord.',
+    description: 'Autonomous chat and image moderation powered by LLMs, allowing for seamless community management on Discord.',
     href: '/projects/modcord',
     imageUrl: '/assets/backgrounds/discord-ai-agent-background.webp'
   }
@@ -48,22 +48,22 @@ export const PROJECTS = [
  */
 export const TIMELINE = [
   {
-    title: 'Created Plugin Suite',
+    title: 'Wrote some Minecraft Plugins',
     time: '2024 Fall',
-    desc: 'Developed multiple high-quality plugins for PaperMC/Spigot, posted them on Modrinth.',
+    desc: 'Developed multiple high-quality plugins for PaperMC/Spigot, posted them on Modrinth because I was bored.',
     hasLink: true,
     linkUrl: 'https://modrinth.com/user/HoneyBerries',
     linkText: 'posted them on Modrinth'
   },
   {
-    title: 'Shipped the Gem SMP',
+    title: 'Opened the Gem SMP',
     time: '2025 Spring',
-    desc: 'Designed and deployed a scalable community server.'
+    desc: 'I still don\'t know why to this day, but for some reason I made a Minecraft server with custom elemental gems (maybe I was bored with vanilla).',
   },
   {
-    title: 'Launched Discord AI Agent',
+    title: 'Created ModCord',
     time: '2025 Summer',
-    desc: 'Built an agent for moderation and automation.'
+    desc: 'Some random gangsters from my school decided to troll on my server by sending pictures of my face randomly (I still don\'t know how they got them) and I couldn\'t delete them as fast as they could send, so I needed an AI which was fast enough to do it.'
   }
 ];
 
@@ -71,10 +71,10 @@ export const TIMELINE = [
  * Current projects for about page
  */
 export const CURRENT_PROJECTS = [
-  'Building AI Agents to automate various tasks',
-  'Shipping new features for the Discord AI Agent',
-  "Making a social media platform that doesn't share data with anyone and is highly secure.",
-  'Being terrible at everything else :)'
+  'Adding features for ModCord to make it smarter and more reliable',
+  "Failing at making a communication platform that is end-to-end encrypted and has accounts unlike other end-to-end encrypted platforms",
+  'Being terrible at everything else :)',
+  'Sleeping'
 ];
 
 /**
@@ -83,15 +83,15 @@ export const CURRENT_PROJECTS = [
 export const HOME_FEATURES = [
   {
     title: 'Minecraft Plugins & Servers',
-    desc: 'Custom plugins and hosted servers focused on fun, stability, and player experience.'
+    desc: 'Used to make Minecraft plugins which made servers more fun and improve player\'s experience.'
   },
   {
     title: 'AI Discord Agents',
-    desc: 'Smart bots for moderation, engagement, and automation tailored to your community.'
+    desc: 'Made a discord AI agent (ModCord) which moderated servers using large language models, and it was pretty cool.'
   },
   {
-    title: 'Community Tools & Support',
-    desc: 'Integrations, dashboards, and ongoing support to help communities grow and stay healthy.'
+    title: 'More advanced AI Stuff',
+    desc: 'Trying to make a custom LLM to make ModCord smarter and more human-like.'
   }
 ];
 

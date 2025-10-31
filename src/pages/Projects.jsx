@@ -40,7 +40,7 @@ function ProjectsHeader() {
   return (
     <div className="flex items-end justify-between gap-4">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-bold">My <span className="accent-text">Projects</span></h1>
+        <h1 className="text-3xl sm:text-4xl font-bold"><span className="accent-text">My Projects</span></h1>
       </div>
       <div>
         <Button

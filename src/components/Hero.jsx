@@ -17,11 +17,11 @@ export default function Hero() {
               Hello, I'm HoneyBerries
             </p>
             <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="accent-text">Creating AI's</span> and other useful things for <span className="accent-text">games, communities, and the internet.</span>
+              <span className="accent-text">Building LLMs</span> that <span className="accent-text">automate</span> tasks and <span className="accent-text">improve</span> productivity.
             </h1>
+
             <p className="mt-5 text-gray-600 max-w-xl">
-              Developer focused on performant, clean, and delightful experiences.
-              I make Minecraft plugins/servers and AI-powered Discord agents.
+              Random person who likes building AI systems and tools that exponentially speed up <span className="accent-text">human productivity</span>.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button 
@@ -63,9 +63,9 @@ function HeroCard() {
           />
         </div>
         <div className="mt-4">
-          <h3 className="font-semibold">What I do</h3>
+          <h3 className="font-semibold">What I enjoy doing</h3>
           <p className="mt-1 text-sm text-gray-600">
-            Full-stack development, game servers, plugin ecosystems, and AI agents.
+            Creating AI's, particularly large language models, to automate repetitive tasks.
           </p>
           <ul className="mt-3 flex flex-wrap gap-2" role="list" aria-label="Technologies and skills">
             {SKILLS.map(skill => (

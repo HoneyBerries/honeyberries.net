@@ -49,9 +49,7 @@ function ModcordHeader() {
         Modcord — <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
       <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-        Keep your community safe, friendly, and well-organized with Modcord, an AI-powered moderation bot that
-        understands context and enforces rules intelligently. Modcord adapts to your server, helping maintain a
-        positive environment automatically.
+        ModCord uses LLM's to provide intelligent, context-aware moderation for Discord servers of all sizes, from a few members to millions. Designed with privacy and scalability in mind, Modcord helps keep your community safe and welcoming. We care about fair moderation that adapts to your server automatically so you don't have to run a single command.
       </p>
       
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -89,26 +87,26 @@ function ModcordHeader() {
 function FeaturesSection() {
   const features = [
     {
-      title: "Intelligent Message Analysis",
-      description: "Modcord understands conversation context to detect spam, abuse, and rule violations, powered by the same technology as ChatGPT, allowing your moderators to take a break knowing that nothing bad will happen.",
+      title: "Intelligent Conversation Analysis",
+      description: "ModCord understands the conversation context because it is powered by an LLM, allowing it to intelligently detect spam, abuse, and rule violations while allowing jokes and memes, enabling your moderators to take a break knowing that nothing bad will happen and the users will still be happy.",
       icon: "🧠",
       gradient: "from-blue-500/10 to-purple-500/10"
     },
     {
       title: "Adaptive Rules",
-      description: "Modcord automatically scans for rule channels, allowing it to automatically follow your server's unique rules and guidelines without manual configuration.",
+      description: "ModCord's rule searching algorithm automatically scans for rule channels, allowing it to automatically follow the server's rules that users are asked to follow without manual configuration.",
       icon: "⚙️",
       gradient: "from-purple-500/10 to-pink-500/10"
     },
     {
       title: "Seamless Experience",
-      description: "We continuously analyze every conversation automatically to provide real-time moderation without disrupting your chats. It runs in the background as if you never knew it was there.",
+      description: "ModCord's AI Engine continuously analyzes every conversation automatically to provide real-time moderation without disrupting your chats. It runs in the background as if you never knew it was there.",
       icon: "✨",
       gradient: "from-green-500/10 to-blue-500/10"
     },
     {
       title: "Reliable & Scalable",
-      description: "Modcord is designed to handle servers of all sizes, from small communities to large-scale servers with thousands of members, ensuring a consistent lag-free performance.",
+      description: "Modcord is designed to handle servers of all sizes, from small private communities to large-scale servers with millions of members, ensuring consistent quality and performance.",
       icon: "🚀",
       gradient: "from-orange-500/10 to-red-500/10"
     }
@@ -117,9 +115,9 @@ function FeaturesSection() {
   return (
     <section className="mb-16">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Modcord?</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose ModCord?</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Advanced AI technology meets Discord server admins' needs
+          When modern LLM meets Discord servers, providing next-gen moderation that runs autonomously so you can sleep.
         </p>
       </div>
       
@@ -151,8 +149,7 @@ function CallToActionSection() {
       <div className="card-glass p-8 max-w-4xl mx-auto bg-gradient-to-r from-blue-50/50 to-purple-50/50">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Enhance Your Discord Community?</h2>
         <p className="text-gray-600 mb-6 leading-relaxed">
-          Modcord prioritizes privacy and configurability — you control how strict it is and what data it stores. 
-          Get intelligent moderation that adapts to your community's unique needs.
+          ModCord prioritizes high performance and customization, offering extensive configurable settings and easy-to-use commands, while keeping a privacy-first design that ensures your data is never stored or shared (beyond the brief 30-second processing period).
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a

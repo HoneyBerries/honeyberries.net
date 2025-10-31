@@ -44,10 +44,7 @@ function ContactHeader() {
         Get In <span className="accent-text">Touch</span>
       </h1>
       <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
-        I'm always excited to collaborate on interesting projects, discuss new ideas, or help solve challenging problems.
-      </p>
-      <p className="text-gray-500 max-w-xl mx-auto">
-        Whether you're looking for a developer, have a cool project in mind, or just want to chat about technology, feel free to reach out!
+        If you want to reach out to know more about my work, have an open PR, or want to talk about pricing for a service, email or join my Discord server!
       </p>
     </div>
   );
