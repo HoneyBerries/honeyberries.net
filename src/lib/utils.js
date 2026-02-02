@@ -19,8 +19,8 @@ export function cn(...classes) {
 export function getNavLinkClass(isActive) {
   return cn(
     'px-3 py-2 text-sm font-medium rounded-md transition-colors',
-    isActive 
-      ? 'text-blue-700' 
+    isActive
+      ? 'text-blue-700'
       : 'text-gray-700 hover:text-gray-900'
   );
 }
@@ -32,20 +32,24 @@ export function getNavLinkClass(isActive) {
  * @returns {string} Truncated text
  */
 export function truncateText(text, maxLength) {
+  if (typeof text !== 'string') return '';
+  if (!maxLength || maxLength <= 0) return '';
   if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength).trim() + '...';
+  return text.slice(0, maxLength).trimEnd() + '…'; // proper ellipsis
 }
 
 /**
  * Formats a date to a human-readable string
- * @param {Date|string} date - Date to format
+ * @param {Date|string|number} date - Date to format
  * @returns {string} Formatted date string
  */
 export function formatDate(date) {
-  return new Date(date).toLocaleDateString('en-US', {
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return ''; // invalid date
+  return d.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 }
 
@@ -55,9 +59,10 @@ export function formatDate(date) {
  * @returns {string} Formatted number string
  */
 export function formatNumber(n) {
-  if (n == null) return '';
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
-  if (n >= 1_000) return (n / 1_000).toFixed(1) + 'k';
+  if (n == null || isNaN(n)) return '';
+  const abs = Math.abs(n);
+  if (abs >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (abs >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'k';
   return String(n);
 }
 
@@ -70,9 +75,9 @@ export function hashStringToNumber(str) {
   let h = 2166136261 >>> 0;
   for (let i = 0; i < str.length; i++) {
     h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
+    h = Math.imul(h, 16777619) >>> 0; // 32-bit unsigned
   }
-  return Math.abs(h);
+  return h;
 }
 
 /**
@@ -80,8 +85,8 @@ export function hashStringToNumber(str) {
  * @param {string} seed - Seed string
  * @returns {[number, number]} Array of two hue values (0-360)
  */
-export function seededHues(seed) {
-  const n = hashStringToNumber(seed || '') % 360;
+export function seededHues(seed = '') {
+  const n = hashStringToNumber(seed) % 360;
   const n2 = (n + 60 + (hashStringToNumber(seed + 'b') % 60)) % 360;
   return [n, n2];
 }
@@ -91,7 +96,7 @@ export function seededHues(seed) {
  * @param {string} seed - Seed string for deterministic color generation
  * @returns {string} CSS gradient string
  */
-export function gradientFromSeed(seed) {
+export function gradientFromSeed(seed = '') {
   const [h1, h2] = seededHues(seed);
   const color1 = `hsl(${h1} 80% 60%)`;
   const color2 = `hsl(${h2} 75% 50%)`;

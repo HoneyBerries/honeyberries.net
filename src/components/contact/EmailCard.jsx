@@ -1,18 +1,26 @@
-const emailIcon = '/assets/icons/email-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
 import { ContactCard, CopyButton } from '../ui';
+import { ICON_PATHS } from '../../lib/constants';
+import { gradientStyle } from '../../lib/styles';
+import { motion } from 'framer-motion';
+import { pulse } from '../../lib/animations';
 
 /**
  * Enhanced email contact card with copy functionality
  */
-export default function EmailCard({ email }) {
-  const [copied, copy] = useCopyToClipboard();
+export default function EmailCard({ email, copy: copyContent }) {
+  const [copied, copyToClipboard] = useCopyToClipboard();
+
+  const title = copyContent?.title || 'Email Me';
+  const subtitle = copyContent?.subtitle || 'Slower but more formal communication (best for detailed inquiries)';
+  const ctaLabel = copyContent?.ctaLabel || 'Send Email';
+  const responseNote = copyContent?.responseNote || 'Typically responds within 24 hours';
 
   return (
     <ContactCard
-      title="Email Me"
-      subtitle="Slower but more formal communication (best for detailed inquiries)"
-      iconSrc={emailIcon}
+      title={title}
+      subtitle={subtitle}
+      iconSrc={ICON_PATHS.email}
       iconAlt="Email"
       gradientFrom="from-blue-50/50"
       gradientTo="to-cyan-50/30"
@@ -31,10 +39,10 @@ export default function EmailCard({ email }) {
         <a
           href={`mailto:${email}`}
           className="flex-1 btn-primary inline-flex items-center justify-center gap-2"
-          style={{background: 'linear-gradient(135deg, #22c55e 0%, #06b6d4 100%)'}}
+          style={gradientStyle('emeraldCyan')}
           aria-label={`Send email to ${email}`}
         >
-          <span>Send Email</span>
+          <span>{ctaLabel}</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
           </svg>
@@ -42,16 +50,16 @@ export default function EmailCard({ email }) {
         
         <CopyButton
           textToCopy={email}
-          copied={copied}
-          onCopy={copy}
+            copied={copied}
+            onCopy={copyToClipboard}
           variant="outlined"
         />
       </div>
 
       {/* Response time indicator */}
       <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
-        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-        <span>Typically responds within 24 hours</span>
+        <motion.div className="w-2 h-2 rounded-full bg-green-500" {...pulse()} />
+        <span>{responseNote}</span>
       </div>
     </ContactCard>
   );

@@ -1,8 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { NAV_LINKS } from '../lib/constants';
 import { PROJECTS } from '../lib/data';
+import { BRAND } from '../lib/content';
 import { getNavLinkClass } from '../lib/utils';
+import { floatIn, pulse } from '../lib/animations';
 
 /**
  * Main navigation component with responsive design and dropdown
@@ -21,10 +24,14 @@ export default function Navbar() {
           <Link 
             to="/" 
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-            aria-label="HoneyBerries home"
+            aria-label={`${BRAND.name} home`}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
-            <span className="font-semibold tracking-tight">HoneyBerries</span>
+            <motion.span
+              className="w-2.5 h-2.5 rounded-full bg-emerald-500"
+              aria-hidden="true"
+              {...pulse()}
+            />
+            <span className="font-semibold tracking-tight">{BRAND.name}</span>
           </Link>
 
           {/* Desktop navigation */}
@@ -82,17 +89,22 @@ function ProjectsDropdown({ link }) {
       >
         {link.name}
       </NavLink>
-      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 mt-2 w-56 bg-white shadow-xl border border-gray-200 rounded-lg p-2">
+      <motion.div 
+        className="absolute left-0 mt-2 w-56 bg-white shadow-xl border border-gray-200 rounded-lg p-2"
+        initial={{ opacity: 0, y: -10, visibility: 'hidden' }}
+        whileHover={{ opacity: 1, y: 0, visibility: 'visible' }}
+        transition={{ duration: 0.2 }}
+      >
         {PROJECTS.map((project) => (
           <Link 
             key={project.id} 
             to={project.href || `/projects#${project.id}`} 
-            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-50"
           >
             {project.title}
           </Link>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -102,7 +114,11 @@ function ProjectsDropdown({ link }) {
  */
 function MobileMenu({ onClose }) {
   return (
-    <div id="mobile-menu" className="md:hidden pb-3 animate-floatIn">
+    <motion.div
+      id="mobile-menu"
+      className="md:hidden pb-3"
+      {...floatIn(0)}
+    >
       <nav className="flex flex-col gap-1 border-t border-gray-200 pt-2" role="navigation" aria-label="Mobile navigation">
         {NAV_LINKS.map((link) => (
           <div key={link.name}>
@@ -130,7 +146,7 @@ function MobileMenu({ onClose }) {
           </div>
         ))}
       </nav>
-    </div>
+    </motion.div>
   );
 }
 
@@ -139,18 +155,20 @@ function MobileMenu({ onClose }) {
  */
 function MenuIcon({ isOpen }) {
   return (
-    <svg 
+    <motion.svg 
       xmlns="http://www.w3.org/2000/svg" 
       viewBox="0 0 24 24" 
       fill="currentColor" 
-      className={`w-6 h-6 transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}
+      className="w-6 h-6"
       aria-hidden="true"
+      animate={{ rotate: isOpen ? 90 : 0 }}
+      transition={{ duration: 0.2 }}
     >
       {isOpen ? (
         <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 11-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
       ) : (
         <path fillRule="evenodd" d="M3.75 6.75a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75zm0 4.5a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75zm0 4.5a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75z" clipRule="evenodd" />
       )}
-    </svg>
+    </motion.svg>
   );
 }

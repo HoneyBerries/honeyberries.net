@@ -1,7 +1,11 @@
 import { EmailCard, DiscordCard, CallToAction } from '../components/contact';
 import { GradientBackdrop } from '../components/backgrounds';
 import { CONTACT_INFO, BACKGROUND_LAYERS } from '../lib/constants';
+import { CONTACT_CONTENT } from '../lib/content';
+import { StatsGrid } from '../components/ui';
 import SEO from '../components/SEO';
+import { motion } from 'framer-motion';
+import { floatIn, pulse } from '../lib/animations';
 
 /**
  * Contact page component
@@ -24,6 +28,7 @@ export default function Contact() {
         <CallToAction
           email={CONTACT_INFO.email}
           discordInviteUrl={CONTACT_INFO.discordInviteUrl}
+          copy={CONTACT_CONTENT.cta}
         />
       </main>
     </div>
@@ -34,19 +39,23 @@ export default function Contact() {
  * Enhanced contact page header
  */
 function ContactHeader() {
+  const [beforeTouch, afterTouch] = CONTACT_CONTENT.title.split('Touch');
+
   return (
-    <div className="text-center mb-16 animate-floatIn">
+    <motion.div className="text-center mb-16" {...floatIn(0)}>
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200 mb-6">
-        <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-        <span className="text-sm font-medium text-blue-700">Let's Connect</span>
+        <motion.span className="w-2 h-2 rounded-full bg-blue-500" {...pulse()} />
+        <span className="text-sm font-medium text-blue-700">{CONTACT_CONTENT.badgeLabel}</span>
       </div>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Get In <span className="accent-text">Touch</span>
+        {beforeTouch || CONTACT_CONTENT.title}
+        {afterTouch ? <span className="accent-text">Touch</span> : null}
+        {afterTouch}
       </h1>
       <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
-        If you want to reach out to know more about my work, have an open PR, or want to talk about pricing for a service, email or join my Discord server!
+        {CONTACT_CONTENT.description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -56,15 +65,16 @@ function ContactHeader() {
 function ContactCards() {
   return (
     <div className="grid md:grid-cols-2 gap-6 mb-16">
-      <div className="animate-floatIn" style={{ animationDelay: '0.1s' }}>
-        <EmailCard email={CONTACT_INFO.email} />
-      </div>
-      <div className="animate-floatIn" style={{ animationDelay: '0.2s' }}>
+      <motion.div {...floatIn(0.1)}>
+        <EmailCard email={CONTACT_INFO.email} copy={CONTACT_CONTENT.emailCard} />
+      </motion.div>
+      <motion.div {...floatIn(0.2)}>
         <DiscordCard
           discordUsername={CONTACT_INFO.discordUsername}
           discordInviteUrl={CONTACT_INFO.discordInviteUrl}
+          copy={CONTACT_CONTENT.discordCard}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -73,35 +83,15 @@ function ContactCards() {
  * Contact stats/info section
  */
 function ContactStats() {
-  const stats = [
-    { label: 'Response Time', value: '< 24h', icon: '⚡', color: 'text-yellow-600' },
-    { label: 'Time Zone', value: 'PST/PDT', icon: '🌍', color: 'text-blue-600' },
-    { label: 'Preferred Method', value: 'Discord', icon: '💬', color: 'text-green-600' },
-    { label: 'Available For', value: 'Projects', icon: '💼', color: 'text-purple-600' }
-  ];
-
   return (
-    <div className="mb-16 animate-floatIn" style={{ animationDelay: '0.3s' }}>
+    <motion.div className="mb-16" {...floatIn(0.3)}>
       <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Quick Info</h2>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat, index) => (
-          <div 
-            key={stat.label}
-            className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-            style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-          >
-            <div className={`text-2xl mb-2 ${stat.color}`} aria-hidden="true">
-              {stat.icon}
-            </div>
-            <div className="text-lg font-semibold text-gray-900 mb-1">
-              {stat.value}
-            </div>
-            <div className="text-sm text-gray-600">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      <StatsGrid
+        items={CONTACT_CONTENT.stats}
+        animationStart={0.4}
+        animationStep={0.1}
+        gridClassName="grid grid-cols-2 lg:grid-cols-4 gap-4"
+      />
+    </motion.div>
   );
 }

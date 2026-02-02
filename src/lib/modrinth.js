@@ -1,30 +1,38 @@
 /**
- * Minimal helpers for Modrinth API operations used by the site.
- *
- * We intentionally keep these small and robust: they accept either a project
- * id (uuid) or slug and return a direct file URL for the latest version.
+ * Fetches the direct file URL of the latest Modrinth version for a given project.
+ * Accepts either a projectId (UUID) or slug.
  */
-
 export async function fetchLatestFileUrl({ projectId, slug } = {}) {
-  if (!projectId && !slug) throw new Error('projectId or slug required');
+  if (!projectId && !slug) throw new Error('Either projectId or slug must be provided');
 
   const identifier = projectId || slug;
   const url = `https://api.modrinth.com/v2/project/${encodeURIComponent(identifier)}/version`;
 
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Modrinth versions fetch failed: ${res.status}`);
+  let versions;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    versions = await res.json();
+  } catch (err) {
+    throw new Error(`Failed to fetch Modrinth versions: ${err.message}`);
+  }
 
-  const versions = await res.json();
-  if (!Array.isArray(versions) || versions.length === 0) throw new Error('No versions found');
+  if (!Array.isArray(versions) || versions.length === 0) {
+    throw new Error('No versions found for this project');
+  }
 
-  // Choose latest version by published date (descending)
-  versions.sort((a, b) => new Date(b.date_published || b.date_created || 0) - new Date(a.date_published || a.date_created || 0));
-  const latest = versions[0];
-  if (!latest.files || latest.files.length === 0) throw new Error('No files available for latest version');
+  // Get the latest version by the newest date (date_published first, fallback to date_created)
+  const latest = versions.reduce((latestSoFar, current) => {
+    const latestDate = new Date(latestSoFar.date_published || latestSoFar.date_created || 0);
+    const currentDate = new Date(current.date_published || current.date_created || 0);
+    return currentDate > latestDate ? current : latestSoFar;
+  });
 
-  // Prefer the 'primary' file flag when present
-  const primary = latest.files.find(f => f.primary) || latest.files[0];
-  if (!primary.url) throw new Error('File URL not present');
+  if (!latest.files?.length) throw new Error('No files available for the latest version');
 
-  return primary.url;
+  // Return primary file if exists, otherwise first
+  const file = latest.files.find(f => f.primary) || latest.files[0];
+  if (!file.url) throw new Error('File URL missing in latest version');
+
+  return file.url;
 }

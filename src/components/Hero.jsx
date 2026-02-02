@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 const homeBanner = '/assets/backgrounds/home-banner.webp';
 import { SKILLS } from '../lib/constants';
+import { HERO_CONTENT } from '../lib/content';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
+import { floatIn } from '../lib/animations';
 
 /**
  * Hero section component for the homepage
@@ -12,34 +15,39 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 py-20 sm:py-28">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="animate-floatIn">
+          <motion.div {...floatIn(0)}>
             <p className="text-sm font-semibold tracking-wider text-emerald-600 uppercase">
-              Hello, I'm HoneyBerries
+              {HERO_CONTENT.eyebrow}
             </p>
             <h1 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="accent-text">Building LLMs</span> that <span className="accent-text">automate</span> tasks and <span className="accent-text">improve</span> productivity.
+              {HERO_CONTENT.headlineParts.map((part, idx) => (
+                <span key={`${part.text}-${idx}`} className={part.accent ? 'accent-text' : ''}>
+                  {part.text} {idx === HERO_CONTENT.headlineParts.length - 1 ? '' : ' '}
+                </span>
+              ))}
             </h1>
 
             <p className="mt-5 text-gray-600 max-w-xl">
-              Random person who likes building AI systems and tools that exponentially speed up <span className="accent-text">human productivity</span>.
+              {HERO_CONTENT.subhead.split('human productivity').map((chunk, index, arr) => (
+                <span key={chunk + index}>
+                  {chunk}
+                  {index < arr.length - 1 && <span className="accent-text">human productivity</span>}
+                </span>
+              ))}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button 
-                as={Link} 
-                to="/projects" 
-                variant="primary"
-              >
-                Explore Projects
-              </Button>
-              <Button 
-                as={Link} 
-                to="/contact" 
-                variant="secondary"
-              >
-                Get in touch
-              </Button>
+              {HERO_CONTENT.ctas.map((cta) => (
+                <Button
+                  key={cta.label}
+                  as={Link}
+                  to={cta.to}
+                  variant={cta.variant}
+                >
+                  {cta.label}
+                </Button>
+              ))}
             </div>
-          </div>
+          </motion.div>
           
           <HeroCard />
         </div>
@@ -63,9 +71,9 @@ function HeroCard() {
           />
         </div>
         <div className="mt-4">
-          <h3 className="font-semibold">What I enjoy doing</h3>
+          <h3 className="font-semibold">{HERO_CONTENT.cardTitle}</h3>
           <p className="mt-1 text-sm text-gray-600">
-            Creating AI's, particularly large language models, to automate repetitive tasks.
+            {HERO_CONTENT.cardDescription}
           </p>
           <ul className="mt-3 flex flex-wrap gap-2" role="list" aria-label="Technologies and skills">
             {SKILLS.map(skill => (

@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * GemCard — small presentational component used on the Minecraft Server page
@@ -65,9 +66,16 @@ const GemCard = memo(function GemCard({ gem }) {
 	const scheme = colorSchemes[color] || colorSchemes.air;
 
 	return (
-		<article className={`h-full rounded-xl border ${scheme.border} bg-gradient-to-br ${scheme.bg} backdrop-blur-sm p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-floatIn flex flex-col`}>
+		<motion.article
+			className={`h-full rounded-xl border ${scheme.border} bg-linear-to-br ${scheme.bg} backdrop-blur-sm p-5 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col`}
+			initial={{ opacity: 0, y: 20, scale: 0.95 }}
+			whileInView={{ opacity: 1, y: 0, scale: 1 }}
+			viewport={{ once: true, margin: "-50px" }}
+			transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+			whileHover={{ y: -8, transition: { duration: 0.2 } }}
+		>
 			<div className="flex items-start gap-4 flex-1">
-				<div className="flex-shrink-0">
+				<div className="shrink-0">
 					<div className={`w-16 h-16 rounded-xl ${scheme.iconBg} flex items-center justify-center overflow-hidden border border-white/50 shadow-md`}>
 						{image ? (
 							<img 
@@ -91,7 +99,7 @@ const GemCard = memo(function GemCard({ gem }) {
 							<span>{name}</span>
 						</h3>
 						<div className="flex items-center gap-2">
-							<span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${scheme.elementBg} ${scheme.elementText} border border-white/50 shadow-sm flex-shrink-0`}>
+							<span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${scheme.elementBg} ${scheme.elementText} border border-white/50 shadow-sm shrink-0`}>
 								{element}
 							</span>
 							<button
@@ -120,7 +128,7 @@ const GemCard = memo(function GemCard({ gem }) {
 					</div>
 				</div>
 			</div>
-		</article>
+		</motion.article>
 	);
 });
 

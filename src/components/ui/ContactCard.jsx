@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 /**
  * Base contact card component with shared styling and structure
  * @param {Object} props - Component properties
@@ -21,26 +23,50 @@ export default function ContactCard({
   children
 }) {
   return (
-    <div className="group relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+    <motion.div 
+      className="relative bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-lg overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      <motion.div 
+        className={`absolute inset-0 bg-linear-to-br ${gradientFrom} ${gradientTo}`}
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      />
       
       {/* Floating elements */}
-      <div className={`absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br ${gradientFrom.replace('/50', '/20')} ${gradientTo.replace('/30', '/10')} rounded-full blur-xl group-hover:scale-110 transition-transform duration-500`}></div>
-      <div className={`absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-tr ${gradientFrom.replace('from-', 'from-purple-').replace('/50', '/15')} ${gradientTo.replace('/30', '/10')} rounded-full blur-2xl group-hover:scale-105 transition-transform duration-700`}></div>
+      <motion.div 
+        className={`absolute -top-4 -right-4 w-24 h-24 bg-linear-to-br ${gradientFrom.replace('/50', '/20')} ${gradientTo.replace('/30', '/10')} rounded-full blur-xl`}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.5 }}
+      />
+      <motion.div 
+        className={`absolute -bottom-6 -left-6 w-32 h-32 bg-linear-to-tr ${gradientFrom.replace('from-', 'from-purple-').replace('/50', '/15')} ${gradientTo.replace('/30', '/10')} rounded-full blur-2xl`}
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.7 }}
+      />
 
       <div className="relative z-10">
         {/* Header with icon */}
         <div className="flex items-center gap-4 mb-6">
-          <div className={`flex-shrink-0 w-14 h-14 bg-gradient-to-br ${gradientFrom.replace('/50', '')} ${gradientTo.replace('/30', '')} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+          <motion.div 
+            className={`shrink-0 w-14 h-14 bg-linear-to-br ${gradientFrom.replace('/50', '')} ${gradientTo.replace('/30', '')} rounded-xl flex items-center justify-center shadow-lg`}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.3 }}
+          >
             <img
               src={iconSrc}
               alt={iconAlt}
               className="w-7 h-7"
             />
-          </div>
+          </motion.div>
           <div>
-            <h3 className={`text-xl font-bold text-gray-900 ${hoverColor} transition-colors duration-300`}>
+            <h3 className={`text-xl font-bold text-gray-900 ${hoverColor}`}>
               {title}
             </h3>
             <p className="text-gray-600">{subtitle}</p>
@@ -50,6 +76,6 @@ export default function ContactCard({
         {/* Card content */}
         {children}
       </div>
-    </div>
+    </motion.div>
   );
 }

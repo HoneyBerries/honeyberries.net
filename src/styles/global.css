@@ -35,30 +35,6 @@ body {
   box-shadow: 0 10px 30px rgba(59,130,246,0.2), 0 6px 12px rgba(16,185,129,0.15);
 }
 
-/* Keyframes for entrance animations */
-@keyframes floatIn {
-  0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-  60% { opacity: 1; transform: translateY(-4px) scale(1.01); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.animate-floatIn {
-  animation: floatIn 700ms cubic-bezier(.22,1,.36,1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-floatIn { animation: none !important; opacity: 1 !important; transform: none !important; }
-}
-
-@keyframes bounceX {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
-}
-
-.animate-bounceX {
-  animation: bounceX 1.2s ease-in-out infinite;
-}
-
 /* Decorative colorful blobs used for subtle background accents */
 .blob {
   position: absolute;
@@ -180,7 +156,7 @@ body {
   }
 
   .feature-bullet {
-    @apply w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0;
+    @apply w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0;
   }
 
   /* Numbered step item */
@@ -189,12 +165,12 @@ body {
   }
 
   .step-number {
-    @apply w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5 flex-shrink-0;
+    @apply w-6 h-6 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5 shrink-0;
   }
 
   /* Action buttons with modern styling */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl;
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl;
   }
 
   .btn-secondary {

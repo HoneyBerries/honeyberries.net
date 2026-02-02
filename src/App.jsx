@@ -1,15 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import { MainLayout } from './layouts/MainLayout';
 import ErrorBoundary from './components/ErrorBoundary';
+import { spin } from './lib/animations';
 
 // Lazy load page components for better performance
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
-const MinecraftServer = lazy(() => import('./pages/projects/MinecraftServer'));
-const MinecraftPlugins = lazy(() => import('./pages/projects/MinecraftPlugins'));
+const MinecraftServer = lazy(() => import('./pages/projects/GemSMP'));
+const MinecraftModsPlugins = lazy(() => import('./pages/projects/MinecraftModsAndPlugins'));
 const Modcord = lazy(() => import('./pages/projects/Modcord'));
 const ModcordPrivacy = lazy(() => import('./pages/projects/modcord/PrivacyPolicy'));
 const ModcordTerms = lazy(() => import('./pages/projects/modcord/TermsOfService'));
@@ -22,7 +24,10 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 function LoadingFallback() {
   return (
     <div className="flex items-center justify-center min-h-[50vh]">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <motion.div
+        className="rounded-full h-8 w-8 border-b-2 border-blue-600"
+        {...spin(0.8)}
+      />
     </div>
   );
 }
@@ -41,8 +46,9 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/projects/minecraft-plugins" element={<MinecraftPlugins />} />
-                <Route path="/projects/minecraft-server" element={<MinecraftServer />} />
+                <Route path="/projects/minecraft-mods-plugins" element={<MinecraftModsPlugins />} />
+                <Route path="/projects/minecraft-plugins" element={<Navigate to="/projects/minecraft-mods-plugins" replace />} />
+                <Route path="/projects/gem-smp" element={<MinecraftServer />} />
                 <Route path="/projects/modcord" element={<Modcord />} />
                 <Route path="/projects/modcord/privacy-policy" element={<ModcordPrivacy />} />
                 <Route path="/projects/modcord/terms-of-service" element={<ModcordTerms />} />

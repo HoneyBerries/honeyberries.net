@@ -1,9 +1,9 @@
 import { ProjectCard } from '../components/cards';
 import { Button } from '../components/ui';
 import { PROJECTS } from '../lib/data';
+import { ICON_PATHS } from '../lib/constants';
+import { PROJECTS_COPY } from '../lib/content';
 import SEO from '../components/SEO';
-
-const GITHUB_ICON = '/assets/icons/github-icon.svg';
 
 /**
  * Projects page component
@@ -55,12 +55,12 @@ function ProjectsHeader() {
         >
           <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
             <img
-              src={GITHUB_ICON}
+              src={ICON_PATHS.github}
               alt="GitHub"
               className="w-3 h-3 opacity-80 group-hover:opacity-100 transition-opacity duration-150"
             />
           </span>
-          <span className="ml-1">View GitHub</span>
+          <span className="ml-1">{PROJECTS_COPY.githubCtaLabel}</span>
         </Button>
       </div>
     </div>
@@ -77,7 +77,7 @@ function ProjectsGrid() {
         <ProjectCard key={project.id} {...project} />
       ))}
 
-      {/* Plugins are now shown on their own page (/projects/minecraft-plugins) */}
+      {/* Mods and plugins are now shown on their own page (/projects/minecraft-mods-plugins) */}
     </div>
   );
 }

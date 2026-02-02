@@ -1,43 +1,7 @@
 import { cn } from '../../lib/utils';
 import { useMemo } from 'react';
-
-/**
- * Generate a consistent gradient based on the current location
- * Uses page-based seeding for consistent colors across all users
- * Includes three color themes: green-blue, red-purple-orange, and aqua-blue-purple
- */
-function generateGradientColors(pathname) {
-  // Hash the pathname to get a consistent number
-  let hash = 0;
-  for (let i = 0; i < pathname.length; i++) {
-    const char = pathname.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash; // Convert to 32-bit integer
-  }
-  
-  const gradients = [
-    // Green-Blue theme
-    { from: '#10b981', to: '#06b6d4' },      // emerald to cyan
-    { from: '#22c55e', to: '#0891b2' },      // green to cyan-dark
-    { from: '#16a34a', to: '#0284c7' },      // green-dark to blue
-    { from: '#059669', to: '#3b82f6' },      // teal to blue
-    
-    // Red-Purple-Orange theme
-    { from: '#dc2626', to: '#9333ea' },      // red to purple
-    { from: '#ef4444', to: '#a855f7' },      // red-light to purple-light
-    { from: '#f97316', to: '#c084fc' },      // orange to purple-lighter
-    { from: '#ea580c', to: '#7c3aed' },      // orange-dark to violet
-    
-    // Aqua-Blue-Purple theme
-    { from: '#06b6d4', to: '#3b82f6' },      // aqua to blue
-    { from: '#0891b2', to: '#6366f1' },      // cyan-dark to indigo
-    { from: '#0284c7', to: '#8b5cf6' },      // blue to purple
-    { from: '#00d9ff', to: '#a855f7' },      // bright aqua to purple
-  ];
-  
-  const index = Math.abs(hash) % gradients.length;
-  return gradients[index];
-}
+import { motion } from 'framer-motion';
+import { gradientStyle, gradientStyleFromSeed } from '../../lib/styles';
 
 /**
  * Reusable Button component with multiple variants
@@ -62,12 +26,10 @@ export default function Button({
   const ButtonComponent = as;
   
   // Get location-based gradient for primary buttons
-  const gradientColors = useMemo(() => {
+  const primaryGradientStyle = useMemo(() => {
     const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
-    return generateGradientColors(pathname);
+    return gradientStyleFromSeed(pathname);
   }, []);
-  
-  const baseClasses = 'inline-flex items-center gap-2 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantClasses = {
     primary: 'text-white shadow-lg transform hover:scale-105 hover:shadow-xl focus:ring-blue-500 disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed',
@@ -89,14 +51,18 @@ export default function Button({
     lg: 'px-6 py-4 text-base'
   };
   
-  const primaryStyle = (variant === 'primary' || variant === 'success') ? {
-    background: variant === 'success' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : `linear-gradient(135deg, ${gradientColors.from} 0%, ${gradientColors.to} 100%)`,
-  } : undefined;
+  const primaryStyle = (() => {
+    if (variant === 'primary') return primaryGradientStyle;
+    if (variant === 'success') return gradientStyle('emeraldDeep');
+    return undefined;
+  })();
+  
+  const MotionComponent = motion(ButtonComponent);
   
   return (
-    <ButtonComponent
+    <MotionComponent
       className={cn(
-        'inline-flex items-center gap-2 font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2',
+        'inline-flex items-center gap-2 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2',
         roundingClasses[variant],
         variantClasses[variant],
         sizeClasses[size],
@@ -104,9 +70,12 @@ export default function Button({
       )}
       style={primaryStyle}
       disabled={disabled}
+      whileHover={disabled ? {} : { scale: variant === 'primary' || variant === 'success' ? 1.05 : 1 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
+      transition={{ duration: 0.2 }}
       {...restProps}
     >
       {children}
-    </ButtonComponent>
+    </MotionComponent>
   );
 }

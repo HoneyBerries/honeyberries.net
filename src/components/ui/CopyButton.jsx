@@ -50,7 +50,7 @@ export default function CopyButton({
       onClick={handleClick}
       className={`btn-secondary ${
         copied
-          ? '!border-green-500 !text-green-600 !bg-green-50'
+          ? 'border-green-500! text-green-600! bg-green-50!'
           : ''
       } ${className}`}
       aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}

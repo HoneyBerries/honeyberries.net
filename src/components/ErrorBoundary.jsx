@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { gradientStyle } from '../lib/styles';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class ErrorBoundary extends Component {
             <button
               onClick={() => this.setState({ hasError: false, error: null })}
               className="btn-primary"
-              style={{background: 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)'}}
+              style={gradientStyle('purpleBlue')}
               aria-label="Try again"
             >
               Try Again

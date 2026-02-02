@@ -1,8 +1,8 @@
 // Data-only exports for sitemap generation. No asset imports here so Node can load this file during build.
 
 export const PROJECTS = [
-  { id: 'minecraft-plugins', href: '/projects/minecraft-plugins' },
-  { id: 'minecraft-server', href: '/projects/minecraft-server' },
+  { id: 'minecraft-mods-plugins', href: '/projects/minecraft-mods-plugins' },
+  { id: 'gem-smp', href: '/projects/gem-smp' },
   { id: 'modcord', href: '/projects/modcord' }
 ];
 

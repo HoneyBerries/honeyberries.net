@@ -1,5 +1,7 @@
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { floatIn, pulse } from '../../../lib/animations';
 
 export default function TermsOfService() {
   return (
@@ -13,15 +15,23 @@ export default function TermsOfService() {
       
       <div className="relative z-10">
         <article className="max-w-4xl mx-auto px-4 py-12">
-          <header className="text-center mb-12">
+          <motion.header 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
               <span className="accent-text">Modcord</span> Terms of Service
             </h1>
             <p className="text-lg text-gray-600 mb-2">Clear guidelines for using our service</p>
             <p className="text-sm text-gray-500"> Last updated: October 29, 2025</p>
-          </header>
+          </motion.header>
 
-          <div className="card-glass p-8 mb-8 bg-gradient-to-br from-purple-50/50 to-pink-50/50">
+          <motion.div 
+            className="card-glass p-8 mb-8 bg-linear-to-br from-purple-50/50 to-pink-50/50"
+            {...floatIn(0.3)}
+          >
             <div className="prose prose-slate prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Service Agreement</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -113,7 +123,7 @@ export default function TermsOfService() {
                 </a>
               </p>
             </div>
-          </div>
+          </motion.div>
         </article>
       </div>
     </div>
@@ -126,8 +136,14 @@ export default function TermsOfService() {
 function BackgroundDecorations() {
   return (
     <div className="fixed inset-0 pointer-events-none">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-gradient-to-r from-purple-200/20 to-pink-200/15 blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-gradient-to-l from-blue-200/20 to-purple-200/15 blur-3xl"></div>
+      <motion.div 
+        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-linear-to-r from-purple-200/20 to-pink-200/15 blur-3xl"
+        {...pulse(0)}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-linear-to-l from-blue-200/20 to-purple-200/15 blur-3xl"
+        {...pulse(1)}
+      />
     </div>
   );
 }

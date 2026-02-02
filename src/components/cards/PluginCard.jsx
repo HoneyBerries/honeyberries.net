@@ -29,7 +29,7 @@ export default function PluginCard({ project }) {
       <div className="p-1">
         <div className="bg-white/95 border border-gray-100 rounded-md">
           <div className="flex gap-4 p-4">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <div style={{ backgroundImage: iconGradient }} className="w-20 h-20 rounded-lg overflow-hidden flex items-center justify-center p-1">
                 <div className="w-full h-full rounded-md flex items-center justify-center overflow-hidden bg-white/0">
                   {icon ? (
@@ -44,7 +44,7 @@ export default function PluginCard({ project }) {
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <h4 className="text-lg font-semibold text-gray-900">{project.title}</h4>
-                <div className="text-right text-sm text-gray-500 flex-shrink-0">
+                <div className="text-right text-sm text-gray-500 shrink-0">
                   <div className="flex flex-col items-end space-y-1">
                     {downloads != null && <span className="text-gray-700 font-medium">{formatNumber(downloads)} downloads</span>}
                     {followers != null && <span className="text-xs text-gray-400">{formatNumber(followers)} followers</span>}

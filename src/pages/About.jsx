@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Card } from '../components/ui';
+import { motion } from 'framer-motion';
+import { Card, StatsGrid } from '../components/ui';
 import { GradientBackdrop } from '../components/backgrounds';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 import { BACKGROUND_LAYERS } from '../lib/constants';
+import { ABOUT_CONTENT } from '../lib/content';
+import { gradientStyle } from '../lib/styles';
 import SEO from '../components/SEO';
+import { floatIn, pulse } from '../lib/animations';
 
 /**
  * Enhanced About page component with modern design
@@ -35,23 +39,22 @@ export default function About() {
  */
 function AboutHeader() {
   return (
-    <div className="text-center mb-16 animate-floatIn">
+    <motion.div className="text-center mb-16" {...floatIn(0)}>
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 mb-6">
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span className="text-sm font-medium text-emerald-700">Developer & Creator</span>
+        <motion.span className="w-2 h-2 rounded-full bg-emerald-500" {...pulse()} />
+        <span className="text-sm font-medium text-emerald-700">{ABOUT_CONTENT.badgeLabel}</span>
       </div>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-        Hi, I'm <span className="accent-text">HoneyBerries</span>
+        {ABOUT_CONTENT.introTitle.replace("HoneyBerries", '')}
+        <span className="accent-text">HoneyBerries</span>
       </h1>
       <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
-        I'm a passionate developer who loves building sleek, performant experiences that make a difference. 
-        I work across various projects using modern programming languages and technologies.
+        {ABOUT_CONTENT.introLead}
       </p>
       <p className="text-gray-500 max-w-2xl mx-auto">
-        From Minecraft plugins that enhance gameplay for thousands of players, to AI-powered Discord bots 
-        that help communities thrive, I enjoy creating tools that bring people together and solve real problems.
+        {ABOUT_CONTENT.introBody}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -59,35 +62,14 @@ function AboutHeader() {
  * Quick stats about experience and projects
  */
 function AboutStats() {
-  const stats = [
-    { label: 'Years Coding', value: '5+', icon: '💻', color: 'text-blue-600' },
-    { label: 'Projects Built', value: '8+', icon: '🚀', color: 'text-emerald-600' },
-    { label: 'Languages Used', value: 'Only 2', icon: '⚡', color: 'text-purple-600' },
-    { label: 'Communities Helped', value: 'idk I didn\'t track', icon: '🌟', color: 'text-orange-600' }
-  ];
-
   return (
-    <div className="mb-16 animate-floatIn" style={{ animationDelay: '0.1s' }}>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat, index) => (
-          <div 
-            key={stat.label}
-            className="card-lift p-6 text-center animate-floatIn"
-            style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-          >
-            <div className={`text-2xl mb-2 ${stat.color}`} aria-hidden="true">
-              {stat.icon}
-            </div>
-            <div className="text-2xl font-bold text-gray-900 mb-1">
-              {stat.value}
-            </div>
-            <div className="text-sm text-gray-600">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <motion.div className="mb-16" {...floatIn(0.2)}>
+      <StatsGrid
+        items={ABOUT_CONTENT.stats}
+        animationStart={0.2}
+        animationStep={0.1}
+      />
+    </motion.div>
   );
 }
 
@@ -95,35 +77,17 @@ function AboutStats() {
  * Skills and technologies section
  */
 function SkillsSection() {
-  const skillCategories = [
-    {
-      title: 'Languages',
-      skills: ['Python', 'Java'],
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      title: 'Frameworks & Tools',
-      skills: ['PyTorch', 'TensorFlow', 'Hugging Face', 'React', 'Node.js', 'GitHub', 'Gradle', 'Maven'],
-      color: 'from-emerald-500 to-teal-500'
-    },
-    {
-      title: 'Specialties',
-      skills: ["AI Development", "General Programming", "Minecraft Plugins", "Discord Bots", "Math"],
-      color: 'from-purple-500 to-indigo-500'
-    }
-  ];
-
   return (
-    <div className="mb-16 animate-floatIn" style={{ animationDelay: '0.2s' }}>
+    <motion.div className="mb-16" {...floatIn(0.2)}>
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Skills & Technologies</h2>
       <div className="grid md:grid-cols-3 gap-6">
-        {skillCategories.map((category, index) => (
-          <div 
+        {ABOUT_CONTENT.skillCategories.map((category, index) => (
+          <motion.div 
             key={category.title}
-            className="card-lift p-6 animate-floatIn"
-            style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+            className="card-lift p-6"
+            {...floatIn(0.3 + index * 0.1)}
           >
-            <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
+            <div className={`w-12 h-12 bg-linear-to-r ${category.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
               <span className="text-white font-bold text-lg">
                 {category.title.charAt(0)}
               </span>
@@ -139,10 +103,10 @@ function SkillsSection() {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -151,11 +115,11 @@ function SkillsSection() {
  */
 function Timeline() {
   return (
-    <div className="mb-16 animate-floatIn" style={{ animationDelay: '0.3s' }}>
+    <motion.div className="mb-16" {...floatIn(0.3)}>
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">My Journey</h2>
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-blue-500"></div>
+        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-linear-to-b from-emerald-500 to-blue-500"></div>
         
         <div className="space-y-8">
           {TIMELINE.map((item, index) => (
@@ -163,7 +127,7 @@ function Timeline() {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -184,12 +148,12 @@ function TimelineItem({ item, index }) {
   ) : item.desc;
 
   return (
-    <div 
-      className="relative card-lift p-6 ml-16 animate-floatIn"
-      style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+    <motion.div 
+      className="relative card-lift p-6 ml-16"
+      {...floatIn(0.4 + index * 0.1)}
     >
       {/* Timeline dot */}
-      <div className="absolute -left-20 top-6 w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full border-4 border-white shadow-lg"></div>
+      <div className="absolute -left-20 top-6 w-4 h-4 bg-linear-to-r from-emerald-500 to-blue-500 rounded-full border-4 border-white shadow-lg"></div>
       
       <div className="flex items-start justify-between gap-4 mb-3">
         <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
@@ -198,7 +162,7 @@ function TimelineItem({ item, index }) {
         </span>
       </div>
       <p className="text-gray-600 leading-relaxed">{description}</p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -207,41 +171,43 @@ function TimelineItem({ item, index }) {
  */
 function CurrentProjects() {
   return (
-    <div className="animate-floatIn" style={{ animationDelay: '0.4s' }}>
+    <motion.div {...floatIn(0.4)}>
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What I'm Working On</h2>
       <div className="grid sm:grid-cols-2 gap-6">
         {CURRENT_PROJECTS.map((project, index) => (
-          <Card 
-            key={project} 
-            className="card-lift p-6 group animate-floatIn"
-            style={{ animationDelay: `${0.5 + index * 0.1}s` }}
-          >
-            <div className="flex items-start gap-3">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 group-hover:scale-125 transition-transform duration-300"></div>
-              <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
-                {project}
-              </p>
-            </div>
-          </Card>
+          <motion.div key={project} {...floatIn(0.5 + index * 0.1)}>
+            <Card className="card-lift p-6">
+              <div className="flex items-start gap-3">
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-emerald-500 mt-2"
+                  whileHover={{ scale: 1.25 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <p className="text-gray-700 leading-relaxed">
+                  {project}
+                </p>
+              </div>
+            </Card>
+          </motion.div>
         ))}
       </div>
       
       {/* Call to action */}
       <div className="mt-12 text-center">
         <p className="text-gray-600 mb-6">
-          Want to know more about my work or discuss about one of my projects?
+          {ABOUT_CONTENT.cta.message}
         </p>
         <Link 
-          to="/contact"
+          to={ABOUT_CONTENT.cta.buttonTo}
           className="btn-primary"
-          style={{background: 'linear-gradient(135deg, #dc2626 0%, #9333ea 100%)'}}
+          style={gradientStyle(ABOUT_CONTENT.cta.gradientKey)}
         >
-          <span>Get In Touch</span>
+          <span>{ABOUT_CONTENT.cta.buttonLabel}</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,18 +1,27 @@
-const discordIcon = '/assets/icons/discord-icon.svg';
 import { useCopyToClipboard } from '../../hooks';
 import { ContactCard, CopyButton } from '../ui';
+import { ICON_PATHS } from '../../lib/constants';
+import { gradientStyle } from '../../lib/styles';
+import { motion } from 'framer-motion';
+import { pulse } from '../../lib/animations';
 
 /**
  * Enhanced Discord contact card with copy functionality and improved design
  */
-export default function DiscordCard({ discordUsername, discordInviteUrl }) {
-  const [copied, copy] = useCopyToClipboard();
+export default function DiscordCard({ discordUsername, discordInviteUrl, copy: copyContent }) {
+  const [copied, copyToClipboard] = useCopyToClipboard();
+
+  const title = copyContent?.title || 'Discord';
+  const subtitle = copyContent?.subtitle || 'Perfered communication method for quick chats';
+  const description = copyContent?.description || 'Join my Discord community for quick chats, project updates, and collaboration opportunities!';
+  const inviteLabel = copyContent?.inviteLabel || 'Join Discord Server';
+  const statusNote = copyContent?.statusNote || 'Usually online during PST business hours';
 
   return (
     <ContactCard
-      title="Discord"
-      subtitle="Perfered communication method for quick chats"
-      iconSrc={discordIcon}
+      title={title}
+      subtitle={subtitle}
+      iconSrc={ICON_PATHS.discord}
       iconAlt="Discord"
       gradientFrom="from-indigo-50/50"
       gradientTo="to-purple-50/30"
@@ -28,7 +37,7 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
           <CopyButton
             textToCopy={discordUsername}
             copied={copied}
-            onCopy={copy}
+            onCopy={copyToClipboard}
             variant="inline"
           />
         </div>
@@ -37,18 +46,18 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
       {/* Server invitation */}
       <div className="mb-6">
         <p className="text-sm text-gray-600 mb-4">
-          Join my Discord community for quick chats, project updates, and collaboration opportunities!
+          {description}
         </p>
         <a
           href={discordInviteUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary inline-flex items-center justify-center gap-2 w-full"
-          style={{background: 'linear-gradient(135deg, #10b981 0%, #0891b2 100%)'}}
+          style={gradientStyle('emeraldTeal')}
           aria-label="Join Discord server"
         >
-          <img src={discordIcon} alt="Discord" className="w-5 h-5" />
-          <span>Join Discord Server</span>
+          <img src={ICON_PATHS.discord} alt="Discord" className="w-5 h-5" />
+          <span>{inviteLabel}</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
@@ -57,8 +66,8 @@ export default function DiscordCard({ discordUsername, discordInviteUrl }) {
 
       {/* Status indicator */}
       <div className="flex items-center gap-2 text-sm text-gray-500">
-        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-        <span>Usually online during PST business hours</span>
+        <motion.div className="w-2 h-2 rounded-full bg-green-500" {...pulse()} />
+        <span>{statusNote}</span>
       </div>
     </ContactCard>
   );

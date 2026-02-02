@@ -1,7 +1,7 @@
 // Use public /assets paths for images so they remain stable across builds (no hashing)
 const BACKGROUNDS = {
-  minecraftPlugin: '/assets/backgrounds/minecraft-plugin-background.webp',
-  minecraftServer: '/assets/backgrounds/minecraft-server-background.webp',
+  minecraftPlugin: '/assets/backgrounds/minecraft-page-background.webp',
+  minecraftServer: '/assets/backgrounds/gem-smp-background.webp',
   modcord: '/assets/backgrounds/modcord-background.webp'
 };
 
@@ -21,17 +21,17 @@ const GEM_ICONS = {
  */
 export const PROJECTS = [
   {
-    id: 'minecraft-plugins',
-    title: 'Minecraft Plugins',
-    description: 'Some high quality plugins for Paper/Spigot, including quality-of-life improvements, admin tools, and a few wild experiments.',
-    href: '/projects/minecraft-plugins',
+    id: 'minecraft-mods-plugins',
+    title: 'Minecraft Mods & Plugins',
+    description: 'A split view of my Modrinth releases, with dedicated sections for mods and for server plugins.',
+    href: '/projects/minecraft-mods-plugins',
     imageUrl: BACKGROUNDS.minecraftPlugin
   },
   {
-    id: 'minecraft-server',
-    title: 'Gem SMP Minecraft Server',
+    id: 'gem-smp',
+    title: 'Gem SMP',
     description: 'Custom gems, new PvP mechanics, and an improved gameplay experience.',
-    href: '/projects/minecraft-server',
+    href: '/projects/gem-smp',
     imageUrl: BACKGROUNDS.minecraftServer
   },
   {
@@ -39,7 +39,7 @@ export const PROJECTS = [
     title: 'ModCord',
     description: 'Autonomous chat and image moderation powered by LLMs, allowing for seamless community management on Discord.',
     href: '/projects/modcord',
-    imageUrl: '/assets/backgrounds/modcord-background.webp'
+    imageUrl: BACKGROUNDS.modcord
   }
 ];
 

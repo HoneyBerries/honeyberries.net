@@ -1,5 +1,7 @@
 import { memo } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
+import { pulse } from '../../lib/animations';
 
 /**
  * Renders a fixed, pointer-event-free backdrop made up of positioned gradient layers.
@@ -15,9 +17,24 @@ function GradientBackdropComponent({ layers = [], className = '' }) {
       className={cn('fixed inset-0 pointer-events-none overflow-hidden', className)}
       aria-hidden="true"
     >
-      {layers.map((layerClass, index) => (
-        <div key={index} className={layerClass} />
-      ))}
+      {layers.map((layer, index) => {
+        const { className: layerClass = '', animation, delay = 0 } =
+          typeof layer === 'string' ? { className: layer } : layer || {};
+
+        if (!animation) {
+          return <div key={index} className={layerClass} />;
+        }
+
+        const motionProps = animation === 'pulse' ? pulse(delay) : {};
+
+        return (
+          <motion.div
+            key={index}
+            className={layerClass}
+            {...motionProps}
+          />
+        );
+      })}
     </div>
   );
 }
