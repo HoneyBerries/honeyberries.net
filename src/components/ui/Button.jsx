@@ -6,7 +6,7 @@ import { gradientStyle, gradientStyleFromSeed } from '../../lib/styles';
 /**
  * Reusable Button component with multiple variants
  * @param {Object} props - Button properties
- * @param {'primary'|'secondary'|'outline'|'success'} props.variant - Button style variant
+ * @param {'primary'|'outline'|'success'} props.variant - Button style variant
  * @param {'sm'|'md'|'lg'} props.size - Button size
  * @param {boolean} props.disabled - Whether button is disabled
  * @param {React.ElementType} props.as - Component to render as (default: 'button')
@@ -32,15 +32,15 @@ export default function Button({
   }, []);
   
   const variantClasses = {
-    primary: 'text-white shadow-lg transform hover:scale-105 hover:shadow-xl focus:ring-blue-500 disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed',
-    secondary: 'bg-white/80 backdrop-blur-sm text-gray-800 border border-gray-300 shadow-sm btn-secondary-glow focus:ring-gray-300 disabled:bg-gray-100 disabled:shadow-sm disabled:cursor-not-allowed',
-    outline: 'bg-white/80 backdrop-blur-sm text-gray-800 border border-gray-300 shadow-sm btn-secondary-glow focus:ring-gray-300 disabled:bg-gray-100 disabled:shadow-sm disabled:cursor-not-allowed',
-    success: 'text-white shadow-lg transform hover:scale-105 hover:shadow-xl focus:ring-green-500 disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed'
+    primary: 'text-white shadow-lg focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed',
+
+    outline: 'bg-white/80 backdrop-blur-sm text-gray-850 border border-gray-300 shadow-sm focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed',
+
+    success: 'text-white shadow-lg focus:ring-green-500 disabled:opacity-60 disabled:cursor-not-allowed'
   };
   
   const roundingClasses = {
     primary: 'rounded-xl',
-    secondary: 'rounded-lg',
     outline: 'rounded-lg',
     success: 'rounded-xl'
   };
@@ -70,9 +70,9 @@ export default function Button({
       )}
       style={primaryStyle}
       disabled={disabled}
-      whileHover={disabled ? {} : { scale: variant === 'primary' || variant === 'success' ? 1.05 : 1 }}
+      whileHover={disabled ? {} : { scale: variant === 'primary' || variant === 'outline' || variant === 'success' ? 1.1 : 1 }}
       whileTap={disabled ? {} : { scale: 0.95 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.3 }}
       {...restProps}
     >
       {children}

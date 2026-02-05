@@ -12,7 +12,7 @@ export default function Projects() {
   return (
     <>
       <SEO
-        title="Projects — HoneyBerries"
+        title="My Projects"
         description="A list of projects, Minecraft plugins, and tools built by HoneyBerries."
         ogImage="/assets/backgrounds/modcord-background.webp"
         pathname="/projects"
@@ -49,7 +49,7 @@ function ProjectsHeader() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View HoneyBerries on GitHub"
-          variant="secondary"
+          variant="outline"
           size="sm"
           className="whitespace-nowrap rounded-full px-3 py-2 group"
         >

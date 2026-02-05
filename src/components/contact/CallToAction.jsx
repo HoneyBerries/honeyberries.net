@@ -1,6 +1,7 @@
 import { ICON_PATHS } from '../../lib/constants';
 import { gradientStyle } from '../../lib/styles';
 import { motion } from 'framer-motion';
+import { Button } from '../ui';
 import { floatIn, pulse } from '../../lib/animations';
 
 /**
@@ -8,7 +9,7 @@ import { floatIn, pulse } from '../../lib/animations';
  */
 export default function CallToAction({ email, discordInviteUrl, copy }) {
   const heading = copy?.heading || 'Have a question about my stuff?';
-  const description = copy?.description || "If you have any questions about my projects or work, feel free to ask. I'm happy to answer questions about features, pricing, or anything else. For like general information about a project, you can join my Discord server and ask me.";
+  const description = copy?.description || "If you have any questions about my projects or work, feel free to ask. I'm also happy to answer questions about features, pricing, or anything else. Just join my Discord server and ask me.";
   const highlights = copy?.highlights || [];
   const emailLabel = copy?.emailLabel || 'Send Email';
   const discordLabel = copy?.discordLabel || 'Join Discord';
@@ -43,13 +44,13 @@ export default function CallToAction({ email, discordInviteUrl, copy }) {
 
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto">
-          <motion.a
+          <Button
+            as="a"
             href={`mailto:${email}`}
-            className="flex-1 w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-3"
+            className="min-w-[180px] px-4"
             style={gradientStyle('emeraldBlue')}
+            variant="primary"
             aria-label={`Send email to ${email}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <motion.img 
               src={ICON_PATHS.email} 
@@ -58,29 +59,22 @@ export default function CallToAction({ email, discordInviteUrl, copy }) {
               whileHover={{ scale: 1.1 }}
             />
             <span>{emailLabel}</span>
-            <motion.svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2 }}
-            >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </motion.svg>
-          </motion.a>
+            </svg>
+          </Button>
 
           <span className="text-gray-400 font-medium">or</span>
 
-          <motion.a
+          <Button
+            as="a"
             href={discordInviteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 w-full sm:w-auto btn-primary inline-flex items-center justify-center gap-3"
+            className="min-w-[180px] px-4"
             style={gradientStyle('purpleOrange')}
+            variant="primary"
             aria-label="Join Discord server"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <motion.img 
               src={ICON_PATHS.discord} 
@@ -89,17 +83,10 @@ export default function CallToAction({ email, discordInviteUrl, copy }) {
               whileHover={{ scale: 1.1 }}
             />
             <span>{discordLabel}</span>
-            <motion.svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-              whileHover={{ x: 4 }}
-              transition={{ duration: 0.2 }}
-            >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </motion.svg>
-          </motion.a>
+            </svg>
+          </Button>
         </div>
 
         {/* Additional info */}

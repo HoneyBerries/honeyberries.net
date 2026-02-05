@@ -1,5 +1,5 @@
 import { useCopyToClipboard } from '../../hooks';
-import { ContactCard, CopyButton } from '../ui';
+import { ContactCard, CopyButton, Button } from '../ui';
 import { ICON_PATHS } from '../../lib/constants';
 import { gradientStyle } from '../../lib/styles';
 import { motion } from 'framer-motion';
@@ -36,9 +36,11 @@ export default function EmailCard({ email, copy: copyContent }) {
 
       {/* Action buttons */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <a
+        <Button
+          as="a"
           href={`mailto:${email}`}
-          className="flex-1 btn-primary inline-flex items-center justify-center gap-2"
+          className="min-w-2.5 px-4"
+          variant="primary"
           style={gradientStyle('emeraldCyan')}
           aria-label={`Send email to ${email}`}
         >
@@ -46,12 +48,12 @@ export default function EmailCard({ email, copy: copyContent }) {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
           </svg>
-        </a>
+        </Button>
         
         <CopyButton
           textToCopy={email}
-            copied={copied}
-            onCopy={copyToClipboard}
+          copied={copied}
+          onCopy={copyToClipboard}
           variant="outlined"
         />
       </div>

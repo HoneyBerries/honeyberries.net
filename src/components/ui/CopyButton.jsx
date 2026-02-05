@@ -11,47 +11,20 @@ export default function CopyButton({
   textToCopy,
   copied,
   onCopy,
-  variant = 'inline',
+  variant = 'outline',
   className = ''
 }) {
   const handleClick = () => {
     onCopy(textToCopy);
   };
 
-  if (variant === 'inline') {
-    return (
-      <button
-        onClick={handleClick}
-        className={`px-3 py-1 text-sm font-medium rounded-md transition-all duration-300 ${
-          copied
-            ? 'bg-green-100 text-green-600'
-            : 'bg-indigo-100 text-indigo-600 hover:bg-indigo-200'
-        } ${className}`}
-        aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
-      >
-        {copied ? (
-          <span className="flex items-center gap-1">
-            <CheckIcon />
-            Copied!
-          </span>
-        ) : (
-          <span className="flex items-center gap-1">
-            <CopyIcon />
-            Copy
-          </span>
-        )}
-      </button>
-    );
-  }
-
-  // outlined variant
   return (
     <button
       onClick={handleClick}
-      className={`btn-secondary ${
+      className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border transition-all duration-300 ${
         copied
-          ? 'border-green-500! text-green-600! bg-green-50!'
-          : ''
+          ? 'border-green-500 text-green-600 bg-green-50'
+          : 'bg-white/80 backdrop-blur-sm text-gray-800 border-gray-300 hover:shadow-md hover:border-blue-400'
       } ${className}`}
       aria-label={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
     >

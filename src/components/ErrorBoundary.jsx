@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { gradientStyle } from '../lib/styles';
+import { Button } from './ui';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -27,14 +28,14 @@ class ErrorBoundary extends Component {
             <p className="text-gray-600 mb-6">
               We're sorry, but something unexpected happened. Please try refreshing the page.
             </p>
-            <button
+            <Button
               onClick={() => this.setState({ hasError: false, error: null })}
-              className="btn-primary"
+              variant="primary"
               style={gradientStyle('purpleBlue')}
               aria-label="Try again"
             >
               Try Again
-            </button>
+            </Button>
           </div>
         </div>
       );

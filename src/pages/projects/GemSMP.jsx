@@ -20,7 +20,7 @@ export default function MinecraftServer() {
   return (
     <div className="min-h-screen relative">
       <SEO
-        title="Gem SMP — Minecraft Server by HoneyBerries"
+        title="Gem SMP - Minecraft Server by HoneyBerries"
         description="Gem SMP is a custom Minecraft server featuring elemental gems, unique abilities, and cross-play support. Learn more about the server and how to join."
         ogImage="/assets/backgrounds/gem-smp-background.webp"
         pathname="/projects/gem-smp"
@@ -188,7 +188,7 @@ function CallToAction({ copied, onCopyIP }) {
           {descriptionParts[1] || ''}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button onClick={onCopyIP} className="btn-primary" style={gradientStyle('emeraldBlue')}>
+          <Button onClick={onCopyIP} variant="primary" style={gradientStyle('emeraldBlue')}>
             {copied ? 'IP Copied!' : GEM_SERVER_CONTENT.cta.primaryLabel}
           </Button>
           <Button

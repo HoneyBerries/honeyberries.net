@@ -1,5 +1,5 @@
 import { useCopyToClipboard } from '../../hooks';
-import { ContactCard, CopyButton } from '../ui';
+import { ContactCard, CopyButton, Button } from '../ui';
 import { ICON_PATHS } from '../../lib/constants';
 import { gradientStyle } from '../../lib/styles';
 import { motion } from 'framer-motion';
@@ -48,20 +48,21 @@ export default function DiscordCard({ discordUsername, discordInviteUrl, copy: c
         <p className="text-sm text-gray-600 mb-4">
           {description}
         </p>
-        <a
-          href={discordInviteUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center justify-center gap-2 w-full"
-          style={gradientStyle('emeraldTeal')}
-          aria-label="Join Discord server"
-        >
-          <img src={ICON_PATHS.discord} alt="Discord" className="w-5 h-5" />
-          <span>{inviteLabel}</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
+        <div className="flex justify-center">
+          <Button
+            as="a"
+            href={discordInviteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-w-5 px-4"
+            variant="primary"
+            style={gradientStyle('emeraldTeal')}
+            aria-label="Join Discord server"
+          >
+            <img src={ICON_PATHS.discord} alt="Discord" className="w-5 h-5" />
+            <span>{inviteLabel}</span>
+          </Button>
+        </div>
       </div>
 
       {/* Status indicator */}

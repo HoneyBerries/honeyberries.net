@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Card, StatsGrid } from '../components/ui';
+import { Card, StatsGrid, Button } from '../components/ui';
 import { GradientBackdrop } from '../components/backgrounds';
 import { TIMELINE, CURRENT_PROJECTS } from '../lib/data';
 import { BACKGROUND_LAYERS } from '../lib/constants';
@@ -16,7 +16,7 @@ export default function About() {
   return (
     <div className="min-h-screen relative">
       <SEO
-        title="About HoneyBerries — Developer & Creator"
+        title="About Me"
         description="Learn more about HoneyBerries, a developer passionate about building sleek, performant web apps, Minecraft plugins, and AI bots."
         ogImage="/assets/backgrounds/home-banner.webp"
         pathname="/about"
@@ -179,11 +179,11 @@ function CurrentProjects() {
             <Card className="card-lift p-6">
               <div className="flex items-start gap-3">
                 <motion.div 
-                  className="w-2 h-2 rounded-full bg-emerald-500 mt-2"
+                  className="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"
                   whileHover={{ scale: 1.25 }}
                   transition={{ duration: 0.3 }}
                 />
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed flex-1">
                   {project}
                 </p>
               </div>
@@ -197,16 +197,17 @@ function CurrentProjects() {
         <p className="text-gray-600 mb-6">
           {ABOUT_CONTENT.cta.message}
         </p>
-        <Link 
+        <Button
+          as={Link}
           to={ABOUT_CONTENT.cta.buttonTo}
-          className="btn-primary"
+          variant="primary"
           style={gradientStyle(ABOUT_CONTENT.cta.gradientKey)}
         >
           <span>{ABOUT_CONTENT.cta.buttonLabel}</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
-        </Link>
+        </Button>
       </div>
     </motion.div>
   );

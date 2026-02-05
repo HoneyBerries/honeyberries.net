@@ -14,7 +14,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen relative">
       <SEO
-        title="Contact HoneyBerries — Let's Connect"
+        title="Contact HoneyBerries"
         description="Contact HoneyBerries for collaboration, support, or questions about web development, Minecraft plugins, or AI bots."
         ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
         pathname="/contact"
@@ -90,7 +90,8 @@ function ContactStats() {
         items={CONTACT_CONTENT.stats}
         animationStart={0.4}
         animationStep={0.1}
-        gridClassName="grid grid-cols-2 lg:grid-cols-4 gap-4"
+        gridClassName="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-center mx-auto"
+        className="flex justify-center"
       />
     </motion.div>
   );

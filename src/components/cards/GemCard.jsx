@@ -2,7 +2,7 @@ import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * GemCard — small presentational component used on the Minecraft Server page
+ * GemCard - small presentational component used on the Minecraft Server page
  * Props:
  *  - gem: { id, name, element, passive, active, image, color }
  */

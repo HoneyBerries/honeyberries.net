@@ -46,7 +46,7 @@ export default function MinecraftModsPlugins() {
   return (
     <>
       <SEO
-        title="Minecraft Mods & Plugins — HoneyBerries"
+        title="Minecraft Mods & Plugins - HoneyBerries"
         description="Browse Minecraft mods and plugins published by HoneyBerries on Modrinth, separated into dedicated sections."
         ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
         pathname="/projects/minecraft-mods-plugins"

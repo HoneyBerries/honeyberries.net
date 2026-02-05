@@ -53,7 +53,7 @@ export default function NotFound() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button as={Link} to="/" variant="primary">Go Home</Button>
-          <Button as={Link} to="/projects" variant="secondary">View My Projects</Button>
+          <Button as={Link} to="/projects" variant="primary">View My Projects</Button>
         </div>
 
         {/* Suggested Links */}
