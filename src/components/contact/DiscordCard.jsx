@@ -13,7 +13,7 @@ export default function DiscordCard({ discordUsername, discordInviteUrl, copy: c
   const [copied, copyToClipboard] = useCopyToClipboard();
 
   const title = copyContent?.title || 'Discord';
-  const subtitle = copyContent?.subtitle || 'Perfered communication method for quick chats';
+  const subtitle = copyContent?.subtitle || 'Preferred communication method for quick chats';
   const description = copyContent?.description || 'Join my Discord community for quick chats, project updates, and collaboration opportunities!';
   const inviteLabel = copyContent?.inviteLabel || 'Join Discord Server';
   const statusNote = copyContent?.statusNote || 'Usually online during PST business hours';
