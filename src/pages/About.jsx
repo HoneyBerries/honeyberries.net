@@ -40,13 +40,7 @@ export default function About() {
  */
 function AboutHeader() {
   return (
-    <motion.div 
-      className="text-center mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="text-center mb-16">
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 mb-6">
         <motion.span className="w-2 h-2 rounded-full bg-emerald-500" {...pulse()} />
         <span className="text-sm font-medium text-emerald-700">{ABOUT_CONTENT.badgeLabel}</span>
@@ -61,7 +55,7 @@ function AboutHeader() {
       <p className="text-gray-500 max-w-2xl mx-auto">
         {ABOUT_CONTENT.introBody}
       </p>
-    </motion.div>
+    </div>
   );
 }
 
@@ -70,19 +64,13 @@ function AboutHeader() {
  */
 function AboutStats() {
   return (
-    <motion.div 
-      className="mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-    >
+    <div className="mb-16">
       <StatsGrid
         items={ABOUT_CONTENT.stats}
         animationStart={0.2}
         animationStep={0.1}
       />
-    </motion.div>
+    </div>
   );
 }
 
@@ -91,13 +79,7 @@ function AboutStats() {
  */
 function SkillsSection() {
   return (
-    <motion.div 
-      className="mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="mb-16">
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Skills & Technologies</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {ABOUT_CONTENT.skillCategories.map((category, index) => (
@@ -128,7 +110,7 @@ function SkillsSection() {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -137,13 +119,7 @@ function SkillsSection() {
  */
 function Timeline() {
   return (
-    <motion.div 
-      className="mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="mb-16">
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">My Journey</h2>
       <div className="relative">
         {/* Timeline line */}
@@ -155,7 +131,7 @@ function Timeline() {
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -202,12 +178,7 @@ function TimelineItem({ item, index }) {
  */
 function CurrentProjects() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div>
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What I'm Working On</h2>
       <div className="grid sm:grid-cols-2 gap-6">
         {CURRENT_PROJECTS.map((project, index) => (
@@ -251,6 +222,6 @@ function CurrentProjects() {
           </svg>
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }

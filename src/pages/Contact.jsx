@@ -15,7 +15,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen relative">
       <SEO
-        title="Contact HoneyBerries"
+        title="Contact Me"
         description="Contact HoneyBerries for collaboration, support, or questions about web development, Minecraft plugins, or AI bots."
         ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
         pathname="/contact"
@@ -43,13 +43,7 @@ function ContactHeader() {
   const [beforeTouch, afterTouch] = CONTACT_CONTENT.title.split('Touch');
 
   return (
-    <motion.div 
-      className="text-center mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="text-center mb-16">
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200 mb-6">
         <motion.span className="w-2 h-2 rounded-full bg-blue-500" {...pulse()} />
         <span className="text-sm font-medium text-blue-700">{CONTACT_CONTENT.badgeLabel}</span>
@@ -62,7 +56,7 @@ function ContactHeader() {
       <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
         {CONTACT_CONTENT.description}
       </p>
-    </motion.div>
+    </div>
   );
 }
 
@@ -101,13 +95,7 @@ function ContactCards() {
  */
 function ContactStats() {
   return (
-    <motion.div 
-      className="mb-16"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="mb-16">
       <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Quick Info</h2>
       <StatsGrid
         items={CONTACT_CONTENT.stats}
@@ -116,6 +104,6 @@ function ContactStats() {
         gridClassName="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-center mx-auto"
         className="flex justify-center"
       />
-    </motion.div>
+    </div>
   );
 }

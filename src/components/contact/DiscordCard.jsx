@@ -31,8 +31,8 @@ export default function DiscordCard({ discordUsername, discordInviteUrl, copy: c
       {/* Username section */}
       <div className="mb-6">
         <p className="text-sm text-gray-500 mb-2">Discord Username</p>
-        <div className="flex items-center gap-3 bg-gray-50 px-4 py-3 rounded-lg border">
-          <span className="text-lg font-mono text-gray-800 flex-1">
+        <div className="flex items-center gap-3 bg-gray-50 px-4 py-3 rounded-lg border min-h-[72px] sm:min-h-[56px]">
+          <span className="text-lg font-mono text-gray-800 flex-1 break-words sm:whitespace-nowrap sm:truncate" title={discordUsername}>
             {discordUsername}
           </span>
           <CopyButton

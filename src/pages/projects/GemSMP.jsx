@@ -55,43 +55,23 @@ export default function MinecraftServer() {
 /* ---------- COMPONENTS ---------- */
 
 const MotionSection = ({ children, delay = 0 }) => (
-  <motion.section
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.6, delay }}
-  >
+  <section>
     {children}
-  </motion.section>
+  </section>
 );
 
 function ServerHeader({ copied, onCopyIP }) {
   return (
     <MotionSection>
       <header className="text-center max-w-4xl mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"
-        >
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
           <span className="accent-text">Gem SMP</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-xl text-gray-600 mb-8 leading-relaxed"
-        >
+        </h1>
+        <p className="text-xl text-gray-600 mb-8 leading-relaxed">
           {GEM_SERVER_CONTENT.tagline}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="card-glass border-emerald-200 p-6 shadow-lg max-w-2xl mx-auto"
-        >
+        <div className="card-glass border-emerald-200 p-6 shadow-lg max-w-2xl mx-auto">
           <p className="font-mono text-lg">
             <span className="font-bold text-gray-900">Server IP:</span>
             <button
@@ -103,7 +83,7 @@ function ServerHeader({ copied, onCopyIP }) {
             </button>
           </p>
           <p className="text-gray-600 mt-2">{MINECRAFT_SERVER.version}</p>
-        </motion.div>
+        </div>
       </header>
     </MotionSection>
   );
@@ -214,15 +194,9 @@ function CallToAction({ copied, onCopyIP }) {
 /* ---------- UTILITY COMPONENT ---------- */
 function InfoCard({ title, children }) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5 }}
-      className="card-glass p-8"
-    >
+    <section className="card-glass p-8">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
       {children}
-    </motion.section>
+    </section>
   );
 }

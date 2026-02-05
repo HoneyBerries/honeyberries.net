@@ -47,13 +47,7 @@ export default function Modcord() {
  */
 function ModcordHeader() {
   return (
-    <motion.header 
-      className="text-center mb-16 max-w-4xl mx-auto"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <header className="text-center mb-16 max-w-4xl mx-auto">
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
         Modcord: <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
@@ -83,7 +77,7 @@ function ModcordHeader() {
           </Button>
         ))}
       </div>
-    </motion.header>
+    </header>
   );
 }
 
@@ -92,13 +86,7 @@ function ModcordHeader() {
  */
 function FeaturesSection() {
   return (
-    <motion.section 
-      className="mb-12"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <section className="mb-12">
       <div className="text-center mb-12">
         <h3 className="text-3xl font-bold text-gray-950 mb-2">Why Choose ModCord over Others?</h3>
       </div>
@@ -122,7 +110,7 @@ function FeaturesSection() {
           </motion.div>
         ))}
       </div>
-    </motion.section>
+    </section>
   );
 }
 
@@ -131,13 +119,7 @@ function FeaturesSection() {
  */
 function CallToActionSection() {
   return (
-    <motion.section 
-      className="text-center"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <section className="text-center">
       <div className="card-glass p-8 max-w-4xl mx-auto bg-linear-to-r from-blue-50/50 to-purple-50/50">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">{MODCORD_CONTENT.cta.heading}</h2>
         <p className="text-gray-600 mb-6 leading-relaxed">
@@ -164,6 +146,6 @@ function CallToActionSection() {
           </Button>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

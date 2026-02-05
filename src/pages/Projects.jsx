@@ -40,13 +40,7 @@ export default function Projects() {
  */
 function ProjectsHeader() {
   return (
-    <motion.div 
-      className="flex items-end justify-between gap-4"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="flex items-end justify-between gap-4">
       <div>
         <h1 className="text-3xl sm:text-4xl font-bold"><span className="accent-text">My Projects</span></h1>
       </div>
@@ -71,7 +65,7 @@ function ProjectsHeader() {
           <span className="ml-1">{PROJECTS_COPY.githubCtaLabel}</span>
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

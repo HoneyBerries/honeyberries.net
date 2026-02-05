@@ -26,7 +26,6 @@ export const HERO_CONTENT = {
   cardDescription: "Building AI, especially large language models, to automate repetitive tasks and empower users.",
   ctas: [
     { label: 'Explore Projects', to: '/projects', variant: 'primary' },
-    { label: 'Get in Touch', to: '/contact', variant: 'primary' },
   ],
   bannerAlt: 'HoneyBerries portfolio showcase',
 };

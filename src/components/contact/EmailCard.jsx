@@ -30,13 +30,16 @@ export default function EmailCard({ email, copy: copyContent }) {
       {/* Email address display */}
       <div className="mb-6">
         <p className="text-sm text-gray-500 mb-2">Email Address</p>
-        <p className="text-lg font-mono text-gray-800 bg-gray-50 px-4 py-3 rounded-lg border break-all">
+        <p
+          className="text-lg font-mono text-gray-800 bg-gray-50 px-4 py-3 rounded-lg border min-h-[72px] sm:min-h-[56px] flex items-center break-words sm:whitespace-nowrap sm:truncate"
+          title={email}
+        >
           {email}
         </p>
       </div>
 
       {/* Action buttons */}
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-row gap-3">
         <Button
           as="a"
           href={`mailto:${email}`}

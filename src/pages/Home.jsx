@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="HoneyBerries - Dev & Creator"
+        title="HoneyBerries - Some random guy on the internet"
         description="HoneyBerries builds sleek web applications, Minecraft plugins, and AI-powered Discord bots. Explore projects and get in touch."
         ogImage="/assets/backgrounds/home-banner.webp"
         pathname="/"

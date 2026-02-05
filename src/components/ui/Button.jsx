@@ -20,6 +20,14 @@ export default function Button({
   children,
   ...restProps 
 }) {
+  // Create a motion wrapper for the 'as' component if it's not a string
+  const MotionComponent = useMemo(() => {
+    if (typeof as === 'string') {
+      return as === 'a' ? MotionAnchor : MotionButton;
+    }
+    // For React Router Link or other components, wrap with motion
+    return motion(as);
+  }, [as]);
   // Generate location-based gradient for primary buttons
   const primaryGradientStyle = useMemo(() => {
     const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
@@ -68,10 +76,6 @@ export default function Button({
     ...restProps
   };
   
-  // Use appropriate motion component based on the 'as' prop
-  if (as === 'a') {
-    return <MotionAnchor {...commonProps}>{children}</MotionAnchor>;
-  }
-  
-  return <MotionButton disabled={disabled} {...commonProps}>{children}</MotionButton>;
+  // Render with the appropriate motion component
+  return <MotionComponent disabled={disabled} {...commonProps}>{children}</MotionComponent>;
 }

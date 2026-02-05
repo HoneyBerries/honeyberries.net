@@ -27,10 +27,10 @@ function getProjectKinds(project) {
 }
 
 const SECTIONS = [
-  { key: 'mod', title: 'Minecraft Mods', description: 'Standalone mods built for modded clients and servers.', emptyLabel: 'No mods found.' },
-  { key: 'plugin', title: 'Minecraft Plugins', description: 'Server-side plugins for Paper/Spigot and similar platforms.', emptyLabel: 'No plugins found.' },
-  { key: 'datapack', title: 'Minecraft Datapacks', description: 'World and gameplay tweaks powered by datapacks.', emptyLabel: 'No datapacks found.' },
-  { key: 'resourcepack', title: 'Minecraft Resource Packs', description: 'Textures and visuals packaged as resource packs.', emptyLabel: 'No resource packs found.' }
+  { key: 'mod', title: 'Mods', description: 'Fabric & Forge mods for Minecraft.', emptyLabel: 'No mods found.' },
+  { key: 'plugin', title: 'Plugins', description: 'Server-side plugins for PaperMC and forks.', emptyLabel: 'No plugins found.' },
+  { key: 'datapack', title: 'Datapacks', description: 'World and gameplay tweaks via datapacks.', emptyLabel: 'No datapacks found.' },
+  { key: 'resourcepack', title: 'Resource Packs', description: 'Cool texture packs for PVP and survival.', emptyLabel: 'No resource packs found.' }
 ];
 
 /**
@@ -49,35 +49,26 @@ export default function MinecraftModsPlugins() {
   return (
     <>
       <SEO
-        title="Minecraft Mods & Plugins - HoneyBerries"
+        title="Minecraft Mods & Plugins"
         description="Browse Minecraft mods and plugins published by HoneyBerries on Modrinth, separated into dedicated sections."
         ogImage="/assets/backgrounds/minecraft-plugin-background.webp"
         pathname="/projects/minecraft-mods-plugins"
       />
 
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <motion.div 
-          className="flex items-end justify-between gap-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-bold">Minecraft Mods & Plugins</h1>
-            <p className="mt-2 text-sm text-gray-600">
-              A collection of my public Minecraft projects on Modrinth, separated into mods and plugins.
-            </p>
-          </div>
-        </motion.div>
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold">
+            Minecraft <span className="accent-text">Mods, Plugins</span> & More
+          </h1>
+          <p className="mt-2 text-sm text-gray-600">
+            A collection of my public Minecraft projects on Modrinth, separated into dedicated sections for mods, plugins, datapacks, and resource packs.
+          </p>
+        </div>
 
         {error && (
-          <motion.div 
-            className="mt-6 text-center text-sm text-red-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <div className="mt-6 text-center text-sm text-red-500">
             Failed to load Modrinth projects.
-          </motion.div>
+          </div>
         )}
 
         {SECTIONS.map(section => (
@@ -95,31 +86,13 @@ export default function MinecraftModsPlugins() {
 
 function Section({ title, description, loading, projects, emptyLabel }) {
   return (
-    <motion.div 
-      className="mt-10"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
-      <motion.h2 
-        className="text-2xl font-semibold"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
+    <div className="mt-10">
+      <h2 className="text-2xl font-semibold">
         {title}
-      </motion.h2>
-      <motion.p 
-        className="mt-1 text-sm text-gray-600"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
+      </h2>
+      <p className="mt-1 text-sm text-gray-600">
         {description}
-      </motion.p>
+      </p>
 
       <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading && (
@@ -140,6 +113,6 @@ function Section({ title, description, loading, projects, emptyLabel }) {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

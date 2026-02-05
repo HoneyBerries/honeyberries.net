@@ -20,26 +20,14 @@ export default function Privacy() {
       
       <div className="relative z-10">
         <article className="max-w-4xl mx-auto px-4 py-12">
-          <motion.header 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          >
+          <header className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
               <span className="accent-text">ModCord</span> Privacy Policy
             </h1>
             <p className="text-sm text-gray-500">Last updated: October 29, 2025</p>
-          </motion.header>
+          </header>
 
-          <motion.div 
-            className="card-glass p-8 mb-8 bg-linear-to-br from-blue-50/50 to-purple-50/50"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="card-glass p-8 mb-8 bg-linear-to-br from-blue-50/50 to-purple-50/50">
             <div className="prose prose-slate prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Commitment to Privacy</h2>
               <p className="text-gray-700 leading-relaxed mb-6">
@@ -101,7 +89,7 @@ export default function Privacy() {
                 </a>
               </p>
             </div>
-          </motion.div>
+          </div>
         </article>
       </div>
     </div>
