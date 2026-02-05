@@ -1,6 +1,5 @@
 import { cn } from '../../lib/utils';
 import { motion } from 'framer-motion';
-import { floatIn } from '../../lib/animations';
 
 /**
  * Reusable stats grid to reduce repeated markup across pages
@@ -25,7 +24,10 @@ export default function StatsGrid({
           <motion.div
             key={stat.label}
             className="card-lift p-6 text-center"
-            {...floatIn(animationStart + index * animationStep)}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: animationStart + index * animationStep }}
           >
             {stat.icon && (
               <div className={cn('text-2xl mb-2', stat.color)} aria-hidden="true">

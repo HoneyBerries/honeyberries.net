@@ -2,7 +2,6 @@ import { PluginCard } from '../../components/cards';
 import useModrinth from '../../hooks/useModrinth';
 import SEO from '../../components/SEO';
 import { motion } from 'framer-motion';
-import { floatIn } from '../../lib/animations';
 
 const LOADERS = {
   plugin: ['paper', 'spigot', 'purpur', 'bukkit', 'velocity', 'bungeecord', 'waterfall', 'sponge'],

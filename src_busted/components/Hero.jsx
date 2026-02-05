@@ -5,7 +5,6 @@ import { SKILLS } from '../lib/constants';
 import { HERO_CONTENT } from '../lib/content';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
-import { floatIn } from '../lib/animations';
 
 /**
  * Hero section component for the homepage
@@ -15,7 +14,12 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 py-20 sm:py-28">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <motion.div {...floatIn(0)}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="text-sm font-semibold tracking-wider text-emerald-600 uppercase">
               {HERO_CONTENT.eyebrow}
             </p>

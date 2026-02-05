@@ -1,7 +1,7 @@
 import SEO from '../../../components/SEO';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { floatIn, pulse } from '../../../lib/animations';
+import { pulse } from '../../../lib/animations';
 
 export default function TermsOfService() {
   return (
@@ -17,8 +17,9 @@ export default function TermsOfService() {
         <article className="max-w-4xl mx-auto px-4 py-12">
           <motion.header 
             className="text-center mb-12"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
@@ -30,7 +31,10 @@ export default function TermsOfService() {
 
           <motion.div 
             className="card-glass p-8 mb-8 bg-linear-to-br from-purple-50/50 to-pink-50/50"
-            {...floatIn(0.3)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
             <div className="prose prose-slate prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Service Agreement</h2>

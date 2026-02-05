@@ -2,7 +2,7 @@ import { ICON_PATHS } from '../../lib/constants';
 import { gradientStyle } from '../../lib/styles';
 import { motion } from 'framer-motion';
 import { Button } from '../ui';
-import { floatIn, pulse } from '../../lib/animations';
+import { pulse } from '../../lib/animations';
 
 /**
  * Enhanced call-to-action section for contact page
@@ -18,7 +18,10 @@ export default function CallToAction({ email, discordInviteUrl, copy }) {
   return (
     <motion.div
       className="relative bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl p-12 overflow-hidden"
-      {...floatIn(0.4)}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
     >
       {/* Background decorations */}
       <div className="absolute -top-8 -right-8 w-32 h-32 bg-linear-to-br from-blue-200/30 to-indigo-200/20 rounded-full blur-2xl"></div>

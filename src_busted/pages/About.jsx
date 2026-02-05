@@ -7,7 +7,7 @@ import { BACKGROUND_LAYERS } from '../lib/constants';
 import { ABOUT_CONTENT } from '../lib/content';
 import { gradientStyle } from '../lib/styles';
 import SEO from '../components/SEO';
-import { floatIn, pulse } from '../lib/animations';
+import { pulse } from '../lib/animations';
 
 /**
  * Enhanced About page component with modern design
@@ -39,7 +39,13 @@ export default function About() {
  */
 function AboutHeader() {
   return (
-    <motion.div className="text-center mb-16" {...floatIn(0)}>
+    <motion.div 
+      className="text-center mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 mb-6">
         <motion.span className="w-2 h-2 rounded-full bg-emerald-500" {...pulse()} />
         <span className="text-sm font-medium text-emerald-700">{ABOUT_CONTENT.badgeLabel}</span>
@@ -63,7 +69,13 @@ function AboutHeader() {
  */
 function AboutStats() {
   return (
-    <motion.div className="mb-16" {...floatIn(0.2)}>
+    <motion.div 
+      className="mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
       <StatsGrid
         items={ABOUT_CONTENT.stats}
         animationStart={0.2}
@@ -78,14 +90,23 @@ function AboutStats() {
  */
 function SkillsSection() {
   return (
-    <motion.div className="mb-16" {...floatIn(0.2)}>
+    <motion.div 
+      className="mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Skills & Technologies</h2>
       <div className="grid md:grid-cols-3 gap-6">
         {ABOUT_CONTENT.skillCategories.map((category, index) => (
           <motion.div 
             key={category.title}
             className="card-lift p-6"
-            {...floatIn(0.3 + index * 0.1)}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className={`w-12 h-12 bg-linear-to-r ${category.color} rounded-xl flex items-center justify-center mb-4 shadow-lg`}>
               <span className="text-white font-bold text-lg">
@@ -115,7 +136,13 @@ function SkillsSection() {
  */
 function Timeline() {
   return (
-    <motion.div className="mb-16" {...floatIn(0.3)}>
+    <motion.div 
+      className="mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">My Journey</h2>
       <div className="relative">
         {/* Timeline line */}
@@ -150,7 +177,10 @@ function TimelineItem({ item, index }) {
   return (
     <motion.div 
       className="relative card-lift p-6 ml-16"
-      {...floatIn(0.4 + index * 0.1)}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       {/* Timeline dot */}
       <div className="absolute -left-20 top-6 w-4 h-4 bg-linear-to-r from-emerald-500 to-blue-500 rounded-full border-4 border-white shadow-lg"></div>
@@ -171,11 +201,22 @@ function TimelineItem({ item, index }) {
  */
 function CurrentProjects() {
   return (
-    <motion.div {...floatIn(0.4)}>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What I'm Working On</h2>
       <div className="grid sm:grid-cols-2 gap-6">
         {CURRENT_PROJECTS.map((project, index) => (
-          <motion.div key={project} {...floatIn(0.5 + index * 0.1)}>
+          <motion.div 
+            key={project}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
             <Card className="card-lift p-6">
               <div className="flex items-start gap-3">
                 <motion.div 

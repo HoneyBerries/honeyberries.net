@@ -5,7 +5,7 @@ import { CONTACT_CONTENT } from '../lib/content';
 import { StatsGrid } from '../components/ui';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
-import { floatIn, pulse } from '../lib/animations';
+import { pulse } from '../lib/animations';
 
 /**
  * Contact page component
@@ -42,7 +42,13 @@ function ContactHeader() {
   const [beforeTouch, afterTouch] = CONTACT_CONTENT.title.split('Touch');
 
   return (
-    <motion.div className="text-center mb-16" {...floatIn(0)}>
+    <motion.div 
+      className="text-center mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/80 border border-blue-200 mb-6">
         <motion.span className="w-2 h-2 rounded-full bg-blue-500" {...pulse()} />
         <span className="text-sm font-medium text-blue-700">{CONTACT_CONTENT.badgeLabel}</span>
@@ -65,10 +71,20 @@ function ContactHeader() {
 function ContactCards() {
   return (
     <div className="grid md:grid-cols-2 gap-6 mb-16">
-      <motion.div {...floatIn(0.1)}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         <EmailCard email={CONTACT_INFO.email} copy={CONTACT_CONTENT.emailCard} />
       </motion.div>
-      <motion.div {...floatIn(0.2)}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <DiscordCard
           discordUsername={CONTACT_INFO.discordUsername}
           discordInviteUrl={CONTACT_INFO.discordInviteUrl}
@@ -84,7 +100,13 @@ function ContactCards() {
  */
 function ContactStats() {
   return (
-    <motion.div className="mb-16" {...floatIn(0.3)}>
+    <motion.div 
+      className="mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Quick Info</h2>
       <StatsGrid
         items={CONTACT_CONTENT.stats}

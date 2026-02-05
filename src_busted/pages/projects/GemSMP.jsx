@@ -8,7 +8,6 @@ import { GEM_SERVER_CONTENT } from '../../lib/content';
 import { gradientStyle } from '../../lib/styles';
 import { useCopyToClipboard } from '../../hooks';
 import { motion } from 'framer-motion';
-import { floatIn } from '../../lib/animations';
 
 export default function MinecraftServer() {
   const [headerCopied, copyHeader] = useCopyToClipboard();

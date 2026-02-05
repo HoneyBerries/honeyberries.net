@@ -6,7 +6,6 @@ import { gradientStyle } from '../../lib/styles';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/ui';
 import { motion } from 'framer-motion';
-import { floatIn } from '../../lib/animations';
 
 /**
  * Modcord page - describes the AI moderation bot for Discord
@@ -47,7 +46,13 @@ export default function Modcord() {
  */
 function ModcordHeader() {
   return (
-    <header className="text-center mb-16 max-w-4xl mx-auto">
+    <motion.header 
+      className="text-center mb-16 max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
         Modcord: <span className="accent-text">Smart AI Moderation</span> for Your Discord Server
       </h1>
@@ -85,7 +90,7 @@ function ModcordHeader() {
           </Button>
         ))}
       </div>
-    </header>
+    </motion.header>
   );
 }
 
@@ -94,7 +99,13 @@ function ModcordHeader() {
  */
 function FeaturesSection() {
   return (
-    <section className="mb-12">
+    <motion.section 
+      className="mb-12"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="text-center mb-12">
         <h3 className="text-3xl font-bold text-gray-950 mb-2">Why Choose ModCord over Others?</h3>
       </div>
@@ -104,19 +115,21 @@ function FeaturesSection() {
           <motion.div
             key={feature.title}
             className={`card-glass p-8 h-full bg-linear-to-br ${feature.gradient}`}
-            {...floatIn(index * 0.12)}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: index * 0.12 }}
             whileHover={{ 
               y: -8,
               boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
             }}
-            transition={{ duration: 0.3 }}
           >
             <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
             <p className="text-gray-600 leading-relaxed">{feature.description}</p>
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -125,7 +138,13 @@ function FeaturesSection() {
  */
 function CallToActionSection() {
   return (
-    <section className="text-center">
+    <motion.section 
+      className="text-center"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="card-glass p-8 max-w-4xl mx-auto bg-linear-to-r from-blue-50/50 to-purple-50/50">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">{MODCORD_CONTENT.cta.heading}</h2>
         <p className="text-gray-600 mb-6 leading-relaxed">
@@ -152,6 +171,6 @@ function CallToActionSection() {
           </Button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

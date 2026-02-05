@@ -4,6 +4,7 @@ import { PROJECTS } from '../lib/data';
 import { ICON_PATHS } from '../lib/constants';
 import { PROJECTS_COPY } from '../lib/content';
 import SEO from '../components/SEO';
+import { motion } from 'framer-motion';
 
 /**
  * Projects page component
@@ -38,7 +39,13 @@ export default function Projects() {
  */
 function ProjectsHeader() {
   return (
-    <div className="flex items-end justify-between gap-4">
+    <motion.div 
+      className="flex items-end justify-between gap-4"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <div>
         <h1 className="text-3xl sm:text-4xl font-bold"><span className="accent-text">My Projects</span></h1>
       </div>
@@ -63,7 +70,7 @@ function ProjectsHeader() {
           <span className="ml-1">{PROJECTS_COPY.githubCtaLabel}</span>
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -73,8 +80,16 @@ function ProjectsHeader() {
 function ProjectsGrid() {
   return (
     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {PROJECTS.map(project => (
-        <ProjectCard key={project.id} {...project} />
+      {PROJECTS.map((project, index) => (
+        <motion.div
+          key={project.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <ProjectCard {...project} />
+        </motion.div>
       ))}
 
       {/* Mods and plugins are now shown on their own page (/projects/minecraft-mods-plugins) */}
