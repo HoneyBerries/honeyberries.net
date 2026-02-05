@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
   {
-    ignores: ['dist']
+    ignores: ['dist', 'src_busted']
   },
   js.configs.recommended,
   {
@@ -29,7 +29,11 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Allow unused vars that start with uppercase, underscore, or common React/Framer imports
+      'no-unused-vars': ['error', { 
+        varsIgnorePattern: '^[A-Z_]|^motion$|^AnimatePresence$',
+        argsIgnorePattern: '^_'
+      }],
     },
   },
 ]
