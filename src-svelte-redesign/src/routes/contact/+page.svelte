@@ -5,6 +5,7 @@
   import GradientBackdrop from '$lib/components/GradientBackdrop.svelte';
   import { CONTACT_CONTENT } from '$lib/content';
   import { CONTACT_INFO, BACKGROUND_LAYERS, ICON_PATHS, EXTERNAL_LINKS } from '$lib/constants';
+  import { GRADIENTS } from '$lib/styles';
 
   let visible = $state(false);
   let emailCopied = $state(false);
@@ -192,7 +193,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="btn-primary min-w-[180px]"
-            style="background: linear-gradient(135deg, #f97316, #9333ea);"
+            style="background: {GRADIENTS.purpleOrange}"
           >
             <img src={ICON_PATHS.discord} alt="" class="w-5 h-5" />
             <span>{CONTACT_CONTENT.cta.discordLabel}</span>

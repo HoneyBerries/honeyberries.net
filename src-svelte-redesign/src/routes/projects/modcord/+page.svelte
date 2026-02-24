@@ -14,6 +14,13 @@
     github: ICON_PATHS.github,
   };
 
+  function buttonStyle(btn: { variant: string; gradientKey?: string }): string {
+    if (btn.variant === 'primary' && btn.gradientKey) {
+      return `background: ${GRADIENTS[btn.gradientKey] ?? ''}`;
+    }
+    return '';
+  }
+
   onMount(() => {
     visible = true;
   });
@@ -40,7 +47,7 @@
               class={btn.variant === 'primary'
                 ? 'btn-primary rounded-lg whitespace-nowrap gap-2'
                 : 'inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap'}
-              style={btn.variant === 'primary' && btn.gradientKey ? `background: ${GRADIENTS[btn.gradientKey] ?? ''}` : ''}
+              style={buttonStyle(btn)}
             >
               {#if iconMap[btn.icon]}
                 <img src={iconMap[btn.icon]} alt="" class="w-5 h-5" />

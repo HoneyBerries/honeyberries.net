@@ -84,7 +84,7 @@
           class="card-lift p-6"
           in:fly={{ y: 20, duration: 500, delay: 500 + i * 100 }}
         >
-          <div class="w-12 h-12 bg-gradient-to-r {category.color} rounded-xl flex items-center justify-center mb-4">
+          <div class="w-12 h-12 bg-gradient-to-r {category.color} rounded-xl flex items-center justify-center mb-4" aria-hidden="true">
             <span class="text-white font-bold text-lg">{category.title.charAt(0)}</span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-4">{category.title}</h3>
