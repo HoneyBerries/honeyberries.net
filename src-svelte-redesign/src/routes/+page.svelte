@@ -31,8 +31,8 @@
           class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
           in:fly={{ y: 20, duration: 500, delay: 100 }}
         >
-          {#each HERO_CONTENT.headlineParts as part}
-            <span class={part.accent ? 'accent-text' : ''}>{part.text} </span>
+          {#each HERO_CONTENT.headlineParts as part, i}
+            {#if i > 0}{' '}{/if}<span class={part.accent ? 'accent-text' : ''}>{part.text}</span>
           {/each}
         </h1>
 
