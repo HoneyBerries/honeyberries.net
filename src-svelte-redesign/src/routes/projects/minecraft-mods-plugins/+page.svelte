@@ -49,13 +49,13 @@
 />
 
 {#if visible}
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div in:fly={{ y: 20, duration: 500 }}>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-        Minecraft Mods &amp; Plugins
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-8" in:fly={{ y: 20, duration: 500 }}>
+      <h1 class="text-3xl sm:text-4xl font-bold">
+        Minecraft <span class="accent-text">Mods, Plugins</span> &amp; More
       </h1>
-      <p class="text-lg text-gray-600 mb-12">
-        All projects published on
+      <p class="mt-2 text-sm text-gray-600">
+        A collection of my public Minecraft projects on
         <a
           href="https://modrinth.com/user/HoneyBerries"
           target="_blank"
@@ -78,9 +78,9 @@
       </div>
     {:else}
       {#each sections as section, si}
-        <div class="mb-12" in:fly={{ y: 20, duration: 500, delay: 100 + si * 100 }}>
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">{section.label}</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="mt-10" in:fly={{ y: 20, duration: 500, delay: 100 + si * 100 }}>
+          <h2 class="text-2xl font-semibold">{section.label}</h2>
+          <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each section.projects as project, pi}
               <a
                 href={modrinthUrl(project)}

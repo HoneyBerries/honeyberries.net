@@ -19,42 +19,44 @@
 
 {#if visible}
   <!-- Intro Section -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-12">
-    <div in:fly={{ y: 20, duration: 500 }}>
-      <span class="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full mb-6">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+    <div class="text-center mb-16">
+      <div in:fly={{ y: 20, duration: 500 }}>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100/80 border border-emerald-200 mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-sm font-medium text-emerald-700">{ABOUT_CONTENT.badgeLabel}</span>
         </span>
-        {ABOUT_CONTENT.badgeLabel}
-      </span>
+      </div>
+
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6"
+        in:fly={{ y: 20, duration: 500, delay: 100 }}
+      >
+        {ABOUT_CONTENT.introTitle}
+      </h1>
+
+      <p
+        class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto"
+        in:fly={{ y: 20, duration: 500, delay: 200 }}
+      >
+        {ABOUT_CONTENT.introLead}
+      </p>
+
+      <p
+        class="text-gray-500 max-w-2xl mx-auto"
+        in:fly={{ y: 20, duration: 500, delay: 300 }}
+      >
+        {ABOUT_CONTENT.introBody}
+      </p>
     </div>
-
-    <h1
-      class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4"
-      in:fly={{ y: 20, duration: 500, delay: 100 }}
-    >
-      {ABOUT_CONTENT.introTitle}
-    </h1>
-
-    <p
-      class="text-xl text-gray-700 font-medium mb-4"
-      in:fly={{ y: 20, duration: 500, delay: 200 }}
-    >
-      {ABOUT_CONTENT.introLead}
-    </p>
-
-    <p
-      class="text-base text-gray-600 leading-relaxed"
-      in:fly={{ y: 20, duration: 500, delay: 300 }}
-    >
-      {ABOUT_CONTENT.introBody}
-    </p>
   </section>
 
   <!-- Stats Grid -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
       {#each ABOUT_CONTENT.stats as stat, i}
         <div
           class="card-glass p-5 text-center"
@@ -69,19 +71,26 @@
   </section>
 
   <!-- Skills Section -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <h2
+      class="text-3xl font-bold text-gray-900 text-center mb-8"
+      in:fade={{ duration: 400, delay: 500 }}
+    >
+      Skills & Technologies
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
       {#each ABOUT_CONTENT.skillCategories as category, i}
         <div
-          class="card-glass p-6"
+          class="card-lift p-6"
           in:fly={{ y: 20, duration: 500, delay: 500 + i * 100 }}
         >
-          <h3 class="text-lg font-semibold text-gray-900 mb-3 pl-3 border-l-4 border-transparent" style="border-image: linear-gradient({category.color}) 1;">
-            {category.title}
-          </h3>
+          <div class="w-12 h-12 bg-gradient-to-r {category.color} rounded-xl flex items-center justify-center mb-4">
+            <span class="text-white font-bold text-lg">{category.title.charAt(0)}</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{category.title}</h3>
           <div class="flex flex-wrap gap-2">
             {#each category.skills as skill}
-              <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-700 border border-gray-200">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
                 {skill}
               </span>
             {/each}
@@ -92,66 +101,78 @@
   </section>
 
   <!-- Timeline Section -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
     <h2
-      class="text-2xl font-bold text-gray-900 mb-8"
+      class="text-3xl font-bold text-gray-900 text-center mb-8"
       in:fade={{ duration: 400, delay: 600 }}
     >
       My Journey
     </h2>
 
-    <div class="relative pl-8">
+    <div class="relative">
       <!-- Vertical line -->
-      <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-blue-500"></div>
+      <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-blue-500"></div>
 
-      {#each TIMELINE as entry, i}
-        <div
-          class="relative mb-8 last:mb-0"
-          in:fly={{ x: -20, duration: 500, delay: 650 + i * 120 }}
-        >
-          <!-- Dot -->
-          <div class="absolute -left-5 top-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white shadow"></div>
+      <div class="space-y-8">
+        {#each TIMELINE as entry, i}
+          <div
+            class="relative card-lift p-6 ml-16"
+            in:fly={{ x: -20, duration: 500, delay: 650 + i * 120 }}
+          >
+            <!-- Dot -->
+            <div class="absolute -left-20 top-6 w-4 h-4 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full border-4 border-white"></div>
 
-          <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">{entry.time}</p>
-          <h3 class="text-base font-bold text-gray-900 mb-1">{entry.title}</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            {#if entry.hasLink && entry.linkUrl && entry.linkText}
-              {@const parts = entry.desc.split(entry.linkText)}
-              {parts[0]}<a href={entry.linkUrl} class="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">{entry.linkText}</a>{parts[1] ?? ''}
-            {:else}
-              {entry.desc}
-            {/if}
-          </p>
-        </div>
-      {/each}
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3 class="text-xl font-bold text-gray-900">{entry.title}</h3>
+              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm shrink-0">{entry.time}</span>
+            </div>
+            <p class="text-gray-600 leading-relaxed">
+              {#if entry.hasLink && entry.linkUrl && entry.linkText}
+                {@const parts = entry.desc.split(entry.linkText)}
+                {parts[0]}<a href={entry.linkUrl} class="text-emerald-600 hover:underline" target="_blank" rel="noopener noreferrer">{entry.linkText}</a>{parts[1] ?? ''}
+              {:else}
+                {entry.desc}
+              {/if}
+            </p>
+          </div>
+        {/each}
+      </div>
     </div>
   </section>
 
   <!-- Current Projects -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-    <div
-      class="card-glass p-6"
-      in:fly={{ y: 20, duration: 500, delay: 800 }}
+    <h2
+      class="text-3xl font-bold text-gray-900 text-center mb-8"
+      in:fade={{ duration: 400, delay: 800 }}
     >
-      <h2 class="text-lg font-semibold text-gray-900 mb-4">What I'm Working On</h2>
-      <ul class="space-y-3">
-        {#each CURRENT_PROJECTS as project}
-          <li class="flex items-start gap-3 text-sm text-gray-600">
-            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1.5 shrink-0"></span>
-            {project}
-          </li>
-        {/each}
-      </ul>
+      What I'm Working On
+    </h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      {#each CURRENT_PROJECTS as project, i}
+        <div
+          class="card-lift p-6 h-full"
+          in:fly={{ y: 20, duration: 500, delay: 800 + i * 80 }}
+        >
+          <div class="flex items-start gap-3">
+            <span class="relative flex h-2 w-2 mt-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <p class="text-gray-700 leading-relaxed flex-1">{project}</p>
+          </div>
+        </div>
+      {/each}
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
     <div
-      class="text-center"
+      class="mt-12 text-center"
       in:fade={{ duration: 500, delay: 900 }}
     >
-      <p class="text-lg text-gray-700 mb-6">{ABOUT_CONTENT.cta.message}</p>
+      <p class="text-gray-600 mb-6">{ABOUT_CONTENT.cta.message}</p>
       <a href={ABOUT_CONTENT.cta.buttonTo} class="btn-primary">
         {ABOUT_CONTENT.cta.buttonLabel}
       </a>

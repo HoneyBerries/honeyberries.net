@@ -5,12 +5,12 @@
 </script>
 
 {#if page.status === 404}
-  <div class="relative min-h-[80vh] flex items-center justify-center px-4 overflow-hidden" in:fade={{ duration: 400 }}>
+  <div class="min-h-screen flex items-center justify-center px-4 py-16 bg-gray-50 overflow-hidden" in:fade={{ duration: 400 }}>
     <!-- Floating decorative elements -->
     {#each NOT_FOUND_CONTENT.floatingElements as el, i}
       {@const colors: Record<string, string> = { 'pink-400': '#f472b6', 'red-500': '#ef4444', 'yellow-400': '#facc15', 'orange-500': '#f97316', 'green-400': '#4ade80', 'teal-500': '#14b8a6', 'indigo-400': '#818cf8', 'purple-500': '#a855f7' }}
       <div
-        class="absolute rounded-full opacity-20 blur-sm animate-float"
+        class="absolute rounded-full opacity-60 animate-float"
         style="
           width: {el.size * 0.25}rem; height: {el.size * 0.25}rem;
           background: linear-gradient(to bottom right, {colors[el.from] ?? el.from}, {colors[el.to] ?? el.to});
@@ -23,53 +23,38 @@
       ></div>
     {/each}
 
-    <div class="relative z-10 text-center max-w-2xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto space-y-8">
       <!-- 404 large text -->
-      <div in:fly={{ y: -30, duration: 600 }}>
-        <h1 class="error-code text-[10rem] sm:text-[14rem] font-extrabold leading-none select-none animate-pulse-subtle">
+      <div class="relative" in:fly={{ y: -30, duration: 600 }}>
+        <h1 class="error-code text-8xl sm:text-9xl font-extrabold leading-none select-none animate-pulse-subtle">
           404
         </h1>
       </div>
 
-      <!-- Heading -->
-      <div in:fly={{ y: 20, duration: 500, delay: 150 }}>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+      <!-- Error message -->
+      <div class="space-y-2" in:fly={{ y: 20, duration: 500, delay: 150 }}>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">
           {NOT_FOUND_CONTENT.heading}
         </h2>
+        <p class="text-lg text-gray-600">{NOT_FOUND_CONTENT.lead}</p>
+        <p class="text-gray-500">{NOT_FOUND_CONTENT.subtext}</p>
       </div>
 
-      <!-- Lead & subtext -->
-      <div in:fly={{ y: 20, duration: 500, delay: 250 }}>
-        <p class="text-lg text-gray-300 mb-2">{NOT_FOUND_CONTENT.lead}</p>
-        <p class="text-gray-400 mb-4">{NOT_FOUND_CONTENT.subtext}</p>
-        <p class="text-sm text-emerald-400 mb-8">{NOT_FOUND_CONTENT.tip}</p>
+      <!-- Action buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" in:fly={{ y: 20, duration: 500, delay: 250 }}>
+        <a href="/" class="btn-primary">Go Home</a>
+        <a href="/projects" class="btn-primary">View My Projects</a>
       </div>
 
-      <!-- CTA buttons -->
-      <div class="flex flex-wrap gap-4 justify-center mb-10" in:fly={{ y: 20, duration: 500, delay: 350 }}>
-        <a
-          href="/"
-          class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-        >
-          Go Home
-        </a>
-        <a
-          href="/projects"
-          class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-500 to-emerald-500 hover:from-purple-600 hover:to-emerald-600 transition-all duration-200 shadow-lg hover:shadow-xl"
-        >
-          View Projects
-        </a>
-      </div>
-
-      <!-- Suggested links card -->
-      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 mb-8" in:fly={{ y: 20, duration: 500, delay: 450 }}>
-        <p class="text-sm text-gray-400 mb-3">Quick links you might like:</p>
-        <div class="flex flex-wrap gap-3 justify-center">
+      <!-- Suggested links -->
+      <div class="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-xl p-6 shadow-sm space-y-3" in:fly={{ y: 20, duration: 500, delay: 350 }}>
+        <p class="text-sm text-gray-600 font-semibold">{NOT_FOUND_CONTENT.tip}</p>
+        <div class="flex flex-wrap gap-2 justify-center">
           {#each NOT_FOUND_CONTENT.suggestedLinks as link}
             {@const bgColors: Record<string, string> = { 'emerald-500': '#10b981', 'blue-500': '#3b82f6', 'purple-500': '#a855f7' }}
             <a
               href={link.to}
-              class="px-4 py-2 rounded-full text-sm font-medium text-white hover:opacity-90 transition"
+              class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium text-white hover:opacity-90 transition"
               style="background-color: {bgColors[link.bg] ?? link.bg};"
             >
               {link.label}
@@ -79,7 +64,7 @@
       </div>
 
       <!-- Easter egg -->
-      <p class="text-xs text-gray-600" in:fade={{ duration: 800, delay: 600 }}>
+      <p class="mt-4 text-xs text-gray-400" in:fade={{ duration: 800, delay: 500 }}>
         {NOT_FOUND_CONTENT.easterEgg}
       </p>
     </div>
