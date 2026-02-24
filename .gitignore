@@ -26,4 +26,6 @@ chrome-user-data
 *.swo
 /tmp
 /.worktrees
-.claude/*.local.*
+.claude/*.local.*src-svelte-redesign/node_modules
+src-svelte-redesign/.svelte-kit
+src-svelte-redesign/build
