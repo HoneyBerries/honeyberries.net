@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoneyBerries — Design System</title>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — mirrors globals.css @theme
+       ============================================================ */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+      /* In Next.js these become var(--font-geist-sans) / var(--font-geist-mono) via next/font */
+
+      /* Primary — Violet */
+      --color-primary-50:  oklch(97% 0.02 300);
+      --color-primary-100: oklch(93% 0.05 300);
+      --color-primary-200: oklch(86% 0.10 300);
+      --color-primary-300: oklch(77% 0.16 300);
+      --color-primary-400: oklch(67% 0.22 300);
+      --color-primary-500: oklch(58% 0.26 300);
+      --color-primary-600: oklch(50% 0.26 300); /* ≈ #7c3aed */
+      --color-primary-700: oklch(43% 0.24 300);
+      --color-primary-800: oklch(35% 0.20 300);
+      --color-primary-900: oklch(27% 0.15 300);
+      --color-primary-950: oklch(18% 0.10 300);
+
+      /* Secondary — Pink */
+      --color-secondary-50:  oklch(98% 0.01 350);
+      --color-secondary-100: oklch(95% 0.04 350);
+      --color-secondary-200: oklch(89% 0.08 350);
+      --color-secondary-300: oklch(80% 0.14 350);
+      --color-secondary-400: oklch(70% 0.20 350);
+      --color-secondary-500: oklch(61% 0.24 350); /* ≈ #ec4899 */
+      --color-secondary-600: oklch(54% 0.24 350);
+      --color-secondary-700: oklch(46% 0.22 350);
+      --color-secondary-800: oklch(38% 0.18 350);
+      --color-secondary-900: oklch(30% 0.13 350);
+      --color-secondary-950: oklch(20% 0.09 350);
+
+      /* Accent — Cyan */
+      --color-accent-50:  oklch(98% 0.02 195);
+      --color-accent-100: oklch(94% 0.05 195);
+      --color-accent-200: oklch(87% 0.10 195);
+      --color-accent-300: oklch(78% 0.16 195);
+      --color-accent-400: oklch(68% 0.20 195);
+      --color-accent-500: oklch(57% 0.22 195); /* ≈ #06b6d4 */
+      --color-accent-600: oklch(50% 0.20 195);
+      --color-accent-700: oklch(42% 0.17 195);
+      --color-accent-800: oklch(34% 0.13 195);
+      --color-accent-900: oklch(27% 0.09 195);
+      --color-accent-950: oklch(19% 0.06 195);
+
+      /* Neutral — Stone */
+      --color-neutral-50:  #fafaf9; --color-neutral-100: #f5f5f4;
+      --color-neutral-200: #e7e5e4; --color-neutral-300: #d6d3d1;
+      --color-neutral-400: #a8a29e; --color-neutral-500: #78716c;
+      --color-neutral-600: #57534e; --color-neutral-700: #44403c;
+      --color-neutral-800: #292524; --color-neutral-900: #1c1917;
+      --color-neutral-950: #0c0a09;
+
+      /* Semantic */
+      --color-background:     #ffffff;
+      --color-surface:        #ffffff;
+      --color-surface-muted:  #fafaf9;
+      --color-surface-tinted: oklch(98% 0.01 300);
+      --color-border:         #e5e7eb;
+      --color-border-muted:   #f3f4f6;
+      --color-border-strong:  #d1d5db;
+      --color-text:           #1f2937;
+      --color-text-muted:     #6b7280;
+      --color-text-subtle:    #9ca3af;
+      --color-text-inverted:  #ffffff;
+
+      /* Radius */
+      --radius-sm:   4px;  --radius-md:   8px;
+      --radius-lg:   12px; --radius-xl:   16px;
+      --radius-2xl:  24px; --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-xs:      0 1px 2px 0 rgb(0 0 0 / 0.04);
+      --shadow-sm:      0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+      --shadow-md:      0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+      --shadow-lg:      0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.03);
+      --shadow-xl:      0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.03);
+      --shadow-primary: 0 12px 24px rgb(124 58 237 / 0.25);
+      --shadow-glow:    0 0 32px rgb(124 58 237 / 0.12);
+
+      /* Z-index */
+      --z-raised: 10; --z-overlay: 20; --z-modal: 30;
+      --z-popover: 40; --z-toast: 50; --z-navbar: 60;
+
+      /* Easings */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-expo:  cubic-bezier(0.7, 0, 0.84, 0);
+      --ease-in-out:   cubic-bezier(0.45, 0, 0.55, 1);
+      --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-bounce:   cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+      /* Durations */
+      --duration-instant: 80ms;  --duration-fast:   150ms;
+      --duration-base:   200ms;  --duration-slow:   350ms;
+      --duration-slower: 500ms;  --duration-page:   450ms;
+    }
+
+    /* ============================================================
+       BASE — mirrors globals.css @layer base
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "rlig" 1, "calt" 1;
+    }
+
+    body {
+      background-color: var(--color-background);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    ::selection { background-color: var(--color-primary-100); color: var(--color-primary-700); }
+    :focus-visible { outline: 2px solid var(--color-primary-600); outline-offset: 2px; border-radius: 2px; }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0.1em 0.35em;
+    }
+
+    /* ============================================================
+       COMPONENT CLASSES — mirrors globals.css @layer components
+       ============================================================ */
+
+    /* Gradients */
+    .gradient-brand    { background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-500) 100%); }
+    .gradient-surface  { background: linear-gradient(135deg, #fafaf9 0%, #f5f3ff 100%); }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-500) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .gradient-text-wide {
+      background: linear-gradient(90deg, #14b8a6 0%, #3b82f6 35%, #8b5cf6 70%, #ec4899 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Card */
+    .card {
+      position: relative; overflow: hidden;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgb(124 58 237 / 0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .card > * { position: relative; z-index: 1; }
+    .card:hover { border-color: var(--color-primary-300); box-shadow: var(--shadow-lg); }
+    .card-secondary::before { background: linear-gradient(135deg, rgb(236 72 153 / 0.06) 0%, transparent 55%); }
+    .card-secondary:hover { border-color: var(--color-secondary-300); }
+    .card-accent::before { background: linear-gradient(135deg, rgb(6 182 212 / 0.06) 0%, transparent 55%); }
+    .card-accent:hover { border-color: var(--color-accent-300); }
+
+    /* Button */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5rem; padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-lg); font-size: 0.9375rem; font-weight: 500;
+      line-height: 1; white-space: nowrap; user-select: none;
+      border: none; cursor: pointer; font-family: inherit;
+      transition:
+        transform var(--duration-fast) var(--ease-spring),
+        box-shadow var(--duration-base) ease,
+        background-color var(--duration-base) ease,
+        border-color var(--duration-base) ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-500) 100%);
+      color: white;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-primary); }
+    .btn-secondary { background: transparent; border: 1.5px solid var(--color-primary-600); color: var(--color-primary-600); }
+    .btn-secondary:hover { background: var(--color-primary-50); }
+    .btn-ghost { background: var(--color-surface-muted); color: var(--color-text); }
+    .btn-ghost:hover { background: var(--color-border-muted); }
+    .btn-sm { padding: 0.375rem 0.875rem; font-size: 0.8125rem; border-radius: var(--radius-md); }
+    .btn-lg { padding: 0.875rem 1.75rem; font-size: 1.0625rem; border-radius: var(--radius-xl); }
+
+    /* Badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      padding: 0.25rem 0.625rem; border-radius: var(--radius-full);
+      font-size: 0.75rem; font-weight: 500; line-height: 1;
+    }
+    .badge-primary   { background: var(--color-primary-100);   color: var(--color-primary-700);   }
+    .badge-secondary { background: var(--color-secondary-100); color: var(--color-secondary-700); }
+    .badge-accent    { background: var(--color-accent-100);    color: var(--color-accent-700);    }
+    .badge-neutral   { background: var(--color-surface-muted); color: var(--color-text-muted);    }
+
+    /* Input */
+    .input {
+      width: 100%; padding: 0.625rem 0.875rem;
+      background: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      color: var(--color-text); font-size: 0.9375rem; font-family: inherit;
+      transition: border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
+    }
+    .input:focus { outline: none; border-color: var(--color-primary-600); box-shadow: 0 0 0 3px var(--color-primary-100); }
+    .input::placeholder { color: var(--color-text-subtle); }
+    .label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--color-text); margin-bottom: 0.375rem; }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: var(--z-navbar);
+      background: rgb(255 255 255 / 0.9); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border);
+    }
+
+    /* ============================================================
+       KEYFRAMES — mirrors globals.css keyframes
+       ============================================================ */
+    @keyframes fade-in          { from { opacity: 0; }                                     to { opacity: 1; }                    }
+    @keyframes fade-up          { from { opacity: 0; transform: translateY(20px); }         to { opacity: 1; transform: translateY(0); }     }
+    @keyframes fade-down        { from { opacity: 0; transform: translateY(-20px); }        to { opacity: 1; transform: translateY(0); }     }
+    @keyframes fade-in-scale    { from { opacity: 0; transform: scale(0.94); }              to { opacity: 1; transform: scale(1); }          }
+    @keyframes slide-in-left    { from { opacity: 0; transform: translateX(-28px); }        to { opacity: 1; transform: translateX(0); }     }
+    @keyframes slide-in-right   { from { opacity: 0; transform: translateX(28px); }         to { opacity: 1; transform: translateX(0); }     }
+    @keyframes shimmer          { from { background-position: -200% 0; }                    to { background-position: 200% 0; }             }
+    @keyframes float            { 0%, 100% { transform: translateY(0); }                    50% { transform: translateY(-8px); }            }
+    @keyframes pulse-glow       { 0%, 100% { box-shadow: 0 0 0 0 rgb(124 58 237 / 0); }    50% { box-shadow: 0 0 24px 4px rgb(124 58 237 / 0.2); } }
+
+    /* ── Animation utilities — mirrors globals.css @layer utilities ── */
+    .animate-fade-in       { animation: fade-in        350ms var(--ease-out-expo) both; }
+    .animate-fade-up       { animation: fade-up         350ms var(--ease-out-expo) both; }
+    .animate-fade-down     { animation: fade-down       350ms var(--ease-out-expo) both; }
+    .animate-fade-in-scale { animation: fade-in-scale   350ms var(--ease-out-expo) both; }
+    .animate-slide-left    { animation: slide-in-left   350ms var(--ease-out-expo) both; }
+    .animate-slide-right   { animation: slide-in-right  350ms var(--ease-out-expo) both; }
+    .animate-float         { animation: float           3s ease-in-out infinite; }
+    .animate-pulse-glow    { animation: pulse-glow      2.5s ease-in-out infinite; }
+    .animate-shimmer {
+      background: linear-gradient(90deg, var(--color-surface-muted) 25%, var(--color-border-muted) 50%, var(--color-surface-muted) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite linear;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--color-surface-muted); }
+    ::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: var(--radius-full); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-text-subtle); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+/* ── Data ──────────────────────────────────────────────────── */
+const SHADES = ['50','100','200','300','400','500','600','700','800','900','950'];
+
+const SEMANTIC_TOKENS = [
+  { name: '--color-background',    hex: '#ffffff',  desc: 'Page background'        },
+  { name: '--color-surface',       hex: '#ffffff',  desc: 'Card/panel surfaces'     },
+  { name: '--color-surface-muted', hex: '#fafaf9',  desc: 'Subtle backgrounds'      },
+  { name: '--color-border',        hex: '#e5e7eb',  desc: 'Default borders'         },
+  { name: '--color-text',          hex: '#1f2937',  desc: 'Primary text'            },
+  { name: '--color-text-muted',    hex: '#6b7280',  desc: 'Secondary / body text'   },
+  { name: '--color-text-subtle',   hex: '#9ca3af',  desc: 'Placeholder / disabled'  },
+];
+
+const SHADOWS = [
+  { name: '--shadow-xs',      ex: '0 1px 2px 0 rgb(0 0 0/0.04)'                                                    },
+  { name: '--shadow-sm',      ex: '0 1px 3px 0 rgb(0 0 0/0.07),0 1px 2px -1px rgb(0 0 0/0.05)'                    },
+  { name: '--shadow-md',      ex: '0 4px 6px -1px rgb(0 0 0/0.07),0 2px 4px -2px rgb(0 0 0/0.04)'                 },
+  { name: '--shadow-lg',      ex: '0 10px 15px -3px rgb(0 0 0/0.07),0 4px 6px -4px rgb(0 0 0/0.03)'               },
+  { name: '--shadow-xl',      ex: '0 20px 25px -5px rgb(0 0 0/0.08),0 8px 10px -6px rgb(0 0 0/0.03)'              },
+  { name: '--shadow-primary', ex: '0 12px 24px rgb(124 58 237/0.25)'                                               },
+  { name: '--shadow-glow',    ex: '0 0 32px rgb(124 58 237/0.12)'                                                  },
+];
+
+const RADII = [
+  { name: '--radius-sm', val: '4px'    },
+  { name: '--radius-md', val: '8px'    },
+  { name: '--radius-lg', val: '12px'   },
+  { name: '--radius-xl', val: '16px'   },
+  { name: '--radius-2xl',val: '24px'   },
+  { name: '--radius-full',val: '9999px'},
+];
+
+const DURATIONS = [
+  { name: '--duration-instant', val: '80ms',  note: 'Micro-interactions'   },
+  { name: '--duration-fast',    val: '150ms', note: 'Hover states'         },
+  { name: '--duration-base',    val: '200ms', note: 'Default transitions'  },
+  { name: '--duration-slow',    val: '350ms', note: 'Reveals & animations' },
+  { name: '--duration-slower',  val: '500ms', note: 'Complex transitions'  },
+  { name: '--duration-page',    val: '450ms', note: 'Page transitions'     },
+];
+
+const EASINGS = [
+  { name: '--ease-out-expo', vals: [0.16, 1, 0.3, 1],          note: 'Reveals, entrances'      },
+  { name: '--ease-spring',   vals: [0.34, 1.56, 0.64, 1],      note: 'Buttons, interactive'   },
+  { name: '--ease-bounce',   vals: [0.68, -0.55, 0.27, 1.55],  note: 'Playful, bouncy'         },
+  { name: '--ease-in-out',   vals: [0.45, 0, 0.55, 1],         note: 'Smooth, balanced'        },
+];
+
+const Z_INDEX = [
+  { name: '--z-raised',  val: '10',  note: 'Dropdowns, tooltips' },
+  { name: '--z-overlay', val: '20',  note: 'Overlays'            },
+  { name: '--z-modal',   val: '30',  note: 'Modal dialogs'       },
+  { name: '--z-popover', val: '40',  note: 'Popovers'            },
+  { name: '--z-toast',   val: '50',  note: 'Toast notifications' },
+  { name: '--z-navbar',  val: '60',  note: 'Sticky nav'          },
+];
+
+const ANIM_LIST = [
+  { name: 'fade-in',       cls: 'animate-fade-in'       },
+  { name: 'fade-up',       cls: 'animate-fade-up'       },
+  { name: 'fade-down',     cls: 'animate-fade-down'     },
+  { name: 'fade-in-scale', cls: 'animate-fade-in-scale' },
+  { name: 'slide-left',    cls: 'animate-slide-left'    },
+  { name: 'slide-right',   cls: 'animate-slide-right'   },
+];
+
+const NAV = [
+  { id: 'colors',     label: 'Colors'     },
+  { id: 'typography', label: 'Typography' },
+  { id: 'buttons',    label: 'Buttons'    },
+  { id: 'cards',      label: 'Cards'      },
+  { id: 'badges',     label: 'Badges'     },
+  { id: 'forms',      label: 'Forms'      },
+  { id: 'gradients',  label: 'Gradients'  },
+  { id: 'animations', label: 'Animations' },
+  { id: 'tokens',     label: 'Tokens'     },
+];
+
+/* ── Utility components ─────────────────────────────────────── */
+const Chip = ({ children }) => (
+  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', background: 'var(--color-surface-muted)', border: '1px solid var(--color-border)', borderRadius: '4px', padding: '2px 7px', color: 'var(--color-primary-600)', userSelect: 'all', whiteSpace: 'nowrap' }}>{children}</span>
+);
+
+const DemoBox = ({ children, style }) => (
+  <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '24px', ...style }}>{children}</div>
+);
+
+const SectionHead = ({ id, title, desc }) => (
+  <div style={{ marginBottom: '28px', scrollMarginTop: '32px' }} id={id}>
+    <h2 style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text)', letterSpacing: '-0.02em', margin: 0 }}>{title}</h2>
+    {desc && <p style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '4px' }}>{desc}</p>}
+    <div style={{ height: '1px', background: 'var(--color-border)', marginTop: '16px' }} />
+  </div>
+);
+
+/* ── Color scale strip ──────────────────────────────────────── */
+const ColorRow = ({ name, prefix }) => (
+  <div style={{ marginBottom: '20px' }}>
+    <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '6px' }}>{name}</p>
+    <div style={{ display: 'flex', borderRadius: '8px', overflow: 'hidden', height: '40px' }}>
+      {SHADES.map(s => (
+        <div key={s} title={`var(--color-${prefix}-${s})`}
+          style={{ flex: 1, backgroundColor: `var(--color-${prefix}-${s})` }} />
+      ))}
+    </div>
+    <div style={{ display: 'flex', marginTop: '3px' }}>
+      {SHADES.map(s => (
+        <div key={s} style={{ flex: 1, textAlign: 'center', fontSize: '9px', color: 'var(--color-text-subtle)' }}>{s}</div>
+      ))}
+    </div>
+  </div>
+);
+
+/* ── Animation demo card (replays on click) ─────────────────── */
+const AnimCard = ({ name, cls }) => {
+  const [key, setKey] = React.useState(0);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ background: 'var(--color-surface-muted)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '20px', minHeight: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div key={key} className={cls} style={{ background: 'var(--color-primary-100)', borderRadius: '8px', padding: '10px 18px', color: 'var(--color-primary-700)', fontSize: '13px', fontWeight: '600' }}>
+          {name}
+        </div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Chip>.{cls}</Chip>
+        <button className="btn btn-sm btn-ghost" onClick={() => setKey(k => k + 1)}>↺</button>
+      </div>
+    </div>
+  );
+};
+
+/* ── Easing visualiser (animated bar) ──────────────────────── */
+const EasingBar = ({ vals }) => {
+  const [key, setKey] = React.useState(0);
+  const cubicStr = `cubic-bezier(${vals.join(', ')})`;
+  return (
+    <div key={key} style={{ height: '6px', background: 'var(--color-border)', borderRadius: '3px', overflow: 'hidden', cursor: 'pointer' }} title="Click to replay" onClick={() => setKey(k => k + 1)}>
+      <div style={{ height: '100%', width: '0%', background: 'linear-gradient(90deg, var(--color-primary-600), var(--color-secondary-500))', borderRadius: '3px', animation: `grow-bar 1.2s ${cubicStr} both` }} />
+      <style>{`@keyframes grow-bar { from{width:0%} to{width:100%} }`}</style>
+    </div>
+  );
+};
+
+/* ── Main App ───────────────────────────────────────────────── */
+const App = () => {
+  const [active, setActive] = React.useState('colors');
+  const mainRef = React.useRef(null);
+
+  const scrollTo = (id) => {
+    const container = mainRef.current;
+    const el = document.getElementById(id);
+    if (container && el) {
+      const offset = el.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop - 32;
+      container.scrollTop = offset;
+    }
+    setActive(id);
+  };
+
+  // Track active section on scroll
+  React.useEffect(() => {
+    const container = mainRef.current;
+    if (!container) return;
+    const handler = () => {
+      for (let i = NAV.length - 1; i >= 0; i--) {
+        const el = document.getElementById(NAV[i].id);
+        if (el && el.getBoundingClientRect().top - container.getBoundingClientRect().top <= 60) {
+          setActive(NAV[i].id);
+          break;
+        }
+      }
+    };
+    container.addEventListener('scroll', handler, { passive: true });
+    return () => container.removeEventListener('scroll', handler);
+  }, []);
+
+  return (
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', fontFamily: 'var(--font-sans)' }}>
+
+      {/* ── Sidebar ── */}
+      <div style={{ width: '200px', flexShrink: 0, background: 'white', borderRight: '1px solid var(--color-border)', display: 'flex', flexDirection: 'column', padding: '24px 12px' }}>
+        <div style={{ padding: '0 8px', marginBottom: '24px' }}>
+          <div style={{ fontSize: '15px', fontWeight: '700', background: 'linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-500))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>HoneyBerries</div>
+          <div style={{ fontSize: '11px', color: 'var(--color-text-subtle)', marginTop: '2px', letterSpacing: '0.3px' }}>Design System</div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
+          {NAV.map(({ id, label }) => (
+            <button key={id} onClick={() => scrollTo(id)} style={{ display: 'block', width: '100%', padding: '7px 10px', borderRadius: '8px', fontSize: '13px', fontWeight: '500', color: active === id ? 'var(--color-primary-600)' : 'var(--color-text-muted)', background: active === id ? 'var(--color-primary-50)' : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'var(--font-sans)', transition: 'all 150ms ease' }}>
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div style={{ padding: '12px 8px 0', borderTop: '1px solid var(--color-border)', marginTop: '12px' }}>
+          <p style={{ fontSize: '11px', color: 'var(--color-text-subtle)', lineHeight: 1.5 }}>globals.css<br/>Tailwind v4 · Framer Motion</p>
+        </div>
+      </div>
+
+      {/* ── Main ── */}
+      <div ref={mainRef} style={{ flex: 1, overflowY: 'auto', padding: '40px 48px', background: 'linear-gradient(135deg, #fafaf9 0%, #f5f3ff 100%)' }}>
+
+        {/* ══ COLORS ══════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="colors" title="Colors" desc="Full palette scales (50–950) and semantic tokens — @theme in globals.css" />
+          <ColorRow name="Primary — Violet  ·  --color-primary-*" prefix="primary" />
+          <ColorRow name="Secondary — Pink  ·  --color-secondary-*" prefix="secondary" />
+          <ColorRow name="Accent — Cyan  ·  --color-accent-*" prefix="accent" />
+          <ColorRow name="Neutral — Stone  ·  --color-neutral-*" prefix="neutral" />
+
+          <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', margin: '28px 0 12px' }}>Semantic Tokens</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '8px' }}>
+            {SEMANTIC_TOKENS.map(t => (
+              <div key={t.name} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'white', border: '1px solid var(--color-border)', borderRadius: '8px', padding: '10px 12px' }}>
+                <div style={{ width: '26px', height: '26px', borderRadius: '6px', backgroundColor: t.hex, border: '1px solid var(--color-border)', flexShrink: 0 }} />
+                <div>
+                  <Chip>{t.name}</Chip>
+                  <div style={{ fontSize: '10px', color: 'var(--color-text-subtle)', marginTop: '3px' }}>{t.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ══ TYPOGRAPHY ══════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="typography" title="Typography" desc="Base type scale with fluid sizing via clamp() — @layer base" />
+          <DemoBox>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {[
+                { tag: 'h1', size: 'clamp(2rem, 5vw, 3.5rem)',    sample: 'Heading One'   },
+                { tag: 'h2', size: 'clamp(1.5rem, 4vw, 2.5rem)', sample: 'Heading Two'   },
+                { tag: 'h3', size: 'clamp(1.25rem, 3vw, 1.75rem)',sample: 'Heading Three' },
+                { tag: 'h4', size: '1.25rem',                     sample: 'Heading Four'  },
+                { tag: 'h5', size: '1.125rem',                    sample: 'Heading Five'  },
+              ].map(h => (
+                <div key={h.tag} style={{ display: 'flex', alignItems: 'baseline', gap: '16px', paddingBottom: '12px', borderBottom: '1px solid var(--color-border-muted)' }}>
+                  <span style={{ fontSize: h.size, fontWeight: '700', color: 'var(--color-text)', letterSpacing: '-0.02em', lineHeight: 1.2, flexShrink: 0 }}>{h.sample}</span>
+                  <Chip>{h.tag} · {h.size} · weight 700</Chip>
+                </div>
+              ))}
+
+              <div style={{ paddingBottom: '12px', borderBottom: '1px solid var(--color-border-muted)' }}>
+                <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: '0 0 6px' }}>Body text — paragraph content. Color is text-muted, text-wrap: pretty.</p>
+                <Chip>p · 1rem · text-muted · text-wrap: pretty</Chip>
+              </div>
+
+              <div style={{ paddingBottom: '12px', borderBottom: '1px solid var(--color-border-muted)' }}>
+                <code>const result = await fetch('/api/data')</code>
+                <div style={{ marginTop: '6px' }}><Chip>code · font-mono · surface-muted bg</Chip></div>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <span className="gradient-text" style={{ fontSize: '28px', fontWeight: '700', flexShrink: 0 }}>Gradient Text</span>
+                  <Chip>.gradient-text — primary-600 → secondary-500</Chip>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <span className="gradient-text-wide" style={{ fontSize: '28px', fontWeight: '700', flexShrink: 0 }}>Wide Gradient</span>
+                  <Chip>.gradient-text-wide — teal→blue→purple→pink</Chip>
+                </div>
+              </div>
+            </div>
+          </DemoBox>
+        </div>
+
+        {/* ══ BUTTONS ═════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="buttons" title="Buttons" desc=".btn + .btn-{primary|secondary|ghost} + .btn-{sm|lg}" />
+
+          {[
+            { variant: 'btn-primary',   label: 'Primary',   cls: '.btn .btn-primary'   },
+            { variant: 'btn-secondary', label: 'Secondary', cls: '.btn .btn-secondary' },
+            { variant: 'btn-ghost',     label: 'Ghost',     cls: '.btn .btn-ghost'     },
+          ].map(({ variant, label, cls }) => (
+            <DemoBox key={variant} style={{ marginBottom: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                <button className={`btn ${variant} btn-sm`}>Small</button>
+                <button className={`btn ${variant}`}>Default</button>
+                <button className={`btn ${variant} btn-lg`}>Large</button>
+              </div>
+              <Chip>{cls}</Chip>
+            </DemoBox>
+          ))}
+        </div>
+
+        {/* ══ CARDS ═══════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="cards" title="Cards" desc=".card + optional .card-{secondary|accent} — gradient overlay via ::before pseudo-element" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            {[
+              { extra: '',               label: '.card',                   heading: 'Default Card',   color: 'primary',   desc: 'Violet gradient blush. Hover to see the border + shadow.' },
+              { extra: 'card-secondary', label: '.card .card-secondary',   heading: 'Secondary Card', color: 'secondary', desc: 'Pink gradient blush for secondary or featured content.'    },
+              { extra: 'card-accent',    label: '.card .card-accent',      heading: 'Accent Card',    color: 'accent',    desc: 'Cyan gradient blush for highlighted or special content.'   },
+            ].map(c => (
+              <div key={c.extra}>
+                <div className={`card ${c.extra}`} style={{ marginBottom: '8px' }}>
+                  <h3 style={{ fontSize: '15px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '6px', margin: '0 0 6px' }}>{c.heading}</h3>
+                  <p style={{ fontSize: '13px', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
+                  <div style={{ marginTop: '16px', display: 'flex', gap: '8px' }}>
+                    <span className={`badge badge-${c.color}`}>Tag</span>
+                    <span className={`badge badge-neutral`}>Label</span>
+                  </div>
+                </div>
+                <Chip>{c.label}</Chip>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ══ BADGES ══════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="badges" title="Badges" desc=".badge .badge-{primary|secondary|accent|neutral}" />
+          <DemoBox>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
+              <span className="badge badge-primary">Primary</span>
+              <span className="badge badge-secondary">Secondary</span>
+              <span className="badge badge-accent">Accent</span>
+              <span className="badge badge-neutral">Neutral</span>
+            </div>
+            <p style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '12px' }}>In context:</p>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <span className="badge badge-primary">Python</span>
+              <span className="badge badge-secondary">Machine Learning</span>
+              <span className="badge badge-accent">Next.js</span>
+              <span className="badge badge-neutral">Open Source</span>
+              <span className="badge badge-primary">TypeScript</span>
+              <span className="badge badge-accent">Tailwind CSS</span>
+            </div>
+          </DemoBox>
+        </div>
+
+        {/* ══ FORMS ═══════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="forms" title="Forms" desc=".label + .input — focus state uses primary ring" />
+          <DemoBox>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', maxWidth: '640px' }}>
+              <div>
+                <label className="label">Full name</label>
+                <input className="input" type="text" placeholder="HoneyBerries" />
+              </div>
+              <div>
+                <label className="label">Email address</label>
+                <input className="input" type="email" placeholder="you@example.com" />
+              </div>
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label className="label">Message</label>
+                <textarea className="input" rows={3} placeholder="What's on your mind?" style={{ resize: 'vertical' }}></textarea>
+              </div>
+              <div style={{ gridColumn: '1 / -1', display: 'flex', gap: '10px' }}>
+                <button className="btn btn-primary">Send message</button>
+                <button className="btn btn-secondary">Cancel</button>
+                <button className="btn btn-ghost">Save draft</button>
+              </div>
+            </div>
+          </DemoBox>
+        </div>
+
+        {/* ══ GRADIENTS ═══════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="gradients" title="Gradients" desc="Reusable gradient helper classes from @layer components" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
+            <div>
+              <div className="gradient-brand" style={{ height: '72px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
+                <span style={{ color: 'white', fontWeight: '600', fontSize: '14px' }}>gradient-brand</span>
+              </div>
+              <Chip>.gradient-brand — primary-600 → secondary-500</Chip>
+            </div>
+            <div>
+              <div className="gradient-surface" style={{ height: '72px', borderRadius: '12px', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
+                <span style={{ color: 'var(--color-text-muted)', fontWeight: '600', fontSize: '14px' }}>gradient-surface</span>
+              </div>
+              <Chip>.gradient-surface — cream → lavender</Chip>
+            </div>
+          </div>
+          <DemoBox style={{ marginTop: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span className="gradient-text" style={{ fontSize: '26px', fontWeight: '700', flexShrink: 0, whiteSpace: 'nowrap' }}>Gradient Text</span>
+                <Chip>.gradient-text</Chip>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span className="gradient-text-wide" style={{ fontSize: '26px', fontWeight: '700', flexShrink: 0, whiteSpace: 'nowrap' }}>Wide Gradient Text</span>
+                <Chip>.gradient-text-wide</Chip>
+              </div>
+            </div>
+          </DemoBox>
+        </div>
+
+        {/* ══ ANIMATIONS ══════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="animations" title="Animations" desc="CSS animation utilities + Framer Motion easing reference — click ↺ to replay" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '28px' }}>
+            {ANIM_LIST.map(a => <AnimCard key={a.cls} {...a} />)}
+          </div>
+
+          <DemoBox>
+            <p style={{ fontSize: '13px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '16px' }}>Framer Motion Easing Reference</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {EASINGS.map(e => (
+                <div key={e.name}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <Chip>{e.name}</Chip>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-subtle)' }}>{e.note}</span>
+                    <Chip>transition={`{{ ease: [${e.vals.join(', ')}] }}`}</Chip>
+                  </div>
+                  <EasingBar vals={e.vals} />
+                </div>
+              ))}
+            </div>
+          </DemoBox>
+        </div>
+
+        {/* ══ TOKENS ══════════════════════════════════════════ */}
+        <div style={{ marginBottom: '64px' }}>
+          <SectionHead id="tokens" title="Tokens" desc="Shadows, border radii, z-index scale, and duration tokens from @theme" />
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
+
+            {/* Shadows */}
+            <div>
+              <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '12px' }}>Shadows</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {SHADOWS.map(s => (
+                  <div key={s.name} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                    <div style={{ width: '44px', height: '30px', background: 'white', borderRadius: '6px', boxShadow: s.ex, flexShrink: 0 }} />
+                    <Chip>{s.name}</Chip>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Radii */}
+            <div>
+              <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '12px' }}>Border Radius</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {RADII.map(r => (
+                  <div key={r.name} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '44px', height: '28px', background: 'var(--color-primary-100)', borderRadius: r.val, flexShrink: 0 }} />
+                    <Chip>{r.name}</Chip>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-subtle)', fontFamily: 'var(--font-mono)' }}>{r.val}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Durations */}
+            <div>
+              <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '12px' }}>Durations</p>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {DURATIONS.map(d => (
+                  <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: '1px solid var(--color-border-muted)' }}>
+                    <Chip>{d.name}</Chip>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--color-primary-600)', fontWeight: '600', flexShrink: 0 }}>{d.val}</span>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-subtle)' }}>{d.note}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Z-index */}
+            <div>
+              <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text)', marginBottom: '12px' }}>Z-Index Scale</p>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {Z_INDEX.map(z => (
+                  <div key={z.name} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 0', borderBottom: '1px solid var(--color-border-muted)' }}>
+                    <Chip>{z.name}</Chip>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--color-primary-600)', fontWeight: '600', flexShrink: 0, minWidth: '28px' }}>{z.val}</span>
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-subtle)' }}>{z.note}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
