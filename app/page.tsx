@@ -1,14 +1,21 @@
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/site/navbar";
+import { HeroSection } from "@/components/site/hero-section";
+import { AboutSection } from "@/components/site/about-section";
+import { ProjectsSection } from "@/components/site/projects-section";
+import { ContactSection } from "@/components/site/contact-section";
+import { Footer } from "@/components/site/footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-6">
-      <ThemeToggle />
-      <h1 className="text-3xl font-semibold tracking-tight">
-        honeyberries.net
-      </h1>
-      <Button>Scaffold is working</Button>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
   );
 }
