@@ -39,6 +39,7 @@ export function AboutSection() {
           <div className="flex flex-wrap gap-3">
             <Button
               nativeButton={false}
+              className="border-black/10 bg-white text-black hover:bg-neutral-100 dark:border-white/10 dark:bg-black dark:text-white dark:hover:bg-neutral-900"
               render={
                 <a
                   href="https://github.com/HoneyBerries"
@@ -47,7 +48,7 @@ export function AboutSection() {
                 />
               }
             >
-              <GithubIcon className="invert dark:invert-0 size-4" /> GitHub
+              <GithubIcon className="size-4" /> GitHub
             </Button>
             <Button
               variant="outline"

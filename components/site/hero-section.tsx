@@ -34,6 +34,7 @@ export function HeroSection() {
           variant="outline"
           size="lg"
           nativeButton={false}
+          className="border-black/10 bg-white text-black hover:bg-neutral-100 dark:border-white/10 dark:bg-black dark:text-white dark:hover:bg-neutral-900"
           render={
             <a
               href="https://github.com/HoneyBerries"
