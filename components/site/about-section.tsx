@@ -1,16 +1,27 @@
 import { GithubIcon } from "@/components/icons/github-icon"
 import { ModrinthIcon } from "@/components/icons/modrinth-icon"
-import { Badge } from "@/components/ui/badge"
+import { Badge, type badgeVariants } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { skills, stats } from "@/lib/data/skills"
+import type { VariantProps } from "class-variance-authority"
+
+const SKILL_BADGE_VARIANTS: NonNullable<
+  VariantProps<typeof badgeVariants>["variant"]
+>[] = ["default", "secondary", "accent"]
 
 export function AboutSection() {
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-24">
       <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
         <div className="flex flex-col gap-6">
-          <Badge variant="outline" className="w-fit">
+          <Badge variant="accent" className="w-fit">
             About me
           </Badge>
           <h2 className="text-2xl font-bold tracking-tight">
@@ -54,14 +65,28 @@ export function AboutSection() {
           </div>
         </div>
 
-        <Card>
+        <Card className="overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/about-fuji.jpg"
+            alt="Mount Fuji seen from a hillside overlook"
+            className="h-48 w-full object-cover sm:h-56"
+          />
           <CardHeader>
             <CardTitle>Stuff I have worked with</CardTitle>
+            <CardDescription>
+              Languages and tools I keep reaching for.
+            </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
             <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <Badge key={skill} variant="secondary">
+              {skills.map((skill, index) => (
+                <Badge
+                  key={skill}
+                  variant={
+                    SKILL_BADGE_VARIANTS[index % SKILL_BADGE_VARIANTS.length]
+                  }
+                >
                   {skill}
                 </Badge>
               ))}
@@ -70,7 +95,7 @@ export function AboutSection() {
             <div className="grid grid-cols-3 gap-4 border-t pt-6 text-center">
               {stats.map(({ value, label }) => (
                 <div key={label}>
-                  <p className="text-2xl font-bold">{value}</p>
+                  <p className="gradient-text text-2xl font-bold">{value}</p>
                   <p className="mt-1 text-xs leading-snug text-muted-foreground">
                     {label}
                   </p>
