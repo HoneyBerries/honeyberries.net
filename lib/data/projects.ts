@@ -25,7 +25,7 @@ export const projects: Project[] = [
     description:
         "Since I didn't have any website after I bought a domain, I decided to create one for fun",
     tags: ["Web Development"],
-    href: "https://github.com/HoneyBerries/PepmonClient",
+    href: "https://github.com/HoneyBerries/honeyberries.net",
   },
   {
     title: "Minecraft Mods",

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
+import { SITE_NAME, SITE_URL } from "@/lib/data/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,8 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_NAME = "HoneyBerries";
-const SITE_URL = "https://honeyberries.net";
 const SITE_DESCRIPTION =
   "Personal portfolio of HoneyBerries, a Computer Science student at UC Berkeley building AI agents, Discord bots, and Minecraft mods.";
 
