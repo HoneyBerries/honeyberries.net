@@ -10,14 +10,14 @@ export const projects: Project[] = [
     title: "Modcord",
     description:
       "I couldn't moderate my Discord servers since it wasted my time, so I got AI to automate it",
-    tags: ["Discord"],
+    tags: ["Discord", "LLM", "AI Agent"],
     href: "https://github.com/HoneyBerries/Modcord",
   },
   {
     title: "Pepmon Client",
     description:
         "I attempted to make a ghost client for my friend, and it was successful",
-    tags: ["Minecraft"],
+    tags: ["Minecraft", "Hacks"],
     href: "https://github.com/HoneyBerries/PepmonClient",
   },
   {
@@ -31,14 +31,22 @@ export const projects: Project[] = [
     title: "Minecraft Mods",
     description:
       "My friend, Pepmon270, told me to make some fabric mods so we could earn some money from Modrinth",
-    tags: ["Minecraft"],
+    tags: ["Minecraft", "Modrinth"],
     href: "https://modrinth.com/user/HoneyBerries",
   },
   {
     title: "Minecraft Plugins",
     description:
       "A collection of PaperMC plugins I made when I was young",
-    tags: ["Minecraft"],
+    tags: ["Minecraft", "Modrinth"],
     href: "https://github.com/HoneyBerries",
   },
+  {
+    title: "Gem SMP (Legacy)",
+    description:
+      "During 8th grade, I decided to make a custom Minecraft server, writing my own plugin to add custom gems " +
+        "into the game, which made it very fun.",
+    tags: ["Minecraft", "Server"],
+    href: "https://github.com/HoneyBerries/GemMod",
+  }
 ]

@@ -36,7 +36,7 @@ export function ProjectsSection() {
           Things I&apos;ve built
         </h2>
         <p className="max-w-md text-muted-foreground">
-          From Minecraft plugins to Discord bots — here&apos;s what
+          From AI Discord bots to Minecraft mods, here&apos;s what
           I&apos;ve been working on.
         </p>
       </div>
