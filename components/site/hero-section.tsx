@@ -25,8 +25,8 @@ export function HeroSection() {
         <Button
           size="lg"
           nativeButton={false}
-          className="bg-gradient-to-br from-primary-600 to-secondary-500 text-white hover:opacity-90 hover:shadow-lg hover:shadow-primary-500/25"
-          render={<a href="#projects" />}
+          className="bg-linear-to-br from-primary-600 to-secondary-500 text-white hover:opacity-90 hover:shadow-lg hover:shadow-primary-500/25"
+          render={<a href="/projects" />}
         >
           See My Projects
         </Button>
