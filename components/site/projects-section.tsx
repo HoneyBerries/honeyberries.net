@@ -6,8 +6,8 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
       <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <Badge variant="outline">Projects</Badge>
-        <h2 className="text-2xl font-bold tracking-tight">
+        <Badge variant="secondary">Projects</Badge>
+        <h2 className="gradient-text text-2xl font-bold tracking-tight">
           Things I&apos;ve built
         </h2>
         <p className="max-w-md text-muted-foreground">
@@ -25,7 +25,7 @@ export function ProjectsSection() {
             rel="noopener noreferrer"
             className="block"
           >
-            <Card className="h-full transition-colors hover:bg-muted/50">
+            <Card className="h-full ring-1 ring-foreground/10 transition-all hover:bg-muted/50 hover:ring-primary/40 hover:shadow-lg hover:shadow-primary-500/10">
               <CardHeader>
                 <CardTitle>{title}</CardTitle>
               </CardHeader>
@@ -35,7 +35,7 @@ export function ProjectsSection() {
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">
+                    <Badge key={tag} variant="accent">
                       {tag}
                     </Badge>
                   ))}
