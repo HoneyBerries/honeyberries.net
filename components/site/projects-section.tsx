@@ -3,11 +3,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { projects } from "@/lib/data/projects"
 
+// Order matters: tagVariants is offset by one from hoverAccents so a
+// card's tag badge never lands on the same palette color as its hover glow.
 const hoverAccents = [
   "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
   "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
   "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
-]
+] as const
+
+const tagVariants = ["secondary", "accent", "default"] as const
 
 export function ProjectsSection() {
   return (
@@ -47,7 +51,10 @@ export function ProjectsSection() {
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {tags.map((tag) => (
-                    <Badge key={tag} variant="accent">
+                    <Badge
+                      key={tag}
+                      variant={tagVariants[index % tagVariants.length]}
+                    >
                       {tag}
                     </Badge>
                   ))}
