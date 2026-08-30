@@ -1,16 +1,22 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import { GithubIcon } from "@/components/icons/github-icon"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { cn } from "@/lib/utils"
 
 const NAV_LINKS = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
@@ -20,13 +26,16 @@ export function Navbar() {
 
         <nav className="flex items-center gap-1">
           {NAV_LINKS.map(({ label, href }) => (
-            <a
+            <Link
               key={href}
               href={href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+              className={cn(
+                "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary",
+                pathname === href && "text-primary"
+              )}
             >
               {label}
-            </a>
+            </Link>
           ))}
           <Button
             variant="ghost"
