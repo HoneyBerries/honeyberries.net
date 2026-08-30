@@ -9,14 +9,14 @@ export const projects: Project[] = [
   {
     title: "Modcord",
     description:
-      "I couldn't moderate my Discord servers since my mom told me it is a waste of time (I totally agree), so I got AI to automate it",
+      "I couldn't moderate my Discord servers since it wasted my time, so I got AI to automate it",
     tags: ["Discord"],
     href: "https://github.com/HoneyBerries/Modcord",
   },
   {
     title: "Pepmon Client",
     description:
-        "I once tried to make a ghost client for my friend, and it went pretty well. He really enjoys it!",
+        "I attempted to make a ghost client for my friend, and it was successful",
     tags: ["Minecraft"],
     href: "https://github.com/HoneyBerries/PepmonClient",
   },
@@ -24,13 +24,13 @@ export const projects: Project[] = [
     title: "This Website",
     description:
         "Since I didn't have any website after I bought a domain, I decided to create one for fun",
-    tags: ["Minecraft"],
+    tags: ["Web Development"],
     href: "https://github.com/HoneyBerries/PepmonClient",
   },
   {
     title: "Minecraft Mods",
     description:
-      "My friend, Pepmon270, told me to make some fabric mods so we could get some money from Modrinth",
+      "My friend, Pepmon270, told me to make some fabric mods so we could earn some money from Modrinth",
     tags: ["Minecraft"],
     href: "https://modrinth.com/user/HoneyBerries",
   },
