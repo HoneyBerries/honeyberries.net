@@ -1,6 +1,13 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 import { projects } from "@/lib/data/projects"
+
+const hoverAccents = [
+  "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
+  "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
+  "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
+]
 
 export function ProjectsSection() {
   return (
@@ -17,7 +24,7 @@ export function ProjectsSection() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map(({ title, description, tags, href }) => (
+        {projects.map(({ title, description, tags, href }, index) => (
           <a
             key={title}
             href={href}
@@ -25,7 +32,12 @@ export function ProjectsSection() {
             rel="noopener noreferrer"
             className="block"
           >
-            <Card className="h-full ring-1 ring-foreground/10 transition-all hover:bg-muted/50 hover:ring-primary/40 hover:shadow-lg hover:shadow-primary-500/10">
+            <Card
+              className={cn(
+                "h-full ring-1 ring-foreground/10 transition-all",
+                hoverAccents[index % hoverAccents.length]
+              )}
+            >
               <CardHeader>
                 <CardTitle>{title}</CardTitle>
               </CardHeader>
