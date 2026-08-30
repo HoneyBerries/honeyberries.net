@@ -10,9 +10,15 @@ import {GithubIcon} from "@/components/icons/github-icon";
 export function ContactSection() {
   return (
     <section id="contact" className="mx-auto max-w-5xl px-6 py-24">
-      <Card className="mx-auto max-w-2xl text-center">
+      <Card className="mx-auto max-w-2xl overflow-hidden text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/contact-tokyo.jpg"
+          alt="A lantern-lit street in Tokyo at night"
+          className="h-48 w-full object-cover sm:h-56"
+        />
         <CardContent className="flex flex-col items-center gap-6 py-10">
-          <Badge variant="secondary">Connect</Badge>
+          <Badge variant="accent">Connect</Badge>
           <h2 className="text-2xl font-bold tracking-tight">Say hi!</h2>
           <p className="max-w-md leading-relaxed text-muted-foreground">
             Check out my projects on GitHub or browse my mods on Modrinth.
