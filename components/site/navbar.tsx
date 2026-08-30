@@ -14,7 +14,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="/" className="font-bold tracking-tight">
+        <Link href="/" className="gradient-text font-bold tracking-tight">
           HoneyBerries
         </Link>
 
@@ -23,7 +23,7 @@ export function Navbar() {
             <a
               key={href}
               href={href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
             >
               {label}
             </a>
