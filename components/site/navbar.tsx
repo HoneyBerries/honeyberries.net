@@ -3,8 +3,6 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { GithubIcon } from "@/components/icons/github-icon"
-import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 
@@ -18,7 +16,7 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-background/60 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <Link href="/" className="gradient-text font-bold tracking-tight">
           HoneyBerries
@@ -37,22 +35,6 @@ export function Navbar() {
               {label}
             </Link>
           ))}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="ml-1"
-            nativeButton={false}
-            render={
-              <a
-                href="https://github.com/HoneyBerries"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              />
-            }
-          >
-            <GithubIcon className="size-4" />
-          </Button>
           <ThemeToggle />
         </nav>
       </div>
