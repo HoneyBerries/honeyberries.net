@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# honeyberries.net
 
-## Getting Started
+[![Deploy](https://img.shields.io/github/actions/workflow/status/HoneyBerries/honeyberries.net/deploy.yml?branch=main&style=flat-square&label=deploy)](https://github.com/HoneyBerries/honeyberries.net/actions/workflows/deploy.yml)
+[![Build](https://img.shields.io/github/actions/workflow/status/HoneyBerries/honeyberries.net/build.yml?style=flat-square&label=build)](https://github.com/HoneyBerries/honeyberries.net/actions/workflows/build.yml)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Cloudflare Workers](https://img.shields.io/badge/deployed%20on-Cloudflare%20Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+[![License](https://img.shields.io/github/license/HoneyBerries/honeyberries.net?style=flat-square)](LICENSE)
 
-First, run the development server:
+Source for my personal site, [honeyberries.net](https://honeyberries.net) — a small portfolio with an about page, project list, and a way to get in touch.
+
+## Stack
+
+- **Next.js** (App Router) + React + TypeScript
+- **Tailwind CSS v4** for styling, shadcn-style primitives in `components/ui`
+- **Cloudflare Workers** for hosting, via [OpenNext](https://opennext.js.org/cloudflare) — this runs as a real Next.js server (API routes, SSR, ISR), not a static export
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+|---|---|
+| `npm run dev` | Dev server with Turbopack |
+| `npm run build` | Standard Next.js build |
+| `npm run lint` | ESLint |
+| `npm run preview` | Build with OpenNext and preview via Wrangler |
+| `npm run deploy` | Build with OpenNext and deploy the Worker to Cloudflare |
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` — routes (`/`, `/about`, `/contact`, `/projects`), each composing section components
+- `components/site/` — the page sections (navbar, hero, about, projects, contact, footer)
+- `components/ui/` — shadcn-generated primitives
+- `lib/data/` — content as data (projects, skills) instead of hardcoded JSX
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pushing to `main` builds and deploys automatically via GitHub Actions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GPL-3.0 — see [LICENSE](LICENSE).
