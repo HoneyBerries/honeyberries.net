@@ -12,6 +12,5 @@ export const skills: string[] = [
 
 export const stats: { value: string; label: string }[] = [
     { value: "7+", label: "Years of programming experience" },
-    { value: "A(+)", label: "Grades at Berkeley" },
     { value: "5+", label: "Meaningful projects"}
 ]
