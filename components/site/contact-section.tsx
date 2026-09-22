@@ -14,6 +14,7 @@ export function ContactSection() {
           width={1600}
           height={1068}
           sizes="(min-width: 672px) 672px, 100vw"
+          loading="eager"
           className="h-48 w-full object-cover sm:h-56"
         />
         <CardContent className="flex flex-col items-center gap-6 py-10">

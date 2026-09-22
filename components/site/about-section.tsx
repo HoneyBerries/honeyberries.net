@@ -47,6 +47,7 @@ export function AboutSection() {
             width={1600}
             height={1068}
             sizes="(min-width: 768px) 480px, 100vw"
+            loading="eager"
             className="h-48 w-full object-cover sm:h-56"
           />
           <CardHeader>
