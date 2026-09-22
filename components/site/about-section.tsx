@@ -1,7 +1,8 @@
-import { GithubIcon } from "@/components/icons/github-icon"
-import { ModrinthIcon } from "@/components/icons/modrinth-icon"
+import Image from "next/image"
+
+import { Section, SectionHeading } from "@/components/site/section"
+import { SocialButton } from "@/components/site/social-button"
 import { Badge, type badgeVariants } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -18,15 +19,12 @@ const SKILL_BADGE_VARIANTS: NonNullable<
 
 export function AboutSection() {
   return (
-    <section id="about" className="mx-auto max-w-5xl px-6 py-24">
+    <Section id="about">
       <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
         <div className="flex flex-col gap-6">
-          <Badge variant="accent" className="w-fit">
-            About me
-          </Badge>
-          <h2 className="text-2xl font-bold tracking-tight">
+          <SectionHeading badge="About me" variant="accent">
             Hi, I&apos;m HoneyBerries!
-          </h2>
+          </SectionHeading>
           <p className="leading-relaxed text-muted-foreground">
             I&apos;m a interesting person who loves to understand why things work
             and how to create and improve them.
@@ -37,40 +35,18 @@ export function AboutSection() {
             read images, and I aim to eventually be able to read video and audio as well.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button
-              nativeButton={false}
-              className="border-black/10 bg-white text-black hover:bg-neutral-100 dark:border-white/10 dark:bg-black dark:text-white dark:hover:bg-neutral-900"
-              render={
-                <a
-                  href="https://github.com/HoneyBerries"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-            >
-              <GithubIcon className="size-4" /> GitHub
-            </Button>
-            <Button
-              variant="outline"
-              nativeButton={false}
-              render={
-                <a
-                  href="https://modrinth.com/user/HoneyBerries"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-            >
-              <ModrinthIcon className="size-4" /> Modrinth
-            </Button>
+            <SocialButton link="github" />
+            <SocialButton link="modrinth" />
           </div>
         </div>
 
         <Card className="overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/about-fuji.jpg"
             alt="Mount Fuji seen from a hillside overlook"
+            width={1600}
+            height={1068}
+            sizes="(min-width: 768px) 480px, 100vw"
             className="h-48 w-full object-cover sm:h-56"
           />
           <CardHeader>
@@ -93,7 +69,7 @@ export function AboutSection() {
               ))}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 border-t pt-6 text-center">
+            <div className="grid auto-cols-fr grid-flow-col gap-4 border-t pt-6 text-center">
               {stats.map(({ value, label }) => (
                 <div key={label}>
                   <p className="gradient-text text-2xl font-bold">{value}</p>
@@ -106,6 +82,6 @@ export function AboutSection() {
           </CardContent>
         </Card>
       </div>
-    </section>
+    </Section>
   )
 }

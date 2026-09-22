@@ -3,7 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
-import { SITE_NAME, SITE_URL } from "@/lib/data/site";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  SOCIAL_LINKS,
+} from "@/lib/data/site";
+import { pageMetadata } from "@/lib/metadata";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,16 +23,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_DESCRIPTION =
-  "Personal portfolio of HoneyBerries, a Computer Science student at UC Berkeley building AI agents, Discord bots, and Minecraft mods.";
-
 export const metadata: Metadata = {
+  ...pageMetadata({ path: "/" }),
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Computer Science Student & Developer`,
+    default: SITE_TITLE,
     template: `%s · ${SITE_NAME}`,
   },
-  description: SITE_DESCRIPTION,
   keywords: [
     "HoneyBerries",
     "Computer Science",
@@ -39,22 +43,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: "/",
-    siteName: SITE_NAME,
-    title: `${SITE_NAME} — Computer Science Student & Developer`,
-    description: SITE_DESCRIPTION,
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE_NAME} — Computer Science Student & Developer`,
-    description: SITE_DESCRIPTION,
-  },
   robots: {
     index: true,
     follow: true,
@@ -86,10 +74,7 @@ const jsonLd = {
         "@type": "CollegeOrUniversity",
         name: "University of California, Berkeley",
       },
-      sameAs: [
-        "https://github.com/HoneyBerries",
-        "https://modrinth.com/user/HoneyBerries",
-      ],
+      sameAs: [SOCIAL_LINKS.github.href, SOCIAL_LINKS.modrinth.href],
     },
     {
       "@type": "WebSite",
