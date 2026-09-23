@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { ThemeToggle } from "@/components/theme-toggle"
+import { SITE_NAME } from "@/lib/data/site"
 import { cn } from "@/lib/utils"
 
 const NAV_LINKS = [
@@ -19,7 +20,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b bg-background/60 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <Link href="/" className="gradient-text font-bold tracking-tight">
-          HoneyBerries
+          {SITE_NAME}
         </Link>
 
         <nav className="flex items-center gap-1">

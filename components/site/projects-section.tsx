@@ -1,3 +1,4 @@
+import { Section, SectionHeading } from "@/components/site/section"
 import { Badge, type badgeVariants } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
@@ -29,12 +30,11 @@ const cardAccents: {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
+    <Section id="projects">
       <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <Badge variant="secondary">Projects</Badge>
-        <h2 className="gradient-text text-2xl font-bold tracking-tight">
+        <SectionHeading badge="Projects" variant="secondary" gradient>
           Things I&apos;ve built
-        </h2>
+        </SectionHeading>
         <p className="max-w-md text-muted-foreground">
           From AI Discord bots to Minecraft mods, here&apos;s what
           I&apos;ve been working on.
@@ -78,6 +78,6 @@ export function ProjectsSection() {
           )
         })}
       </div>
-    </section>
+    </Section>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Compass } from "lucide-react"
+import { Section } from "@/components/site/section"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="mx-auto flex max-w-3xl flex-col items-center gap-8 px-6 py-24 text-center">
+    <Section className="flex max-w-3xl flex-col items-center gap-8 text-center">
       <Badge variant="outline">HTTP 404</Badge>
 
       <Compass
@@ -32,13 +33,13 @@ export default function NotFound() {
       </p>
 
       <Button
+        variant="gradient"
         size="lg"
         nativeButton={false}
-        className="bg-linear-to-br from-primary-600 to-secondary-500 text-white hover:opacity-90 hover:shadow-lg hover:shadow-primary-500/25"
         render={<Link href="/" />}
       >
         Back to Home
       </Button>
-    </section>
+    </Section>
   )
 }
