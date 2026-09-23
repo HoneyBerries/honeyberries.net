@@ -3,6 +3,10 @@ name: Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: deploy-main
@@ -19,6 +23,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Deploy to Cloudflare
         run: npm run deploy
         env:
