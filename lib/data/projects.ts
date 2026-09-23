@@ -14,13 +14,6 @@ export const projects: Project[] = [
     href: "https://github.com/HoneyBerries/Modcord",
   },
   {
-    title: "Pepmon Client",
-    description:
-        "I attempted to make a ghost client for my friend, and it was successful",
-    tags: ["Minecraft", "Hacks"],
-    href: "https://github.com/HoneyBerries/PepmonClient",
-  },
-  {
     title: "This Website",
     description:
         "Since I didn't have any website after I bought a domain, I decided to create one for fun",
