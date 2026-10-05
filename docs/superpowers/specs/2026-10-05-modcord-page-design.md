@@ -67,7 +67,7 @@ Supporting files:
 6. **Closing invite button.**
 
 ### Hero mock content
-Uses a shortened form of the "67" thread (example 2): one "67" is left alone (cyan), then four in a row are warned (pink), with the reason shown. This shows the product's actual differentiator, same words, different outcome by context.
+Uses the "67" thread (example 2) as it happened: a member posts "67" four times in a row, gets a warn whose reason says one is fine but four is a flood, posts four more, and gets a 30-minute timeout. The reasons carry the context-awareness in Modcord's own words. Messages Modcord did not act on are marked cyan; actions are pink. Only the one member's lines are shown, with "other messages omitted" noted. No beat is invented or merged from different days.
 
 ## 5. Examples (real, aliased, text-only)
 
@@ -77,14 +77,15 @@ All examples come from a Modcord-moderated server the operator controls. They ar
 
 **Privacy rules (applied when the data file is written):**
 - Every author is replaced with an invented alias, including the operator. No real handle, display name, nickname, user ID, avatar or role badge appears. Server and channel names are generic.
-- Audit-embed reasons are kept verbatim; they contain no names (verified when extracted). Action IDs are dropped.
+- Audit-embed reasons are kept verbatim except that any name, nickname or server name in them (for example a member's name or a game server's name) is replaced with the same alias or a generic term. Message text is checked the same way. Action IDs are dropped.
+- A privacy check (section 10) must pass before the data file is committed, and the operator approves the aliased file first.
 - Discord timestamp markup (for example "expires `<t:...>`") is dropped; durations show as "30m".
 - GIFs and images render as a chip such as "GIF ×12". The actual media is not republished or embedded.
 - The raw exports stay out of the repository.
 
 **Selected examples (UTC times from the export):**
 1. **Pinging staff to open the server.** 2026-10-05, about 16:07 to 16:13. A member keeps pinging staff with a string of short messages, gets a warn that references an earlier timeout, then calls the moderator a name and gets a second warn. A second member in the same thread gets a warn for a burst of one-line messages. Use the first member's arc.
-2. **The "67" thread.** 2026-10-04, about 02:45 to 02:50. A single "67" is left alone, four in a row produce a warn, four more produce a 30-minute timeout with the messages removed. This is also the hero mock.
+2. **The "67" thread.** 2026-10-04, about 02:47 to 02:50 (the 02:45 warn is excluded). One member posts "67" four times, is warned, posts four more, and is timed out for 30 minutes with the messages removed. This is also the hero mock. There is no single left-alone "67" in this window, so none is shown.
 3. **GIF flood.** 2026-10-02, about 23:27 to 23:48. About ten members flood the channel at once. Follow one member's arc: about ten GIFs over fifteen minutes, a warn (23:43), a 30-minute timeout (23:45), a 1-hour timeout (23:48). GIFs render as chips with counts.
 
 **Excluded:** the single-line gibberish warn (removed by the operator), a warn that does not match its triggering message, a warn about another server's specific rule, and anything where the surrounding messages are missing.
@@ -147,7 +148,7 @@ The policy must not get ahead of reality. Before the legal pages go live:
 - [x] Azure backups kept 7 days. Stated by the operator.
 - [x] AI provider retention checked. The provider's published documents state neither zero retention nor no-training, so the policy makes no such claim.
 - [x] Support-access wording confirmed by the operator: server data is looked at only on request.
-- [ ] Application logs: confirm they hold no message content and decide a retention period before the policy mentions logs. (A 14-day window was proposed but not built.)
+- [x] Application logs checked by the operator: they do not print message content. They may contain server names and user or server IDs. The policy says exactly that and makes no claim about how long logs are kept, because no log retention window is built. If one is added to Modcord later, add it to the retention table and the policy.
 - [ ] The operator confirms the aliased example data before it is committed.
 - [ ] Re-read both pages against the Modcord README retention table on the day of publish.
 
@@ -158,7 +159,7 @@ The repo has no test suite. Verification is:
 - `npm run preview` (OpenNext) loads all three routes; check light and dark themes, phone width, keyboard navigation, and reduced-motion.
 - Click through: card on `/projects` → landing page → Privacy → Terms → back; footer links; sitemap lists the routes.
 - Compare the rendered retention table against the README by eye.
-- Search the built output and the data files for any real username, user ID or server name from the source exports.
+- Privacy check: a script kept outside the repo builds a forbidden-token list from the source exports (every username, display name, user ID, `<@...>` mention, and every member, game-server or community name appearing in message or reason text), then searches `lib/data/modcord-examples.ts` and the built `.next/` output for each token. It must find none.
 
 ## 11. Risks
 
