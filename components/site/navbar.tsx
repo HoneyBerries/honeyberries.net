@@ -30,7 +30,8 @@ export function Navbar() {
               href={href}
               className={cn(
                 "rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary",
-                pathname === href && "text-primary"
+                (pathname === href || pathname.startsWith(`${href}/`)) &&
+                  "text-primary"
               )}
             >
               {label}
