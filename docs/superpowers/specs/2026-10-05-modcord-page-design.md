@@ -118,7 +118,7 @@ Title, a "last updated" date, a short plain-language summary box at the top, a t
 4. **Who else touches data.** W&B Inference (operated by CoreWeave) for AI; Microsoft Azure for database hosting; Discord. No sale of data, no advertising, no analytics. Statement that what the AI provider does with content is governed by its own terms and policy (linked), and that Modcord does not control it. No claim of zero retention or no-training on the provider's side, because the provider's published documents do not state either.
 5. **Your choices.** Admins can change or reset settings and can remove the bot, which deletes the server's data. Anyone can email a deletion request; answered within 30 days. Appeals are available where a server allows them.
 6. **Developer support access.** A small number of developer accounts can act as an admin in any server the bot is in, so the developer can help with problems; their `/mod` actions appear as Modcord's. Server data is looked at only when a server admin asks for help, and is not copied or used otherwise.
-7. **Security and backups.** Reasonable measures, no guarantee. Backups last up to 7 days.
+7. **Security, logs and backups.** Reasonable measures, no guarantee. Operational logs never contain message content but may contain server names and user or server IDs; no log retention period is promised. Backups last up to 7 days.
 8. **Age.** 13 or older, matching Discord's minimum.
 9. **Changes and contact.** Dated; material changes are announced where practical.
 
