@@ -50,7 +50,7 @@ Supporting files:
 ## 4. Landing page design (`/projects/modcord`)
 
 ### Visual direction
-- **Palette:** the site's existing tokens, used with meaning. Violet (`primary-500`) is the brand and invite button. Cyan (`accent-500`) means "left alone". Pink (`secondary-500`) means "acted". Neutral ink/paper from `neutral-950`/`neutral-50`.
+- **Palette:** the site's existing tokens, used with meaning. Violet (`primary-500`) is the brand and invite button. Pink (`secondary-500`) marks actions Modcord took. (Cyan was dropped: none of the real examples contains a message Modcord deliberately left alone.) Neutral ink/paper from `neutral-950`/`neutral-50`.
 - **Chat mock:** one dark panel (approximately `#2b2d31`) in both themes, like a screenshot. It uses generic chat styling and does not copy Discord's logo or branding.
 - **Type:** Geist Sans only (already on the site), weight 600 headings with tight tracking. Geist Mono only for slash commands.
 - **Alignment:** left-aligned, body copy under about 70 characters per line. This deliberately breaks from the centered section headings elsewhere on the site.
@@ -67,7 +67,7 @@ Supporting files:
 6. **Closing invite button.**
 
 ### Hero mock content
-Uses the "67" thread (example 2) as it happened: a member posts "67" four times in a row, gets a warn whose reason says one is fine but four is a flood, posts four more, and gets a 30-minute timeout. The reasons carry the context-awareness in Modcord's own words. Messages Modcord did not act on are marked cyan; actions are pink. Only the one member's lines are shown, with "other messages omitted" noted. No beat is invented or merged from different days.
+Uses the "67" thread (example 2) as it happened: a member posts "67" four times in a row, gets a warn whose reason says one is fine but four is a flood, posts four more, and gets a 30-minute timeout. The reasons carry the context-awareness in Modcord's own words. Actions are pink. Only the one member's lines are shown, with "other messages omitted" noted. No beat is invented or merged from different days.
 
 ## 5. Examples (real, aliased, text-only)
 
@@ -99,7 +99,7 @@ One typed constant in `lib/data/modcord.ts` rendered on both the landing page an
 | Data | What it contains | Kept for |
 |---|---|---|
 | Server settings | Preferences, rules, channel guidelines, exclusions | Until Modcord is removed from the server, or the admin resets them. Removal deletes them. |
-| Moderation actions | Affected user ID, action type, reason, durations, IDs of deleted messages, reversals | 1 year. Kept longer only while an appeal is open or a temporary ban is still running. |
+| Moderation actions | Affected user ID, action type, the AI's written reason (which can describe or quote the message), durations, IDs of deleted messages, reversals | 1 year. Kept longer only while an appeal is open or a temporary ban is still running. |
 | Appeals | Outcome with the action. The appeal text (user reason, moderator note) | Outcome follows the action. Text is erased 90 days after resolution. |
 | Message content | Message text, images, GIFs | Not stored by Modcord. Held in memory while a batch is processed. |
 | Backups | Database backups | Up to 7 days, so a deleted record can briefly survive in a backup. |
