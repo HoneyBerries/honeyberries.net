@@ -24,7 +24,7 @@ This repo has **no test suite** and `CLAUDE.md` says so. Do not add vitest, jest
 - Invite URL, exactly: `https://discord.com/oauth2/authorize?client_id=1387903423592005663` (no extra parameters; the app has default install settings).
 - Repo URL: `https://github.com/HoneyBerries/Modcord`.
 - Retention numbers appear in exactly one place: `retentionRows` in `lib/data/modcord.ts`. Values: actions 1 year; appeal text 90 days after resolution; message content not stored; backups up to 7 days.
-- Liability cap in the Terms: **US$50**. Governing law: **California, USA**.
+- No fixed-dollar liability cap in the Terms (dropped). Governing law: **California, USA**.
 - Age minimum in the policy: **13 or older**. Deletion requests answered within **30 days**.
 - Policy makes **no** claim that the AI provider keeps nothing or does not train on content, and **no** claim about log retention duration.
 - Never mention a deleted-message snapshot or any feature that is not built.

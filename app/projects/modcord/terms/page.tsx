@@ -142,12 +142,8 @@ const sections: LegalSectionData[] = [
           To the extent the law allows, I am not liable for indirect,
           incidental or consequential damages, for lost data or lost profits, or
           for harm that results from Modcord acting on a message or failing to
-          act on one.
-        </P>
-        <P>
-          For any claim about Modcord, my total liability is limited to US$50.
-          Some places do not allow these limits, in which case they apply only
-          as far as the law permits.
+          act on one. Some places do not allow these limits, in which case they
+          apply only as far as the law permits.
         </P>
       </>
     ),
@@ -211,8 +207,8 @@ export default function TermsPage() {
             and for reviewing actions and appeals.
           </p>
           <p>
-            Liability is limited to US$50. These terms are governed by
-            California law.
+            I am not liable for harm from Modcord acting or failing to act.
+            These terms are governed by California law.
           </p>
         </>
       }

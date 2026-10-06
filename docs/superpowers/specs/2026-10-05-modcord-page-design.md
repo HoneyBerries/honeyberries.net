@@ -127,7 +127,7 @@ Title, a "last updated" date, a short plain-language summary box at the top, a t
 2. **AI can be wrong.** Decisions are automated and may be mistaken. Admins are responsible for their rules and for reviewing actions and appeals.
 3. **Admin responsibilities.** Tell members that an AI provider processes their messages; lawful use; no harassment or discrimination.
 4. **The service as offered.** Free, no uptime promise, may change or stop, bot may be removed from abusive servers.
-5. **Warranty disclaimer and liability cap.** As-is; liability capped at a small fixed amount (US$50 proposed); exclusions as allowed by law.
+5. **Warranty disclaimer and limitation of liability.** As-is; no fixed-dollar liability cap (dropped: meaningless for a free service); exclusions as allowed by law.
 6. **No indemnity clause.** Deliberately omitted: it reads as aggressive for a free tool and is often unenforceable against consumers.
 7. **Open source.** The code is GPL-3.0; the Terms govern the hosted service only.
 8. **Governing law.** California, USA; disputes in the state or federal courts of California.
