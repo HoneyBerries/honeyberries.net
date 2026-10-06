@@ -8,13 +8,19 @@ export const examples = [
     "title": "Four in a row",
     "summary": "Four \"67\"s in a row get a warning. Four more right after get a 30-minute timeout, and the messages are removed.",
     "capturedNote": "Captured from a Modcord-moderated server. Names changed.",
-    "othersOmitted": true,
+    "othersOmitted": false,
     "timeline": [
       {
         "type": "message",
         "author": "Mika",
         "text": "67",
         "repeat": 4
+      },
+      {
+        "type": "message",
+        "author": "Jun",
+        "text": "67",
+        "repeat": 3
       },
       {
         "type": "action",
@@ -40,79 +46,10 @@ export const examples = [
   {
     "id": "gif-flood",
     "title": "A GIF flood",
-    "summary": "The channel fills with GIFs. One member is warned, timed out for 30 minutes, then for an hour as they keep going.",
+    "summary": "The channel fills with the same GIF over and over. One member who posted it seven times in a row is warned, and the repeats are removed.",
     "capturedNote": "Captured from a Modcord-moderated server. Names changed.",
-    "othersOmitted": true,
+    "othersOmitted": false,
     "timeline": [
-      {
-        "type": "message",
-        "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 3
-        }
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "LOL"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 3
-        }
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Ts?"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 3
-        }
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Canabilisnsm"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Canibealismmej"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Canibalism"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Canabaioamsismsm"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Cooy"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Copy"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Kiwi...?"
-      },
       {
         "type": "message",
         "author": "Jun",
@@ -123,27 +60,44 @@ export const examples = [
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "Bye"
+        "author": "Ravi",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Skye",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
       },
       {
         "type": "message",
         "author": "Jun",
-        "text": "Cannaialbeleism"
+        "text": "Tralaleo tralala shark in blue shoes, sliding on the seashore like hes got norhing to lose"
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "2 hr big back"
+        "author": "Ravi",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "Jk jk"
+        "author": "Mika",
+        "media": {
+          "kind": "gif",
+          "count": 6
+        }
       },
       {
         "type": "message",
-        "author": "Jun",
+        "author": "Ravi",
         "media": {
           "kind": "gif",
           "count": 2
@@ -151,13 +105,61 @@ export const examples = [
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "Nuh uh"
+        "author": "Mika",
+        "media": {
+          "kind": "gif",
+          "count": 2
+        }
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "Never"
+        "author": "Nia",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "alright enough sponging around"
+      },
+      {
+        "type": "message",
+        "author": "Skye",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "media": {
+          "kind": "gif",
+          "count": 4
+        }
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "text": "am breaking up the tung"
       },
       {
         "type": "message",
@@ -169,46 +171,50 @@ export const examples = [
       },
       {
         "type": "message",
-        "author": "Jun",
-        "text": "Englishhshshshshsoahsiahel"
+        "author": "Nia",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "text": "we cant have too dense tung"
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "media": {
+          "kind": "gif",
+          "count": 1
+        }
       },
       {
         "type": "action",
         "kind": "warn",
-        "target": "Jun",
-        "reason": "Hey, general turned into a GIF-and-meme flood just now and your posts were part of it. Joking around is fine, just help keep the channel from getting flooded next time."
+        "target": "Mika",
+        "reason": "Hey, you posted the same GIF seven times in a row, and that turns the channel into a flood — those repeats have been removed. A one-off meme is fine, just don't spam it."
+      },
+      {
+        "type": "message",
+        "author": "Skye",
+        "text": "LOL"
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "LOL"
+      },
+      {
+        "type": "message",
+        "author": "Mika",
+        "text": "WAAAAAAAAAAAA"
       },
       {
         "type": "message",
         "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Wow"
-      },
-      {
-        "type": "message",
-        "author": "Jun",
-        "text": "Wth is a soggo???"
-      },
-      {
-        "type": "action",
-        "kind": "timeout",
-        "target": "Jun",
-        "reason": "You kept rapid-posting GIFs into general even after being asked to stop spamming. Those have been removed — please leave the GIF floods out and keep general readable when you're back.",
-        "duration": "30m"
-      },
-      {
-        "type": "action",
-        "kind": "timeout",
-        "target": "Jun",
-        "reason": "You were already warned and timed out tonight for the GIF spam, and you went straight back to it. Take a longer break, and please leave the floods out when you're back.",
-        "duration": "1h"
+        "text": "Haha"
       }
     ]
   }

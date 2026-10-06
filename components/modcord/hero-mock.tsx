@@ -13,7 +13,8 @@ export function HeroMock() {
         <ChatTimeline items={example.timeline} animateActions />
       </ChatPanel>
       <figcaption className="text-xs text-muted-foreground">
-        {example.capturedNote} Other members&apos; messages omitted.
+        {example.capturedNote}
+        {example.othersOmitted && " Other members' messages omitted."}
       </figcaption>
     </figure>
   )
