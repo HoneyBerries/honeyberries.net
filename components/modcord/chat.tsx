@@ -43,11 +43,31 @@ function MediaChip({
   )
 }
 
+const authorColors = [
+  "#f47fff",
+  "#5865f2",
+  "#3ba55d",
+  "#faa61a",
+  "#ed4245",
+  "#00b0f4",
+]
+
+function authorColor(name: string) {
+  let hash = 0
+  for (const char of name) hash = (hash * 31 + char.charCodeAt(0)) % 997
+  return authorColors[hash % authorColors.length]
+}
+
 function Message({ item }: { item: Extract<TimelineItem, { type: "message" }> }) {
   const lines = Array.from({ length: item.repeat ?? 1 })
   return (
     <div className="flex flex-col gap-0.5">
-      <span className="font-semibold text-[#f2f3f5]">{item.author}</span>
+      <span
+        className="font-semibold"
+        style={{ color: authorColor(item.author) }}
+      >
+        {item.author}
+      </span>
       {item.text &&
         lines.map((_, i) => (
           <p key={i} className="break-words leading-snug">
