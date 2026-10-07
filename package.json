@@ -35,7 +35,7 @@
     "eslint-config-next": "16.3.6",
     "tailwindcss": "^4",
     "typescript": "^6",
-    "wrangler": "^4.136.3"
+    "wrangler": "^4.148.0"
   },
   "allowScripts": {
     "unrs-resolver@1.12.2": true,
