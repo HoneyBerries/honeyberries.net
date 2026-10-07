@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { Section, SectionHeading } from "@/components/site/section"
 import { Badge, type badgeVariants } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -44,7 +46,36 @@ export function ProjectsSection() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(({ title, description, tags, href }, index) => {
           const accent = cardAccents[index % cardAccents.length]
-          return (
+          const card = (
+            <Card
+              className={cn(
+                "h-full ring-1 ring-foreground/10 transition-all",
+                accent.hover
+              )}
+            >
+              <CardHeader>
+                <CardTitle>{title}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex h-full flex-col gap-4">
+                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {tags.map((tag) => (
+                    <Badge key={tag} variant={accent.tag}>
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )
+
+          return href.startsWith("/") ? (
+            <Link key={title} href={href} className="block">
+              {card}
+            </Link>
+          ) : (
             <a
               key={title}
               href={href}
@@ -52,28 +83,7 @@ export function ProjectsSection() {
               rel="noopener noreferrer"
               className="block"
             >
-              <Card
-                className={cn(
-                  "h-full ring-1 ring-foreground/10 transition-all",
-                  accent.hover
-                )}
-              >
-                <CardHeader>
-                  <CardTitle>{title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex h-full flex-col gap-4">
-                  <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {tags.map((tag) => (
-                      <Badge key={tag} variant={accent.tag}>
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              {card}
             </a>
           )
         })}
