@@ -11,7 +11,7 @@ export const projects: Project[] = [
     description:
       "I couldn't moderate my Discord servers since it wasted my time, so I got AI to automate it",
     tags: ["Discord", "LLM", "AI Agent"],
-    href: "https://github.com/HoneyBerries/Modcord",
+    href: "/projects/modcord",
   },
   {
     title: "This Website",

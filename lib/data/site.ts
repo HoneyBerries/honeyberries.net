@@ -13,3 +13,8 @@ export const SOCIAL_LINKS = {
 } as const
 
 export type SocialLink = keyof typeof SOCIAL_LINKS
+
+export const MODCORD_INVITE_URL =
+  "https://discord.com/oauth2/authorize?client_id=1387903423592005663"
+export const MODCORD_REPO_URL = "https://github.com/HoneyBerries/Modcord"
+export const MODCORD_CONTACT_EMAIL = "henry.rainbowfish@gmail.com"
