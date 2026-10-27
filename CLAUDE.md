@@ -12,6 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` — ESLint (flat config via `eslint-config-next`)
 - `npm run preview` — build with `@opennextjs/cloudflare` and preview it locally via `wrangler`
 - `npm run deploy` — build with `@opennextjs/cloudflare` and deploy the Worker to Cloudflare
+- `npm run upload` — build with `@opennextjs/cloudflare` and upload a Worker version without deploying it
 
 There is no test suite configured in this repo.
 
@@ -26,6 +27,10 @@ This is a personal portfolio/showcase site (honeyberries.net) built with Next.js
 - **Icons**: custom brand icons (Discord, GitHub, Modrinth) live in `components/icons/`, separate from the `lucide-react` icons used elsewhere.
 - **Theming**: dark/light mode via `next-themes`, wired up in `components/theme-provider.tsx` and toggled by `components/theme-toggle.tsx`. `app/layout.tsx` sets `attribute="class"` with `defaultTheme="system"` and `suppressHydrationWarning` on `<html>`.
 - **Styling**: Tailwind CSS v4 (via `@tailwindcss/postcss`), global styles in `app/globals.css`. Use the `cn()` helper (`lib/utils.ts`, clsx + tailwind-merge) for conditional/merged class names.
+
+## Important: pinned Next.js version
+
+`next` (and `eslint-config-next`) are pinned to an exact version in `package.json`, not a range. Next 16.4.0+ loads `.next/server/preview-props.json`, which `@opennextjs/cloudflare` 1.20.x doesn't bundle, so every Worker request fails with a 1101 error. Don't bump Next past 16.3.x until OpenNext supports 16.4; the floor is 16.3.8 (OpenNext's peer dependency).
 
 ## Important: non-standard Next.js version
 
