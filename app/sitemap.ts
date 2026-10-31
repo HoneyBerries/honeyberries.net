@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/projects",
+    "/projects/minecraft",
     "/projects/modcord",
     "/projects/modcord/privacy",
     "/projects/modcord/terms",
