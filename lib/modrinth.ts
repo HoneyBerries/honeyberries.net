@@ -76,7 +76,7 @@ export async function getMinecraftProjects(): Promise<ModrinthProject[]> {
     const [res, releases] = await Promise.all([
       fetch(
         `https://api.modrinth.com/v2/user/${encodeURIComponent(MODRINTH_USERNAME)}/projects`,
-        { headers, signal: AbortSignal.timeout(8000) }
+        { headers }
       ),
       getReleaseVersions(headers),
     ])
@@ -98,7 +98,6 @@ async function getReleaseVersions(
   try {
     const res = await fetch("https://api.modrinth.com/v2/tag/game_version", {
       headers,
-      signal: AbortSignal.timeout(8000),
     })
     if (!res.ok) return null
     const tags: unknown = await res.json()
