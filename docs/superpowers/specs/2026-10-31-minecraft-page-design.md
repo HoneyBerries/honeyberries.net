@@ -11,7 +11,7 @@ Status: draft for review. Nothing in this spec has been implemented.
 **Why now:** `/projects` has two vague cards ("Minecraft Mods", "Minecraft Plugins") that just link out to Modrinth user pages. The old v1 site had a page like this, but it was messy: heavy animation and bugs. This version must be calm and reuse the existing site look.
 
 ### Goals
-- A single route, `/projects/minecraft`, with a **Mods** section and a **Plugins** section of cards.
+- A single route, `/projects/minecraft`, with a **Mods** section and a **Plugins & datapacks** section of cards.
 - Data comes live from Modrinth's public API, so new projects, download counts and archived status update without code changes.
 - Uses the site's existing theme, `Card` and `Badge` components, container width and light/dark modes.
 
@@ -28,13 +28,13 @@ Status: draft for review. Nothing in this spec has been implemented.
 
 ## 2. Decisions already made by the owner
 
-- **One page**, not two. Both existing cards on `/projects` ("Minecraft Mods", "Minecraft Plugins") link to it, deep-linking to `#mods` and `#plugins`.
+- **One page**, not two. Both existing cards on `/projects` ("Minecraft Mods", "Minecraft Plugins") link to it, deep-linking to `#mods` and `#plugins` (the id of the Plugins & datapacks section).
 - **Layout A** ("classic card grid"): icon and name, loader badges, description, category badges, then a footer with downloads on the left and a "Modrinth ↗" link on the right. Three columns on desktop, matching the `/projects` grid, in the standard `Section` container (`max-w-5xl`, about 976px).
 - **Everything shown is fetched live** from Modrinth (titles, descriptions, icons, downloads, loaders, categories, archived status).
 - **Caching:** `cacheLife('minutes')` (stale 5 min, revalidate 1 min, expire 1 hour). Chosen for simplicity.
 - **Cache Components is enabled site-wide** (`cacheComponents: true`, committed in 5c5bd18). Caching uses the `'use cache'` directive. `export const dynamic` and similar segment config are not allowed.
 - **Colors and badges (approved in mockup):**
-  - Violet (default `Badge`): the type/loader on mods, i.e. "Fabric", "Datapack".
+  - Violet (default `Badge`): the mod loader or type, i.e. "Fabric", "Datapack".
   - Cyan (`accent`): server platforms on plugins, i.e. "Paper", "Folia", "Purpur".
   - Pink (`secondary`): Modrinth categories (e.g. "Utility"), and the "Archived" status.
   - Card hover glow: reuse the existing accent mechanism from `components/site/projects-section.tsx`.
@@ -46,19 +46,20 @@ Status: draft for review. Nothing in this spec has been implemented.
 `GET https://api.modrinth.com/v2/user/HoneyBerries/projects` returns every project with: `title`, `slug`, `description`, `icon_url`, `downloads`, `followers`, `loaders`, `game_versions`, `categories`, `status`, `project_type`, `updated`. Send a descriptive `User-Agent` (Modrinth asks clients to). The username comes from a constant, not hardcoded in the component.
 
 ### Grouping and ordering
-- **Mods:** projects whose loaders include `fabric` (or `forge`, `neoforge`, `quilt`) or whose only loader is `datapack`.
-- **Plugins:** projects whose loaders include `paper`, `folia`, `purpur`, `spigot` or `bukkit`.
-- A project matching both goes under Mods (mod loaders win), and its card shows all of its loader badges. A project matching neither also goes under Mods. (My calls; none of the current 8 projects hits either case.)
+- **Mods:** projects whose loaders include `fabric`, `forge`, `neoforge` or `quilt`.
+- **Plugins & datapacks:** projects whose loaders include `paper`, `folia`, `purpur`, `spigot`, `bukkit` or `datapack`.
+- **A project that matches both appears in both sections** (owner's decision), with the same card each time. Its card shows all of its loader badges. React keys must combine section and slug, and each section's count counts it. None of the current 8 projects does this.
+- A project matching neither goes under Mods (my call).
 - **What is included** (my call): the API labels plugins and datapacks as `project_type: "mod"` too, so keep only `project_type === "mod"` and only `status` of `approved` or `archived`. Drafts, unlisted, rejected, withheld and private projects are never shown, so no card can link to a dead Modrinth page. Modpacks, resource packs and shaders, if you ever publish them, are excluded.
 - **Empty section** (my call): a section with no projects is not rendered at all, and its `#mods` or `#plugins` anchor goes with it.
 - Within each section, sort by downloads, descending.
-- Current expected result: Mods 3 (FPS Display+, AutoClutch, Carpet 2 Wool), Plugins 5 (TP Spawn, Player Ping, XP Bottling, Inventory Restore [archived], Exploding Players).
+- Current expected result: Mods 2 (FPS Display+, AutoClutch), Plugins & datapacks 6 (TP Spawn, Player Ping, XP Bottling, Carpet 2 Wool, Inventory Restore [archived], Exploding Players), each sorted by downloads.
 
 ### Card contents
 Icon (44px, rounded), title, loader badges, one-line description, up to two category badges, downloads (compact, e.g. `16.5k`), and a "Modrinth ↗" link. The whole card is a link to the project's Modrinth page, opening in a new tab with `rel="noopener noreferrer"`, like existing external cards. Minecraft game versions are **not shown** on cards (my call, see section 6).
 
 ### Page structure
-Heading in the style of the Projects page (`SectionHeading` with a badge and gradient title, plus a short intro line that links to the Modrinth profile), then the Mods section, then the Plugins section. Each section has a small uppercase label with a count (e.g. "Mods · 3") and an `id` (`mods`, `plugins`) for deep links.
+Heading in the style of the Projects page (`SectionHeading` with a badge and gradient title, plus a short intro line that links to the Modrinth profile), then the Mods section, then the Plugins & datapacks section. Each section has a small uppercase label with a count (e.g. "Mods · 2") and an `id` (`mods`, `plugins`) for deep links.
 
 ### Caching and failure
 - One data function, marked `'use cache'` with `cacheLife('minutes')`, does the single Modrinth request. The page renders from its result.
@@ -92,7 +93,7 @@ Heading in the style of the Projects page (`SectionHeading` with a badge and gra
 ## 6. Calls I made (owner, please check)
 - Game versions are left off the cards to keep the narrow footer clean. They are in the API data, so adding a short range later is easy. The owner did not answer whether they want them.
 - Page and file names: `/projects/minecraft`, not `/projects/mods`.
-- Grouping rule: a project with both mod and plugin loaders goes under Mods; a project matching neither goes under Mods.
+- A project matching neither a mod nor a server loader goes under Mods. (A project matching both appears in both, as the owner decided.)
 - Only `approved` and `archived` mod-type projects are shown; drafts and unlisted ones are hidden.
 - Fallback snapshot as a failure net, returned from inside the cached function (shown for about a minute during an outage).
 - Per-item validation: bad projects are dropped, missing icons get a placeholder, empty sections are hidden.
