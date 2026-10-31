@@ -78,9 +78,12 @@ export function MinecraftCard({
               </Badge>
             ))}
           </div>
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>{formatCompact(project.downloads)} downloads</span>
-            <span>
+          <div className="flex items-end justify-between gap-3 text-xs text-muted-foreground">
+            <div className="flex flex-col gap-0.5">
+              <span>{formatCompact(project.downloads)} downloads</span>
+              {project.version_label && <span>MC {project.version_label}</span>}
+            </div>
+            <span className="whitespace-nowrap">
               Modrinth <span aria-hidden>↗</span>
               <span className="sr-only">(opens in a new tab)</span>
             </span>
