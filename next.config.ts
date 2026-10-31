@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   // Lets the dev server be opened over Tailscale, not just localhost —
   // otherwise Next blocks its JS chunks and the page never hydrates.
   allowedDevOrigins: ["100.64.140.20"],

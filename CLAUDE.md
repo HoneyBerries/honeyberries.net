@@ -28,6 +28,10 @@ This is a personal portfolio/showcase site (honeyberries.net) built with Next.js
 - **Theming**: dark/light mode via `next-themes`, wired up in `components/theme-provider.tsx` and toggled by `components/theme-toggle.tsx`. `app/layout.tsx` sets `attribute="class"` with `defaultTheme="system"` and `suppressHydrationWarning` on `<html>`.
 - **Styling**: Tailwind CSS v4 (via `@tailwindcss/postcss`), global styles in `app/globals.css`. Use the `cn()` helper (`lib/utils.ts`, clsx + tailwind-merge) for conditional/merged class names.
 
+## Important: Cache Components is enabled
+
+`next.config.ts` sets `cacheComponents: true`, so the whole site uses the Cache Components model (docs: `node_modules/next/dist/docs/01-app/01-getting-started/08-caching.md`). Routes are prerendered by default; cache data or UI with the `'use cache'` directive plus `cacheLife(...)` rather than `fetch` `revalidate` options. Route segment config like `export const dynamic = "force-static"` is **not allowed** and fails the build — remove it (this is why `app/robots.ts` and `app/sitemap.ts` don't have it). Verified working under `@opennextjs/cloudflare` via `npm run preview`.
+
 ## Important: pinned Next.js version
 
 `next` (and `eslint-config-next`) are pinned to an exact version in `package.json`, not a range. Next 16.4.0+ loads `.next/server/preview-props.json`, which `@opennextjs/cloudflare` 1.20.x doesn't bundle, so every Worker request fails with a 1101 error. Don't bump Next past 16.3.x until OpenNext supports 16.4; the floor is 16.3.8 (OpenNext's peer dependency).
