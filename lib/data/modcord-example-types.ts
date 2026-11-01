@@ -13,7 +13,7 @@ export type TimelineItem =
     }
   | {
       type: "action"
-      kind: "warn" | "timeout"
+      kind: "warn" | "timeout" | "ban"
       target: string
       reason: string
       duration?: string

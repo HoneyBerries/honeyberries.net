@@ -1,17 +1,30 @@
+import { accentAt, GlowCard } from "@/components/site/glow-card"
 import { commands } from "@/lib/data/modcord"
+import { cn } from "@/lib/utils"
 
 export function CommandsTable() {
   return (
-    <dl className="divide-y rounded-xl ring-1 ring-foreground/10">
-      {commands.map(({ command, summary }) => (
-        <div
-          key={command}
-          className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4"
-        >
-          <dt className="font-mono text-sm text-primary">{command}</dt>
-          <dd className="text-sm text-muted-foreground">{summary}</dd>
-        </div>
-      ))}
-    </dl>
+    <ul className="grid gap-4 sm:grid-cols-2">
+      {commands.map(({ command, summary }, i) => {
+        const accent = accentAt(i)
+        return (
+          <li key={command}>
+            <GlowCard accent={accent} className="gap-2 px-5">
+              <code
+                className={cn(
+                  "w-fit rounded-md px-2 py-0.5 font-mono text-sm font-semibold",
+                  accent.tint
+                )}
+              >
+                {command}
+              </code>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {summary}
+              </p>
+            </GlowCard>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

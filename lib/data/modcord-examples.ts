@@ -1,7 +1,11 @@
 import type { Example } from "./modcord-example-types"
 
-// Real moderation decisions captured from a Modcord-moderated server, with
-// every name replaced by an invented alias. See the design spec before editing.
+// Moderation decisions from a Modcord-moderated server, with every name
+// replaced by an invented alias. Each example's capturedNote says what it is:
+// captured from a real server, "Recreated" from a pattern that really
+// happened, or "Illustrative" (written to show a case, not a real capture).
+// Keep the section intro in app/projects/modcord/page.tsx in step with these.
+// See the design spec before editing.
 export const examples = [
   {
     "id": "sixty-seven",
@@ -215,6 +219,82 @@ export const examples = [
         "type": "message",
         "author": "Jun",
         "text": "Haha"
+      }
+    ]
+  },
+  {
+    "id": "free-nitro-scam",
+    "title": "A free Nitro scam",
+    "summary": "A brand-new account posts a free Nitro and crypto giveaway. Modcord bans it and removes the messages before anyone clicks.",
+    "capturedNote": "Recreated from a scam pattern that has happened a few times. Not a verbatim capture. Names changed.",
+    "othersOmitted": false,
+    "timeline": [
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "ok who's up for a match later"
+      },
+      {
+        "type": "message",
+        "author": "Kade",
+        "text": "FREE Discord Nitro for everyone! Claim yours before it expires: https://example.com/free-nitro"
+      },
+      {
+        "type": "message",
+        "author": "Kade",
+        "text": "Also giving away 0.5 BTC to the first 100 people, just connect your wallet to claim"
+      },
+      {
+        "type": "action",
+        "kind": "ban",
+        "target": "Kade",
+        "reason": "This account just joined and immediately posted a free Nitro and crypto giveaway link, which is a common scam. The messages have been removed and the account banned."
+      },
+      {
+        "type": "message",
+        "author": "Nia",
+        "text": "lol the scammers found us"
+      }
+    ]
+  },
+  {
+    "id": "fake-helper",
+    "title": "A friendly offer to help",
+    "summary": "A member offers to help someone who is locked out of their account. Nothing in it looks bad, until it asks for their login code.",
+    "capturedNote": "Illustrative example written to show a subtle case. Not a real capture.",
+    "othersOmitted": false,
+    "timeline": [
+      {
+        "type": "message",
+        "author": "Nia",
+        "text": "ugh got locked out of my account again, support never answers"
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "same, took them like two weeks last time"
+      },
+      {
+        "type": "message",
+        "author": "Sora",
+        "text": "Oh no! That happened to me too. I know a trick to get back in within minutes :)"
+      },
+      {
+        "type": "message",
+        "author": "Sora",
+        "text": "Just DM me the 6-digit code they emailed you and I'll sort it out, no need to wait for support"
+      },
+      {
+        "type": "action",
+        "kind": "timeout",
+        "target": "Sora",
+        "duration": "1h",
+        "reason": "Offering to help is kind, but asking someone to send you their email verification code would let you take over their account. I've removed those messages and put you on a short timeout while the mods take a look."
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "wait yeah don't send that to anyone Nia"
       }
     ]
   }

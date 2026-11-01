@@ -1,58 +1,26 @@
-import Link from "next/link"
-
-import { Section, SectionHeading } from "@/components/site/section"
-import { Badge, type badgeVariants } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { accentAt, CARD_GRID, GlowCard } from "@/components/site/glow-card"
+import { Section, SectionHeader } from "@/components/site/section"
+import { Badge } from "@/components/ui/badge"
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { projects } from "@/lib/data/projects"
-import type { VariantProps } from "class-variance-authority"
-
-// Each entry pairs a card's hover glow with a tag badge color that's
-// guaranteed not to match it, so the two can never drift out of sync.
-const cardAccents: {
-  hover: string
-  tag: NonNullable<VariantProps<typeof badgeVariants>["variant"]>
-}[] = [
-  {
-    hover:
-      "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
-    tag: "secondary",
-  },
-  {
-    hover:
-      "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
-    tag: "accent",
-  },
-  {
-    hover:
-      "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
-    tag: "default",
-  },
-]
 
 export function ProjectsSection() {
   return (
     <Section id="projects">
-      <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <SectionHeading badge="Projects" variant="secondary" gradient>
-          Things I&apos;ve built
-        </SectionHeading>
-        <p className="max-w-md text-muted-foreground">
-          From AI Discord bots to Minecraft mods, here&apos;s what
-          I&apos;ve been working on.
-        </p>
-      </div>
+      <SectionHeader
+        badge="Projects"
+        variant="secondary"
+        gradient
+        description="From AI Discord bots to Minecraft mods, here's what I've been working on."
+      >
+        Things I&apos;ve built
+      </SectionHeader>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className={CARD_GRID}>
         {projects.map(({ title, description, tags, href }, index) => {
-          const accent = cardAccents[index % cardAccents.length]
-          const card = (
-            <Card
-              className={cn(
-                "h-full ring-1 ring-foreground/10 transition-all",
-                accent.hover
-              )}
-            >
+          const accent = accentAt(index)
+          return (
+            <GlowCard key={title} accent={accent} href={href}>
               <CardHeader>
                 <CardTitle>{title}</CardTitle>
               </CardHeader>
@@ -68,23 +36,7 @@ export function ProjectsSection() {
                   ))}
                 </div>
               </CardContent>
-            </Card>
-          )
-
-          return href.startsWith("/") ? (
-            <Link key={title} href={href} className="block">
-              {card}
-            </Link>
-          ) : (
-            <a
-              key={title}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              {card}
-            </a>
+            </GlowCard>
           )
         })}
       </div>

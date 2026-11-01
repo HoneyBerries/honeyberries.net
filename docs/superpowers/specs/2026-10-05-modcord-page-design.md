@@ -1,6 +1,14 @@
 # Modcord project page, Privacy Policy and Terms of Service: design
 
-Status: draft for review. Nothing in this spec has been implemented.
+Status: implemented, then redesigned. The routes, content rules and privacy
+requirements below still hold. Section 4's visual direction has been superseded:
+the page now matches the rest of the site (centered gradient section headings,
+shared `GlowCard` cards for features and commands, tinted section bands, a split
+hero with a glowing chat preview, and a chat mock that follows the light/dark
+theme). The examples are now four, shown as a vertical list of card tabs beside
+the chat, and not all are real captures: the last two are labelled "Recreated" or
+"Illustrative" and the section intro says so. Read sections 4 and 5 with that in
+mind.
 
 ## 1. Intent
 

@@ -1,3 +1,10 @@
+import {
+  Gavel,
+  MessagesSquare,
+  ScrollText,
+  type LucideIcon,
+} from "lucide-react"
+
 export type RetentionRow = {
   data: string
   contents: string
@@ -54,19 +61,23 @@ export const commands = [
 export type Feature = {
   title: string
   body: string
+  icon: LucideIcon
 }
 
 export const features = [
   {
     title: "It reads the conversation, not just keywords",
+    icon: MessagesSquare,
     body: "Modcord looks at the recent history of the channel (50 messages by default), so a joke between friends and a real problem are judged differently.",
   },
   {
     title: "It follows your rules",
+    icon: ScrollText,
     body: "Every server sets its own rules, and each channel can have its own guidelines. Modcord acts on those, not on a generic list.",
   },
   {
     title: "Every action comes with a reason",
+    icon: Gavel,
     body: "Warnings, timeouts, kicks and bans are posted to your audit channel with the reason, and members can appeal.",
   },
 ] as const satisfies readonly Feature[]

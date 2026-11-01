@@ -5,7 +5,7 @@ const label =
 
 export function RetentionTable() {
   return (
-    <div className="overflow-x-auto rounded-xl ring-1 ring-foreground/10">
+    <div className="overflow-x-auto rounded-xl bg-card ring-1 ring-foreground/10">
       <table className="block w-full border-collapse text-left text-sm sm:table sm:min-w-[34rem]">
         <caption className="sr-only">
           What Modcord stores and for how long
