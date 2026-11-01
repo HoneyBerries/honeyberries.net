@@ -1,4 +1,4 @@
-import { accentAt, GlowCard } from "@/components/site/glow-card"
+import { accentAt, CARD_GRID, GlowCard } from "@/components/site/glow-card"
 import { Section, SectionHeader } from "@/components/site/section"
 import { Badge } from "@/components/ui/badge"
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,7 +16,7 @@ export function ProjectsSection() {
         Things I&apos;ve built
       </SectionHeader>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className={CARD_GRID}>
         {projects.map(({ title, description, tags, href }, index) => {
           const accent = accentAt(index)
           return (

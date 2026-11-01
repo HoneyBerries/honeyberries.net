@@ -1,10 +1,10 @@
 import { Ban, Image as ImageIcon, TriangleAlert, Timer } from "lucide-react"
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 
-import type { TimelineItem } from "@/lib/data/modcord-example-types"
+import type { Example, TimelineItem } from "@/lib/data/modcord-example-types"
 import { cn } from "@/lib/utils"
 
-export function ChatPanel({
+function ChatPanel({
   label,
   children,
   className,
@@ -55,7 +55,7 @@ function authorStyle(index: number) {
   return {
     "--author-light": light,
     "--author-dark": dark,
-  } as React.CSSProperties
+  } as CSSProperties
 }
 
 function Message({
@@ -89,6 +89,10 @@ function Message({
   )
 }
 
+// Discord-style text colors on the embed card.
+const strong = "text-[#060607] dark:text-[#f2f3f5]"
+const muted = "text-[#5c5e66] dark:text-[#b5bac1]"
+
 const actionKinds = {
   warn: { Icon: TriangleAlert, title: "Warn issued" },
   timeout: { Icon: Timer, title: "Timeout issued" },
@@ -102,7 +106,7 @@ function ActionEmbed({
 }: {
   item: Extract<TimelineItem, { type: "action" }>
   className?: string
-  style?: React.CSSProperties
+  style?: CSSProperties
 }) {
   const { Icon, title } = actionKinds[item.kind]
   return (
@@ -113,28 +117,22 @@ function ActionEmbed({
         className
       )}
     >
-      <p className="flex items-center gap-2 font-semibold text-[#060607] dark:text-[#f2f3f5]">
+      <p className={cn("flex items-center gap-2 font-semibold", strong)}>
         <Icon
           aria-hidden
           className="size-4 text-secondary-600 dark:text-secondary-400"
         />
         {title}
-        <span className="font-normal text-[#5c5e66] dark:text-[#b5bac1]">
-          Modcord
-        </span>
+        <span className={cn("font-normal", muted)}>Modcord</span>
       </p>
-      <p className="text-xs text-[#5c5e66] dark:text-[#b5bac1]">
+      <p className={cn("text-xs", muted)}>
         User{" "}
-        <span className="text-[#060607] dark:text-[#f2f3f5]">
-          @{item.target}
-        </span>
+        <span className={strong}>@{item.target}</span>
         {item.duration && (
           <>
             {" "}
             · Duration{" "}
-            <span className="text-[#060607] dark:text-[#f2f3f5]">
-              {item.duration}
-            </span>
+            <span className={strong}>{item.duration}</span>
           </>
         )}
       </p>
@@ -143,23 +141,13 @@ function ActionEmbed({
   )
 }
 
-export function ChatTimeline({
+function ChatTimeline({
   items,
   animateActions = false,
 }: {
   items: TimelineItem[]
   animateActions?: boolean
 }) {
-  // Pre-calculate action positions to avoid reassigning during render
-  const actionPositions = new Map<number, number>()
-  let actionIndex = 0
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].type === "action") {
-      actionPositions.set(i, actionIndex)
-      actionIndex += 1
-    }
-  }
-
   // Authors get colors in order of first appearance, so everyone in a short
   // conversation looks different.
   const authorOrder = new Map<string, number>()
@@ -181,8 +169,8 @@ export function ChatTimeline({
             />
           )
         }
-        const actionIdx = actionPositions.get(i)!
-        const delay = animateActions ? `${1.2 + actionIdx * 1.6}s` : undefined
+        // Staggered reveal: delay grows with the action's position.
+        const nth = items.slice(0, i).filter((x) => x.type === "action").length
         return (
           <ActionEmbed
             key={i}
@@ -190,10 +178,42 @@ export function ChatTimeline({
             className={
               animateActions ? "motion-safe:animate-resolve" : undefined
             }
-            style={delay ? { animationDelay: delay } : undefined}
+            style={
+              animateActions
+                ? { animationDelay: `${1.2 + nth * 1.6}s` }
+                : undefined
+            }
           />
         )
       })}
     </>
+  )
+}
+
+/** A captioned chat panel for one example. */
+export function ExampleFigure({
+  example,
+  label,
+  className,
+  animateActions,
+}: {
+  example: Example
+  label: string
+  className?: string
+  animateActions?: boolean
+}) {
+  return (
+    <figure className="flex flex-col gap-2">
+      <ChatPanel label={label} className={className}>
+        <ChatTimeline
+          items={example.timeline}
+          animateActions={animateActions}
+        />
+      </ChatPanel>
+      <figcaption className="text-xs text-muted-foreground">
+        {example.capturedNote}
+        {example.othersOmitted && " Other members' messages omitted."}
+      </figcaption>
+    </figure>
   )
 }

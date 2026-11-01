@@ -1,4 +1,4 @@
-import { accentAt } from "@/components/site/glow-card"
+import { accentAt, CARD_GRID } from "@/components/site/glow-card"
 import { MinecraftCard } from "@/components/site/minecraft-card"
 import { Section, SectionHeader } from "@/components/site/section"
 import { MODRINTH_USERNAME, SOCIAL_LINKS } from "@/lib/data/site"
@@ -23,7 +23,7 @@ function Group({
       <h3 className="mb-4 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
         {label} · {projects.length}
       </h3>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className={CARD_GRID}>
         {projects.map((project, i) => (
           <MinecraftCard
             key={`${id}-${project.slug}`}

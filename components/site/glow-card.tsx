@@ -50,6 +50,9 @@ export function accentAt(index: number) {
 
 export type Accent = ReturnType<typeof accentAt>
 
+/** Responsive column layout shared by the project and Minecraft card lists. */
+export const CARD_GRID = "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+
 /**
  * The site's shared card: a bordered Card. With `href` the whole card is a
  * link (internal paths use next/link, anything else opens in a new tab) and
@@ -69,7 +72,7 @@ export function GlowCard({
   const card = (
     <Card
       className={cn(
-        "h-full ring-1 ring-foreground/10",
+        "h-full",
         // Only linked cards glow, so a glow always means "clickable".
         href && ["transition-all", accent.hover],
         className

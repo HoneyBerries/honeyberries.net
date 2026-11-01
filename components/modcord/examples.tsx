@@ -3,7 +3,7 @@
 import { useRef, useState, type KeyboardEvent } from "react"
 
 import { accentAt } from "@/components/site/glow-card"
-import { ChatPanel, ChatTimeline } from "@/components/modcord/chat"
+import { ExampleFigure } from "@/components/modcord/chat"
 import { examples } from "@/lib/data/modcord-examples"
 import { cn } from "@/lib/utils"
 
@@ -70,15 +70,7 @@ export function Examples() {
         id="example-panel"
         aria-labelledby={`example-tab-${example.id}`}
       >
-        <figure className="flex flex-col gap-2">
-          <ChatPanel label={`Example: ${example.title}`}>
-            <ChatTimeline items={example.timeline} />
-          </ChatPanel>
-          <figcaption className="text-xs text-muted-foreground">
-            {example.capturedNote}
-            {example.othersOmitted && " Other members' messages omitted."}
-          </figcaption>
-        </figure>
+        <ExampleFigure example={example} label={`Example: ${example.title}`} />
       </div>
     </div>
   )

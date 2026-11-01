@@ -1,5 +1,6 @@
 import { Check } from "lucide-react"
 import Link from "next/link"
+import type { ReactNode } from "react"
 
 import { CommandsTable } from "@/components/modcord/commands-table"
 import { Examples } from "@/components/modcord/examples"
@@ -19,23 +20,47 @@ export const metadata = pageMetadata({
     "Modcord is a free, open-source Discord moderation bot that uses AI to read the conversation and your server's rules before it acts.",
 })
 
-function InviteButton() {
+function ExternalButton({
+  href,
+  variant,
+  children,
+}: {
+  href: string
+  variant: "gradient" | "outline"
+  children: string
+}) {
   return (
     <Button
-      variant="gradient"
+      variant={variant}
       size="lg"
       className="h-10 px-5 text-base"
       nativeButton={false}
-      render={
-        <a
-          href={MODCORD_INVITE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        />
-      }
+      render={<a href={href} target="_blank" rel="noopener noreferrer" />}
     >
-      Add to Discord
+      {children}
     </Button>
+  )
+}
+
+// A page section: gradient heading with a line of copy above its content.
+function ModcordSection({
+  title,
+  description,
+  band,
+  children,
+}: {
+  title: string
+  description: ReactNode
+  band?: boolean
+  children: ReactNode
+}) {
+  return (
+    <Section band={band} className="py-16 md:py-20">
+      <SectionHeader gradient description={description}>
+        {title}
+      </SectionHeader>
+      {children}
+    </Section>
   )
 }
 
@@ -44,8 +69,6 @@ const highlights = [
   "Reads context and your rules",
   "Every action logged with its reason",
 ]
-
-const sectionClass = "py-16 md:py-20"
 
 export default function ModcordPage() {
   return (
@@ -56,9 +79,7 @@ export default function ModcordPage() {
           aria-hidden
           className="pointer-events-none absolute -top-24 left-1/2 h-96 w-[48rem] max-w-full -translate-x-1/2 rounded-full bg-linear-to-r from-primary-500/20 via-secondary-500/15 to-accent-500/20 blur-3xl"
         />
-        <Section
-          className={`relative grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-center ${sectionClass} md:py-24`}
-        >
+        <Section className="relative grid gap-12 py-16 md:grid-cols-[1fr_1.1fr] md:items-center md:py-24">
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="default">Open source</Badge>
@@ -74,22 +95,12 @@ export default function ModcordPage() {
               are treated differently.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <InviteButton />
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-10 px-5 text-base"
-                nativeButton={false}
-                render={
-                  <a
-                    href={MODCORD_REPO_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-              >
+              <ExternalButton variant="gradient" href={MODCORD_INVITE_URL}>
+                Add to Discord
+              </ExternalButton>
+              <ExternalButton variant="outline" href={MODCORD_REPO_URL}>
                 View on GitHub
-              </Button>
+              </ExternalButton>
             </div>
             <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
               {highlights.map((item) => (
@@ -104,64 +115,54 @@ export default function ModcordPage() {
         </Section>
       </div>
 
-      <Section className={sectionClass}>
-        <SectionHeader
-          gradient
-          description="Modcord reads the conversation and your server's rules before it acts."
-        >
-          What it does
-        </SectionHeader>
+      <ModcordSection
+        title="What it does"
+        description="Modcord reads the conversation and your server's rules before it acts."
+      >
         <FeatureList />
-      </Section>
+      </ModcordSection>
 
-      <Section band className={sectionClass}>
-        <SectionHeader
-          gradient
-          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The last two are recreated or written to show common cases."
-        >
-          Examples
-        </SectionHeader>
+      <ModcordSection
+        band
+        title="Examples"
+        description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The last two are recreated or written to show common cases."
+      >
         <Examples />
-      </Section>
+      </ModcordSection>
 
-      <Section className={sectionClass}>
-        <SectionHeader
-          gradient
-          description="Slash commands for setup, manual moderation and appeals."
-        >
-          Commands
-        </SectionHeader>
+      <ModcordSection
+        title="Commands"
+        description="Slash commands for setup, manual moderation and appeals."
+      >
         <CommandsTable />
-      </Section>
+      </ModcordSection>
 
-      <Section band className={sectionClass}>
-        <SectionHeader
-          gradient
-          description={
-            <>
-              Modcord does not store the text of your messages. Here is what it
-              does store, and for how long. The full details are in the{" "}
-              <Link
-                href="/projects/modcord/privacy"
-                className="text-primary underline underline-offset-4"
-              >
-                Privacy Policy
-              </Link>{" "}
-              and the{" "}
-              <Link
-                href="/projects/modcord/terms"
-                className="text-primary underline underline-offset-4"
-              >
-                Terms of Service
-              </Link>
-              .
-            </>
-          }
-        >
-          What we keep
-        </SectionHeader>
+      <ModcordSection
+        band
+        title="What we keep"
+        description={
+          <>
+            Modcord does not store the text of your messages. Here is what it
+            does store, and for how long. The full details are in the{" "}
+            <Link
+              href="/projects/modcord/privacy"
+              className="text-primary underline underline-offset-4"
+            >
+              Privacy Policy
+            </Link>{" "}
+            and the{" "}
+            <Link
+              href="/projects/modcord/terms"
+              className="text-primary underline underline-offset-4"
+            >
+              Terms of Service
+            </Link>
+            .
+          </>
+        }
+      >
         <RetentionTable />
-      </Section>
+      </ModcordSection>
     </>
   )
 }
