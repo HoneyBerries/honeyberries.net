@@ -117,13 +117,6 @@ export default function ModcordPage() {
         </p>
         <RetentionTable />
       </Section>
-
-      <Section className="flex flex-col items-start gap-4 py-16">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Try it in your server
-        </h2>
-        <InviteButton />
-      </Section>
     </>
   )
 }
