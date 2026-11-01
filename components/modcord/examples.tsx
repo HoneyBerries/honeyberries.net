@@ -50,7 +50,7 @@ export function Examples() {
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
             className={cn(
-              "flex flex-col gap-1 rounded-lg px-3.5 py-3 text-left outline-none ring-1 transition-all focus-visible:ring-[3px]",
+              "flex cursor-pointer flex-col gap-1 rounded-lg px-3.5 py-3 text-left outline-none ring-1 transition-all focus-visible:ring-[3px]",
               "bg-card ring-foreground/10 focus-visible:ring-ring/50",
               i === active ? accentAt(i).active : accentAt(i).hover
             )}
