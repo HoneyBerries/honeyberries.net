@@ -157,6 +157,7 @@ function ChatTimeline({
     }
   }
 
+  let nth = 0
   return (
     <>
       {items.map((item, i) => {
@@ -170,7 +171,7 @@ function ChatTimeline({
           )
         }
         // Staggered reveal: delay grows with the action's position.
-        const nth = items.slice(0, i).filter((x) => x.type === "action").length
+        const delay = 1.2 + nth++ * 1.6
         return (
           <ActionEmbed
             key={i}
@@ -180,7 +181,7 @@ function ChatTimeline({
             }
             style={
               animateActions
-                ? { animationDelay: `${1.2 + nth * 1.6}s` }
+                ? { animationDelay: `${delay}s` }
                 : undefined
             }
           />

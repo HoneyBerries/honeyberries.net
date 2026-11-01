@@ -1,4 +1,4 @@
-import type { Example } from "./modcord-example-types"
+import type { Example, TimelineItem } from "./modcord-example-types"
 
 // Moderation decisions from a Modcord-moderated server, with every name
 // replaced by an invented alias. Each example's capturedNote says what it is:
@@ -6,6 +6,12 @@ import type { Example } from "./modcord-example-types"
 // happened, or "Illustrative" (written to show a case, not a real capture).
 // Keep the section intro in app/projects/modcord/page.tsx in step with these.
 // See the design spec before editing.
+const gif = (author: string, count: number): TimelineItem => ({
+  type: "message",
+  author,
+  media: { kind: "gif", count },
+})
+
 export const examples = [
   {
     "id": "sixty-seven",
@@ -54,146 +60,41 @@ export const examples = [
     "capturedNote": "Captured from a Modcord-moderated server. Names changed.",
     "othersOmitted": false,
     "timeline": [
-      {
-        "type": "message",
-        "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Ravi",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Skye",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
+      gif("Jun", 1),
+      gif("Ravi", 1),
+      gif("Skye", 1),
       {
         "type": "message",
         "author": "Jun",
         "text": "Tralaleo tralala shark in blue shoes, sliding on the seashore like hes got norhing to lose"
       },
-      {
-        "type": "message",
-        "author": "Ravi",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Mika",
-        "media": {
-          "kind": "gif",
-          "count": 6
-        }
-      },
-      {
-        "type": "message",
-        "author": "Ravi",
-        "media": {
-          "kind": "gif",
-          "count": 2
-        }
-      },
-      {
-        "type": "message",
-        "author": "Mika",
-        "media": {
-          "kind": "gif",
-          "count": 2
-        }
-      },
-      {
-        "type": "message",
-        "author": "Nia",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
+      gif("Ravi", 1),
+      gif("Mika", 6),
+      gif("Ravi", 2),
+      gif("Mika", 2),
+      gif("Nia", 1),
       {
         "type": "message",
         "author": "Ravi",
         "text": "alright enough sponging around"
       },
-      {
-        "type": "message",
-        "author": "Skye",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Mika",
-        "media": {
-          "kind": "gif",
-          "count": 4
-        }
-      },
-      {
-        "type": "message",
-        "author": "Ravi",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Mika",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
+      gif("Skye", 1),
+      gif("Mika", 4),
+      gif("Ravi", 1),
+      gif("Mika", 1),
       {
         "type": "message",
         "author": "Mika",
         "text": "am breaking up the tung"
       },
-      {
-        "type": "message",
-        "author": "Jun",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
-      {
-        "type": "message",
-        "author": "Nia",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
+      gif("Jun", 1),
+      gif("Nia", 1),
       {
         "type": "message",
         "author": "Mika",
         "text": "we cant have too dense tung"
       },
-      {
-        "type": "message",
-        "author": "Mika",
-        "media": {
-          "kind": "gif",
-          "count": 1
-        }
-      },
+      gif("Mika", 1),
       {
         "type": "action",
         "kind": "warn",

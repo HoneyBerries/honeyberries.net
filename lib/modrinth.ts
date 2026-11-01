@@ -10,11 +10,9 @@ export interface ModrinthProject {
   icon_url: string | null
   downloads: number
   loaders: string[]
-  game_versions: string[]
   version_label: string
   categories: string[]
   status: string
-  project_type: string
 }
 
 export const MOD_LOADERS = ["fabric", "forge", "neoforge", "quilt"]
@@ -27,6 +25,9 @@ export const SERVER_LOADERS = [
   "datapack",
 ]
 const SHOWN_STATUSES = ["approved", "archived"]
+
+const strings = (v: unknown) =>
+  Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []
 
 // Keeps only well-formed, public mod-type projects; bad items are dropped
 // individually so one broken entry never empties the page.
@@ -44,8 +45,6 @@ export function normalizeProjects(
     if (p.project_type !== "mod") continue
     if (typeof p.status !== "string" || !SHOWN_STATUSES.includes(p.status))
       continue
-    const strings = (v: unknown) =>
-      Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []
     const gameVersions = strings(p.game_versions)
     result.push({
       slug: p.slug,
@@ -54,11 +53,9 @@ export function normalizeProjects(
       icon_url: typeof p.icon_url === "string" && p.icon_url ? p.icon_url : null,
       downloads: typeof p.downloads === "number" ? p.downloads : 0,
       loaders: strings(p.loaders),
-      game_versions: gameVersions,
       version_label: formatGameVersions(gameVersions, releases),
       categories: strings(p.categories),
       status: p.status,
-      project_type: p.project_type,
     })
   }
   return result

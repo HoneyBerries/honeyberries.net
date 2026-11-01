@@ -1,5 +1,4 @@
 import { Check } from "lucide-react"
-import Link from "next/link"
 import type { ReactNode } from "react"
 
 import { CommandsTable } from "@/components/modcord/commands-table"
@@ -8,10 +7,12 @@ import { FeatureList } from "@/components/modcord/feature-list"
 import { HeroMock } from "@/components/modcord/hero-mock"
 import { RetentionTable } from "@/components/modcord/retention-table"
 import { Section, SectionHeader } from "@/components/site/section"
+import { TextLink } from "@/components/site/text-link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { MODCORD_INVITE_URL, MODCORD_REPO_URL } from "@/lib/data/site"
 import { pageMetadata } from "@/lib/metadata"
+import { externalProps } from "@/lib/utils"
 
 export const metadata = pageMetadata({
   path: "/projects/modcord",
@@ -35,7 +36,7 @@ function ExternalButton({
       size="lg"
       className="h-10 px-5 text-base"
       nativeButton={false}
-      render={<a href={href} target="_blank" rel="noopener noreferrer" />}
+      render={<a href={href} {...externalProps(href)} />}
     >
       {children}
     </Button>
@@ -144,19 +145,13 @@ export default function ModcordPage() {
           <>
             Modcord does not store the text of your messages. Here is what it
             does store, and for how long. The full details are in the{" "}
-            <Link
-              href="/projects/modcord/privacy"
-              className="text-primary underline underline-offset-4"
-            >
+            <TextLink href="/projects/modcord/privacy">
               Privacy Policy
-            </Link>{" "}
+            </TextLink>{" "}
             and the{" "}
-            <Link
-              href="/projects/modcord/terms"
-              className="text-primary underline underline-offset-4"
-            >
+            <TextLink href="/projects/modcord/terms">
               Terms of Service
-            </Link>
+            </TextLink>
             .
           </>
         }
