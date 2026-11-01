@@ -82,7 +82,7 @@ export function GlowCard({
   if (!href) return card
 
   const linkClass =
-    "block rounded-xl focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+    "relative block rounded-xl focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
 
   return href.startsWith("/") ? (
     <Link href={href} className={linkClass}>
