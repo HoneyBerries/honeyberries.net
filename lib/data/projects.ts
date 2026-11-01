@@ -25,14 +25,14 @@ export const projects: Project[] = [
     description:
       "My friend, Pepmon270, told me to make some fabric mods so we could earn some money from Modrinth",
     tags: ["Minecraft", "Mods"],
-    href: "https://modrinth.com/user/HoneyBerries/mods",
+    href: "/projects/minecraft#mods",
   },
   {
     title: "Minecraft Plugins",
     description:
       "A collection of PaperMC plugins I made when I was young",
     tags: ["Minecraft", "Plugins"],
-    href: "https://modrinth.com/user/HoneyBerries/plugins",
+    href: "/projects/minecraft#plugins",
   },
   {
     title: "Gem SMP (Legacy)",

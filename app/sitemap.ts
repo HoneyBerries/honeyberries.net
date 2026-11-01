@@ -1,7 +1,5 @@
 import type { MetadataRoute } from "next"
 
-export const dynamic = "force-static"
-
 const BASE_URL = "https://honeyberries.net"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/projects",
+    "/projects/minecraft",
     "/projects/modcord",
     "/projects/modcord/privacy",
     "/projects/modcord/terms",
