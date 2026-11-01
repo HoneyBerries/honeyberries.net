@@ -1,6 +1,5 @@
 import { cacheLife } from "next/cache"
 
-import { minecraftFallback } from "@/lib/data/minecraft-fallback"
 import { MODRINTH_USERNAME, SITE_URL } from "@/lib/data/site"
 
 // The subset of Modrinth's project fields the Minecraft page uses.
@@ -69,24 +68,20 @@ export async function getMinecraftProjects(): Promise<ModrinthProject[]> {
   "use cache"
   cacheLife("minutes")
 
-  try {
-    const headers = {
-      "User-Agent": `${MODRINTH_USERNAME}/honeyberries.net (${SITE_URL})`,
-    }
-    const [res, releases] = await Promise.all([
-      fetch(
-        `https://api.modrinth.com/v2/user/${encodeURIComponent(MODRINTH_USERNAME)}/projects`,
-        { headers }
-      ),
-      getReleaseVersions(headers),
-    ])
-    if (!res.ok) throw new Error(`Modrinth responded ${res.status}`)
-    const projects = normalizeProjects(await res.json(), releases)
-    if (projects.length === 0) throw new Error("Modrinth returned no projects")
-    return projects
-  } catch {
-    return normalizeProjects(minecraftFallback)
+  const headers = {
+    "User-Agent": `${MODRINTH_USERNAME}/honeyberries.net (${SITE_URL})`,
   }
+  const [res, releases] = await Promise.all([
+    fetch(
+      `https://api.modrinth.com/v2/user/${encodeURIComponent(MODRINTH_USERNAME)}/projects`,
+      { headers }
+    ),
+    getReleaseVersions(headers),
+  ])
+  if (!res.ok) throw new Error(`Modrinth responded ${res.status}`)
+  const projects = normalizeProjects(await res.json(), releases)
+  if (projects.length === 0) throw new Error("Modrinth returned no projects")
+  return projects
 }
 
 // Modrinth's master list of Minecraft versions, reduced to releases and

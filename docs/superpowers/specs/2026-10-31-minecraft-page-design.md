@@ -63,8 +63,7 @@ Heading in the style of the Projects page (`SectionHeading` with a badge and gra
 
 ### Caching and failure
 - One data function, marked `'use cache'` with `cacheLife('minutes')`, does the single Modrinth request. The page renders from its result.
-- If the fetch fails, returns a non-OK status, or returns an empty or non-array body, the page must **not** error. It falls back to a small committed snapshot of the projects (`lib/data/minecraft-fallback.ts`), refreshed by hand occasionally.
-- **Fallback lives inside the cached function** (my call): the function catches its own failure and returns the snapshot. Because the lifetime is `minutes` (revalidate 1 minute), the snapshot is only served for about a minute before the next visitor's background refresh retries Modrinth, so this is harmless and simpler than throwing out of a cache. A build that happens during a Modrinth outage bakes the snapshot into the prerender, and the first revalidation after deploy corrects it.
+- **No fallback snapshot** (owner's decision, 2026-11-01): if the fetch fails or returns a non-OK status or an empty body, `getMinecraftProjects()` throws. A failed background revalidation keeps serving the last cached copy; only a cold cache or a build during an outage errors.
 - **Per-item validation** (my call): skip any project missing `title` or `slug`; treat a null `description` as empty; a missing `icon_url` shows a neutral placeholder (a `lucide-react` `Package` icon in the same 44px rounded box). Bad items are dropped, not the whole response.
 
 ## 4. Files
@@ -74,8 +73,7 @@ Heading in the style of the Projects page (`SectionHeading` with a badge and gra
 | `app/projects/minecraft/page.tsx` | New route. `pageMetadata({ path: "/projects/minecraft", title: "Minecraft", description })`. |
 | `components/site/minecraft-section.tsx` | The page body: heading, two sections, card grid. |
 | `components/site/minecraft-card.tsx` | One card, built from `Card` and `Badge`. |
-| `lib/modrinth.ts` | `getMinecraftProjects()` (cached fetch plus fallback) and pure helpers for grouping, sorting and compact number formatting. |
-| `lib/data/minecraft-fallback.ts` | Typed snapshot used when Modrinth is unreachable. |
+| `lib/modrinth.ts` | `getMinecraftProjects()` (cached fetch) and pure helpers for grouping, sorting and compact number formatting. |
 | `lib/data/site.ts` | Add `MODRINTH_USERNAME`. |
 | `lib/data/projects.ts` | Point "Minecraft Mods" at `/projects/minecraft#mods` and "Minecraft Plugins" at `/projects/minecraft#plugins`, as internal links (same tab). |
 | `components/site/projects-section.tsx` | Existing logic already treats `/`-prefixed hrefs as internal links; verify it works with hashes. |
@@ -95,7 +93,6 @@ Heading in the style of the Projects page (`SectionHeading` with a badge and gra
 - Page and file names: `/projects/minecraft`, not `/projects/mods`.
 - A project matching neither a mod nor a server loader goes under Mods. (A project matching both appears in both, as the owner decided.)
 - Only `approved` and `archived` mod-type projects are shown; drafts and unlisted ones are hidden.
-- Fallback snapshot as a failure net, returned from inside the cached function (shown for about a minute during an outage).
 - Per-item validation: bad projects are dropped, missing icons get a placeholder, empty sections are hidden.
 - Two category badges maximum per card, to stop cards growing uneven.
 
