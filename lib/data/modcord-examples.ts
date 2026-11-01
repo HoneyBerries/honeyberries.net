@@ -1,7 +1,9 @@
 import type { Example } from "./modcord-example-types"
 
-// Real moderation decisions captured from a Modcord-moderated server, with
-// every name replaced by an invented alias. See the design spec before editing.
+// Moderation decisions from a Modcord-moderated server, with every name
+// replaced by an invented alias. Examples whose capturedNote says "Recreated"
+// are rebuilt from a pattern that really happened, not verbatim captures.
+// See the design spec before editing.
 export const examples = [
   {
     "id": "sixty-seven",
@@ -215,6 +217,41 @@ export const examples = [
         "type": "message",
         "author": "Jun",
         "text": "Haha"
+      }
+    ]
+  },
+  {
+    "id": "free-nitro-scam",
+    "title": "A free Nitro scam",
+    "summary": "A brand-new account posts a free Nitro and crypto giveaway. Modcord bans it and removes the messages before anyone clicks.",
+    "capturedNote": "Recreated from a scam pattern that has happened a few times. Not a verbatim capture. Names changed.",
+    "othersOmitted": false,
+    "timeline": [
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "ok who's up for a match later"
+      },
+      {
+        "type": "message",
+        "author": "Kade",
+        "text": "FREE Discord Nitro for everyone! Claim yours before it expires: https://example.com/free-nitro"
+      },
+      {
+        "type": "message",
+        "author": "Kade",
+        "text": "Also giving away 0.5 BTC to the first 100 people, just connect your wallet to claim"
+      },
+      {
+        "type": "action",
+        "kind": "ban",
+        "target": "Kade",
+        "reason": "This account just joined and immediately posted a free Nitro and crypto giveaway link, which is a common scam. The messages have been removed and the account banned."
+      },
+      {
+        "type": "message",
+        "author": "Nia",
+        "text": "lol the scammers found us"
       }
     ]
   }

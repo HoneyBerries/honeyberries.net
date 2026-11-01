@@ -1,4 +1,4 @@
-import { Image as ImageIcon, TriangleAlert, Timer } from "lucide-react"
+import { Ban, Image as ImageIcon, TriangleAlert, Timer } from "lucide-react"
 import type { ReactNode } from "react"
 
 import type { TimelineItem } from "@/lib/data/modcord-example-types"
@@ -89,6 +89,12 @@ function Message({
   )
 }
 
+const actionKinds = {
+  warn: { Icon: TriangleAlert, title: "Warn issued" },
+  timeout: { Icon: Timer, title: "Timeout issued" },
+  ban: { Icon: Ban, title: "Ban issued" },
+} as const
+
 function ActionEmbed({
   item,
   className,
@@ -98,8 +104,7 @@ function ActionEmbed({
   className?: string
   style?: React.CSSProperties
 }) {
-  const Icon = item.kind === "timeout" ? Timer : TriangleAlert
-  const title = item.kind === "timeout" ? "Timeout issued" : "Warn issued"
+  const { Icon, title } = actionKinds[item.kind]
   return (
     <div
       style={style}

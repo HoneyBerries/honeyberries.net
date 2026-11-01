@@ -118,12 +118,10 @@ export default function ModcordPage() {
 
       <Section band className={sectionClass}>
         <SectionHeader
-          badge="Examples"
-          variant="accent"
           gradient
-          description="These are actual decisions Modcord made in a server I run. The reasons are exactly what it posted."
+          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The third is recreated from a scam that happened a few times."
         >
-          Real examples
+          Examples
         </SectionHeader>
         <Examples />
       </Section>
