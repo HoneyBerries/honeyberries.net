@@ -1,5 +1,5 @@
 import { accentAt, GlowCard } from "@/components/site/glow-card"
-import { Section, SectionHeading } from "@/components/site/section"
+import { Section, SectionHeader } from "@/components/site/section"
 import { Badge } from "@/components/ui/badge"
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { projects } from "@/lib/data/projects"
@@ -7,15 +7,14 @@ import { projects } from "@/lib/data/projects"
 export function ProjectsSection() {
   return (
     <Section id="projects">
-      <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <SectionHeading badge="Projects" variant="secondary" gradient>
-          Things I&apos;ve built
-        </SectionHeading>
-        <p className="max-w-md text-muted-foreground">
-          From AI Discord bots to Minecraft mods, here&apos;s what I&apos;ve
-          been working on.
-        </p>
-      </div>
+      <SectionHeader
+        badge="Projects"
+        variant="secondary"
+        gradient
+        description="From AI Discord bots to Minecraft mods, here's what I've been working on."
+      >
+        Things I&apos;ve built
+      </SectionHeader>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(({ title, description, tags, href }, index) => {

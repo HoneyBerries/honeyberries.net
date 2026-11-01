@@ -1,3 +1,10 @@
+import {
+  Gavel,
+  MessagesSquare,
+  ScrollText,
+  type LucideIcon,
+} from "lucide-react"
+
 export type RetentionRow = {
   data: string
   contents: string
@@ -43,30 +50,44 @@ export type CommandRow = {
 }
 
 export const commands = [
-  { command: "/preferences", summary: "Turn AI moderation and each action on or off, pick the rules and audit channels, allow appeals, reset." },
+  {
+    command: "/preferences",
+    summary:
+      "Turn AI moderation and each action on or off, pick the rules and audit channels, allow appeals, reset.",
+  },
   { command: "/mod", summary: "Warn, timeout, kick, ban or unban by hand." },
-  { command: "/exclude", summary: "Exempt users, roles or channels from AI moderation." },
+  {
+    command: "/exclude",
+    summary: "Exempt users, roles or channels from AI moderation.",
+  },
   { command: "/rollback", summary: "Undo a moderation action." },
-  { command: "/appeal", summary: "Appeal a decision, or review appeals as a moderator." },
+  {
+    command: "/appeal",
+    summary: "Appeal a decision, or review appeals as a moderator.",
+  },
   { command: "/status", summary: "Check health, ping and uptime." },
 ] as const satisfies readonly CommandRow[]
 
 export type Feature = {
   title: string
   body: string
+  icon: LucideIcon
 }
 
 export const features = [
   {
     title: "It reads the conversation, not just keywords",
+    icon: MessagesSquare,
     body: "Modcord looks at the recent history of the channel (50 messages by default), so a joke between friends and a real problem are judged differently.",
   },
   {
     title: "It follows your rules",
+    icon: ScrollText,
     body: "Every server sets its own rules, and each channel can have its own guidelines. Modcord acts on those, not on a generic list.",
   },
   {
     title: "Every action comes with a reason",
+    icon: Gavel,
     body: "Warnings, timeouts, kicks and bans are posted to your audit channel with the reason, and members can appeal.",
   },
 ] as const satisfies readonly Feature[]

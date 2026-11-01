@@ -9,24 +9,28 @@ import { cn } from "@/lib/utils"
 type BadgeVariant = NonNullable<VariantProps<typeof badgeVariants>["variant"]>
 
 // Each accent pairs a card's hover glow with a tag badge color that's
-// guaranteed not to match it, so the two can never drift out of sync.
+// guaranteed not to match it, and a tint for icons and code chips inside the
+// card, so they can never drift out of sync.
 const ACCENTS = [
   {
     hover:
       "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
     tag: "secondary",
+    tint: "bg-primary-500/10 text-primary-600 dark:text-primary-400",
   },
   {
     hover:
       "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
     tag: "accent",
+    tint: "bg-secondary-500/10 text-secondary-600 dark:text-secondary-400",
   },
   {
     hover:
       "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
     tag: "default",
+    tint: "bg-accent-500/10 text-accent-700 dark:text-accent-400",
   },
-] satisfies { hover: string; tag: BadgeVariant }[]
+] satisfies { hover: string; tag: BadgeVariant; tint: string }[]
 
 /** Rotates through the three accents by position in a list. */
 export function accentAt(index: number) {

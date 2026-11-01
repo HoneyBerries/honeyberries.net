@@ -3,6 +3,7 @@
 import { useRef, useState, type KeyboardEvent } from "react"
 
 import { ChatPanel, ChatTimeline } from "@/components/modcord/chat"
+import { Card } from "@/components/ui/card"
 import { examples } from "@/lib/data/modcord-examples"
 import { cn } from "@/lib/utils"
 
@@ -32,7 +33,7 @@ export function Examples() {
       <div
         role="tablist"
         aria-label="Moderation examples"
-        className="flex flex-wrap gap-2"
+        className="flex flex-wrap justify-center gap-2"
       >
         {examples.map((ex, i) => (
           <button
@@ -48,7 +49,7 @@ export function Examples() {
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
             className={cn(
-              "rounded-lg border px-3 py-1.5 text-sm font-medium outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50",
+              "rounded-full border px-4 py-1.5 text-sm font-medium outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50",
               i === active
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -59,11 +60,11 @@ export function Examples() {
         ))}
       </div>
 
-      <div
+      <Card
         role="tabpanel"
         id="example-panel"
         aria-labelledby={`example-tab-${example.id}`}
-        className="grid gap-6 md:grid-cols-[1fr_1.4fr] md:items-start"
+        className="gap-6 p-6 md:grid md:grid-cols-[1fr_1.4fr] md:items-start"
       >
         <p className="max-w-prose leading-relaxed text-muted-foreground">
           {example.summary}
@@ -77,7 +78,7 @@ export function Examples() {
             {example.othersOmitted && " Other members' messages omitted."}
           </figcaption>
         </figure>
-      </div>
+      </Card>
     </div>
   )
 }

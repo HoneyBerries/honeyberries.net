@@ -17,8 +17,10 @@ export function ChatPanel({
     <div
       role="group"
       aria-label={label}
+      // Focusable so keyboard users can scroll it when the conversation is long.
+      tabIndex={0}
       className={cn(
-        "flex flex-col gap-3 rounded-xl bg-[#2b2d31] p-4 text-sm text-[#dbdee1] shadow-lg ring-1 ring-black/20",
+        "flex max-h-[26rem] flex-col gap-3 overflow-y-auto overscroll-contain rounded-xl bg-[#f2f3f5] p-4 text-sm text-[#313338] shadow-lg ring-1 ring-black/10 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 dark:bg-[#2b2d31] dark:text-[#dbdee1] dark:ring-black/20",
         className
       )}
     >
@@ -27,44 +29,48 @@ export function ChatPanel({
   )
 }
 
-function MediaChip({
-  kind,
-  count,
-}: {
-  kind: "gif" | "image"
-  count: number
-}) {
+function MediaChip({ kind, count }: { kind: "gif" | "image"; count: number }) {
   const noun = kind === "gif" ? "GIF" : "image"
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-md bg-[#1e1f22] px-2 py-1 text-xs text-[#b5bac1]">
+    <span className="inline-flex items-center gap-1.5 rounded-md bg-[#e3e5e8] px-2 py-1 text-xs text-[#4e5058] dark:bg-[#1e1f22] dark:text-[#b5bac1]">
       <ImageIcon aria-hidden className="size-3.5" />
       {count > 1 ? `${noun} ×${count}` : noun}
     </span>
   )
 }
 
+// [light theme, dark theme]: the Discord-style hues need to be darker on the
+// light panel to stay readable.
 const authorColors = [
-  "#f47fff",
-  "#5865f2",
-  "#3ba55d",
-  "#faa61a",
-  "#ed4245",
-  "#00b0f4",
-]
+  ["#b01fc0", "#f47fff"],
+  ["#4752c4", "#8ea1ff"],
+  ["#1a7f37", "#3ba55d"],
+  ["#b45309", "#faa61a"],
+  ["#c62828", "#ed4245"],
+  ["#0369a1", "#00b0f4"],
+] as const
 
-function authorColor(name: string) {
+function authorStyle(name: string) {
   let hash = 0
   for (const char of name) hash = (hash * 31 + char.charCodeAt(0)) % 997
-  return authorColors[hash % authorColors.length]
+  const [light, dark] = authorColors[hash % authorColors.length]
+  return {
+    "--author-light": light,
+    "--author-dark": dark,
+  } as React.CSSProperties
 }
 
-function Message({ item }: { item: Extract<TimelineItem, { type: "message" }> }) {
+function Message({
+  item,
+}: {
+  item: Extract<TimelineItem, { type: "message" }>
+}) {
   const lines = Array.from({ length: item.repeat ?? 1 })
   return (
     <div className="flex flex-col gap-0.5">
       <span
-        className="font-semibold"
-        style={{ color: authorColor(item.author) }}
+        className="font-semibold text-(color:--author-light) dark:text-(color:--author-dark)"
+        style={authorStyle(item.author)}
       >
         {item.author}
       </span>
@@ -98,21 +104,32 @@ function ActionEmbed({
     <div
       style={style}
       className={cn(
-        "flex flex-col gap-2 rounded-md border-l-4 border-secondary-500 bg-[#313338] p-3",
+        "flex flex-col gap-2 rounded-md border-l-4 border-secondary-500 bg-white p-3 dark:bg-[#313338]",
         className
       )}
     >
-      <p className="flex items-center gap-2 font-semibold text-[#f2f3f5]">
-        <Icon aria-hidden className="size-4 text-secondary-400" />
+      <p className="flex items-center gap-2 font-semibold text-[#060607] dark:text-[#f2f3f5]">
+        <Icon
+          aria-hidden
+          className="size-4 text-secondary-600 dark:text-secondary-400"
+        />
         {title}
-        <span className="font-normal text-[#b5bac1]">Modcord</span>
+        <span className="font-normal text-[#5c5e66] dark:text-[#b5bac1]">
+          Modcord
+        </span>
       </p>
-      <p className="text-xs text-[#b5bac1]">
-        User <span className="text-[#f2f3f5]">@{item.target}</span>
+      <p className="text-xs text-[#5c5e66] dark:text-[#b5bac1]">
+        User{" "}
+        <span className="text-[#060607] dark:text-[#f2f3f5]">
+          @{item.target}
+        </span>
         {item.duration && (
           <>
             {" "}
-            · Duration <span className="text-[#f2f3f5]">{item.duration}</span>
+            · Duration{" "}
+            <span className="text-[#060607] dark:text-[#f2f3f5]">
+              {item.duration}
+            </span>
           </>
         )}
       </p>
@@ -150,7 +167,9 @@ export function ChatTimeline({
           <ActionEmbed
             key={i}
             item={item}
-            className={animateActions ? "motion-safe:animate-resolve" : undefined}
+            className={
+              animateActions ? "motion-safe:animate-resolve" : undefined
+            }
             style={delay ? { animationDelay: delay } : undefined}
           />
         )
