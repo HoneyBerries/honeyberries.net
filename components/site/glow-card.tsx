@@ -4,7 +4,7 @@ import type { VariantProps } from "class-variance-authority"
 
 import { type badgeVariants } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { cn, externalProps } from "@/lib/utils"
 
 type BadgeVariant = NonNullable<VariantProps<typeof badgeVariants>["variant"]>
 
@@ -94,8 +94,7 @@ export function GlowCard({
   ) : (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...externalProps(href)}
       className={linkClass}
     >
       {card}

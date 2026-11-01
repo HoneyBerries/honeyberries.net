@@ -22,18 +22,7 @@ export function LI({ children }: { children: ReactNode }) {
   return <li>{children}</li>
 }
 
-export function A({ href, children }: { href: string; children: ReactNode }) {
-  const external = /^https?:/.test(href)
-  return (
-    <a
-      href={href}
-      className="text-primary underline underline-offset-4"
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-    >
-      {children}
-    </a>
-  )
-}
+export { TextLink as A } from "@/components/site/text-link"
 
 export function LegalPage({
   title,
