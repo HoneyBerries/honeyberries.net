@@ -21,16 +21,18 @@ export function SectionHeading({
   gradient,
   children,
 }: {
-  badge: string
-  variant: VariantProps<typeof badgeVariants>["variant"]
+  badge?: string
+  variant?: VariantProps<typeof badgeVariants>["variant"]
   gradient?: boolean
   children: ReactNode
 }) {
   return (
     <>
-      <Badge variant={variant} className="w-fit">
-        {badge}
-      </Badge>
+      {badge && (
+        <Badge variant={variant} className="w-fit">
+          {badge}
+        </Badge>
+      )}
       <h2
         className={cn(
           "text-2xl font-bold tracking-tight",

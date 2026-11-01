@@ -48,7 +48,7 @@ export async function MinecraftSection() {
   return (
     <Section id="minecraft">
       <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <SectionHeading badge="Minecraft" variant="accent" gradient>
+        <SectionHeading gradient>
           Mods, plugins &amp; datapacks
         </SectionHeading>
         <p className="max-w-md text-muted-foreground">
