@@ -106,8 +106,6 @@ export default function ModcordPage() {
 
       <Section className={sectionClass}>
         <SectionHeader
-          badge="Features"
-          variant="secondary"
           gradient
           description="Modcord reads the conversation and your server's rules before it acts."
         >
@@ -119,7 +117,7 @@ export default function ModcordPage() {
       <Section band className={sectionClass}>
         <SectionHeader
           gradient
-          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The last two are recreated to show common cases."
+          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The last two are recreated or written to show common cases."
         >
           Examples
         </SectionHeader>
@@ -128,8 +126,6 @@ export default function ModcordPage() {
 
       <Section className={sectionClass}>
         <SectionHeader
-          badge="Commands"
-          variant="default"
           gradient
           description="Slash commands for setup, manual moderation and appeals."
         >
@@ -140,13 +136,11 @@ export default function ModcordPage() {
 
       <Section band className={sectionClass}>
         <SectionHeader
-          badge="Privacy"
-          variant="secondary"
           gradient
           description={
             <>
-              Modcord does not store your messages. Here is what it does store,
-              and for how long. The full details are in the{" "}
+              Modcord does not store the text of your messages. Here is what it
+              does store, and for how long. The full details are in the{" "}
               <Link
                 href="/projects/modcord/privacy"
                 className="text-primary underline underline-offset-4"

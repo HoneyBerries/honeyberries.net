@@ -1,8 +1,10 @@
 import type { Example } from "./modcord-example-types"
 
 // Moderation decisions from a Modcord-moderated server, with every name
-// replaced by an invented alias. Examples whose capturedNote says "Recreated"
-// are rebuilt from a pattern that really happened, not verbatim captures.
+// replaced by an invented alias. Each example's capturedNote says what it is:
+// captured from a real server, "Recreated" from a pattern that really
+// happened, or "Illustrative" (written to show a case, not a real capture).
+// Keep the section intro in app/projects/modcord/page.tsx in step with these.
 // See the design spec before editing.
 export const examples = [
   {

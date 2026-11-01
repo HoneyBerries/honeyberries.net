@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils"
 
 type BadgeVariant = NonNullable<VariantProps<typeof badgeVariants>["variant"]>
 
-// Each accent pairs a card's hover glow (and the same look held on, for a
-// selected item) with a tag badge color that's
-// guaranteed not to match it, and a tint for icons and code chips inside the
-// card, so they can never drift out of sync.
+// Each accent bundles the classes that keep a card's look consistent: the
+// hover glow (and `active`, the same look held on for a selected item), a tag
+// badge color guaranteed not to match the glow, and a tint for icons and code
+// chips inside the card.
 const ACCENTS = [
   {
     hover:

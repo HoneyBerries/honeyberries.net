@@ -46,7 +46,6 @@ export function Examples() {
             id={`example-tab-${ex.id}`}
             aria-selected={i === active}
             aria-controls="example-panel"
-            aria-describedby={`example-summary-${ex.id}`}
             tabIndex={i === active ? 0 : -1}
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
@@ -59,10 +58,7 @@ export function Examples() {
             <span className="text-sm font-semibold tracking-tight">
               {ex.title}
             </span>
-            <span
-              id={`example-summary-${ex.id}`}
-              className="text-[13px] leading-relaxed text-muted-foreground"
-            >
+            <span className="text-[13px] leading-relaxed text-muted-foreground">
               {ex.summary}
             </span>
           </button>

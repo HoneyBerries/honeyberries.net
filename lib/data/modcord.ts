@@ -50,21 +50,11 @@ export type CommandRow = {
 }
 
 export const commands = [
-  {
-    command: "/preferences",
-    summary:
-      "Turn AI moderation and each action on or off, pick the rules and audit channels, allow appeals, reset.",
-  },
+  { command: "/preferences", summary: "Turn AI moderation and each action on or off, pick the rules and audit channels, allow appeals, reset." },
   { command: "/mod", summary: "Warn, timeout, kick, ban or unban by hand." },
-  {
-    command: "/exclude",
-    summary: "Exempt users, roles or channels from AI moderation.",
-  },
+  { command: "/exclude", summary: "Exempt users, roles or channels from AI moderation." },
   { command: "/rollback", summary: "Undo a moderation action." },
-  {
-    command: "/appeal",
-    summary: "Appeal a decision, or review appeals as a moderator.",
-  },
+  { command: "/appeal", summary: "Appeal a decision, or review appeals as a moderator." },
   { command: "/status", summary: "Check health, ping and uptime." },
 ] as const satisfies readonly CommandRow[]
 

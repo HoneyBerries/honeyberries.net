@@ -15,7 +15,7 @@ export function ChatPanel({
 }) {
   return (
     <div
-      role="group"
+      role="region"
       aria-label={label}
       // Focusable so keyboard users can scroll it when the conversation is long.
       tabIndex={0}
@@ -50,10 +50,8 @@ const authorColors = [
   ["#0369a1", "#00b0f4"],
 ] as const
 
-function authorStyle(name: string) {
-  let hash = 0
-  for (const char of name) hash = (hash * 31 + char.charCodeAt(0)) % 997
-  const [light, dark] = authorColors[hash % authorColors.length]
+function authorStyle(index: number) {
+  const [light, dark] = authorColors[index % authorColors.length]
   return {
     "--author-light": light,
     "--author-dark": dark,
@@ -62,15 +60,17 @@ function authorStyle(name: string) {
 
 function Message({
   item,
+  colorIndex,
 }: {
   item: Extract<TimelineItem, { type: "message" }>
+  colorIndex: number
 }) {
   const lines = Array.from({ length: item.repeat ?? 1 })
   return (
     <div className="flex flex-col gap-0.5">
       <span
         className="font-semibold text-(color:--author-light) dark:text-(color:--author-dark)"
-        style={authorStyle(item.author)}
+        style={authorStyle(colorIndex)}
       >
         {item.author}
       </span>
@@ -160,11 +160,26 @@ export function ChatTimeline({
     }
   }
 
+  // Authors get colors in order of first appearance, so everyone in a short
+  // conversation looks different.
+  const authorOrder = new Map<string, number>()
+  for (const item of items) {
+    if (item.type === "message" && !authorOrder.has(item.author)) {
+      authorOrder.set(item.author, authorOrder.size)
+    }
+  }
+
   return (
     <>
       {items.map((item, i) => {
         if (item.type === "message") {
-          return <Message key={i} item={item} />
+          return (
+            <Message
+              key={i}
+              item={item}
+              colorIndex={authorOrder.get(item.author)!}
+            />
+          )
         }
         const actionIdx = actionPositions.get(i)!
         const delay = animateActions ? `${1.2 + actionIdx * 1.6}s` : undefined

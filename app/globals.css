@@ -189,8 +189,6 @@
   }
 }
 
-@layer components {
-  .animate-resolve {
-    animation: resolve-in 400ms ease-out both;
-  }
+@utility animate-resolve {
+  animation: resolve-in 400ms ease-out both;
 }
