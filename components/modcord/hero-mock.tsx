@@ -9,7 +9,10 @@ export function HeroMock() {
 
   return (
     <figure className="flex flex-col gap-2">
-      <ChatPanel label={`Example: ${example.title}`}>
+      <ChatPanel
+        label={`Example: ${example.title}`}
+        className="max-h-[26rem] overflow-y-auto overscroll-contain"
+      >
         <ChatTimeline items={example.timeline} animateActions />
       </ChatPanel>
       <figcaption className="text-xs text-muted-foreground">
