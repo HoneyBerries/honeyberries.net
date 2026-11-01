@@ -1,3 +1,4 @@
+import { accentAt } from "@/components/site/glow-card"
 import { MinecraftCard } from "@/components/site/minecraft-card"
 import { Section, SectionHeading } from "@/components/site/section"
 import { MODRINTH_USERNAME, SOCIAL_LINKS } from "@/lib/data/site"
@@ -6,13 +7,6 @@ import {
   groupProjects,
   type ModrinthProject,
 } from "@/lib/modrinth"
-
-// Same three hover glows as the Projects cards, rotated in order.
-const hovers = [
-  "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
-  "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
-  "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
-]
 
 function Group({
   id,
@@ -34,7 +28,7 @@ function Group({
           <MinecraftCard
             key={`${id}-${project.slug}`}
             project={project}
-            hover={hovers[i % hovers.length]}
+            accent={accentAt(i)}
           />
         ))}
       </div>
@@ -48,9 +42,7 @@ export async function MinecraftSection() {
   return (
     <Section id="minecraft">
       <div className="mb-12 flex flex-col items-center gap-3 text-center">
-        <SectionHeading gradient>
-          Mods, plugins &amp; datapacks
-        </SectionHeading>
+        <SectionHeading gradient>Mods, plugins &amp; datapacks</SectionHeading>
         <p className="max-w-md text-muted-foreground">
           Everything I&apos;ve published on{" "}
           <a
