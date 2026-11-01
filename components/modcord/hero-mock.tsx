@@ -13,7 +13,7 @@ export function HeroMock() {
     <figure className="flex flex-col gap-2">
       <ChatPanel
         label={`Example: ${example.title}`}
-        className="max-h-80 sm:max-h-[26rem]"
+        className="max-h-72 sm:max-h-[24rem]"
       >
         <ChatTimeline items={example.timeline} animateActions />
       </ChatPanel>

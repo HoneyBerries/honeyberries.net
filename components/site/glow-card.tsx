@@ -8,29 +8,40 @@ import { cn } from "@/lib/utils"
 
 type BadgeVariant = NonNullable<VariantProps<typeof badgeVariants>["variant"]>
 
-// Each accent pairs a card's hover glow with a tag badge color that's
+// Each accent pairs a card's hover glow (and the same look held on, for a
+// selected item) with a tag badge color that's
 // guaranteed not to match it, and a tint for icons and code chips inside the
 // card, so they can never drift out of sync.
 const ACCENTS = [
   {
     hover:
       "hover:bg-primary-500/5 hover:ring-primary-500/40 hover:shadow-lg hover:shadow-primary-500/10",
+    active:
+      "bg-primary-500/5 ring-primary-500/40 shadow-lg shadow-primary-500/10",
     tag: "secondary",
     tint: "bg-primary-500/10 text-primary-600 dark:text-primary-400",
   },
   {
     hover:
       "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
+    active:
+      "bg-secondary-500/5 ring-secondary-500/40 shadow-lg shadow-secondary-500/10",
     tag: "accent",
     tint: "bg-secondary-500/10 text-secondary-700 dark:text-secondary-400",
   },
   {
     hover:
       "hover:bg-accent-500/5 hover:ring-accent-500/40 hover:shadow-lg hover:shadow-accent-500/10",
+    active: "bg-accent-500/5 ring-accent-500/40 shadow-lg shadow-accent-500/10",
     tag: "default",
     tint: "bg-accent-500/10 text-accent-700 dark:text-accent-400",
   },
-] satisfies { hover: string; tag: BadgeVariant; tint: string }[]
+] satisfies {
+  hover: string
+  active: string
+  tag: BadgeVariant
+  tint: string
+}[]
 
 /** Rotates through the three accents by position in a list. */
 export function accentAt(index: number) {
@@ -40,9 +51,9 @@ export function accentAt(index: number) {
 export type Accent = ReturnType<typeof accentAt>
 
 /**
- * The site's shared card: a bordered Card with an accent-colored glow on
- * hover. With `href` the whole card is a link (internal paths use next/link,
- * anything else opens in a new tab); without it, it's a plain card.
+ * The site's shared card: a bordered Card. With `href` the whole card is a
+ * link (internal paths use next/link, anything else opens in a new tab) and
+ * glows in its accent color on hover; without it, it's a plain card.
  */
 export function GlowCard({
   accent,
@@ -58,8 +69,9 @@ export function GlowCard({
   const card = (
     <Card
       className={cn(
-        "h-full ring-1 ring-foreground/10 transition-all",
-        accent.hover,
+        "h-full ring-1 ring-foreground/10",
+        // Only linked cards glow, so a glow always means "clickable".
+        href && ["transition-all", accent.hover],
         className
       )}
     >

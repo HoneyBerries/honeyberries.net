@@ -20,7 +20,7 @@ export function ChatPanel({
       // Focusable so keyboard users can scroll it when the conversation is long.
       tabIndex={0}
       className={cn(
-        "flex max-h-[26rem] flex-col gap-3 overflow-y-auto overscroll-contain rounded-xl bg-[#f2f3f5] p-4 text-sm text-[#313338] shadow-lg ring-1 ring-black/10 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 dark:bg-[#2b2d31] dark:text-[#dbdee1] dark:ring-black/20",
+        "flex max-h-[24rem] flex-col gap-2.5 overflow-y-auto overscroll-contain rounded-xl bg-[#f2f3f5] p-3.5 text-[13px] text-[#313338] shadow-sm ring-1 ring-black/10 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 dark:bg-[#2b2d31] dark:text-[#dbdee1] dark:ring-black/20",
         className
       )}
     >
@@ -76,7 +76,7 @@ function Message({
       </span>
       {item.text &&
         lines.map((_, i) => (
-          <p key={i} className="break-words leading-snug">
+          <p key={i} className="break-words leading-tight">
             {item.text}
           </p>
         ))}
@@ -104,7 +104,7 @@ function ActionEmbed({
     <div
       style={style}
       className={cn(
-        "flex flex-col gap-2 rounded-md border-l-4 border-secondary-500 bg-white p-3 dark:bg-[#313338]",
+        "flex flex-col gap-1.5 rounded-md border-l-4 border-secondary-500 bg-white p-2.5 dark:bg-[#313338]",
         className
       )}
     >

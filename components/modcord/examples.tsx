@@ -2,8 +2,8 @@
 
 import { useRef, useState, type KeyboardEvent } from "react"
 
+import { accentAt } from "@/components/site/glow-card"
 import { ChatPanel, ChatTimeline } from "@/components/modcord/chat"
-import { Card } from "@/components/ui/card"
 import { examples } from "@/lib/data/modcord-examples"
 import { cn } from "@/lib/utils"
 
@@ -18,8 +18,8 @@ export function Examples() {
   }
 
   function onKeyDown(e: KeyboardEvent<HTMLButtonElement>, i: number) {
-    if (e.key === "ArrowRight") move(i + 1)
-    else if (e.key === "ArrowLeft") move(i - 1)
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") move(i + 1)
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") move(i - 1)
     else if (e.key === "Home") move(0)
     else if (e.key === "End") move(examples.length - 1)
     else return
@@ -29,11 +29,12 @@ export function Examples() {
   const example = examples[active]
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="grid gap-8 md:grid-cols-[1fr_1.4fr] md:items-start">
       <div
         role="tablist"
         aria-label="Moderation examples"
-        className="flex flex-wrap justify-center gap-2"
+        aria-orientation="vertical"
+        className="flex flex-col gap-2"
       >
         {examples.map((ex, i) => (
           <button
@@ -45,30 +46,34 @@ export function Examples() {
             id={`example-tab-${ex.id}`}
             aria-selected={i === active}
             aria-controls="example-panel"
+            aria-describedby={`example-summary-${ex.id}`}
             tabIndex={i === active ? 0 : -1}
             onClick={() => setActive(i)}
             onKeyDown={(e) => onKeyDown(e, i)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-sm font-medium outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50",
-              i === active
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border text-muted-foreground hover:bg-muted hover:text-foreground"
+              "flex flex-col gap-1 rounded-lg px-3.5 py-3 text-left outline-none ring-1 transition-all focus-visible:ring-[3px]",
+              "bg-card ring-foreground/10 focus-visible:ring-ring/50",
+              i === active ? accentAt(i).active : accentAt(i).hover
             )}
           >
-            {ex.title}
+            <span className="text-sm font-semibold tracking-tight">
+              {ex.title}
+            </span>
+            <span
+              id={`example-summary-${ex.id}`}
+              className="text-[13px] leading-relaxed text-muted-foreground"
+            >
+              {ex.summary}
+            </span>
           </button>
         ))}
       </div>
 
-      <Card
+      <div
         role="tabpanel"
         id="example-panel"
         aria-labelledby={`example-tab-${example.id}`}
-        className="gap-6 p-6 md:grid md:grid-cols-[1fr_1.4fr] md:items-center"
       >
-        <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
-          {example.summary}
-        </p>
         <figure className="flex flex-col gap-2">
           <ChatPanel label={`Example: ${example.title}`}>
             <ChatTimeline items={example.timeline} />
@@ -78,7 +83,7 @@ export function Examples() {
             {example.othersOmitted && " Other members' messages omitted."}
           </figcaption>
         </figure>
-      </Card>
+      </div>
     </div>
   )
 }
