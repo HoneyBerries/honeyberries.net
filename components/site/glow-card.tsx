@@ -22,7 +22,7 @@ const ACCENTS = [
     hover:
       "hover:bg-secondary-500/5 hover:ring-secondary-500/40 hover:shadow-lg hover:shadow-secondary-500/10",
     tag: "accent",
-    tint: "bg-secondary-500/10 text-secondary-600 dark:text-secondary-400",
+    tint: "bg-secondary-500/10 text-secondary-700 dark:text-secondary-400",
   },
   {
     hover:
@@ -84,6 +84,7 @@ export function GlowCard({
       className={linkClass}
     >
       {card}
+      <span className="sr-only">(opens in a new tab)</span>
     </a>
   )
 }

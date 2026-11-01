@@ -44,9 +44,9 @@ function MediaChip({ kind, count }: { kind: "gif" | "image"; count: number }) {
 const authorColors = [
   ["#b01fc0", "#f47fff"],
   ["#4752c4", "#8ea1ff"],
-  ["#1a7f37", "#3ba55d"],
+  ["#1a7f37", "#4fc873"],
   ["#b45309", "#faa61a"],
-  ["#c62828", "#ed4245"],
+  ["#c62828", "#ff6b6e"],
   ["#0369a1", "#00b0f4"],
 ] as const
 

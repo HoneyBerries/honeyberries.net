@@ -1,5 +1,5 @@
 import { accentAt, GlowCard } from "@/components/site/glow-card"
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CardContent, CardHeader } from "@/components/ui/card"
 import { features } from "@/lib/data/modcord"
 import { cn } from "@/lib/utils"
 
@@ -20,7 +20,9 @@ export function FeatureList() {
                 >
                   <Icon aria-hidden className="size-5" />
                 </span>
-                <CardTitle className="text-base">{title}</CardTitle>
+                <h3 className="font-heading text-base leading-snug font-medium">
+                  {title}
+                </h3>
               </CardHeader>
               <CardContent>
                 <p className="text-sm leading-relaxed text-muted-foreground">

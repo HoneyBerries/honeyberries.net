@@ -66,7 +66,7 @@ export function Examples() {
         aria-labelledby={`example-tab-${example.id}`}
         className="gap-6 p-6 md:grid md:grid-cols-[1fr_1.4fr] md:items-start"
       >
-        <p className="max-w-prose leading-relaxed text-muted-foreground">
+        <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
           {example.summary}
         </p>
         <figure className="flex flex-col gap-2">

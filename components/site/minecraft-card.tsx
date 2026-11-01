@@ -84,7 +84,6 @@ export function MinecraftCard({
           </div>
           <span className="whitespace-nowrap">
             Modrinth <span aria-hidden>↗</span>
-            <span className="sr-only">(opens in a new tab)</span>
           </span>
         </div>
       </CardContent>
