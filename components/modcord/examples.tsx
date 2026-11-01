@@ -64,7 +64,7 @@ export function Examples() {
         role="tabpanel"
         id="example-panel"
         aria-labelledby={`example-tab-${example.id}`}
-        className="gap-6 p-6 md:grid md:grid-cols-[1fr_1.4fr] md:items-start"
+        className="gap-6 p-6 md:grid md:grid-cols-[1fr_1.4fr] md:items-center"
       >
         <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
           {example.summary}
