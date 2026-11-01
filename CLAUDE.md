@@ -37,7 +37,7 @@ This is a personal portfolio/showcase site (honeyberries.net) built with Next.js
 
 ## Important: pinned Next.js version
 
-`next` (and `eslint-config-next`) are pinned to an exact version in `package.json`, not a range. Next 16.4.0+ loads `.next/server/preview-props.json`, which `@opennextjs/cloudflare` 1.20.x doesn't bundle, so every Worker request fails with a 1101 error. Don't bump Next past 16.3.x until OpenNext supports 16.4; the floor is 16.3.8 (OpenNext's peer dependency).
+`next` (and `eslint-config-next`) are pinned to an exact version in `package.json`, not a range. Next is pinned at 16.4.3 (security fixes: RCE in Image Optimization and in `use cache` typed arrays, fixed in 16.4.1+; OpenNext 1.20.15 peers `>=16.4.1`). Verified with `npm run preview`. Earlier 16.4.0 failed Worker requests with a 1101 error (missing `.next/server/preview-props.json`), so re-verify the Worker after any bump.
 
 ## Important: non-standard Next.js version
 
