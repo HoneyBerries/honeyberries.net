@@ -254,6 +254,47 @@ export const examples = [
         "text": "lol the scammers found us"
       }
     ]
+  },
+  {
+    "id": "fake-helper",
+    "title": "A friendly offer to help",
+    "summary": "A member offers to help someone who is locked out of their account. Nothing in it looks bad, until it asks for their login code.",
+    "capturedNote": "Illustrative example written to show a subtle case. Not a real capture.",
+    "othersOmitted": false,
+    "timeline": [
+      {
+        "type": "message",
+        "author": "Nia",
+        "text": "ugh got locked out of my account again, support never answers"
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "same, took them like two weeks last time"
+      },
+      {
+        "type": "message",
+        "author": "Sora",
+        "text": "Oh no! That happened to me too. I know a trick to get back in within minutes :)"
+      },
+      {
+        "type": "message",
+        "author": "Sora",
+        "text": "Just DM me the 6-digit code they emailed you and I'll sort it out, no need to wait for support"
+      },
+      {
+        "type": "action",
+        "kind": "timeout",
+        "target": "Sora",
+        "duration": "1h",
+        "reason": "Offering to help is kind, but asking someone to send you their email verification code would let you take over their account. I've removed those messages and put you on a short timeout while the mods take a look."
+      },
+      {
+        "type": "message",
+        "author": "Ravi",
+        "text": "wait yeah don't send that to anyone Nia"
+      }
+    ]
   }
 ] satisfies Example[]
 

@@ -119,7 +119,7 @@ export default function ModcordPage() {
       <Section band className={sectionClass}>
         <SectionHeader
           gradient
-          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The third is recreated from a scam that happened a few times."
+          description="The first two are real decisions Modcord made in a server I run, with the reasons exactly as it posted them. The last two are recreated to show common cases."
         >
           Examples
         </SectionHeader>
