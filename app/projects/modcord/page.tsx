@@ -33,7 +33,7 @@ function ExternalButton({
     <Button
       variant={variant}
       size="lg"
-      className="h-10 px-4 text-sm sm:px-5 sm:text-base"
+      className="h-9 px-4 text-sm"
       nativeButton={false}
       render={<a href={href} {...externalProps(href)} />}
     >
@@ -94,7 +94,7 @@ export default function ModcordPage() {
               rules before it acts, so a joke between friends and a real problem
               are treated differently.
             </p>
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-3">
               <ExternalButton variant="gradient" href={MODCORD_INVITE_URL}>
                 Add to Discord
               </ExternalButton>
