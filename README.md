@@ -1,9 +1,7 @@
 # honeyberries.net
 
-[![Deploy](https://img.shields.io/github/actions/workflow/status/HoneyBerries/honeyberries.net/deploy.yml?branch=main&style=flat-square&label=deploy)](https://github.com/HoneyBerries/honeyberries.net/actions/workflows/deploy.yml)
 [![Build](https://img.shields.io/github/actions/workflow/status/HoneyBerries/honeyberries.net/build.yml?style=flat-square&label=build)](https://github.com/HoneyBerries/honeyberries.net/actions/workflows/build.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![Cloudflare Workers](https://img.shields.io/badge/deployed%20on-Cloudflare%20Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
 [![License](https://img.shields.io/github/license/HoneyBerries/honeyberries.net?style=flat-square)](LICENSE)
 
 Source for my personal site, [honeyberries.net](https://honeyberries.net) — a small portfolio with an about page, project list, and a way to get in touch.
@@ -12,7 +10,7 @@ Source for my personal site, [honeyberries.net](https://honeyberries.net) — a 
 
 - **Next.js** (App Router) + React + TypeScript
 - **Tailwind CSS v4** for styling, shadcn-style primitives in `components/ui`
-- **Cloudflare Workers** for hosting, via [OpenNext](https://opennext.js.org/cloudflare) — this runs as a real Next.js server (API routes, SSR, ISR), not a static export
+- **Vercel** for hosting
 
 ## Getting started
 
@@ -30,8 +28,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run dev` | Dev server with Turbopack |
 | `npm run build` | Standard Next.js build |
 | `npm run lint` | ESLint |
-| `npm run preview` | Build with OpenNext and preview via Wrangler |
-| `npm run deploy` | Build with OpenNext and deploy the Worker to Cloudflare |
+| `npm run start` | Serve the production build |
 
 ## Structure
 
