@@ -1,5 +1,3 @@
-import { cacheLife } from "next/cache"
-
 import { MODRINTH_USERNAME, SITE_URL } from "@/lib/data/site"
 
 // The subset of Modrinth's project fields the Minecraft page uses.
@@ -62,16 +60,13 @@ export function normalizeProjects(
 }
 
 export async function getMinecraftProjects(): Promise<ModrinthProject[]> {
-  "use cache"
-  cacheLife("minutes")
-
   const headers = {
     "User-Agent": `${MODRINTH_USERNAME}/honeyberries.net (${SITE_URL})`,
   }
   const [res, releases] = await Promise.all([
     fetch(
       `https://api.modrinth.com/v2/user/${encodeURIComponent(MODRINTH_USERNAME)}/projects`,
-      { headers }
+      { headers, next: { revalidate: 300 } }
     ),
     getReleaseVersions(headers),
   ])
@@ -90,6 +85,7 @@ async function getReleaseVersions(
   try {
     const res = await fetch("https://api.modrinth.com/v2/tag/game_version", {
       headers,
+      next: { revalidate: 86400 },
     })
     if (!res.ok) return null
     const tags: unknown = await res.json()

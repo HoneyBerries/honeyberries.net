@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import { MinecraftSection } from "@/components/site/minecraft-section"
 import { pageMetadata } from "@/lib/metadata"
 
@@ -9,5 +11,9 @@ export const metadata = pageMetadata({
 })
 
 export default function MinecraftPage() {
-  return <MinecraftSection />
+  return (
+    <Suspense>
+      <MinecraftSection />
+    </Suspense>
+  )
 }

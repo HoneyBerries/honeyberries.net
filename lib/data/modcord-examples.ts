@@ -200,5 +200,3 @@ export const examples = [
     ]
   }
 ] satisfies Example[]
-
-export const HERO_EXAMPLE_ID = "sixty-seven"

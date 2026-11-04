@@ -4,7 +4,6 @@ import type { ReactNode } from "react"
 import { CommandsTable } from "@/components/modcord/commands-table"
 import { Examples } from "@/components/modcord/examples"
 import { FeatureList } from "@/components/modcord/feature-list"
-import { HeroMock } from "@/components/modcord/hero-mock"
 import { RetentionTable } from "@/components/modcord/retention-table"
 import { Section, SectionHeader } from "@/components/site/section"
 import { TextLink } from "@/components/site/text-link"
@@ -34,7 +33,7 @@ function ExternalButton({
     <Button
       variant={variant}
       size="lg"
-      className="h-10 px-5 text-base"
+      className="h-10 px-4 text-sm sm:px-5 sm:text-base"
       nativeButton={false}
       render={<a href={href} {...externalProps(href)} />}
     >
@@ -80,7 +79,7 @@ export default function ModcordPage() {
           aria-hidden
           className="pointer-events-none absolute -top-24 left-1/2 h-96 w-[48rem] max-w-full -translate-x-1/2 rounded-full bg-linear-to-r from-primary-500/20 via-secondary-500/15 to-accent-500/20 blur-3xl"
         />
-        <Section className="relative grid gap-12 py-16 md:grid-cols-[1fr_1.1fr] md:items-center md:py-24">
+        <Section className="relative py-16 md:py-24">
           <div className="flex flex-col items-start gap-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="default">Open source</Badge>
@@ -95,7 +94,7 @@ export default function ModcordPage() {
               rules before it acts, so a joke between friends and a real problem
               are treated differently.
             </p>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <ExternalButton variant="gradient" href={MODCORD_INVITE_URL}>
                 Add to Discord
               </ExternalButton>
@@ -112,7 +111,6 @@ export default function ModcordPage() {
               ))}
             </ul>
           </div>
-          <HeroMock />
         </Section>
       </div>
 

@@ -38,7 +38,14 @@ function Group({
 }
 
 export async function MinecraftSection() {
-  const { mods, plugins } = groupProjects(await getMinecraftProjects())
+  let projects: ModrinthProject[] = []
+  let failed = false
+  try {
+    projects = await getMinecraftProjects()
+  } catch {
+    failed = true
+  }
+  const { mods, plugins } = groupProjects(projects)
 
   return (
     <Section id="minecraft">
@@ -56,6 +63,16 @@ export async function MinecraftSection() {
       >
         Mods, plugins, &amp; datapacks
       </SectionHeader>
+      {failed && (
+        <p className="mb-8 text-center text-muted-foreground">
+          Couldn&apos;t load projects from Modrinth right now. Try again in a
+          moment, or{" "}
+          <TextLink href={SOCIAL_LINKS.modrinth.href}>
+            view them on Modrinth
+          </TextLink>
+          .
+        </p>
+      )}
       <div className="flex flex-col gap-12">
         <Group id="mods" label="Mods" projects={mods} />
         <Group id="plugins" label="Plugins, & datapacks" projects={plugins} />
