@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-import { DISCORD_INVITE_URL } from "./lib/data/site";
+import { DISCORD_INVITE_URL, MODCORD_INVITE_URL } from "./lib/data/site";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/discord", destination: DISCORD_INVITE_URL, permanent: false },
+      {
+        source: "/modcord/invite",
+        destination: MODCORD_INVITE_URL,
+        permanent: false,
+      },
     ];
   },
 };

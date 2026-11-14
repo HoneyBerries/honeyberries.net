@@ -9,7 +9,7 @@ import { Section, SectionHeader } from "@/components/site/section"
 import { TextLink } from "@/components/site/text-link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { MODCORD_INVITE_URL, MODCORD_REPO_URL } from "@/lib/data/site"
+import { MODCORD_REPO_URL } from "@/lib/data/site"
 import { pageMetadata } from "@/lib/metadata"
 import { externalProps } from "@/lib/utils"
 
@@ -95,7 +95,7 @@ export default function ModcordPage() {
               are treated differently.
             </p>
             <div className="flex items-center gap-3">
-              <ExternalButton variant="gradient" href={MODCORD_INVITE_URL}>
+              <ExternalButton variant="gradient" href="/modcord/invite">
                 Add to Discord
               </ExternalButton>
               <ExternalButton variant="outline" href={MODCORD_REPO_URL}>
