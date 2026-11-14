@@ -5,11 +5,15 @@ export const SITE_DESCRIPTION =
   "Personal portfolio of HoneyBerries, a Computer Science student at UC Berkeley building AI agents, Discord bots, and Minecraft mods."
 export const SHARE_IMAGE_ALT = "Mount Fuji seen from a hillside overlook"
 
+// Where honeyberries.net/discord redirects to (see next.config.ts). Change the
+// invite here; every Discord link on the site points at /discord.
+export const DISCORD_INVITE_URL = "https://discord.gg/tSMgBPYb48"
+
 export const SOCIAL_LINKS = {
   github: { label: "GitHub", href: "https://github.com/HoneyBerries" },
   modrinth: { label: "Modrinth", href: "https://modrinth.com/user/HoneyBerries" },
   email: { label: "Email", href: "mailto:henry.rainbowfish@gmail.com" },
-  discord: { label: "Discord", href: "https://discord.gg/TbkHCshxjS" },
+  discord: { label: "Discord", href: "/discord" },
 } as const
 
 export type SocialLink = keyof typeof SOCIAL_LINKS
