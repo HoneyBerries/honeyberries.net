@@ -37,7 +37,7 @@ This is a personal portfolio/showcase site (honeyberries.net) built with Next.js
 
 ## Important: Next.js version
 
-Nothing in `package.json` is pinned to an exact version; everything uses caret ranges and `package-lock.json` fixes what is installed. Next must stay at 16.4.1+ (security fixes: RCE in Image Optimization and in `use cache` typed arrays). Re-verify the build after any bump, and keep `next` + `eslint-config-next` and `react` + `react-dom` on matching versions.
+Nothing in `package.json` is pinned to an exact version; everything uses caret ranges and `package-lock.json` fixes what is installed. Next must stay at 16.4.6+ (security fixes: RCE in Image Optimization and in `use cache` typed arrays, `use cache` info leaks fixed after 16.4.4; `next build` refuses to run on known-vulnerable versions). Re-verify the build after any bump, and keep `next` + `eslint-config-next` and `react` + `react-dom` on matching versions.
 
 ## Important: non-standard Next.js version
 
