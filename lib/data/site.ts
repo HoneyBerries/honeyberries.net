@@ -9,6 +9,7 @@ export const SHARE_IMAGE_ALT = "Mount Fuji seen from a hillside overlook"
 // invite here; every Discord link on the site points at /discord.
 export const DISCORD_INVITE_URL = "https://discord.gg/tSMgBPYb48"
 
+// Social links
 export const SOCIAL_LINKS = {
   github: { label: "GitHub", href: "https://github.com/HoneyBerries" },
   modrinth: { label: "Modrinth", href: "https://modrinth.com/user/HoneyBerries" },
