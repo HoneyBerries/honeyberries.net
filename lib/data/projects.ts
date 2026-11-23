@@ -14,6 +14,12 @@ export const projects: Project[] = [
     href: "/projects/modcord",
   },
   {
+    title: "Siwi Client",
+    description: "A Minecraft ghost client that I made for my friend, siwi731",
+    tags: ["Minecraft", "Ghost Client"],
+    href: "/projects/siwi-client",
+  },
+  {
     title: "This Website",
     description:
         "Since I didn't have any website after I bought a domain, I decided to create one for fun",
