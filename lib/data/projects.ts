@@ -17,7 +17,7 @@ export const projects: Project[] = [
     title: "Siwi Client",
     description: "A Minecraft ghost client that I made for my friend, siwi731",
     tags: ["Minecraft", "Ghost Client"],
-    href: "/projects/siwi-client",
+    href: "https://github.com/HoneyBerries/PepmonClient",
   },
   {
     title: "This Website",
